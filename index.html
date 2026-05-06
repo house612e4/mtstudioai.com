@@ -6,381 +6,447 @@
   <title>MT Studio - Digital Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    .hero-bg { 
-        background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('image.png') center/cover no-repeat; 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            midnight: '#050B14',
+            glass: 'rgba(255, 255, 255, 0.03)',
+            glassBorder: 'rgba(255, 255, 255, 0.08)',
+          },
+          animation: {
+            blob: 'blob 10s infinite',
+            marquee: 'marquee 25s linear infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-100%)' },
+            }
+          }
+        }
+      }
     }
+  </script>
+  
+  <style>
+    body {
+      background-color: #050B14;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+    
+    /* Faint Grid Background */
+    .bg-grid {
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    }
+
+    /* Springy Press Animation */
+    .spring-press {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .spring-press:active {
+      transform: scale(0.96);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #050B14; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased selection:bg-indigo-200 selection:text-indigo-900">
+<body class="antialiased bg-grid relative selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <!-- Animated Background Blobs -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-[-1]">
+    <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-cyan-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
+    <div class="absolute top-[20%] right-[-10%] w-[35rem] h-[35rem] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-[-20%] left-[20%] w-[40rem] h-[40rem] bg-magenta-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
+  </div>
 
   <!-- Navbar -->
-  <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300">
+  <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-midnight/50 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-        MT Studio
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
+          <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
+            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-lg tracking-wider">MT</span>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-white font-bold leading-tight">MT Studio</h1>
+          <p class="text-xs text-slate-400">Digital Solutions</p>
+        </div>
       </a>
       
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-8 items-center">
-        <a href="#home" class="text-gray-600 hover:text-indigo-600 font-medium transition">Home</a>
-        <a href="#services" class="text-gray-600 hover:text-indigo-600 font-medium transition">Services</a>
-        <a href="#pricing" class="text-gray-600 hover:text-indigo-600 font-medium transition">Pricing</a>
-        <a href="#portfolio" class="text-gray-600 hover:text-indigo-600 font-medium transition">Portfolio</a>
-        <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition">About</a>
-        <button onclick="toggleModal(true)" class="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-indigo-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
-          বিনামূল্যে উদ্ধৃতি
-        </button>
+      <!-- Free Badge (Desktop) -->
+      <div class="hidden md:flex items-center gap-2 border border-green-500/30 bg-green-500/10 px-4 py-1.5 rounded-full backdrop-blur-sm free-promo-element">
+        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+        <span class="text-green-300 text-xs font-bold tracking-widest uppercase">100% Free · Limited</span>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button onclick="toggleMenu()" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+      <button onclick="toggleMenu()" class="md:hidden text-slate-300 hover:text-white">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
     </div>
 
     <!-- Mobile Menu Dropdown -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-      <div class="flex flex-col px-6 py-4 space-y-4">
-        <a href="#home" onclick="toggleMenu()" class="text-gray-600 font-medium">Home</a>
-        <a href="#services" onclick="toggleMenu()" class="text-gray-600 font-medium">Services</a>
-        <a href="#pricing" onclick="toggleMenu()" class="text-gray-600 font-medium">Pricing</a>
-        <a href="#portfolio" onclick="toggleMenu()" class="text-gray-600 font-medium">Portfolio</a>
-        <a href="#about" onclick="toggleMenu()" class="text-gray-600 font-medium">About</a>
-        <button onclick="toggleModal(true); toggleMenu()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold text-center">
-          বিনামূল্যে উদ্ধৃতি নিন
-        </button>
+    <div id="mobileMenu" class="hidden md:hidden bg-midnight/95 backdrop-blur-xl border-b border-white/10 absolute w-full">
+      <div class="flex flex-col px-6 py-6 space-y-5">
+        <a href="#home" onclick="toggleMenu()" class="text-slate-300 font-medium">Home</a>
+        <a href="#craft" onclick="toggleMenu()" class="text-slate-300 font-medium">Our Craft</a>
+        <a href="#pricing" onclick="toggleMenu()" class="text-slate-300 font-medium">Packages</a>
+        <div class="h-px bg-white/10 w-full my-2"></div>
+        <div class="flex items-center gap-2 border border-green-500/30 bg-green-500/10 w-fit px-4 py-2 rounded-full free-promo-element">
+          <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+          <span class="text-green-300 text-xs font-bold tracking-widest uppercase">100% Free Offer Active</span>
+        </div>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="hero-bg text-white py-32 md:py-40">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <span class="free-badge inline-block py-1 px-4 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold mb-6 border border-green-400/30 animate-pulse">
-        🚀 সীমিত সময়ের জন্য সকল সার্ভিস সম্পূর্ণ ফ্রি!
-      </span>
-      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
-        আপনার স্বপ্ন,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">ডিজিটালে নিখুঁত</span>
+  <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-slate-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase">D i g i t a l</p>
+      
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
+        আপনার স্বপ্ন,<br>
+        ডিজিটালি <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400">পারফেক্ট</span>
       </h1>
-      <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-gray-300 font-light">
-        ওয়েব ও অ্যাপ ডেভেলপমেন্ট • প্রোফাইল ট্রাবলশুটিং • এআই প্রম্পট • ডিজিটাল মার্কেটিং
+      
+      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed font-light">
+        MT Studio crafts websites, mobile apps, brand visuals and AI workflows for ambitious founders. End-to-end, in Bangla and English.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <button onclick="toggleModal(true)" class="w-full sm:w-auto bg-white text-indigo-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
-          পরামর্শ নিন
+
+      <div class="flex flex-col sm:flex-row gap-4 mb-16">
+        <button onclick="toggleModal(true)" class="spring-press bg-gradient-to-r from-cyan-400 to-violet-500 text-midnight px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all flex items-center justify-center gap-2">
+          Start a project <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
         </button>
-        <a href="#services" class="w-full sm:w-auto border-2 border-white/30 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 hover:border-white transition-all duration-200 backdrop-blur-sm">
-          আমাদের কাজ দেখুন <i class="fa-solid fa-arrow-right ml-2"></i>
-        </a>
+        <button onclick="toggleModal(true)" class="spring-press bg-glass border border-glassBorder text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white/10 transition-all flex items-center justify-center backdrop-blur-sm">
+          আজই যোগাযোগ
+        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- Features -->
-  <section id="features" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4 text-gray-900">আমাদের প্রধান সেবা</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">আমরা আধুনিক প্রযুক্তি ব্যবহার করে আপনার ব্যবসাকে ডিজিটাল জগতে প্রতিষ্ঠিত করতে সাহায্য করি।</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="group bg-gray-50 p-8 rounded-3xl text-center hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
-          <div class="w-16 h-16 mx-auto bg-indigo-100 group-hover:bg-indigo-500 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-            <i class="fa-solid fa-globe text-3xl text-indigo-600 group-hover:text-white"></i>
-          </div>
-          <h3 class="text-2xl font-semibold mb-3">ওয়েব ও অ্যাপ</h3>
-          <p class="text-gray-600 group-hover:text-indigo-100 transition-colors">কাস্টম ওয়েবসাইট এবং মোবাইল অ্যাপ যা আপনার ব্যবসার পরিধি বাড়ায়।</p>
+      <!-- Tech Stack Pills -->
+      <div class="flex flex-wrap gap-3">
+        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
+          <i class="fa-brands fa-apple text-white"></i> iOS
         </div>
-        <div class="group bg-gray-50 p-8 rounded-3xl text-center hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
-          <div class="w-16 h-16 mx-auto bg-indigo-100 group-hover:bg-indigo-500 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-            <i class="fa-solid fa-mobile-screen text-3xl text-indigo-600 group-hover:text-white"></i>
-          </div>
-          <h3 class="text-2xl font-semibold mb-3">UI/UX ডিজাইন</h3>
-          <p class="text-gray-600 group-hover:text-indigo-100 transition-colors">iOS এবং Android অ্যাপের জন্য আকর্ষণীয় এবং ইউজার-ফ্রেন্ডলি ডিজাইন।</p>
+        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
+          <i class="fa-brands fa-android text-green-400"></i> Android
         </div>
-        <div class="group bg-gray-50 p-8 rounded-3xl text-center hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
-          <div class="w-16 h-16 mx-auto bg-indigo-100 group-hover:bg-indigo-500 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-            <i class="fa-solid fa-robot text-3xl text-indigo-600 group-hover:text-white"></i>
-          </div>
-          <h3 class="text-2xl font-semibold mb-3">এআই প্রম্পট</h3>
-          <p class="text-gray-600 group-hover:text-indigo-100 transition-colors">Midjourney, Flux এবং ChatGPT এর জন্য এক্সপার্ট লেভেল প্রম্পট ইঞ্জিনিয়ারিং।</p>
+        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
+          <i class="fa-solid fa-globe text-cyan-400"></i> Web
         </div>
-        <div class="group bg-gray-50 p-8 rounded-3xl text-center hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
-          <div class="w-16 h-16 mx-auto bg-indigo-100 group-hover:bg-indigo-500 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-            <i class="fa-solid fa-user-shield text-3xl text-indigo-600 group-hover:text-white"></i>
-          </div>
-          <h3 class="text-2xl font-semibold mb-3">প্রোফাইল ফিক্সিং</h3>
-          <p class="text-gray-600 group-hover:text-indigo-100 transition-colors">সোশ্যাল মিডিয়া অ্যাকাউন্ট বা প্রোফাইলের যেকোনো রেস্ট্রিকশন সমাধান।</p>
+        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
+          <i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Expanded Services Section -->
-  <section id="services" class="py-24 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-        <div>
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">সকল ডিজিটাল সেবা</h2>
-          <p class="text-gray-600 max-w-lg">আপনার ব্যবসার ধরন অনুযায়ী আমরা কাস্টমাইজড ডিজিটাল সমাধান প্রদান করি।</p>
-        </div>
+  <!-- Feature / Stats Highlight -->
+  <section class="py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-glass border border-glassBorder rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
+        <!-- Inner glow -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <p class="text-cyan-400 text-xs tracking-widest font-bold mb-4 uppercase flex items-center gap-2">
+          <i class="fa-solid fa-sparkles"></i> WHAT WE SHIP
+        </p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight max-w-3xl">
+          Websites that convert,<br>
+          apps that feel native,<br>
+          brands people remember.
+        </h2>
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service 1: Web Apps -->
-        <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:border-indigo-100 shadow-sm hover:shadow-lg transition duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <div class="bg-teal-100 p-3 rounded-xl text-teal-600">
-              <i class="fa-solid fa-laptop-code text-xl"></i>
-            </div>
+  <!-- Marquee / Divider -->
+  <div class="w-full overflow-hidden py-10 opacity-60">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <!-- Repeat 3 times for smooth infinite loop -->
+      <div class="flex items-center gap-8 px-4 text-2xl text-slate-500 font-light uppercase tracking-widest">
+        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-white font-medium">Everything you need to launch & grow.</span>
+        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-white font-medium">Everything you need to launch & grow.</span>
+        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-white font-medium">Everything you need to launch & grow.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section id="craft" class="py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Web Apps -->
+        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-globe text-cyan-400 text-xl"></i>
           </div>
-          <h3 class="text-2xl font-semibold mb-3 text-gray-900">ওয়েব অ্যাপস ডেভেলপমেন্ট</h3>
-          <p class="text-gray-600 mb-4">জটিল ব্যবসায়িক প্রক্রিয়ার জন্য কাস্টম, দ্রুত এবং সুরক্ষিত ওয়েব অ্যাপ্লিকেশন তৈরি।</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> কাস্টম সফটওয়্যার</li>
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> ম্যানেজমেন্ট সিস্টেম</li>
-          </ul>
+          <h3 class="text-2xl font-bold text-white mb-1">Web Apps</h3>
+          <p class="text-slate-400 text-sm mb-4">ওয়েব অ্যাপ ডেভেলপমেন্ট</p>
+          <p class="text-slate-500 text-sm">Custom platforms & dashboards...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-midnight transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
         </div>
 
-        <!-- Service 2: Mobile App Build -->
-        <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:border-indigo-100 shadow-sm hover:shadow-lg transition duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600">
-              <i class="fa-brands fa-app-store text-xl"></i>
-            </div>
+        <!-- Mobile App Build -->
+        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-mobile-screen text-violet-400 text-xl"></i>
           </div>
-          <h3 class="text-2xl font-semibold mb-3 text-gray-900">মোবাইল অ্যাপ বিল্ড</h3>
-          <p class="text-gray-600 mb-4">স্ক্র্যাচ থেকে আপনার ধারণাকে বাস্তব রূপ দিতে iOS এবং Android (APK) অ্যাপ ডেভেলপমেন্ট।</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> ন্যাটিভ ও হাইব্রিড অ্যাপ</li>
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> এপিআই ইন্টিগ্রেশন</li>
-          </ul>
+          <h3 class="text-2xl font-bold text-white mb-1">Mobile App Build</h3>
+          <p class="text-slate-400 text-sm mb-4">মোবাইল অ্যাপ বিল্ড</p>
+          <p class="text-slate-500 text-sm">Native iOS & Android</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-violet-500 group-hover:text-midnight transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
         </div>
 
-        <!-- Service 3: Mobile App Design -->
-        <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:border-indigo-100 shadow-sm hover:shadow-lg transition duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
-              <i class="fa-solid fa-pen-ruler text-xl"></i>
-            </div>
+        <!-- UI / UX Design -->
+        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i>
           </div>
-          <h3 class="text-2xl font-semibold mb-3 text-gray-900">মোবাইল অ্যাপ ডিজাইন</h3>
-          <p class="text-gray-600 mb-4">ব্যবহারকারীদের জন্য সহজ এবং দৃশ্যত চমৎকার iOS ও Android অ্যাপ্লিকেশনের UI/UX ডিজাইন।</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> ওয়্যারফ্রেমিং ও প্রোটোটাইপ</li>
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> ইউজার ফ্লো অপটিমাইজেশন</li>
-          </ul>
+          <h3 class="text-2xl font-bold text-white mb-1">UI / UX Design</h3>
+          <p class="text-slate-400 text-sm mb-4">ইউআই / ইউএক্স ডিজাইন</p>
+          <p class="text-slate-500 text-sm">Apps that feel premium</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-pink-500 group-hover:text-midnight transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
         </div>
 
-        <!-- Service 4: Social Media Profile Solutions -->
-        <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:border-indigo-100 shadow-sm hover:shadow-lg transition duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <div class="bg-red-100 p-3 rounded-xl text-red-600">
-              <i class="fa-solid fa-wrench text-xl"></i>
-            </div>
+        <!-- Profile Fix -->
+        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i>
           </div>
-          <h3 class="text-2xl font-semibold mb-3 text-gray-900">প্রোফাইল ট্রাবলশুটিং</h3>
-          <p class="text-gray-600 mb-4">ফেসবুক, ইন্সটাগ্রাম বা যেকোনো সোশ্যাল মিডিয়া অ্যাপে প্রোফাইলের টেকনিক্যাল সমস্যার ১০০% সমাধান।</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> অ্যাকাউন্ট রিকভারি</li>
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> রেস্ট্রিকশন রিমুভ করা</li>
-          </ul>
+          <h3 class="text-2xl font-bold text-white mb-1">Profile Fix</h3>
+          <p class="text-slate-400 text-sm mb-4">প্রোফাইল ট্রাবলশুটিং</p>
+          <p class="text-slate-500 text-sm">Recovery & restriction removal</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-midnight transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
         </div>
 
-        <!-- Service 5: Video & Photo Editing -->
-        <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:border-indigo-100 shadow-sm hover:shadow-lg transition duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <div class="bg-pink-100 p-3 rounded-xl text-pink-600">
-              <i class="fa-solid fa-clapperboard text-xl"></i>
-            </div>
+        <!-- Video & Photo -->
+        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-wand-magic text-fuchsia-400 text-xl"></i>
           </div>
-          <h3 class="text-2xl font-semibold mb-3 text-gray-900">ভিডিও ও ফটো এডিটিং</h3>
-          <p class="text-gray-600 mb-4">ফেসবুক রিলস, ইউটিউব শর্টস, প্রোডাক্ট ইমেইজ এবং প্রমোশনাল ভিডিওর প্রফেশনাল এডিটিং।</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> কালার গ্রেডিং ও রিটাচিং</li>
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> মোশন গ্রাফিক্স</li>
-          </ul>
+          <h3 class="text-2xl font-bold text-white mb-1">Video & Photo</h3>
+          <p class="text-slate-400 text-sm mb-4">ভিডিও ও ফটো এডিটিং</p>
+          <p class="text-slate-500 text-sm">Reels, Shorts & product</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fuchsia-500 group-hover:text-midnight transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
         </div>
 
-        <!-- Service 6: Page Management & Growth -->
-        <div class="bg-white p-8 rounded-3xl border border-gray-100 hover:border-indigo-100 shadow-sm hover:shadow-lg transition duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <div class="bg-blue-100 p-3 rounded-xl text-blue-600">
-              <i class="fa-solid fa-chart-line text-xl"></i>
-            </div>
+        <!-- AI Prompts -->
+        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-robot text-emerald-400 text-xl"></i>
           </div>
-          <h3 class="text-2xl font-semibold mb-3 text-gray-900">পেজ গ্রোথ ও ম্যানেজমেন্ট</h3>
-          <p class="text-gray-600 mb-4">অর্গানিক ফলোয়ার বৃদ্ধি, নিয়মিত পোস্ট শিডিউলিং এবং কাস্টমার এনগেজমেন্ট ম্যানেজমেন্ট।</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> কন্টেন্ট ক্যালেন্ডার</li>
-            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> ফলোয়ার ও রিচ বৃদ্ধি</li>
-          </ul>
+          <h3 class="text-2xl font-bold text-white mb-1">AI Prompts</h3>
+          <p class="text-slate-400 text-sm mb-4">এআই প্রম্পট ইঞ্জিনিয়ারিং</p>
+          <p class="text-slate-500 text-sm">Midjourney · Flux · ChatGPT</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-midnight transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
+          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2">120+</h3>
+          <p class="text-slate-400 text-sm">Projects shipped</p>
+        </div>
+        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
+          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-500 mb-2">48h</h3>
+          <p class="text-slate-400 text-sm">Avg. first delivery</p>
+        </div>
+        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
+          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 mb-2">4.9</h3>
+          <p class="text-slate-400 text-sm">Client rating</p>
+        </div>
+        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
+          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-500 mb-2">100%</h3>
+          <p class="text-slate-400 text-sm">On-time delivery</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4 text-gray-900">আমাদের প্যাকেজ সমূহ</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">প্রাথমিক অবস্থায় আমাদের নতুন ক্লায়েন্টদের জন্য বিশেষ অফার চলছে।</p>
+  <!-- Pricing / Packages -->
+  <section id="pricing" class="py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-6 h-px bg-pink-500"></div>
+        <p class="text-slate-400 text-xs tracking-[0.2em] font-semibold uppercase">PACKAGES</p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Basic Plan -->
-        <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:border-indigo-200 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-          <div class="free-badge absolute top-5 right-5 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">100% ছাড়</div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">স্টার্টার প্যাকেজ</h3>
-          <p class="text-gray-500 text-sm mb-6">ছোট প্রজেক্ট এবং প্রোফাইল ফিক্সিংয়ের জন্য</p>
-          <div class="mb-6">
-            <span class="regular-price text-gray-400 line-through text-lg mr-2">৳ ৫,০০০</span>
-            <span class="dynamic-price text-4xl font-bold text-indigo-600" data-price="৫,০০০">সম্পূর্ণ ফ্রি</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-12 free-promo-element">
+        Limited offer — <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">100% off.</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Starter Package -->
+        <div class="bg-glass border border-glassBorder rounded-[2rem] p-8 backdrop-blur-md relative overflow-hidden group">
+          <p class="text-slate-400 text-sm mb-1">স্টার্টার</p>
+          <h3 class="text-3xl font-bold text-white mb-6">Starter</h3>
+          
+          <div class="mb-8 relative">
+            <div class="flex items-end gap-2">
+              <span class="dynamic-price text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500" data-price="৳ ৫০০০">FREE</span>
+              <span class="regular-price text-slate-400 text-sm pb-1">for now</span>
+            </div>
           </div>
-          <ul class="space-y-3 mb-8 text-gray-600">
-            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3"></i> বেসিক পেজ সেটআপ</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3"></i> প্রোফাইল ট্রাবলশুটিং</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3"></i> ৩টি সোশ্যাল মিডিয়া পোস্ট</li>
+
+          <p class="text-slate-300 mb-6">Get online — fast.</p>
+          
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> Basic page setup</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> Profile troubleshooting</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> 3 social posts</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> Logo & brand colors</li>
           </ul>
-          <button onclick="toggleModal(true)" class="w-full py-3 rounded-xl border-2 border-indigo-600 text-indigo-600 font-semibold hover:bg-indigo-600 hover:text-white transition">অর্ডার করুন</button>
+
+          <button onclick="toggleModal(true)" class="spring-press w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/40 hover:to-blue-500/40 border border-cyan-500/30 text-cyan-300 font-bold transition-all flex items-center justify-between px-6">
+            Claim package <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
 
-        <!-- Standard Plan -->
-        <div class="bg-indigo-600 rounded-3xl p-8 border border-indigo-600 shadow-2xl transform md:-translate-y-4 relative overflow-hidden text-white">
-          <div class="free-badge absolute top-5 right-5 bg-green-400 text-green-900 text-xs font-bold px-3 py-1 rounded-full">হট অফার</div>
-          <h3 class="text-xl font-semibold mb-2">প্রফেশনাল প্যাকেজ</h3>
-          <p class="text-indigo-200 text-sm mb-6">ওয়েবসাইট ও মোবাইল অ্যাপ ডিজাইনের জন্য</p>
-          <div class="mb-6">
-            <span class="regular-price text-indigo-300 line-through text-lg mr-2">৳ ১৫,০০০</span>
-            <span class="dynamic-price text-4xl font-bold" data-price="১৫,০০০">সম্পূর্ণ ফ্রি</span>
+        <!-- Professional Package -->
+        <div class="bg-gradient-to-b from-white/10 to-white/5 border border-violet-500/30 rounded-[2rem] p-8 backdrop-blur-md relative overflow-hidden group">
+          <!-- Subtle glow behind popular package -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/20 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <p class="text-slate-400 text-sm mb-1">প্রফেশনাল</p>
+          <h3 class="text-3xl font-bold text-white mb-6">Professional</h3>
+          
+          <div class="mb-8 relative">
+            <div class="flex items-end gap-2">
+              <span class="dynamic-price text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400" data-price="৳ ১৫০০০">FREE</span>
+              <span class="regular-price text-slate-400 text-sm pb-1">for now</span>
+            </div>
           </div>
-          <ul class="space-y-3 mb-8 text-indigo-100">
-            <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> ৫ পেজের কাস্টম ওয়েবসাইট</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> মোবাইল অ্যাপ UI/UX ডিজাইন</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> এডভান্সড এআই প্রম্পট</li>
+
+          <p class="text-slate-300 mb-6">For serious brands.</p>
+          
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> 5-page custom website</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> Mobile UI/UX design</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> Advanced AI prompts</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> On-page SEO setup</li>
+            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> 2 weeks of support</li>
           </ul>
-          <button onclick="toggleModal(true)" class="w-full py-3 rounded-xl bg-white text-indigo-600 font-bold hover:bg-gray-50 transition shadow-lg">অর্ডার করুন</button>
+
+          <button onclick="toggleModal(true)" class="spring-press w-full py-4 rounded-2xl bg-gradient-to-r from-violet-500 to-pink-500 hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] text-white font-bold transition-all flex items-center justify-between px-6">
+            Claim package <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
 
-        <!-- Premium Plan -->
-        <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:border-indigo-200 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-          <div class="free-badge absolute top-5 right-5 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">100% ছাড়</div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">প্রিমিয়াম প্যাকেজ</h3>
-          <p class="text-gray-500 text-sm mb-6">ফুল স্ট্যাক ডেভেলপমেন্ট ও গ্রোথের জন্য</p>
-          <div class="mb-6">
-            <span class="regular-price text-gray-400 line-through text-lg mr-2">৳ ৩০,০০০</span>
-            <span class="dynamic-price text-4xl font-bold text-indigo-600" data-price="৩০,০০০">সম্পূর্ণ ফ্রি</span>
-          </div>
-          <ul class="space-y-3 mb-8 text-gray-600">
-            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3"></i> ডাইনামিক ওয়েব অ্যাপ্লিকেশন</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3"></i> সম্পূর্ণ মোবাইল অ্যাপ বিল্ড</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3"></i> ১ মাস সোশ্যাল মিডিয়া ম্যানেজমেন্ট</li>
-          </ul>
-          <button onclick="toggleModal(true)" class="w-full py-3 rounded-xl border-2 border-indigo-600 text-indigo-600 font-semibold hover:bg-indigo-600 hover:text-white transition">অর্ডার করুন</button>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-24 text-center relative overflow-hidden">
-    <!-- Background decorations -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-      <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 right-0 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="max-w-3xl mx-auto px-6 relative z-10">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">নতুন অ্যাপ বা প্রজেক্ট নিয়ে ভাবছেন?</h2>
-      <p class="text-indigo-100 text-lg mb-10">আপনার আইডিয়া আমাদের সাথে শেয়ার করুন। ডিজাইন থেকে শুরু করে অ্যাপ বিল্ড করা পর্যন্ত সব দায়িত্ব আমাদের।</p>
-      <button onclick="toggleModal(true)" class="bg-white text-indigo-700 px-10 py-4 rounded-2xl text-xl font-bold hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-        আজই যোগাযোগ করুন
-      </button>
+  <!-- Giant CTA Box -->
+  <section class="py-16 px-6 mb-10">
+    <div class="max-w-5xl mx-auto">
+      <div class="rounded-[2.5rem] p-10 md:p-16 bg-gradient-to-br from-cyan-300 via-violet-400 to-pink-400 relative overflow-hidden">
+        
+        <p class="text-midnight/70 font-bold tracking-[0.2em] text-sm uppercase mb-6 flex justify-between items-center">
+          READY? <i class="fa-solid fa-sparkles text-xl"></i>
+        </p>
+        
+        <h2 class="text-5xl md:text-7xl font-extrabold text-midnight leading-[1.1] mb-6 tracking-tight">
+          Let's build your<br>next big thing.
+        </h2>
+        
+        <p class="text-midnight/80 font-medium text-lg md:text-xl mb-12">
+          আজই যোগাযোগ করুন — সব সার্ভিস এখন ফ্রি।
+        </p>
+
+        <button onclick="toggleModal(true)" class="spring-press bg-midnight text-white px-8 py-5 rounded-full font-bold text-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
+          Start a project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-16 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-      <div class="col-span-1 md:col-span-2">
-        <h2 class="text-3xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">MT Studio</h2>
-        <p class="max-w-sm mb-6">আমরা একটি সম্পূর্ণ ডিজিটাল এজেন্সি যা আপনার ব্র্যান্ডকে অনলাইনে বৃদ্ধি করতে সাহায্য করে। ডিজাইন, অ্যাপ ডেভেলপমেন্ট থেকে শুরু করে সোশ্যাল মিডিয়া সল্যুশন, আমরা আছি আপনার সাথে।</p>
-        <div class="flex space-x-4">
-          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
+  <footer class="border-t border-white/10 py-10 px-6 mt-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
+          <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
+            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-lg">MT</span>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-white font-bold">MT Studio</h2>
+          <p class="text-xs text-slate-500">Digital Solutions</p>
         </div>
       </div>
       
-      <div>
-        <h3 class="text-white font-semibold text-lg mb-4">কুইক লিংকস</h3>
-        <ul class="space-y-3">
-          <li><a href="#home" class="hover:text-indigo-400 transition">হোম</a></li>
-          <li><a href="#services" class="hover:text-indigo-400 transition">সেবাসমূহ</a></li>
-          <li><a href="#portfolio" class="hover:text-indigo-400 transition">আমাদের কাজ</a></li>
-          <li><a href="#" class="hover:text-indigo-400 transition">প্রাইভেসি পলিসি</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-white font-semibold text-lg mb-4">যোগাযোগ</h3>
-        <ul class="space-y-3">
-          <li class="flex items-start">
-            <i class="fa-solid fa-location-dot mt-1 mr-3 text-indigo-500"></i>
-            <span>New York, USA<br>Dhaka, Bangladesh</span>
-          </li>
-          <li class="flex items-center">
-            <i class="fa-solid fa-envelope mr-3 text-indigo-500"></i>
-            <a href="mailto:hello@mtstudio.com" class="hover:text-white transition">hello@mtstudio.com</a>
-          </li>
-          <li class="flex items-center">
-            <i class="fa-solid fa-phone mr-3 text-indigo-500"></i>
-            <a href="tel:+1234567890" class="hover:text-white transition">+1 234 567 890</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800 text-center text-sm">
-      <p>© 2026 MT Studio. All Rights Reserved.</p>
+      <p class="text-slate-500 text-sm">© 2026 MT Studio. Made with care in Bangladesh.</p>
     </div>
   </footer>
 
-  <!-- Modal -->
-  <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300" style="opacity: 1;">
-    <div class="bg-white rounded-3xl p-8 max-w-md w-full relative shadow-2xl transform scale-95 transition-transform duration-300">
-      <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition">
+  <!-- Dark Mode Glass Modal -->
+  <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-midnight/80 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-[#0B1121] border border-white/10 rounded-3xl p-8 max-w-md w-full relative shadow-[0_0_50px_rgba(0,0,0,0.5)] transform scale-95 transition-transform duration-300">
+      <button onclick="toggleModal(false)" class="absolute top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center transition">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <h3 class="text-2xl font-bold mb-2 text-gray-900">যোগাযোগ করুন</h3>
-      <p class="text-gray-500 mb-6 text-sm">নতুন অ্যাপ তৈরি বা যেকোনো সমস্যার কথা আমাদের জানান, আমরা দ্রুত যোগাযোগ করব।</p>
       
-      <form onsubmit="event.preventDefault(); toggleModal(false); alert('আপনার মেসেজ পাঠানো হয়েছে!');">
-        <div class="space-y-4">
+      <h3 class="text-2xl font-bold mb-2 text-white">Start a project</h3>
+      <p class="text-slate-400 mb-8 text-sm">আমাদের বিস্তারিত জানান, আমরা দ্রুত আপনার সাথে যোগাযোগ করব।</p>
+      
+      <form onsubmit="event.preventDefault(); toggleModal(false); alert('আপনার মেসেজ সফলভাবে পাঠানো হয়েছে!');">
+        <div class="space-y-5">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">নাম</label>
-            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="আপনার নাম">
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">আপনার নাম</label>
+            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition" placeholder="John Doe">
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">ইমেইল বা ফোন নম্বর</label>
-            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="contact@example.com">
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">ইমেইল / ফোন</label>
+            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition" placeholder="contact@example.com">
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">কী ধরনের সার্ভিস প্রয়োজন?</label>
-            <textarea rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="যেমন: আমার একটি ই-কমার্স অ্যাপ বানানো প্রয়োজন..."></textarea>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">কী বানাতে চান?</label>
+            <textarea rows="3" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition" placeholder="Tell us about your next big thing..."></textarea>
           </div>
-          <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3.5 rounded-xl hover:bg-indigo-700 transition shadow-md hover:shadow-lg">
-            মেসেজ পাঠান
+          <button type="submit" class="spring-press w-full bg-white text-midnight font-bold py-4 rounded-xl hover:bg-slate-200 transition shadow-lg mt-2">
+            Send message
           </button>
         </div>
       </form>
@@ -388,18 +454,25 @@
   </div>
 
   <script>
-    // প্রোমো কন্ট্রোলার: বিনামূল্যে সেবা দেওয়া বন্ধ করতে চাইলে নিচের true লেখাটিকে false করে দিন
+    // প্রোমো কন্ট্রোলার: বিনামূল্যে সেবা দেওয়া বন্ধ করতে চাইলে নিচের true লেখাটিকে false করে দিন
     const isFreePromoActive = true;
 
     document.addEventListener('DOMContentLoaded', () => {
-      const priceDisplays = document.querySelectorAll('.dynamic-price');
-      const regularPrices = document.querySelectorAll('.regular-price');
-      const freeBadges = document.querySelectorAll('.free-badge');
-
       if (!isFreePromoActive) {
-        priceDisplays.forEach(el => el.innerText = '৳ ' + el.getAttribute('data-price'));
+        const dynamicPrices = document.querySelectorAll('.dynamic-price');
+        const regularPrices = document.querySelectorAll('.regular-price');
+        const promoElements = document.querySelectorAll('.free-promo-element');
+
+        // Restore original prices
+        dynamicPrices.forEach(el => {
+          el.innerText = el.getAttribute('data-price');
+          el.classList.remove('text-5xl', 'bg-gradient-to-r', 'from-cyan-400', 'to-blue-500', 'from-violet-400', 'to-pink-400', 'text-transparent', 'bg-clip-text');
+          el.classList.add('text-4xl', 'text-white');
+        });
+
+        // Hide strikethroughs, "for now", and badges
         regularPrices.forEach(el => el.classList.add('hidden'));
-        freeBadges.forEach(el => el.classList.add('hidden'));
+        promoElements.forEach(el => el.classList.add('hidden'));
       }
     });
 
@@ -419,7 +492,6 @@
       if (show) {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
-        // Small delay to allow display:flex to apply before animating opacity
         setTimeout(() => {
           modal.style.opacity = '1';
           modalContent.classList.remove('scale-95');
