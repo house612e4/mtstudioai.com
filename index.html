@@ -6,19 +6,19 @@
   <title>MT Studio - Digital Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- PayPal JS SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
             midnight: '#050B14',
-            glass: 'rgba(255, 255, 255, 0.03)',
-            glassBorder: 'rgba(255, 255, 255, 0.08)',
+            formbg: '#0F172A',
           },
           animation: {
             blob: 'blob 10s infinite',
@@ -42,27 +42,40 @@
   </script>
   
   <style>
-    body {
-      background-color: #050B14;
-      color: #e2e8f0;
-      overflow-x: hidden;
-    }
+    body { background-color: #050B14; color: #e2e8f0; overflow-x: hidden; }
     
-    .bg-grid {
-      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    .bg-grid { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E"); }
+
+    /* Hero Background with your uploaded image */
+    .hero-bg-image {
+        background-image: linear-gradient(to right, rgba(5, 11, 20, 0.95) 0%, rgba(5, 11, 20, 0.7) 100%), url('image.png');
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
     }
 
-    .spring-press {
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .spring-press:active {
-      transform: scale(0.96);
-    }
+    .spring-press { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .spring-press:active { transform: scale(0.96); }
 
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #050B14; }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+    
+    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px #0F172A inset !important;
+        -webkit-text-fill-color: white !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    #fab-button { touch-action: none; cursor: grab; }
+    #fab-button:active { cursor: grabbing; }
+    
+    .portfolio-image { transition: transform 0.3s ease; }
+    .portfolio-link:hover .portfolio-image { transform: scale(1.05); }
+
+    /* Chat Scrollbar Hide */
+    #chatMessages::-webkit-scrollbar { width: 4px; }
   </style>
 </head>
 <body class="antialiased bg-grid relative selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -70,104 +83,91 @@
   <!-- Animated Background Blobs -->
   <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-[-1]">
     <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-cyan-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
-    <div class="absolute top-[20%] right-[-10%] w-[35rem] h-[35rem] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 2s;"></div>
-    <div class="absolute bottom-[-20%] left-[20%] w-[40rem] h-[40rem] bg-magenta-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[40rem] h-[40rem] bg-magenta-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
   </div>
 
   <!-- Navbar -->
-  <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-midnight/50 border-b border-white/5">
+  <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-midnight/80 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-2 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px] shadow-[0_0_15px_rgba(6,182,212,0.3)]">
           <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-lg tracking-wider">MT</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-extrabold text-xl tracking-wider">MT</span>
           </div>
         </div>
         <div>
-          <h1 class="text-white font-bold leading-tight">MT Studio</h1>
-          <p class="text-xs text-slate-400">Digital Solutions</p>
+          <h1 class="text-white font-bold leading-tight tracking-wide">MT Studio</h1>
+          <p class="text-[10px] text-slate-400 uppercase tracking-widest">Digital Solutions</p>
         </div>
       </a>
       
-      <!-- Free Badge (Desktop) -->
-      <div class="hidden md:flex items-center gap-2 border border-green-500/30 bg-green-500/10 px-4 py-1.5 rounded-full backdrop-blur-sm free-promo-element cursor-pointer" onclick="toggleModal(true)">
-        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-        <span class="text-green-300 text-xs font-bold tracking-widest uppercase hover:text-white transition">100% Free · Click here</span>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="flex items-center gap-2 border border-green-500/30 bg-green-500/10 px-4 py-1.5 rounded-full backdrop-blur-sm free-promo-element cursor-pointer" onclick="toggleModal(true)">
+          <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+          <span class="text-green-300 text-xs font-bold tracking-widest uppercase hover:text-white transition">100% Free Offer</span>
+        </div>
+        <button onclick="toggleModal(true)" class="spring-press bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all">
+          Sign In
+        </button>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button onclick="toggleMenu()" class="md:hidden text-slate-300 hover:text-white">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu Dropdown -->
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-midnight/95 backdrop-blur-xl border-b border-white/10 absolute w-full">
       <div class="flex flex-col px-6 py-6 space-y-5">
         <a href="#home" onclick="toggleMenu()" class="text-slate-300 font-medium">Home</a>
         <a href="#craft" onclick="toggleMenu()" class="text-slate-300 font-medium">Our Craft</a>
         <a href="#pricing" onclick="toggleMenu()" class="text-slate-300 font-medium">Packages</a>
         <div class="h-px bg-white/10 w-full my-2"></div>
-        <div onclick="toggleModal(true); toggleMenu()" class="flex items-center gap-2 border border-green-500/30 bg-green-500/10 w-fit px-4 py-2 rounded-full free-promo-element cursor-pointer">
-          <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-          <span class="text-green-300 text-xs font-bold tracking-widest uppercase">Contact for Free Offer</span>
-        </div>
+        <button onclick="toggleModal(true); toggleMenu()" class="bg-cyan-600 text-white font-bold py-3 rounded-xl w-full">
+          Sign up / Log in
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-32 px-6">
-    <div class="max-w-7xl mx-auto">
-      <p class="text-slate-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase">D i g i t a l</p>
-      
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
+  <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-32 px-6 hero-bg-image border-b border-white/5">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <p class="text-cyan-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase flex items-center gap-2">
+        <i class="fa-solid fa-sparkles"></i> D i g i t a l  A g e n c y
+      </p>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight max-w-4xl">
         আপনার স্বপ্ন,<br>
         ডিজিটালি <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400">পারফেক্ট</span>
       </h1>
-      
-      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed font-light">
+      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed font-light">
         MT Studio crafts websites, mobile apps, brand visuals and AI workflows for ambitious founders. End-to-end, in Bangla and English.
       </p>
-
       <div class="flex flex-col sm:flex-row gap-4 mb-16">
-        <button onclick="toggleModal(true)" class="spring-press bg-gradient-to-r from-cyan-400 to-violet-500 text-midnight px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all flex items-center justify-center gap-2">
+        <button onclick="toggleModal(true)" class="spring-press bg-gradient-to-r from-cyan-500 to-violet-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all flex items-center justify-center gap-2">
           Start a project <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
         </button>
-        <button onclick="toggleModal(true)" class="spring-press bg-glass border border-glassBorder text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white/10 transition-all flex items-center justify-center backdrop-blur-sm gap-2">
-          <i class="fa-solid fa-bolt text-yellow-400"></i> আজই যোগাযোগ
+        <button onclick="toggleModal(true)" class="spring-press bg-white/5 border border-white/10 text-white px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/10 transition-all flex items-center justify-center backdrop-blur-sm gap-2">
+          <i class="fa-solid fa-user-plus text-cyan-400"></i> সাইন আপ / লগইন
         </button>
       </div>
-
-      <!-- Tech Stack Pills -->
+      <!-- Tech Stack -->
       <div class="flex flex-wrap gap-3">
-        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
-          <i class="fa-brands fa-apple text-white"></i> iOS
-        </div>
-        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
-          <i class="fa-brands fa-android text-green-400"></i> Android
-        </div>
-        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
-          <i class="fa-solid fa-globe text-cyan-400"></i> Web
-        </div>
-        <div class="bg-glass border border-glassBorder px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm">
-          <i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI
-        </div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-brands fa-apple text-white"></i> iOS</div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-brands fa-android text-green-400"></i> Android</div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-solid fa-globe text-cyan-400"></i> Web</div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI</div>
       </div>
     </div>
   </section>
 
-  <!-- Feature / Stats Highlight -->
+  <!-- Highlight Section -->
   <section class="py-12 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="bg-glass border border-glassBorder rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
-        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <p class="text-cyan-400 text-xs tracking-widest font-bold mb-4 uppercase flex items-center gap-2">
-          <i class="fa-solid fa-sparkles"></i> WHAT WE SHIP
-        </p>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <p class="text-slate-400 text-xs tracking-widest font-bold mb-4 uppercase">What we ship</p>
         <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight max-w-3xl">
           Websites that convert,<br>
           apps that feel native,<br>
@@ -177,126 +177,93 @@
     </div>
   </section>
 
-  <!-- Marquee / Divider -->
-  <div class="w-full overflow-hidden py-10 opacity-60">
+  <!-- Marquee -->
+  <div class="w-full overflow-hidden py-10 border-y border-white/5 bg-white/[0.02]">
     <div class="flex whitespace-nowrap animate-marquee">
       <div class="flex items-center gap-8 px-4 text-2xl text-slate-500 font-light uppercase tracking-widest">
-        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-white font-medium">Everything you need to launch & grow.</span>
-        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-white font-medium">Everything you need to launch & grow.</span>
-        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-white font-medium">Everything you need to launch & grow.</span>
+        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-cyan-400 font-medium">Everything you need to launch & grow.</span>
+        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-violet-400 font-medium">Everything you need to launch & grow.</span>
+        <span>*</span><span>OUR CRAFT</span><span>*</span><span class="text-pink-400 font-medium">Everything you need to launch & grow.</span>
       </div>
     </div>
   </div>
 
   <!-- Services Grid -->
-  <section id="craft" class="py-16 px-6">
+  <section id="craft" class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6">
-            <i class="fa-solid fa-globe text-cyan-400 text-xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">Web Apps</h3>
-          <p class="text-slate-400 text-sm mb-4">ওয়েব অ্যাপ ডেভেলপমেন্ট</p>
-          <p class="text-slate-500 text-sm">Custom platforms & dashboards...</p>
-          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-midnight transition-colors">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </div>
+        <div onclick="openServiceDetails('web')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-cyan-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-globe text-cyan-400 text-xl"></i></div>
+          <h3 class="text-2xl font-bold text-white mb-2">Web Apps</h3>
+          <p class="text-slate-400 text-sm mb-4">ওয়েব অ্যাপ ডেভেলপমেন্ট</p>
+          <p class="text-slate-500 text-xs">Custom platforms & dashboards...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
-
-        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-6">
-            <i class="fa-solid fa-mobile-screen text-violet-400 text-xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">Mobile App Build</h3>
+        <div onclick="openServiceDetails('mobile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-violet-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-mobile-screen text-violet-400 text-xl"></i></div>
+          <h3 class="text-2xl font-bold text-white mb-2">Mobile App Build</h3>
           <p class="text-slate-400 text-sm mb-4">মোবাইল অ্যাপ বিল্ড</p>
-          <p class="text-slate-500 text-sm">Native iOS & Android</p>
-          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-violet-500 group-hover:text-midnight transition-colors">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </div>
+          <p class="text-slate-500 text-xs">Native iOS & Android...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-violet-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
-
-        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-6">
-            <i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">UI / UX Design</h3>
+        <div onclick="openServiceDetails('design')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-pink-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i></div>
+          <h3 class="text-2xl font-bold text-white mb-2">UI / UX Design</h3>
           <p class="text-slate-400 text-sm mb-4">ইউআই / ইউএক্স ডিজাইন</p>
-          <p class="text-slate-500 text-sm">Apps that feel premium</p>
-          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-pink-500 group-hover:text-midnight transition-colors">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </div>
+          <p class="text-slate-500 text-xs">Apps that feel premium...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-pink-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
-
-        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
-            <i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">Profile Fix</h3>
+        <div onclick="openServiceDetails('profile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-blue-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i></div>
+          <h3 class="text-2xl font-bold text-white mb-2">Profile Fix</h3>
           <p class="text-slate-400 text-sm mb-4">প্রোফাইল ট্রাবলশুটিং</p>
-          <p class="text-slate-500 text-sm">Recovery & restriction removal</p>
-          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-midnight transition-colors">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </div>
+          <p class="text-slate-500 text-xs">Recovery & restriction removal...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
-
-        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center mb-6">
-            <i class="fa-solid fa-wand-magic text-fuchsia-400 text-xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">Video & Photo</h3>
+        <div onclick="openServiceDetails('video')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-fuchsia-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-wand-magic text-fuchsia-400 text-xl"></i></div>
+          <h3 class="text-2xl font-bold text-white mb-2">Video & Photo</h3>
           <p class="text-slate-400 text-sm mb-4">ভিডিও ও ফটো এডিটিং</p>
-          <p class="text-slate-500 text-sm">Reels, Shorts & product</p>
-          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fuchsia-500 group-hover:text-midnight transition-colors">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </div>
+          <p class="text-slate-500 text-xs">Reels, Shorts & product...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fuchsia-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
-
-        <div onclick="toggleModal(true)" class="spring-press group bg-glass hover:bg-white/5 border border-glassBorder rounded-3xl p-8 backdrop-blur-md cursor-pointer relative transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-            <i class="fa-solid fa-robot text-emerald-400 text-xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">AI Prompts</h3>
+        <div onclick="openServiceDetails('ai')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-emerald-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-robot text-emerald-400 text-xl"></i></div>
+          <h3 class="text-2xl font-bold text-white mb-2">AI Prompts</h3>
           <p class="text-slate-400 text-sm mb-4">এআই প্রম্পট ইঞ্জিনিয়ারিং</p>
-          <p class="text-slate-500 text-sm">Midjourney · Flux · ChatGPT</p>
-          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-midnight transition-colors">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </div>
+          <p class="text-slate-500 text-xs">Midjourney · Flux · ChatGPT...</p>
+          <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- Stats Section -->
-  <section class="py-16 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
-          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2">120+</h3>
-          <p class="text-slate-400 text-sm">Projects shipped</p>
-        </div>
-        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
-          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-500 mb-2">48h</h3>
-          <p class="text-slate-400 text-sm">Avg. first delivery</p>
-        </div>
-        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
-          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 mb-2">4.9</h3>
-          <p class="text-slate-400 text-sm">Client rating</p>
-        </div>
-        <div class="bg-glass border border-glassBorder rounded-3xl p-6 md:p-8 backdrop-blur-sm">
-          <h3 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-500 mb-2">100%</h3>
-          <p class="text-slate-400 text-sm">On-time delivery</p>
-        </div>
+  <section class="py-10 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2">120+</h3>
+        <p class="text-slate-400 text-sm">Projects shipped</p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-violet-400 mb-2">48h</h3>
+        <p class="text-slate-400 text-sm">Avg. first delivery</p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-green-400 mb-2">4.9</h3>
+        <p class="text-slate-400 text-sm">Client rating</p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-pink-400 mb-2">100%</h3>
+        <p class="text-slate-400 text-sm">On-time delivery</p>
       </div>
     </div>
   </section>
 
-  <!-- Pricing / Packages -->
+  <!-- Packages -->
   <section id="pricing" class="py-16 px-6">
     <div class="max-w-5xl mx-auto">
-      <div class="flex items-center gap-4 mb-8">
+      <div class="flex items-center gap-4 mb-4">
         <div class="w-6 h-px bg-pink-500"></div>
         <p class="text-slate-400 text-xs tracking-[0.2em] font-semibold uppercase">PACKAGES</p>
       </div>
@@ -306,62 +273,64 @@
       </h2>
 
       <div class="grid md:grid-cols-2 gap-6">
-        
         <!-- Starter Package -->
-        <div class="bg-glass border border-glassBorder rounded-[2rem] p-8 backdrop-blur-md relative overflow-hidden group">
+        <div class="bg-[#0A0F1C] border border-white/5 rounded-3xl p-8 relative overflow-hidden group shadow-xl">
           <p class="text-slate-400 text-sm mb-1">স্টার্টার</p>
           <h3 class="text-3xl font-bold text-white mb-6">Starter</h3>
           
-          <div class="mb-8 relative">
+          <div class="mb-8">
+            <div class="hidden-price-block hidden mb-2">
+                <span class="text-slate-500 text-2xl line-through decoration-pink-500 decoration-2 font-semibold">৳ ৫০০০</span>
+            </div>
             <div class="flex items-end gap-2">
-              <span class="dynamic-price text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500" data-price="৳ ৫০০০">FREE</span>
+              <span class="dynamic-price text-5xl font-extrabold text-cyan-400" data-price="৳ ৫০০০">FREE</span>
               <span class="regular-price text-slate-400 text-sm pb-1">for now</span>
             </div>
           </div>
 
-          <p class="text-slate-300 mb-6">Get online — fast.</p>
-          
+          <p class="text-slate-300 mb-6 pb-4 border-b border-white/5">Get online — fast.</p>
           <ul class="space-y-4 mb-10">
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> Basic page setup</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> Profile troubleshooting</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> 3 social posts</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-blue-500"></i> Logo & brand colors</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> Basic page setup</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> Profile troubleshooting</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> 3 social posts</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> Logo & brand colors</li>
           </ul>
 
-          <button onclick="toggleModal(true)" class="spring-press w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/40 hover:to-blue-500/40 border border-cyan-500/30 text-cyan-300 font-bold transition-all flex items-center justify-between px-6">
+          <button onclick="handlePackageClick('Starter', '50.00')" class="spring-press w-full py-4 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-bold transition-all flex items-center justify-between px-6">
             Claim package <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
 
         <!-- Professional Package -->
-        <div class="bg-gradient-to-b from-white/10 to-white/5 border border-violet-500/30 rounded-[2rem] p-8 backdrop-blur-md relative overflow-hidden group">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="bg-gradient-to-b from-[#111827] to-[#0A0F1C] border border-violet-500/30 rounded-3xl p-8 relative overflow-hidden group shadow-[0_0_30px_rgba(139,92,246,0.1)]">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none"></div>
           
           <p class="text-slate-400 text-sm mb-1">প্রফেশনাল</p>
           <h3 class="text-3xl font-bold text-white mb-6">Professional</h3>
           
-          <div class="mb-8 relative">
+          <div class="mb-8">
+            <div class="hidden-price-block hidden mb-2">
+                <span class="text-slate-500 text-2xl line-through decoration-pink-500 decoration-2 font-semibold">৳ ১৫০০০</span>
+            </div>
             <div class="flex items-end gap-2">
-              <span class="dynamic-price text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400" data-price="৳ ১৫০০০">FREE</span>
+              <span class="dynamic-price text-5xl font-extrabold text-violet-400" data-price="৳ ১৫০০০">FREE</span>
               <span class="regular-price text-slate-400 text-sm pb-1">for now</span>
             </div>
           </div>
-
-          <p class="text-slate-300 mb-6">For serious brands.</p>
           
+          <p class="text-slate-300 mb-6 pb-4 border-b border-white/5">For serious brands.</p>
           <ul class="space-y-4 mb-10">
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> 5-page custom website</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> Mobile UI/UX design</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> Advanced AI prompts</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> On-page SEO setup</li>
-            <li class="flex items-center gap-3 text-slate-300"><i class="fa-solid fa-circle-check text-pink-500"></i> 2 weeks of support</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> 5-page custom website</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> Mobile UI/UX design</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> Advanced AI prompts</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> On-page SEO setup</li>
+            <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> 2 weeks of support</li>
           </ul>
 
-          <button onclick="toggleModal(true)" class="spring-press w-full py-4 rounded-2xl bg-gradient-to-r from-violet-500 to-pink-500 hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] text-white font-bold transition-all flex items-center justify-between px-6">
+          <button onclick="handlePackageClick('Professional', '150.00')" class="spring-press w-full py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all flex items-center justify-between px-6 shadow-lg">
             Claim package <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-
       </div>
     </div>
   </section>
@@ -369,132 +338,392 @@
   <!-- Giant CTA Box -->
   <section class="py-16 px-6 mb-10">
     <div class="max-w-5xl mx-auto">
-      <div class="rounded-[2.5rem] p-10 md:p-16 bg-gradient-to-br from-cyan-300 via-violet-400 to-pink-400 relative overflow-hidden">
-        
-        <p class="text-midnight/70 font-bold tracking-[0.2em] text-sm uppercase mb-6 flex justify-between items-center">
+      <div class="rounded-3xl p-10 md:p-16 bg-gradient-to-br from-cyan-400 via-violet-500 to-pink-500 relative overflow-hidden shadow-2xl text-midnight">
+        <p class="font-bold tracking-[0.2em] text-sm uppercase mb-6 flex justify-between items-center opacity-80">
           READY? <i class="fa-solid fa-sparkles text-xl"></i>
         </p>
-        
-        <h2 class="text-5xl md:text-7xl font-extrabold text-midnight leading-[1.1] mb-6 tracking-tight">
+        <h2 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
           Let's build your<br>next big thing.
         </h2>
-        
-        <p class="text-midnight/80 font-medium text-lg md:text-xl mb-12">
-          আজই যোগাযোগ করুন — সব সার্ভিস এখন ফ্রি।
+        <p class="font-medium text-lg md:text-xl mb-10 opacity-90">
+          আজই সাইন আপ করুন — সব সার্ভিস এখন ফ্রি।
         </p>
-
-        <button onclick="toggleModal(true)" class="spring-press bg-midnight text-white px-8 py-5 rounded-full font-bold text-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
+        <button onclick="toggleModal(true)" class="spring-press bg-midnight text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center gap-3 shadow-xl w-fit">
           Start a project <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-10 px-6 mt-10 bg-midnight relative z-10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
-          <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-lg">MT</span>
+  <!-- Complete Real Text Mega Footer -->
+  <footer class="border-t border-white/10 pt-20 pb-10 px-6 bg-[#03060D] relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12 mb-16">
+        
+        <!-- Brand & Social Column -->
+        <div class="col-span-2 md:col-span-2">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
+              <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
+                <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-2xl tracking-wider">MT</span>
+              </div>
+            </div>
+          </div>
+          <!-- Real Social Links (Original Colors + Glow for follow - AS REQUESTED) -->
+          <div class="flex items-center gap-4 mb-8">
+            <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(24,119,242,0.6)] hover:shadow-[0_0_25px_rgba(24,119,242,1)] hover:scale-110 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white shadow-[0_0_15px_rgba(228,64,95,0.6)] hover:shadow-[0_0_25px_rgba(228,64,95,1)] hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(10,102,194,0.6)] hover:shadow-[0_0_25px_rgba(10,102,194,1)] hover:scale-110 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] hover:scale-110 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@MTStudio_2" target="_blank" class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,0,0,0.6)] hover:shadow-[0_0_25px_rgba(255,0,0,1)] hover:scale-110 transition-all"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
-        <div>
-          <h2 class="text-white font-bold">MT Studio</h2>
-          <p class="text-xs text-slate-500">Digital Solutions</p>
+
+        <!-- Use Cases -->
+        <div class="col-span-1">
+          <h4 class="text-white font-semibold mb-6 text-sm">Use cases</h4>
+          <ul class="space-y-4 text-sm text-slate-400 font-medium">
+            <li><a href="#" onclick="openServiceDetails('web'); return false;" class="hover:text-cyan-400 transition">Web Applications</a></li>
+            <li><a href="#" onclick="openServiceDetails('mobile'); return false;" class="hover:text-cyan-400 transition">iOS & Android Build</a></li>
+            <li><a href="#" onclick="openServiceDetails('design'); return false;" class="hover:text-cyan-400 transition">Product Design</a></li>
+            <li><a href="#" onclick="openServiceDetails('ai'); return false;" class="hover:text-cyan-400 transition">AI Automation</a></li>
+            <li><a href="#" onclick="openServiceDetails('video'); return false;" class="hover:text-cyan-400 transition">Content Creation</a></li>
+            <li><a href="#" onclick="openServiceDetails('profile'); return false;" class="hover:text-cyan-400 transition">Profile Recovery</a></li>
+          </ul>
+        </div>
+
+        <!-- Industries & Compare -->
+        <div class="col-span-1 flex flex-col gap-10">
+          <div>
+            <h4 class="text-white font-semibold mb-6 text-sm">Industries</h4>
+            <ul class="space-y-4 text-sm text-slate-400 font-medium">
+              <li><a href="#" class="hover:text-white transition">E-commerce Platforms</a></li>
+              <li><a href="#" class="hover:text-white transition">SaaS Startups</a></li>
+              <li><a href="#" class="hover:text-white transition">Digital Agencies</a></li>
+              <li><a href="#" class="hover:text-white transition">Influencers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-6 text-sm">Compare</h4>
+            <ul class="space-y-4 text-sm text-slate-400 font-medium">
+              <li><a href="#" class="hover:text-white transition">MT vs Freelancers</a></li>
+              <li><a href="#" class="hover:text-white transition">MT vs Other Agencies</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div class="col-span-1">
+          <h4 class="text-white font-semibold mb-6 text-sm">Company</h4>
+          <ul class="space-y-4 text-sm text-slate-400 font-medium">
+            <li><a href="#" class="hover:text-white transition">About Us</a></li>
+            <li><a href="#craft" class="hover:text-white transition">Portfolio</a></li>
+            <li><a href="#" class="hover:text-white transition">Careers</a></li>
+            <li><a href="#" class="hover:text-white transition">Testimonials</a></li>
+            <li><a href="#" class="hover:text-white transition">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect & Support -->
+        <div class="col-span-1 flex flex-col gap-10">
+          <div>
+            <h4 class="text-white font-semibold mb-6 text-sm">Partners</h4>
+            <ul class="space-y-4 text-sm text-slate-400 font-medium">
+              <li><a href="#" class="hover:text-white transition">Affiliate Program</a></li>
+              <li><a href="#" class="hover:text-white transition">Agency Partners</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-6 text-sm">Support</h4>
+            <ul class="space-y-4 text-sm text-slate-400 font-medium">
+              <!-- No phone number, direct to messenger and display email -->
+              <li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Contact Us</a></li>
+              <li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">studiomt46@gmail.com</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       
-      <!-- Footer Highlighted Real Color Social Icons -->
-      <div class="flex items-center gap-4">
-        <a href="https://m.me/MTstudio2" target="_blank" title="Messenger" class="w-10 h-10 rounded-full bg-[#0084FF] flex items-center justify-center text-white shadow-[0_0_15px_rgba(0,132,255,0.4)] hover:scale-110 hover:shadow-[0_0_20px_rgba(0,132,255,0.8)] transition-all">
-          <i class="fa-brands fa-facebook-messenger"></i>
-        </a>
-        <a href="https://wa.me/19174199814" target="_blank" title="WhatsApp" class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_0_20px_rgba(37,211,102,0.8)] transition-all">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-        </a>
-        <a href="https://www.youtube.com/@MTStudio_2" target="_blank" title="YouTube" class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,0,0,0.4)] hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,0,0.8)] transition-all">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a href="mailto:studiomt46@gmail.com" title="Email" class="w-10 h-10 rounded-full bg-[#EA4335] flex items-center justify-center text-white shadow-[0_0_15px_rgba(234,67,53,0.4)] hover:scale-110 hover:shadow-[0_0_20px_rgba(234,67,53,0.8)] transition-all">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
+      <!-- Footer Bottom -->
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 pb-20 md:pb-0">
+        <div class="w-full md:w-auto flex items-center gap-4">
+          <div class="relative inline-block text-left w-40">
+            <select class="block appearance-none w-full bg-[#0A0F1C] border border-white/10 text-white py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:border-cyan-500 text-sm">
+              <option>English</option>
+              <option>Bengali</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+              <i class="fa-solid fa-chevron-down text-xs"></i>
+            </div>
+          </div>
+          <span class="text-slate-500 text-xs hidden md:inline">© 2026 MT Studio Inc.</span>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-medium text-slate-500 w-full md:w-auto">
+          <a href="#" class="hover:text-white transition">Trust</a>
+          <a href="#" class="hover:text-white transition">Privacy</a>
+          <a href="#" class="hover:text-white transition">Terms of use</a>
+          <a href="#" class="hover:text-white transition">Legal notices</a>
+        </div>
       </div>
-
-      <p class="text-slate-500 text-sm">© 2026 MT Studio. Made with care.</p>
     </div>
   </footer>
 
-  <!-- Dark Mode Glass Modal -->
-  <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-midnight/80 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
-    <div class="bg-[#0B1121] border border-white/10 rounded-3xl p-6 md:p-8 max-w-md w-full relative shadow-[0_0_50px_rgba(0,0,0,0.5)] transform scale-95 transition-transform duration-300 my-8">
-      <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center transition">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      
-      <h3 class="text-2xl font-bold mb-2 text-white">Start a project</h3>
-      <p class="text-slate-400 mb-6 text-sm">সরাসরি মেসেজ করুন অথবা নিচের ফর্মটি পূরণ করুন।</p>
-      
-      <!-- Big Highlighted Real Color Direct Contact Buttons -->
-      <div class="flex flex-wrap gap-4 md:gap-5 justify-center mb-8">
-        <a href="https://m.me/MTstudio2" target="_blank" title="Messenger" class="spring-press flex flex-col items-center justify-center w-[4rem] h-[4rem] md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-[#0084FF] text-white shadow-[0_0_20px_rgba(0,132,255,0.5)] hover:shadow-[0_0_30px_rgba(0,132,255,0.9)] hover:-translate-y-1 transition-all">
-          <i class="fa-brands fa-facebook-messenger text-3xl"></i>
-        </a>
-        <a href="https://wa.me/19174199814" target="_blank" title="WhatsApp" class="spring-press flex flex-col items-center justify-center w-[4rem] h-[4rem] md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-[#25D366] text-white shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:shadow-[0_0_30px_rgba(37,211,102,0.9)] hover:-translate-y-1 transition-all">
-          <i class="fa-brands fa-whatsapp text-3xl md:text-4xl"></i>
-        </a>
-        <a href="https://www.youtube.com/@MTStudio_2" target="_blank" title="YouTube" class="spring-press flex flex-col items-center justify-center w-[4rem] h-[4rem] md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-[#FF0000] text-white shadow-[0_0_20px_rgba(255,0,0,0.5)] hover:shadow-[0_0_30px_rgba(255,0,0,0.9)] hover:-translate-y-1 transition-all">
-          <i class="fa-brands fa-youtube text-3xl"></i>
-        </a>
-        <a href="mailto:studiomt46@gmail.com" title="Email" class="spring-press flex flex-col items-center justify-center w-[4rem] h-[4rem] md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-[#EA4335] text-white shadow-[0_0_20px_rgba(234,67,53,0.5)] hover:shadow-[0_0_30px_rgba(234,67,53,0.9)] hover:-translate-y-1 transition-all">
-          <i class="fa-solid fa-envelope text-3xl"></i>
-        </a>
+  <!-- ========================================== -->
+  <!-- NATIVE LIVE CHAT WIDGET & DRAGGABLE FAB    -->
+  <!-- ========================================== -->
+  <div id="draggable-wrapper" class="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4" style="transform: translate3d(0px, 0px, 0px);">
+    
+    <!-- Custom Live Chat Interface directly on site -->
+    <div id="chatWidget" class="hidden flex-col bg-[#0B1121]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] transform translate-y-4 opacity-0 transition-all duration-300 origin-bottom-right w-[320px] sm:w-[360px] overflow-hidden">
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-cyan-600 to-violet-600 p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-midnight flex items-center justify-center font-['Dancing_Script'] font-bold text-white text-lg">MT</div>
+              <div>
+                  <h4 class="text-white text-sm font-bold leading-tight">MT Studio Support</h4>
+                  <p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online • Typically replies instantly</p>
+              </div>
+          </div>
+          <button onclick="toggleSupportChat()" class="text-white/80 hover:text-white transition"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
-
-      <div class="relative flex items-center py-2 mb-6">
-        <div class="flex-grow border-t border-white/10"></div>
-        <span class="flex-shrink-0 mx-4 text-slate-500 text-xs uppercase tracking-wider">অথবা অটোমেটিক ফর্ম</span>
-        <div class="flex-grow border-t border-white/10"></div>
+      
+      <!-- Chat Messages Area -->
+      <div id="chatMessages" class="p-4 h-64 overflow-y-auto flex flex-col gap-3 bg-[#0A0F1C]/50">
+          <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12">
+              হ্যালো! MT Studio তে স্বাগতম। আপনার প্রোজেক্ট নিয়ে কোনো প্রশ্ন থাকলে এখানে সরাসরি চ্যাট করতে পারেন।
+          </div>
       </div>
+      
+      <!-- Chat Input Area -->
+      <div class="p-3 border-t border-white/10 bg-[#050B14]">
+          <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+              <input type="text" id="chatInput" class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition" placeholder="Write a message..." required autocomplete="off">
+              <button type="submit" class="w-10 h-10 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white flex items-center justify-center transition shadow-lg shrink-0">
+                  <i class="fa-solid fa-paper-plane text-sm -ml-1"></i>
+              </button>
+          </form>
+      </div>
+    </div>
 
-      <!-- Functional Form -->
-      <form onsubmit="handleFormSubmit(event)">
-        <div class="space-y-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">আপনার নাম</label>
-            <input type="text" id="clientName" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition" placeholder="জন ডো">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">কীভাবে যোগাযোগ করতে চান?</label>
-            <select id="contactMethod" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition appearance-none">
-              <option value="whatsapp" class="bg-midnight text-white">WhatsApp এর মাধ্যমে পাঠাবো</option>
-              <option value="email" class="bg-midnight text-white">Email এর মাধ্যমে পাঠাবো</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">কী বানাতে চান?</label>
-            <textarea id="clientDetails" rows="3" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition" placeholder="আমি একটি নতুন অ্যাপ বা ওয়েবসাইট তৈরি করতে চাই..."></textarea>
-          </div>
-          <button type="submit" class="spring-press w-full bg-white text-midnight font-bold py-4 rounded-xl hover:bg-slate-200 transition shadow-lg mt-2 flex justify-center items-center gap-2">
-            <i class="fa-solid fa-paper-plane"></i> মেসেজ পাঠান
-          </button>
+    <!-- Draggable FAB Button -->
+    <button id="fab-button" class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-violet-600 p-[2px] shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-shadow relative group cursor-grab">
+      <div class="w-full h-full bg-[#050B14] rounded-full flex items-center justify-center relative overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-violet-600/20"></div>
+        <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-3xl font-['Dancing_Script'] tracking-wider relative z-10 pt-1">MT</span>
+      </div>
+      <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-midnight text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-lg">
+        Live Chat
+      </div>
+    </button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PORTFOLIO DETAILS MODAL (Real Badsha Link) -->
+  <!-- ========================================== -->
+  <div id="serviceDetailsModal" class="fixed inset-0 z-[105] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
+    <button onclick="closeServiceDetails()" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[106]">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+    <div class="w-full max-w-4xl relative transform scale-95 transition-transform duration-300 my-10 flex flex-col">
+      <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <div class="p-8 md:p-10 border-b border-white/5 relative overflow-hidden">
+            <div id="sdBgGlow" class="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="flex items-center gap-5 relative z-10">
+                <div id="sdIconWrapper" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl">
+                    <i id="sdIcon" class="fa-solid"></i>
+                </div>
+                <div>
+                    <h2 id="sdTitle" class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">Service Title</h2>
+                    <p id="sdSubtitle" class="text-slate-400">সার্ভিসের সাবটাইটেল</p>
+                </div>
+            </div>
         </div>
-      </form>
+        <div class="p-8 md:p-10">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-1">
+                    <h4 class="text-white font-semibold mb-4 text-lg">Features included:</h4>
+                    <ul id="sdFeatures" class="space-y-3 text-slate-400 text-sm"></ul>
+                    <div class="mt-10">
+                        <button onclick="closeServiceDetails(); handlePackageClick('Custom Project', '250.00')" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(8,145,178,0.4)]">
+                            Start this project <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-semibold mb-4 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-slate-500"></i> Recent Work Examples
+                    </h4>
+                    <div id="sdGallery" class="grid grid-cols-2 gap-4"></div>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- ========================================== -->
+  <!-- AUTH MODAL (Complete With Country Dropdown & Password Check) -->
+  <!-- ========================================== -->
+  <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
+    <button onclick="toggleModal(false)" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[101]">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+    <div class="w-full max-w-xl relative transform scale-95 transition-transform duration-300 my-10 flex flex-col items-center">
+      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px] mb-8 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+        <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
+          <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold font-['Dancing_Script'] text-2xl">MT</span>
+        </div>
+      </div>
+      <div class="text-center mb-8 w-full">
+        <h2 id="authTitle" class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Get started with MT Studio</h2>
+        <p id="authSubtitle" class="text-slate-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+          Sign up to learn about websites, mobile apps, brand visuals and AI workflows.
+        </p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/10 rounded-2xl p-6 md:p-10 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        
+        <!-- SIGN UP FORM -->
+        <form id="signupForm" onsubmit="handleAuthSubmit(event, 'signup')" class="space-y-4">
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">First name*</label>
+                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="First name">
+            </div>
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Last name*</label>
+                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Last name">
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Email*</label>
+            <input type="email" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="name@company.com">
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Company</label>
+            <input type="text" class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Your startup or app name">
+          </div>
+          
+          <!-- Country Dropdown -->
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Country*</label>
+            <div class="relative">
+                <select required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 appearance-none">
+                    <option value="" disabled selected>Select one...</option>
+                    <option value="BD">Bangladesh</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="IN">India</option>
+                    <option value="CA">Canada</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400"><i class="fa-solid fa-chevron-down text-xs"></i></div>
+            </div>
+          </div>
+          
+          <!-- Create Password -->
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Create Password*</label>
+            <div class="relative">
+                <input type="password" id="suPassword" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Create your new password">
+                <i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('suPassword')"></i>
+            </div>
+          </div>
+          
+          <!-- Confirm Password -->
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Confirm Password*</label>
+            <div class="relative">
+                <input type="password" id="suConfirmPassword" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Confirm your password">
+                <i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('suConfirmPassword')"></i>
+            </div>
+          </div>
+
+          <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold py-4 rounded-lg mt-2 shadow-[0_0_15px_rgba(8,145,178,0.4)]">Sign up with email</button>
+          
+          <button type="button" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-lg hover:bg-white/5 transition text-slate-300 font-medium mt-3">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google"> Sign up with Google
+          </button>
+          <button type="button" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-lg hover:bg-white/5 transition text-slate-300 font-medium">
+            <i class="fa-brands fa-facebook text-[#1877F2] text-xl"></i> Sign up with Facebook
+          </button>
+          
+          <div class="relative flex items-center py-2 mt-4">
+            <div class="flex-grow border-t border-white/10"></div><span class="flex-shrink-0 mx-4 text-slate-500 text-xs">or</span><div class="flex-grow border-t border-white/10"></div>
+          </div>
+          <p class="text-center text-slate-400 text-sm">
+            Already have an account? <button type="button" onclick="switchAuthMode('signin')" class="text-white hover:text-cyan-400 font-semibold transition underline decoration-white/30 underline-offset-4">Log in</button>
+          </p>
+        </form>
+
+        <!-- SIGN IN FORM -->
+        <form id="signinForm" class="hidden space-y-5" onsubmit="handleAuthSubmit(event, 'signin')">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-2">Email address*</label>
+            <input type="email" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500">
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="block text-xs font-semibold text-slate-400">Password*</label>
+              <a href="#" class="text-xs text-cyan-400 hover:text-cyan-300 transition">Forgot password?</a>
+            </div>
+            <div class="relative">
+              <input type="password" id="siPassword" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500">
+              <i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('siPassword')"></i>
+            </div>
+          </div>
+          <button type="submit" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-4 rounded-lg mt-4 shadow-[0_0_15px_rgba(8,145,178,0.4)]">Log in to Dashboard</button>
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button type="button" class="spring-press w-full flex items-center justify-center gap-2 bg-formbg border border-white/10 py-3 rounded-lg hover:bg-white/5 text-slate-300 text-sm"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4"> Google</button>
+            <button type="button" class="spring-press w-full flex items-center justify-center gap-2 bg-formbg border border-white/10 py-3 rounded-lg hover:bg-white/5 text-slate-300 text-sm"><i class="fa-brands fa-facebook text-[#1877F2]"></i> Facebook</button>
+          </div>
+          <div class="relative flex items-center py-2 mt-4">
+            <div class="flex-grow border-t border-white/10"></div><span class="flex-shrink-0 mx-4 text-slate-500 text-xs">or</span><div class="flex-grow border-t border-white/10"></div>
+          </div>
+          <p class="text-center text-slate-400 text-sm">
+            Don't have an account? <button type="button" onclick="switchAuthMode('signup')" class="text-white hover:text-cyan-400 font-semibold underline decoration-white/30 underline-offset-4">Sign up</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYPAL SECURE CHECKOUT MODAL -->
+  <div id="checkoutModal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
+    <button onclick="toggleCheckoutModal(false)" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[111]">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+    <div class="w-full max-w-lg relative transform scale-95 transition-transform duration-300 my-10 flex flex-col">
+      <div class="bg-[#0A0F1C] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
+        <div class="bg-formbg p-8 border-b border-white/5 text-center relative">
+            <div class="absolute top-4 right-4 flex items-center gap-1.5 text-xs font-semibold text-slate-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+                <i class="fa-solid fa-lock text-green-400"></i> Secure Checkout
+            </div>
+            <p class="text-slate-400 text-sm font-medium mb-1 mt-4" id="checkoutPackageName">Starter Package</p>
+            <h2 class="text-4xl font-extrabold text-white" id="checkoutPriceUSD">$50.00</h2>
+            <p class="text-slate-500 text-xs mt-2">PayPal will convert this to your local currency automatically.</p>
+        </div>
+        <div class="p-8">
+            <h4 class="text-slate-300 font-semibold mb-6 text-sm uppercase tracking-wider text-center">Select Payment Method</h4>
+            <div id="paypal-button-container" class="w-full z-0 relative"></div>
+            <p class="text-center text-slate-500 text-xs mt-4">You can pay using your PayPal account or securely with your Credit/Debit Card.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Logic -->
   <script>
-    // প্রোমো কন্ট্রোলার
-    const isFreePromoActive = true;
-    
-    // ব্যাকএন্ডের জন্য আপনার নম্বর/ইমেইল
-    const myEmail = "studiomt46@gmail.com";
-    const myWhatsAppNumber = "19174199814";
+    // ==========================================
+    // 1. PRICING & PROMO FLAG
+    // ==========================================
+    const isFreePromoActive = true; 
+    let currentUsdAmount = '0.00';
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Handle Price Displays
       if (!isFreePromoActive) {
         const dynamicPrices = document.querySelectorAll('.dynamic-price');
-        const regularPrices = document.querySelectorAll('.regular-price');
+        const hiddenBlocks = document.querySelectorAll('.hidden-price-block');
         const promoElements = document.querySelectorAll('.free-promo-element');
 
         dynamicPrices.forEach(el => {
@@ -502,68 +731,365 @@
           el.classList.remove('text-5xl', 'bg-gradient-to-r', 'from-cyan-400', 'to-blue-500', 'from-violet-400', 'to-pink-400', 'text-transparent', 'bg-clip-text');
           el.classList.add('text-4xl', 'text-white');
         });
-
-        regularPrices.forEach(el => el.classList.add('hidden'));
+        
+        hiddenBlocks.forEach(el => el.classList.remove('hidden'));
+        document.querySelectorAll('.regular-price').forEach(el => el.classList.add('hidden'));
         promoElements.forEach(el => el.classList.add('hidden'));
+      }
+
+      // Initialize Official PayPal Smart Buttons
+      if (typeof paypal !== 'undefined') {
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{ amount: { value: currentUsdAmount } }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed successfully by ' + details.payer.name.given_name + '!');
+                    toggleCheckoutModal(false);
+                });
+            }
+        }).render('#paypal-button-container');
       }
     });
 
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
+    // ==========================================
+    // 2. DATA (SERVICES & PORTFOLIO) 
+    // ==========================================
+    const serviceData = {
+        'web': {
+            title: 'Web Apps Development',
+            subtitle: 'স্কেলেবল এবং রেস্পন্সিভ ওয়েবসাইট',
+            icon: 'fa-globe',
+            color: 'text-cyan-400',
+            bgColor: 'bg-cyan-500/10',
+            glowColor: 'bg-cyan-500/20',
+            borderColor: 'border-cyan-500/20',
+            features: [
+                '<i class="fa-solid fa-check text-cyan-500 w-5"></i> E-commerce Platforms',
+                '<i class="fa-solid fa-check text-cyan-500 w-5"></i> Custom Admin Dashboards',
+                '<i class="fa-solid fa-check text-cyan-500 w-5"></i> Portfolio Sites'
+            ],
+            images: [
+                { src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', title: 'Real Badsha App', url: 'https://realbadsha.netlify.app' },
+                { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'E-commerce Demo', url: '#' }
+            ]
+        },
+        'mobile': {
+            title: 'Mobile App Build',
+            subtitle: 'iOS এবং Android এর জন্য হাই-কোয়ালিটি অ্যাপ',
+            icon: 'fa-mobile-screen',
+            color: 'text-violet-400',
+            bgColor: 'bg-violet-500/10',
+            glowColor: 'bg-violet-500/20',
+            borderColor: 'border-violet-500/20',
+            features: [
+                '<i class="fa-solid fa-check text-violet-500 w-5"></i> Native iOS App',
+                '<i class="fa-solid fa-check text-violet-500 w-5"></i> Android APK Build'
+            ],
+            images: [
+                { src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80', title: 'Food Delivery App', url: '#' },
+                { src: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&q=80', title: 'Fitness Tracker', url: '#' }
+            ]
+        },
+        'design': {
+            title: 'UI / UX Design',
+            subtitle: 'ইউজার ফ্রেন্ডলি এবং মডার্ন ডিজাইন',
+            icon: 'fa-pen-nib',
+            color: 'text-pink-400',
+            bgColor: 'bg-pink-500/10',
+            glowColor: 'bg-pink-500/20',
+            borderColor: 'border-pink-500/20',
+            features: [
+                '<i class="fa-solid fa-check text-pink-500 w-5"></i> App Wireframing',
+                '<i class="fa-solid fa-check text-pink-500 w-5"></i> Clickable Prototypes'
+            ],
+            images: [
+                { src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80', title: 'Fintech Dashboard', url: '#' },
+                { src: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80', title: 'Travel App Wireframe', url: '#' }
+            ]
+        },
+        'profile': {
+            title: 'Profile Troubleshooting',
+            subtitle: 'যেকোনো সোশ্যাল মিডিয়া অ্যাকাউন্ট ফিক্সিং',
+            icon: 'fa-shield-halved',
+            color: 'text-blue-400',
+            bgColor: 'bg-blue-500/10',
+            glowColor: 'bg-blue-500/20',
+            borderColor: 'border-blue-500/20',
+            features: [
+                '<i class="fa-solid fa-check text-blue-500 w-5"></i> Page Restrictions',
+                '<i class="fa-solid fa-check text-blue-500 w-5"></i> Account Recovery'
+            ],
+            images: [
+                { src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80', title: 'Recovered Page', url: '#' },
+                { src: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?w=600&q=80', title: 'Business Setup Fix', url: '#' }
+            ]
+        },
+        'video': {
+            title: 'Video & Photo Editing',
+            subtitle: 'আকর্ষণীয় ভিজ্যুয়াল কন্টেন্ট',
+            icon: 'fa-wand-magic',
+            color: 'text-fuchsia-400',
+            bgColor: 'bg-fuchsia-500/10',
+            glowColor: 'bg-fuchsia-500/20',
+            borderColor: 'border-fuchsia-500/20',
+            features: [
+                '<i class="fa-solid fa-check text-fuchsia-500 w-5"></i> Reels & Shorts',
+                '<i class="fa-solid fa-check text-fuchsia-500 w-5"></i> Color Grading'
+            ],
+            images: [
+                { src: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80', title: 'Promotional Reel', url: '#' },
+                { src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80', title: 'Product Photo', url: '#' }
+            ]
+        },
+        'ai': {
+            title: 'AI Prompts',
+            subtitle: 'Midjourney, Flux, ChatGPT এক্সপার্ট',
+            icon: 'fa-robot',
+            color: 'text-emerald-400',
+            bgColor: 'bg-emerald-500/10',
+            glowColor: 'bg-emerald-500/20',
+            borderColor: 'border-emerald-500/20',
+            features: [
+                '<i class="fa-solid fa-check text-emerald-500 w-5"></i> AI Art',
+                '<i class="fa-solid fa-check text-emerald-500 w-5"></i> Custom GPTs'
+            ],
+            images: [
+                { src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80', title: 'AI Concept Art', url: '#' },
+                { src: 'https://images.unsplash.com/photo-1684369175836-96b6534575b6?w=600&q=80', title: 'Chatbot UI', url: '#' }
+            ]
+        }
+    };
+
+    // ==========================================
+    // 3. UI FUNCTIONS & TOGGLES
+    // ==========================================
+    function handlePackageClick(packageName, usdPriceStr) {
+        if (isFreePromoActive) {
+            toggleModal(true);
+        } else {
+            document.getElementById('checkoutPackageName').innerText = packageName + ' Package';
+            document.getElementById('checkoutPriceUSD').innerText = '$' + usdPriceStr;
+            currentUsdAmount = usdPriceStr;
+            toggleCheckoutModal(true);
+        }
+    }
+
+    function toggleCheckoutModal(show) {
+      const modal = document.getElementById('checkoutModal');
+      const content = modal.querySelector('div > div'); 
+      if (show) {
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; 
+        setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
       } else {
-        menu.classList.add('hidden');
+        modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95');
+        document.body.style.overflow = 'auto';
+        setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
       }
     }
 
     function toggleModal(show) {
       const modal = document.getElementById('quoteModal');
-      const modalContent = modal.querySelector('div');
-      
+      const content = modal.querySelector('div > div'); 
       if (show) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        setTimeout(() => {
-          modal.style.opacity = '1';
-          modalContent.classList.remove('scale-95');
-          modalContent.classList.add('scale-100');
-        }, 10);
+        switchAuthMode('signup');
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; 
+        setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
       } else {
-        modal.style.opacity = '0';
-        modalContent.classList.remove('scale-100');
-        modalContent.classList.add('scale-95');
-        setTimeout(() => {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-        }, 300);
+        modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95');
+        document.body.style.overflow = 'auto';
+        setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
       }
     }
 
-    // ফাংশনাল কন্টাক্ট ফর্ম লজিক
-    function handleFormSubmit(event) {
+    function openServiceDetails(key) {
+        const d = serviceData[key];
+        if(!d) return;
+
+        document.getElementById('sdTitle').innerText = d.title;
+        document.getElementById('sdSubtitle').innerText = d.subtitle;
+        document.getElementById('sdIconWrapper').className = `w-16 h-16 rounded-2xl flex items-center justify-center text-3xl border ${d.bgColor} ${d.borderColor} ${d.color}`;
+        document.getElementById('sdIcon').className = `fa-solid ${d.icon}`;
+        document.getElementById('sdBgGlow').className = `absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none ${d.glowColor}`;
+        document.getElementById('sdFeatures').innerHTML = d.features.map(f => `<li>${f}</li>`).join('');
+        
+        document.getElementById('sdGallery').innerHTML = d.images.map(item => `
+            <a href="${item.url}" ${item.url !== '#' ? 'target="_blank"' : ''} class="portfolio-link block h-32 md:h-40 rounded-xl overflow-hidden border border-white/10 relative group bg-midnight">
+                <img src="${item.src}" class="w-full h-full object-cover portfolio-image opacity-80 group-hover:opacity-100" alt="${item.title}">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-2 left-3 right-3 text-white text-xs font-semibold flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="truncate pr-2">${item.title}</span>
+                    ${item.url !== '#' ? '<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>' : ''}
+                </div>
+            </a>
+        `).join('');
+
+        const modal = document.getElementById('serviceDetailsModal');
+        const content = modal.querySelector('div > div');
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; 
+        setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
+    }
+
+    function closeServiceDetails() {
+        const modal = document.getElementById('serviceDetailsModal');
+        const content = modal.querySelector('div > div');
+        modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95');
+        document.body.style.overflow = 'auto';
+        setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
+    }
+
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = input.nextElementSibling;
+      if (input.type === "password") {
+        input.type = "text"; icon.classList.remove("fa-eye"); icon.classList.add("fa-eye-slash");
+      } else {
+        input.type = "password"; icon.classList.remove("fa-eye-slash"); icon.classList.add("fa-eye");
+      }
+    }
+
+    function switchAuthMode(mode) {
+      const signupForm = document.getElementById('signupForm');
+      const signinForm = document.getElementById('signinForm');
+      const authTitle = document.getElementById('authTitle');
+      const authSubtitle = document.getElementById('authSubtitle');
+
+      if(mode === 'signup') {
+        signupForm.classList.remove('hidden'); signinForm.classList.add('hidden');
+        authTitle.innerText = "Get started with MT Studio";
+        authSubtitle.innerText = "Sign up to learn about websites, mobile apps, brand visuals and AI workflows.";
+      } else {
+        signupForm.classList.add('hidden'); signinForm.classList.remove('hidden');
+        authTitle.innerText = "Welcome back";
+        authSubtitle.innerText = "Log in to your MT Studio dashboard to manage your projects.";
+      }
+    }
+
+    // AUTH SUBMIT LOGIC WITH PASSWORD VALIDATION & FB AUTO-FOLLOW REDIRECT
+    function handleAuthSubmit(event, action) {
       event.preventDefault();
       
-      const name = document.getElementById('clientName').value;
-      const method = document.getElementById('contactMethod').value;
-      const details = document.getElementById('clientDetails').value;
-      
-      const messageBody = `হ্যালো, আমি ${name}।\n\nআমার প্রজেক্টের বিস্তারিত:\n${details}`;
-
-      if(method === 'whatsapp') {
-        const waLink = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(messageBody)}`;
-        window.open(waLink, '_blank');
+      if(action === 'signup') {
+        const pass = document.getElementById('suPassword').value;
+        const confirmPass = document.getElementById('suConfirmPassword').value;
+        
+        if (pass !== confirmPass) {
+            alert("Passwords do not match! Please try again.");
+            return;
+        }
+        
+        alert("Account created successfully! We will contact you soon.\n\nTaking you to our Facebook page to follow us...");
+        
+        // Simulate auto-follow by redirecting to FB page on new tab
+        window.open("https://www.facebook.com/MTstudio2", "_blank");
+        
       } else {
-        const subject = `New Project Inquiry from ${name}`;
-        const mailtoLink = `mailto:${myEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageBody)}`;
-        window.location.href = mailtoLink;
+        alert("Logged in successfully! Redirecting to Dashboard...");
       }
-
-      toggleModal(false);
       
-      // ক্লিয়ার ফর্ম
-      document.getElementById('clientName').value = '';
-      document.getElementById('clientDetails').value = '';
+      toggleModal(false);
+      event.target.reset(); 
+    }
+
+    // ==========================================
+    // 4. LIVE CHAT WIDGET & DRAG LOGIC 
+    // ==========================================
+    function toggleSupportChat() {
+      const menu = document.getElementById('chatWidget');
+      if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+          setTimeout(() => { menu.classList.remove('translate-y-4', 'opacity-0'); }, 10);
+      } else {
+          menu.classList.add('translate-y-4', 'opacity-0');
+          setTimeout(() => { menu.classList.add('hidden'); }, 300);
+      }
+    }
+
+    function handleChatSubmit(e) {
+        e.preventDefault();
+        const input = document.getElementById('chatInput');
+        const msg = input.value;
+        if(!msg.trim()) return;
+
+        const chatBox = document.getElementById('chatMessages');
+        
+        // Add User Message
+        chatBox.innerHTML += `
+            <div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md">
+                ${msg}
+            </div>
+        `;
+        input.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Simulate Bot Reply
+        setTimeout(() => {
+            chatBox.innerHTML += `
+                <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2">
+                    <div class="w-6 h-6 rounded-full bg-midnight shrink-0 flex items-center justify-center font-['Dancing_Script'] text-[10px] font-bold mt-0.5">MT</div>
+                    <div>আপনার মেসেজটি আমরা পেয়েছি। খুব শীঘ্রই আমাদের একজন প্রতিনিধি যুক্ত হবেন।</div>
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 1200);
+    }
+
+    // Drag Logic
+    const dragWrapper = document.getElementById('draggable-wrapper');
+    const dragBtn = document.getElementById('fab-button');
+    let active = false, isDragging = false;
+    let initialX, initialY, xOffset = 0, yOffset = 0, dragStartX, dragStartY;
+
+    dragBtn.addEventListener("mousedown", dragStart, false);
+    document.addEventListener("mouseup", dragEnd, false);
+    document.addEventListener("mousemove", drag, false);
+    dragBtn.addEventListener("touchstart", dragStart, {passive: false});
+    document.addEventListener("touchend", dragEnd, false);
+    document.addEventListener("touchmove", drag, {passive: false});
+
+    dragBtn.addEventListener("click", function(e) {
+        if(isDragging) { e.preventDefault(); e.stopPropagation(); isDragging = false; return; }
+        toggleSupportChat();
+    });
+
+    function dragStart(e) {
+      if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset; initialY = e.touches[0].clientY - yOffset;
+        dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
+      } else {
+        initialX = e.clientX - xOffset; initialY = e.clientY - yOffset;
+        dragStartX = e.clientX; dragStartY = e.clientY;
+      }
+      if (e.target === dragBtn || dragBtn.contains(e.target)) {
+        active = true; isDragging = false; dragBtn.style.transform = "scale(0.95)";
+      }
+    }
+
+    function dragEnd(e) { active = false; dragBtn.style.transform = "scale(1)"; }
+
+    function drag(e) {
+      if (active) {
+        let currentX, currentY;
+        if (e.type === "touchmove") { currentX = e.touches[0].clientX; currentY = e.touches[0].clientY; } 
+        else { currentX = e.clientX; currentY = e.clientY; }
+
+        if(Math.abs(currentX - dragStartX) > 3 || Math.abs(currentY - dragStartY) > 3) { 
+            isDragging = true; e.preventDefault(); 
+        }
+
+        if(isDragging) {
+            xOffset = currentX - initialX; yOffset = currentY - initialY;
+            dragWrapper.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+        }
+      }
     }
   </script>
 </body>
