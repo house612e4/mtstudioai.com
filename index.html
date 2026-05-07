@@ -63,12 +63,13 @@
 
     /* Hero Background with your uploaded image */
     .hero-bg-image {
-        background-color: #050B14;
-        background-image: linear-gradient(to right, rgba(5, 11, 20, 0.95) 0%, rgba(5, 11, 20, 0.7) 100%), url('image.png');
-        background-size: cover;
-        background-position: center top;
-        background-repeat: no-repeat;
-    }
+    background-color: #050B14;
+    background-image: linear-gradient(to right, rgba(5, 11, 20, 0.95) 0%, rgba(5, 11, 20, 0.75) 100%), 
+                      url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
     .spring-press { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .spring-press:active { transform: scale(0.96); }
@@ -156,7 +157,7 @@
         <i class="fa-solid fa-sparkles"></i> D i g i t a l &nbsp; A g e n c y
       </p>
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight max-w-4xl">
-        আপনার স্বপ্ন,<br>
+        আপনার স্বপ্ন<br>
         ডিজিটালি <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400">পারফেক্ট</span>
       </h1>
       <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed font-light">
@@ -950,16 +951,12 @@
     // ==========================================
     // 3. UI FUNCTIONS & TOGGLES
     // ==========================================
-    function handlePackageClick(packageName, usdPriceStr) {
-        if (isFreePromoActive) {
-            toggleModal(true);
-        } else {
-            document.getElementById('checkoutPackageName').innerText = packageName + ' Package';
-            document.getElementById('checkoutPriceUSD').innerText = '$' + usdPriceStr;
-            currentUsdAmount = usdPriceStr;
-            toggleCheckoutModal(true);
-        }
+    function handlePackageClick(packageName) {
+    if (isFreePromoActive) {
+        showSuccessModal("🎉 Free Offer Activated!", `${packageName} package is currently 100% FREE.\n\nSign up করলে আমরা খুব শীঘ্রই যোগাযোগ করব।`);
+        setTimeout(() => { closeSuccessModal(); toggleModal(true); }, 1800);
     }
+}
 
     function toggleCheckoutModal(show) {
       const modal = document.getElementById('checkoutModal');
@@ -1107,10 +1104,10 @@
         const chatBox = document.getElementById('chatMessages');
         
         chatBox.innerHTML += `
-            <div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animate-popIn">
-                ${msg}
-            </div>
-        `;
+    <div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animate-popIn">
+        ${msg}
+    </div>
+`;
         input.value = '';
         chatBox.scrollTop = chatBox.scrollHeight;
 
