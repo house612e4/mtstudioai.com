@@ -145,6 +145,41 @@
       </button>
     </div>
 
+<!-- HERO SECTION WITH VIDEO BACKGROUND -->
+<section id="home" class="relative w-full h-screen overflow-hidden">
+
+  <!-- BACKGROUND VIDEO -->
+  <video autoplay muted loop playsinline
+    class="absolute top-0 left-0 w-full h-full object-cover z-0">
+    <source src="your-video.mp4" type="video/mp4">
+  </video>
+
+  <!-- DARK OVERLAY -->
+  <div class="absolute inset-0 bg-black/60 z-10"></div>
+
+  <!-- HERO CONTENT (তোমার existing hero content এখানে যাবে) -->
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
+
+    <h1 class="text-4xl md:text-6xl font-bold text-white">
+      Welcome to MT Studio
+    </h1>
+
+    <p class="text-slate-300 mt-4 max-w-xl">
+      We build modern websites, apps, and AI solutions.
+    </p>
+
+    <div class="mt-6 flex gap-4">
+      <button class="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-3 rounded-xl">
+        Get Started
+      </button>
+      <button class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl">
+        Learn More
+      </button>
+    </div>
+
+  </div>
+</section>
+
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-midnight/95 backdrop-blur-xl border-b border-white/10 absolute w-full">
       <div class="flex flex-col px-6 py-6 space-y-5">
