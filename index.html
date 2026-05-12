@@ -1,28 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="bn" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO & Meta Tags -->
+
   <title>MT Studio - Digital Solutions | ওয়েবসাইট ও অ্যাপ ডেভেলপমেন্ট</title>
   <meta name="description" content="MT Studio crafts modern websites, mobile apps, brand visuals, and AI workflows for ambitious founders. End-to-end digital solutions in Bangla and English.">
   <meta name="keywords" content="web development bangladesh, app builder, UI/UX design, AI prompts, facebook page fix, MT Studio, digital agency">
   <meta name="theme-color" content="#050B14">
   <meta name="author" content="Mahsin Tarik">
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B14'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' font-size='26' fill='url(%23g)'%3EMT%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B14'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' font-size='26' fill='%2322d3ee'%3EMT%3C/text%3E%3C/svg%3E">
+  <!-- Favicon -->
 
-  <!-- Preload Critical Resources -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B14'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2322d3ee'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Ctext x='50%25' y='72%25' font-family='Georgia%2C serif' font-size='28' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B14'/%3E%3Ctext x='50%25' y='72%25' font-family='Georgia%2C serif' font-size='28' font-weight='bold' fill='%2322d3ee' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZYEQHPLJJ"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3ZYEQHPLJJ');
+  </script>
+
+  <!-- Preload -->
+
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
 
+  <!-- Scripts & Styles -->
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- PayPal JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- PayPal SDK -->
+
   <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
 
   <script>
@@ -30,10 +50,7 @@
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-          colors: {
-            midnight: '#050B14',
-            formbg: '#0F172A',
-          },
+          colors: { midnight: '#050B14', formbg: '#0F172A' },
           animation: {
             blob: 'blob 10s infinite',
             marquee: 'marquee 25s linear infinite',
@@ -59,62 +76,47 @@
       }
     }
   </script>
-  
+
   <style>
     body { background-color: #050B14; color: #e2e8f0; overflow-x: hidden; }
-    
     .bg-grid { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E"); }
-
     .hero-bg-image {
       background-color: #050B14;
-      background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80');
+      background-image: linear-gradient(to right, rgba(5,11,20,0.95) 0%, rgba(5,11,20,0.75) 100%),
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
-
     .spring-press { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .spring-press:active { transform: scale(0.96); }
-
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #050B14; }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-    
     input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 30px #0F172A inset !important;
-        -webkit-text-fill-color: white !important;
-        transition: background-color 5000s ease-in-out 0s;
+      -webkit-box-shadow: 0 0 0 30px #0F172A inset !important;
+      -webkit-text-fill-color: white !important;
     }
-
     #fab-button { touch-action: none; cursor: grab; }
     #fab-button:active { cursor: grabbing; }
-    
     .portfolio-image { transition: transform 0.3s ease; }
     .portfolio-link:hover .portfolio-image { transform: scale(1.05); }
-
     #chatMessages::-webkit-scrollbar { width: 4px; }
-
-    /* FAQ answer transition */
-    .faq-answer { transition: max-height 0.3s ease, opacity 0.3s ease; }
-    .faq-answer.open { display: block !important; }
-
-    /* Blog line clamp */
-    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-    /* Blog post modal */
-    #blogModal { backdrop-filter: blur(20px); }
   </style>
+
 </head>
 <body class="antialiased bg-grid relative selection:bg-cyan-500/30 selection:text-cyan-200">
 
   <!-- Animated Background Blobs -->
+
   <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-[-1]">
     <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-cyan-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
-    <div class="absolute bottom-[-20%] right-[-10%] w-[40rem] h-[40rem] bg-magenta-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[40rem] h-[40rem] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay:4s;"></div>
   </div>
 
   <!-- Navbar -->
+
   <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-midnight/80 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#home" class="flex items-center gap-3 group">
@@ -124,91 +126,69 @@
           </div>
         </div>
         <div>
-          <h1 class="text-white font-bold tracking-wide">MT Studio</h1>
+          <h1 class="text-white font-bold leading-tight tracking-wide">MT Studio</h1>
           <p class="text-[10px] text-slate-400 uppercase tracking-widest">Digital Solutions</p>
         </div>
       </a>
-
       <div class="hidden md:flex items-center gap-4">
-        <div onclick="toggleModal(true)" class="free-promo-element flex items-center gap-2 border border-green-500/30 bg-green-500/10 px-4 py-1.5 rounded-full backdrop-blur-sm cursor-pointer">
+        <div class="flex items-center gap-2 border border-green-500/30 bg-green-500/10 px-4 py-1.5 rounded-full backdrop-blur-sm cursor-pointer" onclick="toggleModal(true)">
           <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-          <span class="text-green-300 text-xs font-bold tracking-widest uppercase">100% Free Offer</span>
+          <span class="text-green-300 text-xs font-bold tracking-widest uppercase hover:text-white transition">100% Free Offer</span>
         </div>
-        <button onclick="toggleModal(true)" class="spring-press bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all">
+        <button onclick="toggleModal(true)" class="nav-auth-btn spring-press bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all">
           Sign In
         </button>
       </div>
-
       <button onclick="toggleMenu()" class="md:hidden text-slate-300 hover:text-white">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
     </div>
-
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-midnight/95 backdrop-blur-xl border-b border-white/10 absolute w-full">
-      <div class="flex flex-col px-6 py-6 space-y-5 text-slate-300 font-medium">
-        <a href="#home" onclick="toggleMenu()">Home</a>
-        <a href="#craft" onclick="toggleMenu()">Our Craft</a>
-        <a href="#pricing" onclick="toggleMenu()">Packages</a>
-        <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
-        <a href="#contact" onclick="toggleMenu()">Contact</a>
-        <a href="#faq" onclick="toggleMenu()">FAQ</a>
-        <a href="#blog" onclick="toggleMenu()">Blog</a>
+      <div class="flex flex-col px-6 py-6 space-y-5">
+        <a href="#home" onclick="toggleMenu()" class="text-slate-300 font-medium">Home</a>
+        <a href="#craft" onclick="toggleMenu()" class="text-slate-300 font-medium">Our Craft</a>
+        <a href="#portfolio" onclick="toggleMenu()" class="text-slate-300 font-medium">Portfolio</a>
+        <a href="#contact" onclick="toggleMenu()" class="text-slate-300 font-medium">Contact</a>
+        <a href="#faq" onclick="toggleMenu()" class="text-slate-300 font-medium">FAQ</a>
+        <a href="#pricing" onclick="toggleMenu()" class="text-slate-300 font-medium">Packages</a>
         <div class="h-px bg-white/10 w-full my-2"></div>
         <button onclick="toggleModal(true); toggleMenu()" class="bg-cyan-600 text-white font-bold py-3 rounded-xl w-full">Sign up / Log in</button>
       </div>
     </div>
   </nav>
 
-  <!-- ========================================== -->
-  <!-- HERO SECTION WITH VIDEO & IMAGE FALLBACK   -->
-  <!-- ========================================== -->
-  <section id="home" class="relative pt-36 pb-20 md:pt-48 md:pb-24 px-6 border-b border-white/5 min-h-screen flex items-center justify-center overflow-hidden">
-    
-    <!-- Fallback Background Image (Shows if video fails or before it loads) -->
-    <div class="absolute inset-0 hero-bg-image z-0 opacity-40"></div>
+  <!-- Hero Section -->
 
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0 mix-blend-screen opacity-60">
-      <source src="public/your-video.mp4" type="video/mp4">
-    </video>
-
-    <!-- Dark Overlays for text readability -->
-    <div class="absolute inset-0 bg-[#050B14]/70 z-10"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#050B14] via-transparent to-[#050B14]/50 z-10"></div>
-
-    <div class="max-w-7xl mx-auto w-full relative z-20 text-center md:text-left flex flex-col items-center md:items-start">
-      <p class="text-cyan-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase flex items-center justify-center md:justify-start gap-2">
-        <i class="fa-solid fa-sparkles"></i> DIGITAL AGENCY
+  <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-32 px-6 hero-bg-image border-b border-white/5">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <p class="text-cyan-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase flex items-center gap-2">
+        <i class="fa-solid fa-sparkles"></i> D i g i t a l &nbsp; A g e n c y
       </p>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight max-w-4xl drop-shadow-xl">
-        আপনার স্বপ্ন,<br>ডিজিটালি <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400">পারফেক্ট</span>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight max-w-4xl">
+        আপনার স্বপ্ন<br>
+        ডিজিটালি <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400">পারফেক্ট</span>
       </h1>
-      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed font-light drop-shadow-md">
+      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed font-light">
         MT Studio crafts websites, mobile apps, brand visuals and AI workflows for ambitious founders. End-to-end, in Bangla and English.
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 mb-16 w-full sm:w-auto">
-        <button onclick="toggleModal(true)" class="spring-press bg-gradient-to-r from-cyan-500 to-violet-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all flex items-center justify-center gap-2 border border-white/10">
+      <div class="flex flex-col sm:flex-row gap-4 mb-16">
+        <button onclick="toggleModal(true)" class="spring-press bg-gradient-to-r from-cyan-500 to-violet-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all flex items-center justify-center gap-2">
           Start a project <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
         </button>
-        <button onclick="toggleModal(true)" class="spring-press bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/20 transition-all flex items-center justify-center backdrop-blur-md gap-2 shadow-lg">
+        <button onclick="toggleModal(true)" class="spring-press bg-white/5 border border-white/10 text-white px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/10 transition-all flex items-center justify-center backdrop-blur-sm gap-2">
           <i class="fa-solid fa-user-plus text-cyan-400"></i> সাইন আপ / লগইন
         </button>
       </div>
-
-      <!-- Tech Stack -->
-      <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-10">
-        <div class="bg-black/60 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-200 backdrop-blur-md shadow-lg"><i class="fa-brands fa-apple text-white"></i> iOS</div>
-        <div class="bg-black/60 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-200 backdrop-blur-md shadow-lg"><i class="fa-brands fa-android text-green-400"></i> Android</div>
-        <div class="bg-black/60 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-200 backdrop-blur-md shadow-lg"><i class="fa-solid fa-globe text-cyan-400"></i> Web</div>
-        <div class="bg-black/60 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-200 backdrop-blur-md shadow-lg"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI</div>
+      <div class="flex flex-wrap gap-3 mb-10">
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-brands fa-apple text-white"></i> iOS</div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-brands fa-android text-green-400"></i> Android</div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-solid fa-globe text-cyan-400"></i> Web</div>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI</div>
       </div>
-
-      <!-- Trust Signals -->
-      <div class="pt-8 border-t border-white/10 w-full md:max-w-2xl text-center md:text-left">
+      <div class="pt-8 border-t border-white/10">
         <p class="text-xs text-slate-400 uppercase tracking-widest mb-6 font-semibold">Trusted by innovative companies</p>
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-8 md:gap-12 opacity-60 hover:opacity-100 transition-all duration-500">
+        <div class="flex flex-wrap items-center gap-8 md:gap-12 opacity-60 hover:opacity-100 transition-all duration-500">
           <i class="fa-brands fa-aws text-3xl hover:text-[#FF9900] transition"></i>
           <i class="fa-brands fa-stripe text-3xl hover:text-[#008CDD] transition"></i>
           <i class="fa-brands fa-google text-3xl hover:text-[#4285F4] transition"></i>
@@ -219,7 +199,8 @@
     </div>
   </section>
 
-  <!-- Highlight -->
+  <!-- Highlight Section -->
+
   <section class="py-12 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
@@ -234,6 +215,7 @@
   </section>
 
   <!-- Marquee -->
+
   <div class="w-full overflow-hidden py-10 border-y border-white/5 bg-white/[0.02]">
     <div class="flex whitespace-nowrap animate-marquee">
       <div class="flex items-center gap-8 px-4 text-2xl text-slate-500 font-light uppercase tracking-widest">
@@ -245,6 +227,7 @@
   </div>
 
   <!-- Services Grid -->
+
   <section id="craft" class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -286,7 +269,7 @@
         <div onclick="openServiceDetails('ai')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-emerald-500/30 rounded-3xl p-8 cursor-pointer relative transition-all duration-300 shadow-lg">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6"><i class="fa-solid fa-robot text-emerald-400 text-xl"></i></div>
           <h3 class="text-2xl font-bold text-white mb-2">AI Prompts</h3>
-          <p class="text-slate-400 text-sm mb-4">এআই প্রম্পট ইঞ্জিনিয়ারিং</p>
+          <p class="text-slate-400 text-sm mb-4">এআই প্রম্পট ইঞ্জিনিয়ারিং</p>
           <p class="text-slate-500 text-xs">Midjourney · Flux · ChatGPT...</p>
           <div class="absolute bottom-6 right-6 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-midnight transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
         </div>
@@ -294,17 +277,31 @@
     </div>
   </section>
 
-  <!-- Stats -->
+  <!-- Stats Section -->
+
   <section class="py-10 px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-8 text-center"><h3 class="text-5xl font-extrabold text-cyan-400">120+</h3><p class="text-slate-400">Projects shipped</p></div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-8 text-center"><h3 class="text-5xl font-extrabold text-violet-400">48h</h3><p class="text-slate-400">Avg. first delivery</p></div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-8 text-center"><h3 class="text-5xl font-extrabold text-green-400">4.9</h3><p class="text-slate-400">Client rating</p></div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-8 text-center"><h3 class="text-5xl font-extrabold text-pink-400">100%</h3><p class="text-slate-400">On-time delivery</p></div>
+    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2">120+</h3>
+        <p class="text-slate-400 text-sm">Projects shipped</p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-violet-400 mb-2">48h</h3>
+        <p class="text-slate-400 text-sm">Avg. first delivery</p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-green-400 mb-2">4.9</h3>
+        <p class="text-slate-400 text-sm">Client rating</p>
+      </div>
+      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl p-6 md:p-8 text-center shadow-lg">
+        <h3 class="text-4xl md:text-5xl font-extrabold text-pink-400 mb-2">100%</h3>
+        <p class="text-slate-400 text-sm">On-time delivery</p>
+      </div>
     </div>
   </section>
 
   <!-- Testimonials -->
+
   <section class="py-16 px-6 bg-[#0A0F1C] border-y border-white/5">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
@@ -340,93 +337,296 @@
     </div>
   </section>
 
-  <!-- Real Portfolio Section -->
+  <!-- Portfolio -->
+
   <section id="portfolio" class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-layer-group"></i> পোর্টফোলিও</p>
+      <div class="text-center mb-14">
+        <p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-folder-open"></i> WHAT WE'VE BUILT</p>
         <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Recent Works</h2>
-        <p class="text-slate-400">Projects we've delivered with passion</p>
+        <p class="text-slate-400">আমাদের তৈরি real projects — দেখুন ও যাচাই করুন</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Project 1 -->
-        <a href="https://realbadsha.netlify.app" target="_blank" class="group">
-          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/40 transition-all">
-            <div class="relative overflow-hidden h-60">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Real Badsha E-commerce">
-              <div class="absolute top-3 left-3 flex gap-2">
-                <span class="bg-cyan-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full">E-commerce</span>
-                <span class="bg-green-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Live</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-white font-semibold text-lg">Real Badsha E-commerce</h3>
-              <p class="text-slate-400 text-sm mt-1 mb-3">Full-featured online store with payment gateway integration</p>
-              <div class="flex items-center gap-2 text-cyan-400 text-sm font-medium group-hover:gap-3 transition-all">Visit site <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
-            </div>
-          </div>
-        </a>
-        <!-- Project 2 -->
-        <a href="https://mtstudio.netlify.app" target="_blank" class="group">
-          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-violet-500/40 transition-all">
-            <div class="relative overflow-hidden h-60">
-              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="MT Studio Agency Site">
-              <div class="absolute top-3 left-3 flex gap-2">
-                <span class="bg-violet-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full">Agency Site</span>
-                <span class="bg-green-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Live</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-white font-semibold text-lg">MT Studio — Agency Website</h3>
-              <p class="text-slate-400 text-sm mt-1 mb-3">Modern digital agency site with animations & auth system</p>
-              <div class="flex items-center gap-2 text-violet-400 text-sm font-medium group-hover:gap-3 transition-all">Visit site <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
-            </div>
-          </div>
-        </a>
-        <!-- Coming Soon -->
-        <div class="group cursor-pointer" onclick="showSuccessModal('আসছে শীঘ্রই!', 'নতুন প্রজেক্ট যোগ হচ্ছে। আপডেটের জন্য আমাদের Facebook পেজ ফলো করুন।')">
-          <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-all h-full min-h-[280px] flex flex-col">
-            <div class="relative overflow-hidden h-60 bg-gradient-to-br from-[#0A0F1C] to-[#111827] flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-16 h-16 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-plus text-pink-400 text-2xl"></i></div>
-                <p class="text-slate-400 text-sm font-medium">আরও প্রজেক্ট আসছে</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-white font-semibold text-lg">আপনার প্রজেক্ট এখানে?</h3>
-              <p class="text-slate-400 text-sm mt-1 mb-3">আমাদের সাথে কাজ শুরু করুন — আপনার প্রজেক্টও এখানে থাকবে।</p>
-              <div class="flex items-center gap-2 text-pink-400 text-sm font-medium group-hover:gap-3 transition-all">Start a project <i class="fa-solid fa-arrow-right text-xs"></i></div>
-            </div>
+
+```
+    <!-- Project 1 -->
+    <div class="group">
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(249,115,22,0.12)]">
+        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+          <div class="text-center"><i class="fa-solid fa-utensils text-orange-400 text-4xl mb-3"></i><p class="text-white font-bold">ভাত ঘর হোটেল</p></div>
+          <div class="absolute top-4 left-4 bg-orange-500/20 border border-orange-500/40 text-orange-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Restaurant</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-bold text-lg mb-1">ভাত ঘর হোটেল</h3>
+          <p class="text-slate-400 text-sm mb-4">রেস্টুরেন্ট ওয়েবসাইট</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Menu System</span>
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Ramadan Special</span>
           </div>
         </div>
       </div>
-      <div class="text-center mt-12">
-        <a href="https://www.facebook.com/MTstudio2" target="_blank" class="spring-press inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/20 hover:border-white/40 rounded-2xl text-white font-medium transition-all"><i class="fa-brands fa-facebook text-[#1877F2]"></i> Facebook-এ সব কাজ দেখুন</a>
+    </div>
+
+    <!-- Project 2 -->
+    <a href="https://taniyaworld.netlify.app" target="_blank" class="group block">
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(236,72,153,0.12)]">
+        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+          <div class="text-center"><i class="fa-solid fa-lock text-pink-400 text-4xl mb-3"></i><p class="text-white font-bold">Taniya's World</p></div>
+          <div class="absolute top-4 left-4 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-bold text-lg mb-1">Taniya's World</h3>
+          <p class="text-slate-400 text-sm mb-4">Private Access Web App</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Password Lock</span>
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Personal App</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Project 3 -->
+    <a href="https://realbadsha.netlify.app" target="_blank" class="group block">
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]">
+        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+          <div class="text-center"><i class="fa-solid fa-lock text-cyan-400 text-4xl mb-3"></i><p class="text-white font-bold">বাদশার নিজস্ব দুনিয়া</p></div>
+          <div class="absolute top-4 left-4 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-bold text-lg mb-1">Real Badsha</h3>
+          <p class="text-slate-400 text-sm mb-4">বাদশার নিজস্ব দুনিয়া</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Private Access</span>
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Web App</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Project 4 -->
+    <a href="https://house612e4.netlify.app" target="_blank" class="group block">
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]">
+        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+          <div class="text-center"><i class="fa-solid fa-building text-emerald-400 text-4xl mb-3"></i><p class="text-white font-bold">৬১২ বাসা ম্যানেজমেন্ট</p></div>
+          <div class="absolute top-4 left-4 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-bold text-lg mb-1">৬১২ বাসা ম্যানেজমেন্ট</h3>
+          <p class="text-slate-400 text-sm mb-4">হিসাব-নিকাশ ওয়েব অ্যাপ</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Bill Tracker</span>
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Bangla UI</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Project 5 -->
+    <a href="https://amaderhisab.netlify.app" target="_blank" class="group block">
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.12)]">
+        <div class="relative overflow-hidden h-60 bg-[#0A0F1C] flex items-center justify-center">
+          <div class="text-center"><i class="fa-solid fa-calculator text-blue-400 text-4xl mb-3"></i><p class="text-white font-bold">ডিজিটাল হিসাব</p></div>
+          <div class="absolute top-4 left-4 bg-blue-500/20 border border-blue-500/40 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Live ↗</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-bold text-lg mb-1">ডিজিটাল হিসাব</h3>
+          <p class="text-slate-400 text-sm mb-4">Powered by Mahsin</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Expense Tracker</span>
+            <span class="text-[10px] bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full">Shopping List</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- More Coming -->
+    <div class="group cursor-default">
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-dashed border-white/10 hover:border-white/20 transition-all duration-300 h-full min-h-[300px] flex items-center justify-center">
+        <div class="text-center p-8">
+          <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-plus text-slate-500 text-2xl"></i></div>
+          <p class="text-slate-400 font-medium mb-2">আরও প্রজেক্ট আসছে</p>
+          <p class="text-slate-600 text-sm">আপনার প্রজেক্ট এখানে থাকতে পারে</p>
+          <button onclick="toggleModal(true)" class="mt-5 spring-press text-xs bg-white/5 border border-white/10 hover:border-cyan-500/30 text-slate-400 hover:text-cyan-400 px-4 py-2 rounded-full transition-all">শুরু করুন →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- Contact Section -->
+
+  <section id="contact" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-pink-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase">যোগাযোগ করুন</p>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">আমাদের সাথে কথা বলুন</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">প্রজেক্ট, দাম, বা যেকোনো প্রশ্নে সরাসরি যোগাযোগ করুন — ২৪ ঘণ্টার মধ্যে রিপ্লাই দেওয়া হয়।</p>
+      </div>
+      <div class="grid md:grid-cols-5 gap-8 items-start">
+        <div class="md:col-span-2 flex flex-col gap-4">
+          <a href="https://wa.me/19174199814?text=Hello%20MT%20Studio%2C%20I%20need%20help%20with%20my%20project" target="_blank"
+             class="group flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-green-500/40 rounded-2xl p-5 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center shrink-0 group-hover:bg-green-500/20 transition-colors"><i class="fa-brands fa-whatsapp text-green-400 text-2xl"></i></div>
+            <div><p class="text-white font-semibold text-sm">WhatsApp</p><p class="text-slate-400 text-xs mt-0.5">+1 (917) 419-9814</p></div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-green-400 transition ml-auto text-sm"></i>
+          </a>
+          <a href="mailto:studiomt46@gmail.com?subject=Project Inquiry — MT Studio"
+             class="group flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-cyan-500/40 rounded-2xl p-5 transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.1)]">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors"><i class="fa-solid fa-envelope text-cyan-400 text-xl"></i></div>
+            <div><p class="text-white font-semibold text-sm">Email</p><p class="text-slate-400 text-xs mt-0.5">studiomt46@gmail.com</p></div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-cyan-400 transition ml-auto text-sm"></i>
+          </a>
+          <a href="https://m.me/MTstudio2" target="_blank"
+             class="group flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-blue-500/40 rounded-2xl p-5 transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-colors"><i class="fa-brands fa-facebook-messenger text-blue-400 text-xl"></i></div>
+            <div><p class="text-white font-semibold text-sm">Messenger</p><p class="text-slate-400 text-xs mt-0.5">Facebook-এ চ্যাট করুন</p></div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-blue-400 transition ml-auto text-sm"></i>
+          </a>
+          <div class="bg-gradient-to-br from-cyan-500/10 to-violet-500/10 border border-white/10 rounded-2xl p-5 mt-2">
+            <div class="flex items-center gap-2 mb-3"><div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div><p class="text-green-300 text-xs font-semibold uppercase tracking-widest">সাড়া দেওয়ার সময়</p></div>
+            <p class="text-slate-300 text-sm leading-relaxed">WhatsApp ও Messenger-এ সাধারণত <span class="text-white font-semibold">১ ঘণ্টার মধ্যে</span> রিপ্লাই। Email-এ সর্বোচ্চ <span class="text-white font-semibold">২৪ ঘণ্টা।</span></p>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <div class="bg-[#111827] border border-white/10 rounded-3xl p-8">
+            <h3 class="text-white font-bold text-xl mb-6 flex items-center gap-2"><i class="fa-solid fa-paper-plane text-cyan-400 text-sm"></i> মেসেজ পাঠান</h3>
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">আপনার নাম *</label>
+                  <input type="text" required placeholder="মো. রাফিকুল ইসলাম" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition text-sm">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">ফোন / WhatsApp *</label>
+                  <input type="tel" required placeholder="+880 1XXX-XXXXXX" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition text-sm">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Email</label>
+                <input type="email" placeholder="your@email.com" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition text-sm">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">আপনার সার্ভিস *</label>
+                <div class="relative">
+                  <select required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white focus:outline-none focus:ring-1 focus:ring-cyan-500 appearance-none text-sm">
+                    <option value="" disabled selected>সার্ভিস বেছে নিন...</option>
+                    <option>ওয়েবসাইট বানাতে চাই</option>
+                    <option>মোবাইল অ্যাপ বানাতে চাই</option>
+                    <option>UI/UX ডিজাইন দরকার</option>
+                    <option>Facebook Page Fix করতে চাই</option>
+                    <option>ভিডিও / ফটো এডিটিং</option>
+                    <option>AI Prompt দরকার</option>
+                    <option>অন্য কিছু</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400"><i class="fa-solid fa-chevron-down text-xs"></i></div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">আপনার মেসেজ *</label>
+                <textarea required rows="4" placeholder="আপনার প্রজেক্ট বা প্রশ্নের বিস্তারিত লিখুন..." class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition text-sm resize-none"></textarea>
+              </div>
+              <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane text-sm"></i> মেসেজ পাঠান
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+
+  <section id="faq" class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase">সাধারণ প্রশ্ন</p>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">FAQ</h2>
+        <p class="text-slate-400">সবচেয়ে বেশি জিজ্ঞেস করা প্রশ্নের উত্তর</p>
+      </div>
+      <div class="space-y-3" id="faqContainer">
+        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left"><span class="text-white font-semibold text-base pr-4">সার্ভিসের দাম কত?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button>
+          <div class="faq-answer hidden px-6 pb-6"><p class="text-slate-400 text-sm leading-relaxed">এখন সব সার্ভিস <span class="text-cyan-400 font-semibold">সম্পূর্ণ বিনামূল্যে</span> পাওয়া যাচ্ছে (Limited Offer)। পরবর্তীতে Starter Package ৳৫,০০০ এবং Professional Package ৳১৫,০০০ থেকে শুরু হবে।</p></div>
+        </div>
+        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left"><span class="text-white font-semibold text-base pr-4">ওয়েবসাইট বানাতে কতদিন সময় লাগে?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button>
+          <div class="faq-answer hidden px-6 pb-6"><p class="text-slate-400 text-sm leading-relaxed">সাধারণ ওয়েবসাইট <span class="text-white font-semibold">৪৮ ঘণ্টার মধ্যে</span> ডেলিভারি দেওয়া হয়। কাস্টম প্রজেক্টের জন্য ৩–৭ দিন সময় লাগতে পারে।</p></div>
+        </div>
+        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left"><span class="text-white font-semibold text-base pr-4">Facebook Page কীভাবে ফিক্স করেন?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button>
+          <div class="faq-answer hidden px-6 pb-6"><p class="text-slate-400 text-sm leading-relaxed">Facebook-এর অফিসিয়াল review process-এর মাধ্যমে কাজ করি। বেশিরভাগ ক্ষেত্রে <span class="text-white font-semibold">২৪ ঘণ্টার মধ্যে</span> সমাধান দেওয়া সম্ভব।</p></div>
+        </div>
+        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left"><span class="text-white font-semibold text-base pr-4">কাজ শুরু করার প্রক্রিয়া কী?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <ol class="text-slate-400 text-sm leading-relaxed space-y-2">
+              <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold shrink-0">১.</span> WhatsApp বা Messenger-এ যোগাযোগ করুন।</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold shrink-0">২.</span> প্রজেক্টের বিস্তারিত শেয়ার করুন।</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold shrink-0">৩.</span> পরিকল্পনা ও সময়সীমা জানিয়ে দেওয়া হবে।</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold shrink-0">৪.</span> কাজ শুরু ও নির্ধারিত সময়ে ডেলিভারি।</li>
+            </ol>
+          </div>
+        </div>
+        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left"><span class="text-white font-semibold text-base pr-4">ডেলিভারির পরে সাপোর্ট পাওয়া যাবে?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button>
+          <div class="faq-answer hidden px-6 pb-6"><p class="text-slate-400 text-sm leading-relaxed">Professional Package-এ <span class="text-white font-semibold">২ সপ্তাহ বিনামূল্যে সাপোর্ট</span> অন্তর্ভুক্ত। এরপরেও Messenger ও WhatsApp-এ সাহায্য করা হয়।</p></div>
+        </div>
+      </div>
+      <div class="mt-10 text-center bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-white/10 rounded-2xl p-8">
+        <p class="text-white font-semibold mb-2">আরও প্রশ্ন আছে?</p>
+        <p class="text-slate-400 text-sm mb-5">সরাসরি আমাদের সাথে কথা বলুন।</p>
+        <a href="https://m.me/MTstudio2" target="_blank" class="spring-press inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-bold px-6 py-3 rounded-xl transition">
+          <i class="fa-brands fa-facebook-messenger"></i> Messenger-এ জিজ্ঞেস করুন
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Coming Soon -->
+
+  <section id="blog" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[20rem] bg-violet-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-6 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-rss"></i> Blog & Resources</p>
+      <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(139,92,246,0.2)]">
+        <i class="fa-solid fa-pen-to-square text-violet-400 text-3xl"></i>
+      </div>
+      <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+        Blog <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">Coming Soon</span>
+      </h2>
+      <p class="text-slate-400 text-lg mb-10 leading-relaxed max-w-xl mx-auto">ওয়েবসাইট, অ্যাপ, AI, এবং ডিজিটাল মার্কেটিং নিয়ে টিপস ও গাইড শীঘ্রই প্রকাশিত হবে।</p>
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-solid fa-globe text-cyan-400 mr-1.5"></i> ওয়েব ডেভেলপমেন্ট</span>
+        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-brands fa-facebook text-blue-400 mr-1.5"></i> Facebook Tips</span>
+        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-solid fa-robot text-pink-400 mr-1.5"></i> AI Tools</span>
+        <span class="bg-white/5 border border-white/10 text-slate-400 text-xs font-medium px-4 py-2 rounded-full"><i class="fa-solid fa-mobile-screen text-violet-400 mr-1.5"></i> App Building</span>
+      </div>
+      <div class="bg-[#111827] border border-white/10 rounded-2xl p-6 max-w-md mx-auto">
+        <p class="text-white font-semibold mb-1">নোটিফিকেশন পেতে চান?</p>
+        <p class="text-slate-500 text-sm mb-5">নতুন পোস্ট প্রকাশ হলে সবার আগে জানতে আমাদের Facebook Page ফলো করুন।</p>
+        <a href="https://www.facebook.com/MTstudio2" target="_blank" class="spring-press inline-flex items-center justify-center gap-2 w-full bg-[#1877F2] hover:bg-[#166FE5] text-white font-bold py-3.5 rounded-xl transition shadow-[0_0_20px_rgba(24,119,242,0.3)]">
+          <i class="fa-brands fa-facebook-f"></i> Facebook Page ফলো করুন
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Packages -->
+
   <section id="pricing" class="py-16 px-6">
     <div class="max-w-5xl mx-auto">
-      <div class="flex items-center gap-4 mb-4">
-        <div class="w-6 h-px bg-pink-500"></div>
-        <p class="text-slate-400 text-xs tracking-[0.2em] font-semibold uppercase">PACKAGES</p>
-      </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-12 free-promo-element">
-        Limited offer — <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">100% off.</span>
-      </h2>
+      <div class="flex items-center gap-4 mb-4"><div class="w-6 h-px bg-pink-500"></div><p class="text-slate-400 text-xs tracking-[0.2em] font-semibold uppercase">PACKAGES</p></div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-12">Limited offer — <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">100% off.</span></h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <!-- Starter Package -->
-        <div class="bg-[#0A0F1C] border border-white/5 rounded-3xl p-8 relative overflow-hidden group shadow-xl">
+        <div class="bg-[#0A0F1C] border border-white/5 rounded-3xl p-8 relative overflow-hidden shadow-xl">
           <p class="text-slate-400 text-sm mb-1">স্টার্টার</p>
           <h3 class="text-3xl font-bold text-white mb-6">Starter</h3>
-          <div class="mb-8">
-            <div class="hidden-price-block hidden mb-2"><span class="text-slate-500 text-2xl line-through decoration-pink-500 decoration-2 font-semibold">৳ ৫০০০</span></div>
-            <div class="flex items-end gap-2"><span class="dynamic-price text-5xl font-extrabold text-cyan-400" data-price="৳ ৫০০০">FREE</span><span class="regular-price text-slate-400 text-sm pb-1">for now</span></div>
-          </div>
+          <div class="mb-8"><div class="flex items-end gap-2"><span class="text-5xl font-extrabold text-cyan-400">FREE</span><span class="text-slate-400 text-sm pb-1">for now</span></div></div>
           <p class="text-slate-300 mb-6 pb-4 border-b border-white/5">Get online — fast.</p>
           <ul class="space-y-4 mb-10">
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> Basic page setup</li>
@@ -434,17 +634,13 @@
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> 3 social posts</li>
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> Logo & brand colors</li>
           </ul>
-          <button onclick="handlePackageClick('Starter', '50.00')" class="spring-press w-full py-4 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-bold transition-all flex items-center justify-between px-6">Claim package <i class="fa-solid fa-arrow-right"></i></button>
+          <button onclick="handlePackageClick('Starter')" class="spring-press w-full py-4 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-bold transition-all flex items-center justify-between px-6">Claim package <i class="fa-solid fa-arrow-right"></i></button>
         </div>
-        <!-- Professional Package -->
-        <div class="bg-gradient-to-b from-[#111827] to-[#0A0F1C] border border-violet-500/30 rounded-3xl p-8 relative overflow-hidden group shadow-[0_0_30px_rgba(139,92,246,0.1)]">
+        <div class="bg-gradient-to-b from-[#111827] to-[#0A0F1C] border border-violet-500/30 rounded-3xl p-8 relative overflow-hidden shadow-[0_0_30px_rgba(139,92,246,0.1)]">
           <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none"></div>
           <p class="text-slate-400 text-sm mb-1">প্রফেশনাল</p>
           <h3 class="text-3xl font-bold text-white mb-6">Professional</h3>
-          <div class="mb-8">
-            <div class="hidden-price-block hidden mb-2"><span class="text-slate-500 text-2xl line-through decoration-pink-500 decoration-2 font-semibold">৳ ১৫০০০</span></div>
-            <div class="flex items-end gap-2"><span class="dynamic-price text-5xl font-extrabold text-violet-400" data-price="৳ ১৫০০০">FREE</span><span class="regular-price text-slate-400 text-sm pb-1">for now</span></div>
-          </div>
+          <div class="mb-8"><div class="flex items-end gap-2"><span class="text-5xl font-extrabold text-violet-400">FREE</span><span class="text-slate-400 text-sm pb-1">for now</span></div></div>
           <p class="text-slate-300 mb-6 pb-4 border-b border-white/5">For serious brands.</p>
           <ul class="space-y-4 mb-10">
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> 5-page custom website</li>
@@ -453,128 +649,18 @@
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> On-page SEO setup</li>
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-violet-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-violet-400 text-[10px]"></i></div> 2 weeks of support</li>
           </ul>
-          <button onclick="handlePackageClick('Professional', '150.00')" class="spring-press w-full py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all flex items-center justify-between px-6 shadow-lg">Claim package <i class="fa-solid fa-arrow-right"></i></button>
+          <button onclick="handlePackageClick('Professional')" class="spring-press w-full py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all flex items-center justify-between px-6 shadow-lg">Claim package <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form Section -->
-  <section id="contact" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-paper-plane"></i> যোগাযোগ করুন</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">আপনার প্রজেক্ট শুরু করুন</h2>
-        <p class="text-slate-400 max-w-xl mx-auto">আমাদের সাথে যোগাযোগ করুন — ২৪ ঘণ্টার মধ্যে রিপ্লাই পাবেন।</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-10 items-start">
-        <div class="space-y-5">
-          <a href="https://m.me/MTstudio2" target="_blank" class="bg-[#111827] border border-white/10 rounded-2xl p-6 flex items-center gap-4 hover:border-cyan-500/40 transition group block">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition"><i class="fa-brands fa-facebook-messenger text-cyan-400 text-xl"></i></div>
-            <div><p class="text-white font-semibold">Facebook Messenger</p><p class="text-cyan-400 text-sm">m.me/MTstudio2</p></div>
-            <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-cyan-400 transition ml-auto text-sm"></i>
-          </a>
-          <a href="mailto:studiomt46@gmail.com" class="bg-[#111827] border border-white/10 rounded-2xl p-6 flex items-center gap-4 hover:border-violet-500/40 transition group block">
-            <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center shrink-0 group-hover:bg-violet-500/20 transition"><i class="fa-solid fa-envelope text-violet-400 text-xl"></i></div>
-            <div><p class="text-white font-semibold">Email</p><p class="text-violet-400 text-sm">studiomt46@gmail.com</p></div>
-            <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-violet-400 transition ml-auto text-sm"></i>
-          </a>
-          <a href="https://www.youtube.com/@MTStudio_2" target="_blank" class="bg-[#111827] border border-white/10 rounded-2xl p-6 flex items-center gap-4 hover:border-red-500/40 transition group block">
-            <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0 group-hover:bg-red-500/20 transition"><i class="fa-brands fa-youtube text-red-400 text-xl"></i></div>
-            <div><p class="text-white font-semibold">YouTube</p><p class="text-red-400 text-sm">@MTStudio_2</p></div>
-            <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 group-hover:text-red-400 transition ml-auto text-sm"></i>
-          </a>
-          <div class="bg-gradient-to-r from-cyan-500/10 to-violet-500/10 border border-cyan-500/20 rounded-2xl p-5">
-            <p class="text-white font-semibold mb-1 flex items-center gap-2 text-sm"><i class="fa-solid fa-clock text-cyan-400"></i> Response Time</p>
-            <p class="text-slate-300 text-sm">সাধারণত <span class="text-cyan-400 font-bold">২–৬ ঘণ্টার</span> মধ্যে রিপ্লাই করা হয়।</p>
-          </div>
-        </div>
-        <div class="bg-[#111827] border border-white/10 rounded-3xl p-8">
-          <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-5">
-            <div class="grid grid-cols-2 gap-4">
-              <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">আপনার নাম *</label><input type="text" required placeholder="নাম লিখুন" class="w-full px-4 py-3 rounded-xl border border-white/5 bg-[#0A0F1C] text-white focus:ring-1 focus:ring-cyan-500/30 text-sm"></div>
-              <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">ফোন / Email *</label><input type="text" required placeholder="01XXXXXXXXX" class="w-full px-4 py-3 rounded-xl border border-white/5 bg-[#0A0F1C] text-white focus:ring-1 focus:ring-cyan-500/30 text-sm"></div>
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">সার্ভিস *</label>
-              <div class="relative"><select required class="w-full px-4 py-3 rounded-xl border border-white/5 bg-[#0A0F1C] text-white appearance-none text-sm"><option value="" disabled selected>কোন সার্ভিস দরকার?</option><option>🌐 Web App Development</option><option>📱 Mobile App Build</option><option>🎨 UI / UX Design</option><option>🛡️ Profile Fix / Recovery</option><option>🎬 Video & Photo Editing</option><option>🤖 AI Prompts</option><option>📦 Full Package</option></select><div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400"><i class="fa-solid fa-chevron-down text-xs"></i></div></div>
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">বাজেট</label>
-              <div class="relative"><select class="w-full px-4 py-3 rounded-xl border border-white/5 bg-[#0A0F1C] text-white appearance-none text-sm"><option value="" disabled selected>বাজেট রেঞ্জ বেছে নিন</option><option>৳ ৫০০ – ৳ ২,০০০</option><option>৳ ২,০০০ – ৳ ৫,০০০</option><option>৳ ৫,০০০ – ৳ ১৫,০০০</option><option>৳ ১৫,০০০+ (Custom)</option></select><div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400"><i class="fa-solid fa-chevron-down text-xs"></i></div></div>
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">প্রজেক্টের বিবরণ *</label>
-              <textarea required rows="4" placeholder="আপনার প্রজেক্ট সম্পর্কে বলুন..." class="w-full px-4 py-3 rounded-xl border border-white/5 bg-[#0A0F1C] text-white resize-none text-sm"></textarea>
-            </div>
-            <button type="submit" class="spring-press w-full py-4 rounded-xl bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2"><i class="fa-solid fa-paper-plane"></i> মেসেজ পাঠান</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- CTA -->
 
-  <!-- FAQ SECTION -->
-  <section id="faq" class="py-20 px-6">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-circle-question"></i> সাধারণ প্রশ্ন</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">আপনার মনের প্রশ্ন</h2>
-        <p class="text-slate-400">যা জানতে চান তার বেশিরভাগ উত্তর এখানে আছে।</p>
-      </div>
-      <div class="space-y-3">
-        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4"><span class="text-white font-semibold text-sm md:text-base">এখন কি সব সার্ভিস সত্যিই ফ্রি?</span><i class="fa-solid fa-plus text-cyan-400 shrink-0 transition-transform duration-300"></i></button>
-          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">হ্যাঁ! বর্তমানে MT Studio একটি সীমিত সময়ের ফ্রি অফার চালাচ্ছে। Starter এবং Professional উভয় প্যাকেজই এখন সম্পূর্ণ বিনামূল্যে।</div>
-        </div>
-        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4"><span class="text-white font-semibold text-sm md:text-base">একটি ওয়েবসাইট তৈরি করতে কতদিন লাগে?</span><i class="fa-solid fa-plus text-cyan-400 shrink-0 transition-transform duration-300"></i></button>
-          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">সাধারণ ওয়েবসাইট ৪৮ ঘণ্টার মধ্যে ডেলিভারি দেওয়া হয়। কাস্টম ওয়েব অ্যাপ বা জটিল প্রজেক্টের ক্ষেত্রে ৭–১৪ দিন সময় লাগতে পারে।</div>
-        </div>
-        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4"><span class="text-white font-semibold text-sm md:text-base">মোবাইল অ্যাপ কি Play Store / App Store-এ দেওয়া যাবে?</span><i class="fa-solid fa-plus text-cyan-400 shrink-0 transition-transform duration-300"></i></button>
-          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">হ্যাঁ! আমরা Google Play Store এবং Apple App Store উভয়ের জন্য অ্যাপ তৈরি ও সাবমিট করতে পারি।</div>
-        </div>
-        <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4"><span class="text-white font-semibold text-sm md:text-base">পেমেন্ট কিভাবে করতে হবে?</span><i class="fa-solid fa-plus text-cyan-400 shrink-0 transition-transform duration-300"></i></button>
-          <div class="faq-answer hidden px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">bKash, Nagad, Rocket এবং PayPal-এর মাধ্যমে পেমেন্ট করা যায়।</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG / RESOURCES SECTION -->
-  <section id="blog" class="py-20 px-6 bg-[#0A0F1C] border-y border-white/5">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-pink-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center justify-center gap-2"><i class="fa-solid fa-book-open"></i> রিসোর্স</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Tips & Resources</h2>
-        <p class="text-slate-400">ডিজিটাল দুনিয়ায় এগিয়ে থাকতে কিছু কাজের লেখা।</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <article class="group bg-[#111827] border border-white/10 hover:border-cyan-500/30 rounded-3xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="openBlogPost('web-tips')">
-          <div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute top-4 left-4"><span class="bg-cyan-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Web Dev</span></div></div>
-          <div class="p-6"><p class="text-slate-500 text-xs mb-3 flex items-center gap-2"><i class="fa-regular fa-clock"></i> ৫ মিনিট পড়া</p><h3 class="text-white font-bold text-lg mb-2 group-hover:text-cyan-400 transition leading-tight">একটি ভালো ওয়েবসাইটের ৭টি অপরিহার্য বৈশিষ্ট্য</h3><p class="text-slate-400 text-sm line-clamp-2">স্পিড, ডিজাইন, SEO — কোনটা বেশি গুরুত্বপূর্ণ? জানুন একটি কনভার্টিং ওয়েবসাইটের মূল উপাদানগুলো।</p></div>
-        </article>
-        <article class="group bg-[#111827] border border-white/10 hover:border-violet-500/30 rounded-3xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="openBlogPost('fb-recovery')">
-          <div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute top-4 left-4"><span class="bg-violet-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Social Media</span></div></div>
-          <div class="p-6"><p class="text-slate-500 text-xs mb-3 flex items-center gap-2"><i class="fa-regular fa-clock"></i> ৩ মিনিট পড়া</p><h3 class="text-white font-bold text-lg mb-2 group-hover:text-violet-400 transition leading-tight">Facebook পেজ Restricted হলে কী করবেন?</h3><p class="text-slate-400 text-sm line-clamp-2">পেজ রিস্ট্রিক্টেড হওয়ার কারণ ও দ্রুত সমাধানের ধাপে ধাপে গাইড।</p></div>
-        </article>
-        <article class="group bg-[#111827] border border-white/10 hover:border-pink-500/30 rounded-3xl overflow-hidden transition-all duration-300 cursor-pointer" onclick="openBlogPost('ai-prompts')">
-          <div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"><div class="absolute top-4 left-4"><span class="bg-pink-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">AI</span></div></div>
-          <div class="p-6"><p class="text-slate-500 text-xs mb-3 flex items-center gap-2"><i class="fa-regular fa-clock"></i> ৭ মিনিট পড়া</p><h3 class="text-white font-bold text-lg mb-2 group-hover:text-pink-400 transition leading-tight">Midjourney দিয়ে প্রফেশনাল লোগো বানানোর গাইড</h3><p class="text-slate-400 text-sm line-clamp-2">সঠিক prompt লিখলে AI দিয়ে মিনিটেই অসাধারণ লোগো তৈরি করা সম্ভব।</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Giant CTA Box -->
   <section class="py-16 px-6 mb-10">
     <div class="max-w-5xl mx-auto">
       <div class="rounded-3xl p-10 md:p-16 bg-gradient-to-br from-cyan-400 via-violet-500 to-pink-500 relative overflow-hidden shadow-2xl text-midnight">
-        <p class="font-bold tracking-[0.2em] text-sm uppercase mb-6 flex justify-between items-center opacity-80">
-          READY? <i class="fa-solid fa-sparkles text-xl"></i>
-        </p>
+        <p class="font-bold tracking-[0.2em] text-sm uppercase mb-6 flex justify-between items-center opacity-80">READY? <i class="fa-solid fa-sparkles text-xl"></i></p>
         <h2 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">Let's build your<br>next big thing.</h2>
         <p class="font-medium text-lg md:text-xl mb-10 opacity-90">আজই সাইন আপ করুন — সব সার্ভিস এখন ফ্রি।</p>
         <button onclick="toggleModal(true)" class="spring-press bg-midnight text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center gap-3 shadow-xl w-fit">
@@ -584,7 +670,8 @@
     </div>
   </section>
 
-  <!-- Mega Footer -->
+  <!-- Footer -->
+
   <footer class="border-t border-white/10 pt-20 pb-10 px-6 bg-[#03060D] relative z-10">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12 mb-16">
@@ -597,118 +684,70 @@
             </div>
           </div>
           <div class="flex items-center gap-4 mb-8">
-            <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(24,119,242,0.6)] hover:shadow-[0_0_25px_rgba(24,119,242,1)] hover:scale-110 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white shadow-[0_0_15px_rgba(228,64,95,0.6)] hover:shadow-[0_0_25px_rgba(228,64,95,1)] hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(10,102,194,0.6)] hover:shadow-[0_0_25px_rgba(10,102,194,1)] hover:scale-110 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] hover:scale-110 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.youtube.com/@MTStudio_2" target="_blank" class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,0,0,0.6)] hover:shadow-[0_0_25px_rgba(255,0,0,1)] hover:scale-110 transition-all"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(24,119,242,0.6)] hover:scale-110 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black hover:scale-110 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@MTStudio_2" target="_blank" class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
         <div class="col-span-1">
           <h4 class="text-white font-semibold mb-6 text-sm">Use cases</h4>
           <ul class="space-y-4 text-sm text-slate-400 font-medium">
             <li><a href="#" onclick="openServiceDetails('web'); return false;" class="hover:text-cyan-400 transition">Web Applications</a></li>
-            <li><a href="#" onclick="openServiceDetails('mobile'); return false;" class="hover:text-cyan-400 transition">iOS & Android Build</a></li>
+            <li><a href="#" onclick="openServiceDetails('mobile'); return false;" class="hover:text-cyan-400 transition">iOS & Android</a></li>
             <li><a href="#" onclick="openServiceDetails('design'); return false;" class="hover:text-cyan-400 transition">Product Design</a></li>
             <li><a href="#" onclick="openServiceDetails('ai'); return false;" class="hover:text-cyan-400 transition">AI Automation</a></li>
-            <li><a href="#" onclick="openServiceDetails('video'); return false;" class="hover:text-cyan-400 transition">Content Creation</a></li>
             <li><a href="#" onclick="openServiceDetails('profile'); return false;" class="hover:text-cyan-400 transition">Profile Recovery</a></li>
           </ul>
-        </div>
-        <div class="col-span-1 flex flex-col gap-10">
-          <div>
-            <h4 class="text-white font-semibold mb-6 text-sm">Industries</h4>
-            <ul class="space-y-4 text-sm text-slate-400 font-medium">
-              <li><a href="#" class="hover:text-white transition">E-commerce</a></li>
-              <li><a href="#" class="hover:text-white transition">SaaS Startups</a></li>
-              <li><a href="#" class="hover:text-white transition">Digital Agencies</a></li>
-              <li><a href="#" class="hover:text-white transition">Influencers</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold mb-6 text-sm">Compare</h4>
-            <ul class="space-y-4 text-sm text-slate-400 font-medium">
-              <li><a href="#" class="hover:text-white transition">MT vs Freelancers</a></li>
-              <li><a href="#" class="hover:text-white transition">MT vs Other Agencies</a></li>
-            </ul>
-          </div>
         </div>
         <div class="col-span-1">
           <h4 class="text-white font-semibold mb-6 text-sm">Company</h4>
           <ul class="space-y-4 text-sm text-slate-400 font-medium">
-            <li><a href="#" class="hover:text-white transition">About Us</a></li>
             <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
-            <li><a href="#" class="hover:text-white transition">Careers</a></li>
-            <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
             <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+            <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
+            <li><a href="#contact" class="hover:text-white transition">Contact Us</a></li>
           </ul>
         </div>
-        <div class="col-span-1 flex flex-col gap-10">
-          <div>
-            <h4 class="text-white font-semibold mb-6 text-sm">Partners</h4>
-            <ul class="space-y-4 text-sm text-slate-400 font-medium">
-              <li><a href="#" class="hover:text-white transition">Affiliate Program</a></li>
-              <li><a href="#" class="hover:text-white transition">Agency Partners</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold mb-6 text-sm">Support</h4>
-            <ul class="space-y-4 text-sm text-slate-400 font-medium">
-              <li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Contact Us</a></li>
-              <li><a href="#contact" class="hover:text-white transition">Send Message</a></li>
-              <li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">studiomt46@gmail.com</a></li>
-            </ul>
-          </div>
+        <div class="col-span-1">
+          <h4 class="text-white font-semibold mb-6 text-sm">Support</h4>
+          <ul class="space-y-4 text-sm text-slate-400 font-medium">
+            <li><a href="https://wa.me/19174199814" target="_blank" class="hover:text-white transition">WhatsApp</a></li>
+            <li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Messenger</a></li>
+            <li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">Email</a></li>
+          </ul>
         </div>
       </div>
       <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 pb-20 md:pb-0">
-        <div class="w-full md:w-auto flex items-center gap-4">
-          <div class="relative inline-block text-left w-40">
-            <select class="block appearance-none w-full bg-[#0A0F1C] border border-white/10 text-white py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:border-cyan-500 text-sm">
-              <option>English</option>
-              <option>Bengali</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
-              <i class="fa-solid fa-chevron-down text-xs"></i>
-            </div>
-          </div>
-          <span class="text-slate-500 text-xs hidden md:inline">© 2026 MT Studio Inc.</span>
-        </div>
-        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-medium text-slate-500 w-full md:w-auto">
-          <a href="#" class="hover:text-white transition">Trust</a>
+        <span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span>
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-medium text-slate-500">
           <a href="#" class="hover:text-white transition">Privacy</a>
           <a href="#" class="hover:text-white transition">Terms of use</a>
-          <a href="#" class="hover:text-white transition">Legal notices</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- LIVE CHAT WIDGET & DRAGGABLE FAB -->
+  <!-- Live Chat Widget -->
+
   <div id="draggable-wrapper" class="fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-4" style="transform: translate3d(0px, 0px, 0px);">
     <div id="chatWidget" class="hidden flex-col bg-[#0B1121]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] transform translate-y-4 opacity-0 transition-all duration-300 origin-bottom-right w-[320px] sm:w-[360px] overflow-hidden">
       <div class="bg-gradient-to-r from-cyan-600 to-violet-600 p-4 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-midnight flex items-center justify-center font-['Dancing_Script'] font-bold text-white text-lg">MT</div>
-              <div>
-                  <h4 class="text-white text-sm font-bold leading-tight">MT Studio Support</h4>
-                  <p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online • Typically replies instantly</p>
-              </div>
-          </div>
-          <button onclick="toggleSupportChat()" class="text-white/80 hover:text-white transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-midnight flex items-center justify-center font-['Dancing_Script'] font-bold text-white text-lg">MT</div>
+          <div><h4 class="text-white text-sm font-bold leading-tight">MT Studio Support</h4><p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online • Typically replies instantly</p></div>
+        </div>
+        <button onclick="toggleSupportChat()" class="text-white/80 hover:text-white transition"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
       <div id="chatMessages" class="p-4 h-64 overflow-y-auto flex flex-col gap-3 bg-[#0A0F1C]/50">
-          <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12">
-              হ্যালো! MT Studio তে স্বাগতম। আপনার প্রোজেক্ট নিয়ে কোনো প্রশ্ন থাকলে এখানে সরাসরি চ্যাট করতে পারেন।
-          </div>
+        <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12">হ্যালো! MT Studio তে স্বাগতম। আপনার প্রোজেক্ট নিয়ে কোনো প্রশ্ন থাকলে এখানে সরাসরি চ্যাট করতে পারেন।</div>
       </div>
       <div class="p-3 border-t border-white/10 bg-[#050B14]">
-          <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
-              <input type="text" id="chatInput" class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition" placeholder="Write a message..." required autocomplete="off">
-              <button type="submit" class="w-10 h-10 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white flex items-center justify-center transition shadow-lg shrink-0">
-                  <i class="fa-solid fa-paper-plane text-sm -ml-1"></i>
-              </button>
-          </form>
+        <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+          <input type="text" id="chatInput" class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition" placeholder="Write a message..." required autocomplete="off">
+          <button type="submit" class="w-10 h-10 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white flex items-center justify-center transition shadow-lg shrink-0"><i class="fa-solid fa-paper-plane text-sm -ml-1"></i></button>
+        </form>
       </div>
     </div>
     <button id="fab-button" class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-violet-600 p-[2px] shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-shadow relative group cursor-grab">
@@ -716,117 +755,80 @@
         <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-violet-600/20"></div>
         <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-3xl font-['Dancing_Script'] tracking-wider relative z-10 pt-1">MT</span>
       </div>
-      <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-midnight text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-lg">
-        Live Chat
-      </div>
+      <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-midnight text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-lg">Live Chat</div>
     </button>
   </div>
 
-  <!-- SERVICE DETAILS MODAL -->
+  <!-- Service Details Modal -->
+
   <div id="serviceDetailsModal" class="fixed inset-0 z-[105] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
-    <button onclick="closeServiceDetails()" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[106]">
-      <i class="fa-solid fa-xmark text-xl"></i>
-    </button>
+    <button onclick="closeServiceDetails()" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[106]"><i class="fa-solid fa-xmark text-xl"></i></button>
     <div class="w-full max-w-4xl relative transform scale-95 transition-transform duration-300 my-10 flex flex-col">
       <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <div class="p-8 md:p-10 border-b border-white/5 relative overflow-hidden">
-            <div id="sdBgGlow" class="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="flex items-center gap-5 relative z-10">
-                <div id="sdIconWrapper" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl">
-                    <i id="sdIcon" class="fa-solid"></i>
-                </div>
-                <div>
-                    <h2 id="sdTitle" class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">Service Title</h2>
-                    <p id="sdSubtitle" class="text-slate-400">সার্ভিসের সাবটাইটেল</p>
-                </div>
-            </div>
+          <div id="sdBgGlow" class="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="flex items-center gap-5 relative z-10">
+            <div id="sdIconWrapper" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl"><i id="sdIcon" class="fa-solid"></i></div>
+            <div><h2 id="sdTitle" class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">Service Title</h2><p id="sdSubtitle" class="text-slate-400">সার্ভিসের সাবটাইটেল</p></div>
+          </div>
         </div>
         <div class="p-8 md:p-10">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-1">
-                    <h4 class="text-white font-semibold mb-4 text-lg">Features included:</h4>
-                    <ul id="sdFeatures" class="space-y-3 text-slate-400 text-sm"></ul>
-                    <div class="mt-10">
-                        <button onclick="closeServiceDetails(); handlePackageClick('Custom Project')" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(8,145,178,0.4)]">
-                            Start this project <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="md:col-span-2">
-                    <h4 class="text-white font-semibold mb-4 text-lg flex items-center gap-2">
-                        <i class="fa-solid fa-layer-group text-slate-500"></i> Recent Work Examples
-                    </h4>
-                    <div id="sdGallery" class="grid grid-cols-2 gap-4"></div>
-                </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-1">
+              <h4 class="text-white font-semibold mb-4 text-lg">Features included:</h4>
+              <ul id="sdFeatures" class="space-y-3 text-slate-400 text-sm"></ul>
+              <div class="mt-10">
+                <button onclick="closeServiceDetails(); toggleModal(true)" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(8,145,178,0.4)]">Start this project <i class="fa-solid fa-arrow-right ml-2"></i></button>
+              </div>
             </div>
+            <div class="md:col-span-2">
+              <h4 class="text-white font-semibold mb-4 text-lg flex items-center gap-2"><i class="fa-solid fa-layer-group text-slate-500"></i> Recent Work Examples</h4>
+              <div id="sdGallery" class="grid grid-cols-2 gap-4"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- AUTH MODAL -->
+  <!-- Auth Modal -->
+
   <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
-    <button onclick="toggleModal(false)" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[101]">
-      <i class="fa-solid fa-xmark text-xl"></i>
-    </button>
+    <button onclick="toggleModal(false)" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[101]"><i class="fa-solid fa-xmark text-xl"></i></button>
     <div class="w-full max-w-xl relative transform scale-95 transition-transform duration-300 my-10 flex flex-col items-center">
       <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px] mb-8 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-        <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-          <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold font-['Dancing_Script'] text-2xl">MT</span>
-        </div>
+        <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center"><span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold font-['Dancing_Script'] text-2xl">MT</span></div>
       </div>
       <div class="text-center mb-8 w-full">
         <h2 id="authTitle" class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Get started with MT Studio</h2>
-        <p id="authSubtitle" class="text-slate-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-          Sign up to learn about websites, mobile apps, brand visuals and AI workflows.
-        </p>
+        <p id="authSubtitle" class="text-slate-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">Sign up to learn about websites, mobile apps, brand visuals and AI workflows.</p>
       </div>
       <div class="bg-[#0A0F1C] border border-white/10 rounded-2xl p-6 md:p-10 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <!-- Sign Up Form -->
         <form id="signupForm" onsubmit="handleAuthSubmit(event, 'signup')" class="space-y-4">
-           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">First name*</label><input type="text" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="First name"></div>
             <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Last name*</label><input type="text" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Last name"></div>
           </div>
           <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Email*</label><input type="email" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="name@company.com"></div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Country*</label>
-            <div class="relative">
-                <select required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 appearance-none">
-                    <option value="" disabled selected>Select one...</option><option value="BD">Bangladesh</option><option value="US">United States</option><option value="UK">United Kingdom</option><option value="IN">India</option><option value="CA">Canada</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400"><i class="fa-solid fa-chevron-down text-xs"></i></div>
-            </div>
-          </div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Create Password*</label>
-            <div class="relative">
-                <input type="password" id="suPassword" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Create your new password">
-                <i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('suPassword')"></i>
-            </div>
-          </div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Confirm Password*</label>
-            <div class="relative">
-                <input type="password" id="suConfirmPassword" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Confirm your password">
-                <i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('suConfirmPassword')"></i>
-            </div>
-          </div>
-          <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold py-4 rounded-lg mt-2 shadow-[0_0_15px_rgba(8,145,178,0.4)]">Sign up with email</button>
-          <button type="button" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-lg hover:bg-white/5 transition text-slate-300 font-medium mt-3"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5"> Sign up with Google</button>
+          <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Country*</label><div class="relative"><select required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 appearance-none"><option value="" disabled selected>Select one...</option><option value="BD">Bangladesh</option><option value="US">United States</option><option value="UK">United Kingdom</option><option value="IN">India</option><option value="CA">Canada</option></select><div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400"><i class="fa-solid fa-chevron-down text-xs"></i></div></div></div>
+          <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Create Password*</label><div class="relative"><input type="password" id="suPassword" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Create your new password"><i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('suPassword')"></i></div></div>
+          <div><label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Confirm Password*</label><div class="relative"><input type="password" id="suConfirmPassword" required class="w-full px-4 py-3 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500" placeholder="Confirm your password"><i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('suConfirmPassword')"></i></div></div>
+          <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold py-4 rounded-lg mt-2">Sign up with email</button>
+          <button type="button" onclick="window.firebaseGoogleSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-lg hover:bg-white/5 transition text-slate-300 font-medium mt-3"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google"> Sign up with Google</button>
+          <button type="button" onclick="window.firebaseFacebookSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-lg hover:bg-white/5 transition text-slate-300 font-medium"><i class="fa-brands fa-facebook text-[#1877F2] text-xl"></i> Sign up with Facebook</button>
           <div class="relative flex items-center py-2 mt-4"><div class="flex-grow border-t border-white/10"></div><span class="flex-shrink-0 mx-4 text-slate-500 text-xs">or</span><div class="flex-grow border-t border-white/10"></div></div>
-          <p class="text-center text-slate-400 text-sm">Already have an account? <button type="button" onclick="switchAuthMode('signin')" class="text-white hover:text-cyan-400 font-semibold underline decoration-white/30 underline-offset-4">Log in</button></p>
+          <p class="text-center text-slate-400 text-sm">Already have an account? <button type="button" onclick="switchAuthMode('signin')" class="text-white hover:text-cyan-400 font-semibold transition underline decoration-white/30 underline-offset-4">Log in</button></p>
         </form>
+        <!-- Sign In Form -->
         <form id="signinForm" class="hidden space-y-5" onsubmit="handleAuthSubmit(event, 'signin')">
           <div><label class="block text-xs font-semibold text-slate-400 mb-2">Email address*</label><input type="email" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500"></div>
-          <div>
-            <div class="flex justify-between items-center mb-2"><label class="block text-xs font-semibold text-slate-400">Password*</label><a href="#" class="text-xs text-cyan-400 hover:text-cyan-300 transition">Forgot password?</a></div>
-            <div class="relative">
-              <input type="password" id="siPassword" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500">
-              <i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('siPassword')"></i>
-            </div>
+          <div><div class="flex justify-between items-center mb-2"><label class="block text-xs font-semibold text-slate-400">Password*</label><a href="#" class="text-xs text-cyan-400 hover:text-cyan-300 transition">Forgot password?</a></div><div class="relative"><input type="password" id="siPassword" required class="w-full px-4 py-3.5 rounded-lg border border-white/5 bg-formbg text-white focus:ring-1 focus:ring-cyan-500"><i class="fa-solid fa-eye absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white" onclick="togglePassword('siPassword')"></i></div></div>
+          <button type="submit" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-4 rounded-lg mt-4">Log in to Dashboard</button>
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button type="button" onclick="window.firebaseGoogleSignIn()" class="spring-press w-full flex items-center justify-center gap-2 bg-formbg border border-white/10 py-3 rounded-lg hover:bg-white/5 text-slate-300 text-sm"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4"> Google</button>
+            <button type="button" onclick="window.firebaseFacebookSignIn()" class="spring-press w-full flex items-center justify-center gap-2 bg-formbg border border-white/10 py-3 rounded-lg hover:bg-white/5 text-slate-300 text-sm"><i class="fa-brands fa-facebook text-[#1877F2]"></i> Facebook</button>
           </div>
-          <button type="submit" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-4 rounded-lg mt-4 shadow-[0_0_15px_rgba(8,145,178,0.4)]">Log in to Dashboard</button>
-          <button type="button" class="spring-press w-full flex items-center justify-center gap-2 bg-formbg border border-white/10 py-3 rounded-lg hover:bg-white/5 text-slate-300 text-sm mt-3"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4"> Sign in with Google</button>
           <div class="relative flex items-center py-2 mt-4"><div class="flex-grow border-t border-white/10"></div><span class="flex-shrink-0 mx-4 text-slate-500 text-xs">or</span><div class="flex-grow border-t border-white/10"></div></div>
           <p class="text-center text-slate-400 text-sm">Don't have an account? <button type="button" onclick="switchAuthMode('signup')" class="text-white hover:text-cyan-400 font-semibold underline decoration-white/30 underline-offset-4">Sign up</button></p>
         </form>
@@ -834,123 +836,162 @@
     </div>
   </div>
 
-  <!-- PAYPAL CHECKOUT MODAL -->
-  <div id="checkoutModal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
-    <button onclick="toggleCheckoutModal(false)" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[111]">
-      <i class="fa-solid fa-xmark text-xl"></i>
-    </button>
-    <div class="w-full max-w-lg relative transform scale-95 transition-transform duration-300 my-10 flex flex-col">
-      <div class="bg-[#0A0F1C] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
-        <div class="bg-formbg p-8 border-b border-white/5 text-center relative">
-            <div class="absolute top-4 right-4 flex items-center gap-1.5 text-xs font-semibold text-slate-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/10"><i class="fa-solid fa-lock text-green-400"></i> Secure</div>
-            <p class="text-slate-400 text-sm font-medium mb-1 mt-4" id="checkoutPackageName">Starter Package</p>
-            <h2 class="text-4xl font-extrabold text-white" id="checkoutPriceUSD">$50.00</h2>
-        </div>
-        <div class="p-8">
-            <div id="paypal-button-container" class="w-full z-0 relative"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Success Modal -->
 
-  <!-- SUCCESS MODAL -->
   <div id="successModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
-      <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center shadow-[0_0_50px_rgba(6,182,212,0.2)] transform scale-95 transition-transform duration-300 flex flex-col items-center">
-          <div class="w-16 h-16 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-3xl mb-5 shadow-[0_0_20px_rgba(34,197,94,0.4)]"><i class="fa-solid fa-check"></i></div>
-          <h3 id="successTitle" class="text-2xl font-bold text-white mb-2">Success!</h3>
-          <p id="successMessage" class="text-slate-400 text-sm mb-6">Your action was completed successfully.</p>
-          <button onclick="closeSuccessModal()" class="spring-press bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-3 px-8 rounded-xl transition shadow-[0_0_15px_rgba(8,145,178,0.4)]">OK, Got it</button>
-      </div>
-  </div>
-
-  <!-- BLOG MODAL -->
-  <div id="blogModal" class="fixed inset-0 z-[115] hidden items-center justify-center bg-[#050B14]/95 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300 overflow-y-auto">
-    <button onclick="closeBlogPost()" class="fixed top-6 right-6 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center transition z-[116]">
-      <i class="fa-solid fa-xmark text-xl"></i>
-    </button>
-    <div class="w-full max-w-2xl relative transform scale-95 transition-transform duration-300 my-10">
-      <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
-        <div id="blogModalImg" class="h-56 bg-cover bg-center relative">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] via-transparent to-transparent"></div>
-          <span id="blogModalTag" class="absolute top-4 left-4 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider"></span>
-        </div>
-        <div class="p-8 md:p-10">
-          <p id="blogModalMeta" class="text-slate-500 text-xs mb-3 flex items-center gap-2"></p>
-          <h2 id="blogModalTitle" class="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight"></h2>
-          <div id="blogModalContent" class="text-slate-300 text-sm leading-relaxed space-y-4"></div>
-          <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3">
-            <a href="https://m.me/MTstudio2" target="_blank" class="spring-press flex-1 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-xl transition text-center text-sm">
-              <i class="fa-brands fa-facebook-messenger mr-2"></i> প্রজেক্ট নিয়ে কথা বলুন
-            </a>
-            <button onclick="closeBlogPost()" class="spring-press flex-1 bg-white/5 border border-white/10 text-white font-medium py-3 rounded-xl transition text-sm hover:bg-white/10">
-              ফিরে যান
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center shadow-[0_0_50px_rgba(6,182,212,0.2)] transform scale-95 transition-transform duration-300 flex flex-col items-center">
+      <div class="w-16 h-16 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-3xl mb-5 shadow-[0_0_20px_rgba(34,197,94,0.4)]"><i class="fa-solid fa-check"></i></div>
+      <h3 id="successTitle" class="text-2xl font-bold text-white mb-2">Success!</h3>
+      <p id="successMessage" class="text-slate-400 text-sm mb-6">Your action was completed successfully.</p>
+      <button onclick="closeSuccessModal()" class="spring-press bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-3 px-8 rounded-xl transition">OK, Got it</button>
     </div>
   </div>
+
+  <!-- Firebase -->
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+      authDomain: "mt-studio-92d1e.firebaseapp.com",
+      projectId: "mt-studio-92d1e",
+      storageBucket: "mt-studio-92d1e.firebasestorage.app",
+      messagingSenderId: "455687864985",
+      appId: "1:455687864985:web:327dedaffdb7b5f8606e08",
+      measurementId: "G-HQG3V04T1H"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      const navBtns = document.querySelectorAll('.nav-auth-btn');
+      if (user) {
+        navBtns.forEach(btn => {
+          btn.innerHTML = `<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center text-white text-xs font-bold">${user.displayName ? user.displayName[0].toUpperCase() : user.email[0].toUpperCase()}</div><span class="text-white text-sm font-medium hidden md:inline">${user.displayName || user.email.split('@')[0]}</span><button onclick="window.fbSignOut()" class="text-slate-400 hover:text-red-400 text-xs ml-1 transition"><i class="fa-solid fa-right-from-bracket"></i></button></div>`;
+        });
+      } else {
+        navBtns.forEach(btn => { btn.innerHTML = 'Sign In'; btn.onclick = () => toggleModal(true); });
+      }
+    });
+
+    window.firebaseSignUp = async function(email, password, firstName, lastName) {
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(cred.user, { displayName: `${firstName} ${lastName}` });
+        showSuccessModal("স্বাগতম! 🎉", "অ্যাকাউন্ট তৈরি হয়েছে। আমাদের Facebook Page ফলো করুন।");
+        setTimeout(() => { window.open("https://www.facebook.com/MTstudio2", "_blank"); }, 2000);
+        toggleModal(false);
+      } catch (err) {
+        const msg = { 'auth/email-already-in-use': 'এই Email দিয়ে আগেই অ্যাকাউন্ট আছে।', 'auth/weak-password': 'Password কমপক্ষে ৬ অক্ষরের হতে হবে।', 'auth/invalid-email': 'সঠিক Email দিন।' }[err.code] || 'সমস্যা হয়েছে। আবার চেষ্টা করুন।';
+        showSuccessModal("❌ Error", msg);
+      }
+    };
+
+    window.firebaseSignIn = async function(email, password) {
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        showSuccessModal("স্বাগতম! ✅", "সফলভাবে লগইন হয়েছে।");
+        toggleModal(false);
+      } catch (err) {
+        const msg = { 'auth/user-not-found': 'এই Email-এ কোনো অ্যাকাউন্ট নেই।', 'auth/wrong-password': 'Password ভুল হয়েছে।', 'auth/invalid-email': 'সঠিক Email দিন।', 'auth/too-many-requests': 'অনেকবার চেষ্টা হয়েছে। পরে চেষ্টা করুন।' }[err.code] || 'লগইন সমস্যা। আবার চেষ্টা করুন।';
+        showSuccessModal("❌ Error", msg);
+      }
+    };
+
+    window.firebaseGoogleSignIn = async function() {
+      try {
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+        showSuccessModal("স্বাগতম! ✅", "Google দিয়ে সফলভাবে লগইন হয়েছে।");
+        toggleModal(false);
+      } catch (err) {
+        if (err.code !== 'auth/popup-closed-by-user') showSuccessModal("❌ Error", "Google লগইন সমস্যা। আবার চেষ্টা করুন।");
+      }
+    };
+
+    window.firebaseFacebookSignIn = async function() {
+      try {
+        const provider = new FacebookAuthProvider();
+        await signInWithPopup(auth, provider);
+        showSuccessModal("স্বাগতম! ✅", "Facebook দিয়ে সফলভাবে লগইন হয়েছে।");
+        toggleModal(false);
+      } catch (err) {
+        if (err.code !== 'auth/popup-closed-by-user') showSuccessModal("❌ Error", "Facebook লগইন সমস্যা। আবার চেষ্টা করুন।");
+      }
+    };
+
+    window.fbSignOut = async function() {
+      await signOut(auth);
+      showSuccessModal("লগআউট হয়েছে", "আবার দেখা হবে! 👋");
+    };
+  </script>
+
+  <!-- Main JS -->
 
   <script>
-    // PRICING & PROMO
-    const isFreePromoActive = true;
-    let currentUsdAmount = '0.00';
+    // EmailJS
+    const EMAILJS_SERVICE_ID  = 'service_w8zocpp';
+    const EMAILJS_TEMPLATE_ID = 'template_v1hge8r';
+    const EMAILJS_PUBLIC_KEY  = 'p_mMJON6oBY_Fg3u_';
+    emailjs.init(EMAILJS_PUBLIC_KEY);
 
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href').length > 1) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // PayPal
     document.addEventListener('DOMContentLoaded', () => {
-      // Free Promo Handling
-      if (!isFreePromoActive) {
-        const dynamicPrices = document.querySelectorAll('.dynamic-price');
-        const hiddenBlocks = document.querySelectorAll('.hidden-price-block');
-        const promoElements = document.querySelectorAll('.free-promo-element');
-
-        dynamicPrices.forEach(el => {
-          el.innerText = el.getAttribute('data-price');
-          el.classList.remove('text-5xl', 'bg-gradient-to-r', 'from-cyan-400', 'to-blue-500', 'from-violet-400', 'to-pink-400', 'text-transparent', 'bg-clip-text');
-          el.classList.add('text-4xl', 'text-white');
-        });
-        
-        hiddenBlocks.forEach(el => el.classList.remove('hidden'));
-        document.querySelectorAll('.regular-price').forEach(el => el.classList.add('hidden'));
-        promoElements.forEach(el => el.classList.add('hidden'));
-      }
-
-      // PayPal
       if (typeof paypal !== 'undefined') {
         paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({ purchase_units: [{ amount: { value: currentUsdAmount } }] });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    showSuccessModal("Payment Complete!", `Thank you, ${details.payer.name.given_name}. Your payment was successful.`);
-                    toggleCheckoutModal(false);
-                });
-            }
+          createOrder: (data, actions) => actions.order.create({ purchase_units: [{ amount: { value: currentUsdAmount } }] }),
+          onApprove: (data, actions) => actions.order.capture().then(details => {
+            showSuccessModal("Payment Complete!", `Thank you, ${details.payer.name.given_name}. Your payment was successful.`);
+            toggleCheckoutModal(false);
+          })
         }).render('#paypal-button-container');
       }
     });
 
-    // Modals
+    let currentUsdAmount = '0.00';
+
+    // Service Data
+    const serviceData = {
+      'web': { title: 'Web Apps Development', subtitle: 'স্কেলেবল এবং রেস্পন্সিভ ওয়েবসাইট', icon: 'fa-globe', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10', glowColor: 'bg-cyan-500/20', borderColor: 'border-cyan-500/20', features: ['<i class="fa-solid fa-check text-cyan-500 w-5"></i> E-commerce Platforms', '<i class="fa-solid fa-check text-cyan-500 w-5"></i> Custom Admin Dashboards', '<i class="fa-solid fa-check text-cyan-500 w-5"></i> Portfolio Sites'], images: [{ src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', title: 'Real Badsha', url: 'https://realbadsha.netlify.app' }, { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'Dashboard Demo', url: '#' }] },
+      'mobile': { title: 'Mobile App Build', subtitle: 'iOS এবং Android এর জন্য হাই-কোয়ালিটি অ্যাপ', icon: 'fa-mobile-screen', color: 'text-violet-400', bgColor: 'bg-violet-500/10', glowColor: 'bg-violet-500/20', borderColor: 'border-violet-500/20', features: ['<i class="fa-solid fa-check text-violet-500 w-5"></i> Native iOS App', '<i class="fa-solid fa-check text-violet-500 w-5"></i> Android APK Build'], images: [{ src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80', title: 'Mobile App', url: '#' }, { src: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&q=80', title: 'Fitness App', url: '#' }] },
+      'design': { title: 'UI / UX Design', subtitle: 'ইউজার ফ্রেন্ডলি এবং মডার্ন ডিজাইন', icon: 'fa-pen-nib', color: 'text-pink-400', bgColor: 'bg-pink-500/10', glowColor: 'bg-pink-500/20', borderColor: 'border-pink-500/20', features: ['<i class="fa-solid fa-check text-pink-500 w-5"></i> App Wireframing', '<i class="fa-solid fa-check text-pink-500 w-5"></i> Clickable Prototypes'], images: [{ src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80', title: 'Dashboard UI', url: '#' }, { src: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80', title: 'App Wireframe', url: '#' }] },
+      'profile': { title: 'Profile Troubleshooting', subtitle: 'যেকোনো সোশ্যাল মিডিয়া অ্যাকাউন্ট ফিক্সিং', icon: 'fa-shield-halved', color: 'text-blue-400', bgColor: 'bg-blue-500/10', glowColor: 'bg-blue-500/20', borderColor: 'border-blue-500/20', features: ['<i class="fa-solid fa-check text-blue-500 w-5"></i> Page Restrictions', '<i class="fa-solid fa-check text-blue-500 w-5"></i> Account Recovery'], images: [{ src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80', title: 'Recovered Page', url: '#' }, { src: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?w=600&q=80', title: 'Business Fix', url: '#' }] },
+      'video': { title: 'Video & Photo Editing', subtitle: 'আকর্ষণীয় ভিজ্যুয়াল কন্টেন্ট', icon: 'fa-wand-magic', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10', glowColor: 'bg-fuchsia-500/20', borderColor: 'border-fuchsia-500/20', features: ['<i class="fa-solid fa-check text-fuchsia-500 w-5"></i> Reels & Shorts', '<i class="fa-solid fa-check text-fuchsia-500 w-5"></i> Color Grading'], images: [{ src: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80', title: 'Promo Reel', url: '#' }, { src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80', title: 'Product Photo', url: '#' }] },
+      'ai': { title: 'AI Prompts', subtitle: 'Midjourney, Flux, ChatGPT এক্সপার্ট', icon: 'fa-robot', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10', glowColor: 'bg-emerald-500/20', borderColor: 'border-emerald-500/20', features: ['<i class="fa-solid fa-check text-emerald-500 w-5"></i> AI Art', '<i class="fa-solid fa-check text-emerald-500 w-5"></i> Custom GPTs'], images: [{ src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80', title: 'AI Art', url: '#' }, { src: 'https://images.unsplash.com/photo-1684369175836-96b6534575b6?w=600&q=80', title: 'Chatbot UI', url: '#' }] }
+    };
+
+    // UI Functions
     function showSuccessModal(title, message) {
-        document.getElementById('successTitle').innerText = title;
-        document.getElementById('successMessage').innerText = message;
-        const modal = document.getElementById('successModal');
-        const content = modal.querySelector('div');
-        modal.classList.remove('hidden'); modal.classList.add('flex');
-        setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
-    }
-    function closeSuccessModal() {
-        const modal = document.getElementById('successModal');
-        const content = modal.querySelector('div');
-        modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95');
-        setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
+      document.getElementById('successTitle').innerText = title;
+      document.getElementById('successMessage').innerText = message;
+      const modal = document.getElementById('successModal');
+      const content = modal.querySelector('div');
+      modal.classList.remove('hidden'); modal.classList.add('flex');
+      setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
     }
 
-    function toggleCheckoutModal(show) {
-      const modal = document.getElementById('checkoutModal');
-      const content = modal.querySelector('div > div');
-      if (show) { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden'; setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10); }
-      else { modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95'); document.body.style.overflow = 'auto'; setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300); }
+    function closeSuccessModal() {
+      const modal = document.getElementById('successModal');
+      const content = modal.querySelector('div');
+      modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95');
+      setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
+    }
+
+    function handlePackageClick(packageName) {
+      showSuccessModal("🎉 Free Offer Activated!", `${packageName} package is currently 100% FREE. Sign up করলে আমরা শীঘ্রই যোগাযোগ করব।`);
+      setTimeout(() => { closeSuccessModal(); toggleModal(true); }, 1800);
     }
 
     function toggleModal(show) {
@@ -960,121 +1001,35 @@
       else { modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95'); document.body.style.overflow = 'auto'; setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300); }
     }
 
-    function handlePackageClick(packageName) {
-      if (isFreePromoActive) {
-        showSuccessModal("🎉 Free Offer Activated!", `${packageName} প্যাকেজ এখন ১০০% FREE!\n\nসাইন আপ করুন — আমরা শীঘ্রই যোগাযোগ করব।`);
-        setTimeout(() => { closeSuccessModal(); toggleModal(true); }, 1800);
-      } else {
-        // Implement normal flow here
-      }
+    function toggleCheckoutModal(show) {
+      const modal = document.getElementById('checkoutModal');
+      if (!modal) return;
+      const content = modal.querySelector('div > div');
+      if (show) { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden'; setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10); }
+      else { modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95'); document.body.style.overflow = 'auto'; setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300); }
     }
-
-    // Service Data
-    const serviceData = {
-        'web': { title: 'Web Apps Development', subtitle: 'স্কেলেবল এবং রেস্পন্সিভ ওয়েবসাইট', icon: 'fa-globe', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10', glowColor: 'bg-cyan-500/20', borderColor: 'border-cyan-500/20', features: ['<i class="fa-solid fa-check text-cyan-500 w-5"></i> E-commerce Platforms','<i class="fa-solid fa-check text-cyan-500 w-5"></i> Custom Admin Dashboards','<i class="fa-solid fa-check text-cyan-500 w-5"></i> Portfolio Sites'], images: [{ src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', title: 'Real Badsha App', url: 'https://realbadsha.netlify.app' },{ src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title: 'MT Studio Site', url: 'https://mtstudio.netlify.app' }] },
-        'mobile': { title: 'Mobile App Build', subtitle: 'iOS এবং Android এর জন্য হাই-কোয়ালিটি অ্যাপ', icon: 'fa-mobile-screen', color: 'text-violet-400', bgColor: 'bg-violet-500/10', glowColor: 'bg-violet-500/20', borderColor: 'border-violet-500/20', features: ['<i class="fa-solid fa-check text-violet-500 w-5"></i> Native iOS App','<i class="fa-solid fa-check text-violet-500 w-5"></i> Android APK Build'], images: [{ src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80', title: 'Food Delivery App', url: '#' },{ src: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&q=80', title: 'Fitness Tracker', url: '#' }] },
-        'design': { title: 'UI / UX Design', subtitle: 'ইউজার ফ্রেন্ডলি এবং মডার্ন ডিজাইন', icon: 'fa-pen-nib', color: 'text-pink-400', bgColor: 'bg-pink-500/10', glowColor: 'bg-pink-500/20', borderColor: 'border-pink-500/20', features: ['<i class="fa-solid fa-check text-pink-500 w-5"></i> App Wireframing','<i class="fa-solid fa-check text-pink-500 w-5"></i> Clickable Prototypes'], images: [{ src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80', title: 'Fintech Dashboard', url: '#' },{ src: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80', title: 'Travel App Wireframe', url: '#' }] },
-        'profile': { title: 'Profile Troubleshooting', subtitle: 'যেকোনো সোশ্যাল মিডিয়া অ্যাকাউন্ট ফিক্সিং', icon: 'fa-shield-halved', color: 'text-blue-400', bgColor: 'bg-blue-500/10', glowColor: 'bg-blue-500/20', borderColor: 'border-blue-500/20', features: ['<i class="fa-solid fa-check text-blue-500 w-5"></i> Page Restrictions','<i class="fa-solid fa-check text-blue-500 w-5"></i> Account Recovery'], images: [{ src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80', title: 'Recovered Page', url: '#' },{ src: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?w=600&q=80', title: 'Business Setup Fix', url: '#' }] },
-        'video': { title: 'Video & Photo Editing', subtitle: 'আকর্ষণীয় ভিজ্যুয়াল কন্টেন্ট', icon: 'fa-wand-magic', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10', glowColor: 'bg-fuchsia-500/20', borderColor: 'border-fuchsia-500/20', features: ['<i class="fa-solid fa-check text-fuchsia-500 w-5"></i> Reels & Shorts','<i class="fa-solid fa-check text-fuchsia-500 w-5"></i> Color Grading'], images: [{ src: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80', title: 'Promotional Reel', url: '#' },{ src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80', title: 'Product Photo', url: '#' }] },
-        'ai': { title: 'AI Prompts', subtitle: 'Midjourney, Flux, ChatGPT এক্সপার্ট', icon: 'fa-robot', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10', glowColor: 'bg-emerald-500/20', borderColor: 'border-emerald-500/20', features: ['<i class="fa-solid fa-check text-emerald-500 w-5"></i> AI Art','<i class="fa-solid fa-check text-emerald-500 w-5"></i> Custom GPTs'], images: [{ src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80', title: 'AI Concept Art', url: '#' },{ src: 'https://images.unsplash.com/photo-1684369175836-96b6534575b6?w=600&q=80', title: 'Chatbot UI', url: '#' }] }
-    };
 
     function openServiceDetails(key) {
-        const d = serviceData[key]; if(!d) return;
-        document.getElementById('sdTitle').innerText = d.title;
-        document.getElementById('sdSubtitle').innerText = d.subtitle;
-        document.getElementById('sdIconWrapper').className = `w-16 h-16 rounded-2xl flex items-center justify-center text-3xl border ${d.bgColor} ${d.borderColor} ${d.color}`;
-        document.getElementById('sdIcon').className = `fa-solid ${d.icon}`;
-        document.getElementById('sdBgGlow').className = `absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none ${d.glowColor}`;
-        document.getElementById('sdFeatures').innerHTML = d.features.map(f => `<li>${f}</li>`).join('');
-        document.getElementById('sdGallery').innerHTML = d.images.map(item => `<a href="${item.url}" ${item.url !== '#' ? 'target="_blank"' : ''} class="portfolio-link block h-32 md:h-40 rounded-xl overflow-hidden border border-white/10 relative group bg-midnight"><img loading="lazy" src="${item.src}" class="w-full h-full object-cover portfolio-image opacity-80 group-hover:opacity-100" alt="${item.title}"><div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div><div class="absolute bottom-2 left-3 right-3 text-white text-xs font-semibold flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="truncate pr-2">${item.title}</span>${item.url !== '#' ? '<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>' : ''}</div></a>`).join('');
-        const modal = document.getElementById('serviceDetailsModal');
-        const content = modal.querySelector('div > div');
-        modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden';
-        setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
-    }
-
-    function closeServiceDetails() {
-        const modal = document.getElementById('serviceDetailsModal');
-        const content = modal.querySelector('div > div');
-        modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95'); document.body.style.overflow = 'auto';
-        setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
-    }
-
-    const blogData = {
-      'web-tips': {
-        title: 'একটি ভালো ওয়েবসাইটের ৭টি অপরিহার্য বৈশিষ্ট্য',
-        tag: 'Web Dev', tagColor: 'bg-cyan-500/90',
-        meta: '⏱ ৫ মিনিট পড়া • মে ২০২৬',
-        img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
-        content: `
-          <p>একটি সফল ওয়েবসাইট শুধু সুন্দর দেখতে হলেই চলে না — সেটাকে <strong class="text-white">দ্রুত, স্মার্ট এবং ব্যবহারকারীবান্ধব</strong> হতে হয়।</p>
-          <p><strong class="text-cyan-400">১. দ্রুত লোডিং স্পিড:</strong> ৩ সেকেন্ডের বেশি লোড নিলে ৫৩% ভিজিটর চলে যান।</p>
-          <p><strong class="text-cyan-400">২. মোবাইল রেস্পন্সিভ:</strong> বাংলাদেশে ৮০%+ ইন্টারনেট ব্যবহারকারী মোবাইলে। মোবাইল ফার্স্ট ডিজাইন আবশ্যক।</p>
-          <p><strong class="text-cyan-400">৩. পরিষ্কার নেভিগেশন:</strong> ভিজিটর যেন ৩ ক্লিকের মধ্যে যা খুঁজছেন তা পান।</p>
-        `
-      },
-      'fb-recovery': {
-        title: 'Facebook পেজ Restricted হলে কী করবেন?',
-        tag: 'Social Media', tagColor: 'bg-violet-500/90',
-        meta: '⏱ ৩ মিনিট পড়া • এপ্রিল ২০২৬',
-        img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-        content: `
-          <p>Facebook পেজ হঠাৎ restricted বা disabled হয়ে গেলে আতঙ্কিত না হয়ে নিচের ধাপগুলো অনুসরণ করুন।</p>
-          <p><strong class="text-violet-400">ধাপ ১ — কারণ জানুন:</strong> Page Settings > Page Quality তে যান।</p>
-          <p><strong class="text-violet-400">ধাপ ২ — Review Request:</strong> যদি ভুল মনে হয়, "Request Review" বাটনে ক্লিক করুন।</p>
-        `
-      },
-      'ai-prompts': {
-        title: 'Midjourney দিয়ে প্রফেশনাল লোগো বানানোর গাইড',
-        tag: 'AI', tagColor: 'bg-pink-500/90',
-        meta: '⏱ ৭ মিনিট পড়া • মার্চ ২০২৬',
-        img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-        content: `
-          <p>Midjourney AI দিয়ে মাত্র কয়েক মিনিটে প্রফেশনাল মানের লোগো তৈরি করা এখন সম্ভব।</p>
-          <p><strong class="text-pink-400">বেসিক প্রম্পট স্ট্রাকচার:</strong></p>
-          <div class="bg-[#050B14] rounded-xl p-4 font-mono text-xs text-green-300 border border-white/10">
-            /imagine [style] logo for [business type], [color palette], vector, white background --ar 1:1 --v 6
-          </div>
-        `
-      }
-    };
-
-    function openBlogPost(key) {
-      const post = blogData[key]; if (!post) return;
-      document.getElementById('blogModalImg').style.backgroundImage = `url('${post.img}')`;
-      document.getElementById('blogModalTag').className = `absolute top-4 left-4 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${post.tagColor}`;
-      document.getElementById('blogModalTag').innerText = post.tag;
-      document.getElementById('blogModalMeta').innerHTML = `<i class="fa-regular fa-clock"></i> ${post.meta}`;
-      document.getElementById('blogModalTitle').innerText = post.title;
-      document.getElementById('blogModalContent').innerHTML = post.content;
-      const modal = document.getElementById('blogModal');
+      const d = serviceData[key]; if (!d) return;
+      document.getElementById('sdTitle').innerText = d.title;
+      document.getElementById('sdSubtitle').innerText = d.subtitle;
+      document.getElementById('sdIconWrapper').className = `w-16 h-16 rounded-2xl flex items-center justify-center text-3xl border ${d.bgColor} ${d.borderColor} ${d.color}`;
+      document.getElementById('sdIcon').className = `fa-solid ${d.icon}`;
+      document.getElementById('sdBgGlow').className = `absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none ${d.glowColor}`;
+      document.getElementById('sdFeatures').innerHTML = d.features.map(f => `<li>${f}</li>`).join('');
+      document.getElementById('sdGallery').innerHTML = d.images.map(item => `<a href="${item.url}" ${item.url !== '#' ? 'target="_blank"' : ''} class="portfolio-link block h-32 md:h-40 rounded-xl overflow-hidden border border-white/10 relative group bg-midnight"><img loading="lazy" src="${item.src}" class="w-full h-full object-cover portfolio-image opacity-80 group-hover:opacity-100" alt="${item.title}"><div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div><div class="absolute bottom-2 left-3 right-3 text-white text-xs font-semibold flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="truncate pr-2">${item.title}</span>${item.url !== '#' ? '<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>' : ''}</div></a>`).join('');
+      const modal = document.getElementById('serviceDetailsModal');
       const content = modal.querySelector('div > div');
       modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden';
       setTimeout(() => { modal.style.opacity = '1'; content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
     }
 
-    function closeBlogPost() {
-      const modal = document.getElementById('blogModal');
+    function closeServiceDetails() {
+      const modal = document.getElementById('serviceDetailsModal');
       const content = modal.querySelector('div > div');
-      modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95'); document.body.style.overflow = 'auto';
+      modal.style.opacity = '0'; content.classList.remove('scale-100'); content.classList.add('scale-95');
+      document.body.style.overflow = 'auto';
       setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
-    }
-
-    function toggleFaq(btn) {
-      const answer = btn.nextElementSibling;
-      const icon = btn.querySelector('i');
-      const isOpen = !answer.classList.contains('hidden');
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
-      document.querySelectorAll('.faq-item button i').forEach(i => { i.classList.remove('fa-minus'); i.classList.add('fa-plus'); });
-      if (!isOpen) { answer.classList.remove('hidden'); icon.classList.remove('fa-plus'); icon.classList.add('fa-minus'); }
-    }
-
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      showSuccessModal("মেসেজ পাঠানো হয়েছে! 🎉", "আপনার মেসেজটি আমরা পেয়েছি। ২–৬ ঘণ্টার মধ্যে আমরা যোগাযোগ করব।");
-      e.target.reset();
-      setTimeout(() => window.open("https://m.me/MTstudio2", "_blank"), 2000);
     }
 
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
@@ -1089,25 +1044,59 @@
     function switchAuthMode(mode) {
       const signupForm = document.getElementById('signupForm');
       const signinForm = document.getElementById('signinForm');
-      if(mode === 'signup') { signupForm.classList.remove('hidden'); signinForm.classList.add('hidden'); document.getElementById('authTitle').innerText = "Get started with MT Studio"; document.getElementById('authSubtitle').innerText = "Sign up to learn about websites, mobile apps, brand visuals and AI workflows."; }
+      if (mode === 'signup') { signupForm.classList.remove('hidden'); signinForm.classList.add('hidden'); document.getElementById('authTitle').innerText = "Get started with MT Studio"; document.getElementById('authSubtitle').innerText = "Sign up to learn about websites, mobile apps, brand visuals and AI workflows."; }
       else { signupForm.classList.add('hidden'); signinForm.classList.remove('hidden'); document.getElementById('authTitle').innerText = "Welcome back"; document.getElementById('authSubtitle').innerText = "Log in to your MT Studio dashboard to manage your projects."; }
     }
 
     function handleAuthSubmit(event, action) {
       event.preventDefault();
-      if(action === 'signup') {
+      if (action === 'signup') {
         const pass = document.getElementById('suPassword').value;
         const confirmPass = document.getElementById('suConfirmPassword').value;
-        if (pass !== confirmPass) { showSuccessModal("Error", "Passwords do not match! Please try again."); return; }
-        showSuccessModal("Welcome aboard!", "Account created successfully. Taking you to our Facebook page...");
-        setTimeout(() => { window.open("https://www.facebook.com/MTstudio2", "_blank"); }, 2500);
+        const firstName = event.target.querySelector('input[placeholder="First name"]').value;
+        const lastName = event.target.querySelector('input[placeholder="Last name"]').value;
+        const email = event.target.querySelector('input[type="email"]').value;
+        if (pass !== confirmPass) { showSuccessModal("❌ Error", "Passwords মিলছে না। আবার দিন।"); return; }
+        if (pass.length < 6) { showSuccessModal("❌ Error", "Password কমপক্ষে ৬ অক্ষরের হতে হবে।"); return; }
+        window.firebaseSignUp(email, pass, firstName, lastName);
       } else {
-        showSuccessModal("Welcome back!", "Logged in successfully. Redirecting to Dashboard...");
+        const email = event.target.querySelector('input[type="email"]').value;
+        const password = document.getElementById('siPassword').value;
+        window.firebaseSignIn(email, password);
       }
-      toggleModal(false); event.target.reset();
     }
 
-    // LIVE CHAT
+    // Contact Form
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> পাঠানো হচ্ছে...';
+      const templateParams = {
+        from_name: form.querySelector('input[type="text"]').value,
+        phone: form.querySelector('input[type="tel"]').value,
+        from_email: form.querySelector('input[type="email"]').value,
+        service_type: form.querySelector('select').value,
+        message: form.querySelector('textarea').value,
+      };
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then(() => { showSuccessModal("মেসেজ পাঠানো হয়েছে! ✅", "আপনার মেসেজ পেয়েছি। ২৪ ঘণ্টার মধ্যে রিপ্লাই পাবেন।"); form.reset(); })
+        .catch(() => { showSuccessModal("সমস্যা হয়েছে ❌", "মেসেজ যায়নি। WhatsApp বা Messenger-এ যোগাযোগ করুন।"); })
+        .finally(() => { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane text-sm mr-2"></i> মেসেজ পাঠান'; });
+    }
+
+    // FAQ
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+      const isOpen = !answer.classList.contains('hidden');
+      document.querySelectorAll('.faq-item').forEach(i => { i.querySelector('.faq-answer').classList.add('hidden'); i.querySelector('.faq-icon').style.transform = 'rotate(0deg)'; i.querySelector('.faq-icon i').className = 'fa-solid fa-plus text-slate-400 text-sm'; });
+      if (!isOpen) { answer.classList.remove('hidden'); icon.style.transform = 'rotate(45deg)'; icon.querySelector('i').className = 'fa-solid fa-plus text-cyan-400 text-sm'; }
+    }
+
+    // Live Chat
     function toggleSupportChat() {
       const menu = document.getElementById('chatWidget');
       if (menu.classList.contains('hidden')) { menu.classList.remove('hidden'); setTimeout(() => { menu.classList.remove('translate-y-4', 'opacity-0'); }, 10); }
@@ -1115,28 +1104,52 @@
     }
 
     function handleChatSubmit(e) {
-        e.preventDefault();
-        const input = document.getElementById('chatInput');
-        const msg = input.value; if(!msg.trim()) return;
-        const chatBox = document.getElementById('chatMessages');
-        chatBox.innerHTML += `<div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animate-popIn">${msg}</div>`;
-        input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
-        setTimeout(() => {
-            chatBox.innerHTML += `<div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2 animate-popIn"><div class="w-6 h-6 rounded-full bg-midnight shrink-0 flex items-center justify-center font-['Dancing_Script'] text-[10px] font-bold mt-0.5">MT</div><div>আপনার মেসেজটি পেয়েছি। Messenger-এ সরাসরি যোগাযোগ করতে পারেন: <a href="https://m.me/MTstudio2" target="_blank" class="text-cyan-400 underline">m.me/MTstudio2</a></div></div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }, 1200);
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const msg = input.value;
+      if (!msg.trim()) return;
+      const chatBox = document.getElementById('chatMessages');
+      chatBox.innerHTML += `<div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animate-popIn">${msg}</div>`;
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+      setTimeout(() => {
+        chatBox.innerHTML += `<div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2 animate-popIn"><div class="w-6 h-6 rounded-full bg-midnight shrink-0 flex items-center justify-center font-['Dancing_Script'] text-[10px] font-bold mt-0.5">MT</div><div>আপনার মেসেজটি আমরা পেয়েছি। খুব শীঘ্রই আমাদের একজন প্রতিনিধি যুক্ত হবেন।</div></div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 1200);
     }
 
     // Draggable FAB
     const dragWrapper = document.getElementById('draggable-wrapper');
     const dragBtn = document.getElementById('fab-button');
-    let active = false, isDragging = false, initialX, initialY, xOffset = 0, yOffset = 0, dragStartX, dragStartY;
-    dragBtn.addEventListener("mousedown", dragStart, false); document.addEventListener("mouseup", dragEnd, false); document.addEventListener("mousemove", drag, false);
-    dragBtn.addEventListener("touchstart", dragStart, {passive: false}); document.addEventListener("touchend", dragEnd, false); document.addEventListener("touchmove", drag, {passive: false});
-    dragBtn.addEventListener("click", function(e) { if(isDragging) { e.preventDefault(); e.stopPropagation(); isDragging = false; return; } toggleSupportChat(); });
-    function dragStart(e) { if (e.type === "touchstart") { initialX = e.touches[0].clientX - xOffset; initialY = e.touches[0].clientY - yOffset; dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY; } else { initialX = e.clientX - xOffset; initialY = e.clientY - yOffset; dragStartX = e.clientX; dragStartY = e.clientY; } if (e.target === dragBtn || dragBtn.contains(e.target)) { active = true; isDragging = false; dragBtn.style.transform = "scale(0.95)"; } }
+    let active = false, isDragging = false;
+    let initialX, initialY, xOffset = 0, yOffset = 0, dragStartX, dragStartY;
+
+    dragBtn.addEventListener("mousedown", dragStart, false);
+    document.addEventListener("mouseup", dragEnd, false);
+    document.addEventListener("mousemove", drag, false);
+    dragBtn.addEventListener("touchstart", dragStart, { passive: false });
+    document.addEventListener("touchend", dragEnd, false);
+    document.addEventListener("touchmove", drag, { passive: false });
+
+    dragBtn.addEventListener("click", function(e) { if (isDragging) { e.preventDefault(); e.stopPropagation(); isDragging = false; return; } toggleSupportChat(); });
+
+    function dragStart(e) {
+      if (e.type === "touchstart") { initialX = e.touches[0].clientX - xOffset; initialY = e.touches[0].clientY - yOffset; dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY; }
+      else { initialX = e.clientX - xOffset; initialY = e.clientY - yOffset; dragStartX = e.clientX; dragStartY = e.clientY; }
+      if (e.target === dragBtn || dragBtn.contains(e.target)) { active = true; isDragging = false; dragBtn.style.transform = "scale(0.95)"; }
+    }
+
     function dragEnd(e) { active = false; dragBtn.style.transform = "scale(1)"; }
-    function drag(e) { if (active) { let currentX, currentY; if (e.type === "touchmove") { currentX = e.touches[0].clientX; currentY = e.touches[0].clientY; } else { currentX = e.clientX; currentY = e.clientY; } if(Math.abs(currentX - dragStartX) > 3 || Math.abs(currentY - dragStartY) > 3) { isDragging = true; e.preventDefault(); } if(isDragging) { xOffset = currentX - initialX; yOffset = currentY - initialY; dragWrapper.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`; } } }
+
+    function drag(e) {
+      if (active) {
+        let currentX, currentY;
+        if (e.type === "touchmove") { currentX = e.touches[0].clientX; currentY = e.touches[0].clientY; } else { currentX = e.clientX; currentY = e.clientY; }
+        if (Math.abs(currentX - dragStartX) > 3 || Math.abs(currentY - dragStartY) > 3) { isDragging = true; e.preventDefault(); }
+        if (isDragging) { xOffset = currentX - initialX; yOffset = currentY - initialY; dragWrapper.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`; }
+      }
+    }
   </script>
+
 </body>
 </html>
