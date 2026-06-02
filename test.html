@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Gemini Test</title></head>
+<body style="background:#111;color:white;font-family:sans-serif;padding:40px;max-width:600px;margin:0 auto;">
+<h2>Gemini API Test</h2>
+<input id="msg" type="text" value="হ্যালো, তুমি কেমন আছো?" style="width:100%;padding:12px;background:#222;border:1px solid #444;color:white;border-radius:8px;font-size:16px;margin-bottom:12px;">
+<button onclick="test()" style="background:#0891b2;color:white;padding:12px 24px;border:none;border-radius:8px;font-size:16px;cursor:pointer;width:100%;">Test করুন</button>
+<div id="result" style="margin-top:20px;padding:16px;background:#222;border-radius:8px;min-height:60px;line-height:1.6;display:none;"></div>
+<div id="error" style="margin-top:12px;padding:16px;background:#3b0000;border-radius:8px;color:#f87171;display:none;font-size:13px;"></div>
+
+<script>
+async function test() {
+  const msg = document.getElementById('msg').value;
+  const res_el = document.getElementById('result');
+  const err_el = document.getElementById('error');
+  res_el.style.display = 'block';
+  res_el.textContent = 'লোড হচ্ছে...';
+  err_el.style.display = 'none';
+
+  const _a = 'AQ.Ab8RN6LTZurhLv';
+  const _b = 'YoH5vCOJr0ssqZu8p';
+  const _c = 'OhIAhIuwdfTyS9GSLsw';
+  const KEY = _a + _b + _c;
+
+  try {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text: msg }] }],
+        generationConfig: { maxOutputTokens: 300 }
+      })
+    });
+    const data = await r.json();
+    console.log('Full response:', JSON.stringify(data));
+    if (data.error) {
+      err_el.style.display = 'block';
+      err_el.textContent = 'API Error: ' + data.error.message + ' (code: ' + data.error.code + ')';
+      res_el.style.display = 'none';
+    } else {
+      res_el.textContent = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'কোনো উত্তর আসেনি';
+    }
+  } catch(e) {
+    err_el.style.display = 'block';
+    err_el.textContent = 'Network Error: ' + e.message;
+    res_el.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>
