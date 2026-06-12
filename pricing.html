@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — MT Studio</title>
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
+  <style>
+    body { background:#050B14; color:#e2e8f0; padding-bottom:80px; }
+    .bottom-nav { position:fixed; bottom:0; left:0; right:0; z-index:50; background:rgba(5,11,20,0.96); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-around; padding:6px 0 14px; }
+    .bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:#475569; font-size:10px; font-weight:600; cursor:pointer; text-decoration:none; }
+    .bnav-item.active { color:#22d3ee; }
+    .bnav-item i { font-size:19px; }
+    .plan-card { background:rgba(15,23,42,0.8); border:1.5px solid rgba(255,255,255,0.1); border-radius:16px; padding:20px; position:relative; transition:all 0.2s; }
+    .plan-card.featured { border-color:rgba(34,211,238,0.4); background:rgba(34,211,238,0.05); transform:scale(1.02); }
+    .plan-card.featured .badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,#22d3ee,#8b5cf6); color:white; padding:4px 12px; border-radius:99px; font-size:10px; font-weight:700; }
+    .plan-name { font-size:16px; font-weight:800; color:white; margin-bottom:4px; }
+    .plan-desc { font-size:12px; color:#94a3b8; margin-bottom:12px; }
+    .plan-price { font-size:24px; font-weight:800; color:#22d3ee; margin-bottom:4px; }
+    .plan-billing { font-size:11px; color:#64748b; margin-bottom:16px; }
+    .feature-list { list-style:none; margin-bottom:16px; }
+    .feature-list li { padding:8px 0; font-size:12px; color:#cbd5e1; display:flex; align-items:center; gap:8px; }
+    .feature-list li i { color:#22d3ee; font-size:10px; }
+    .feature-list li.disabled { color:#64748b; }
+    .feature-list li.disabled i { color:#475569; }
+    .buy-btn { width:100%; background:linear-gradient(135deg,#0891b2,#7c3aed); border:none; color:white; padding:12px; border-radius:10px; font-weight:700; cursor:pointer; font-size:13px; transition:all 0.2s; }
+    .buy-btn:hover { box-shadow:0 0 20px rgba(8,145,178,0.3); }
+    .buy-btn.secondary { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); }
+    .buy-btn.secondary:hover { background:rgba(255,255,255,0.15); }
+    .faq-item { background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:12px; margin-bottom:8px; cursor:pointer; }
+    .faq-item.open { border-color:rgba(34,211,238,0.2); background:rgba(34,211,238,0.08); }
+    .faq-q { font-weight:600; font-size:12px; color:#cbd5e1; display:flex; justify-content:space-between; align-items:center; }
+    .faq-a { font-size:11px; color:#94a3b8; margin-top:8px; display:none; line-height:1.6; }
+    .faq-item.open .faq-a { display:block; }
+  </style>
+</head>
+<body class="bg-slate-950">
+
+<!-- TOP NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 px-4 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="text-slate-400 hover:text-white p-1">
+      <i class="fa-solid fa-arrow-left text-lg"></i>
+    </a>
+    <div>
+      <h1 class="text-sm font-extrabold text-white">Pricing Plans</h1>
+      <p class="text-[9px] text-slate-500">Choose Your Plan</p>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="pt-16 px-4">
+
+  <div class="pt-4 pb-6 text-center">
+    <p class="text-xs text-cyan-400 font-bold uppercase mb-2">✦ সাশ্রয়ী মূল্যে আনলিমিটেড সুবিধা</p>
+    <h2 class="text-2xl font-extrabold text-white mb-2">Simple, Transparent<br><span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Pricing</span></h2>
+    <p class="text-xs text-slate-500">সবার জন্য একটি plan আছে</p>
+  </div>
+
+  <!-- PRICING CARDS -->
+  <div class="mb-8">
+    <!-- FREE PLAN -->
+    <div class="plan-card mb-3">
+      <div class="plan-name">🎯 Free</div>
+      <div class="plan-desc">শুরু করার জন্য perfect</div>
+      <div class="plan-price">$0</div>
+      <div class="plan-billing">Forever free</div>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i> 20 credits/month</li>
+        <li><i class="fa-solid fa-check"></i> 2 images/month</li>
+        <li><i class="fa-solid fa-check"></i> 20 chats</li>
+        <li class="disabled"><i class="fa-solid fa-xmark"></i> Limited support</li>
+      </ul>
+      <button class="buy-btn secondary" onclick="alert('এখন ফ্রি plan-এ আছো!')">Current Plan</button>
+    </div>
+
+    <!-- PRO PLAN -->
+    <div class="plan-card featured mb-3">
+      <div class="badge">Most Popular</div>
+      <div class="plan-name">⭐ Pro</div>
+      <div class="plan-desc">ছোট ব্যবসার জন্য</div>
+      <div class="plan-price">$9.99</div>
+      <div class="plan-billing">/month (₹830)</div>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i> 2000 credits/month</li>
+        <li><i class="fa-solid fa-check"></i> 400 images/month</li>
+        <li><i class="fa-solid fa-check"></i> Unlimited chats</li>
+        <li><i class="fa-solid fa-check"></i> Priority support</li>
+        <li><i class="fa-solid fa-check"></i> API access</li>
+      </ul>
+      <button class="buy-btn" onclick="showPaymentModal('pro')">Upgrade to Pro</button>
+    </div>
+
+    <!-- BUSINESS PLAN -->
+    <div class="plan-card mb-3">
+      <div class="plan-name">🚀 Business</div>
+      <div class="plan-desc">এন্টারপ্রাইজ সলিউশন</div>
+      <div class="plan-price">$29.99</div>
+      <div class="plan-billing">/month (₹2500)</div>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-check"></i> 10000 credits/month</li>
+        <li><i class="fa-solid fa-check"></i> 2000 images/month</li>
+        <li><i class="fa-solid fa-check"></i> Unlimited everything</li>
+        <li><i class="fa-solid fa-check"></i> Dedicated support</li>
+        <li><i class="fa-solid fa-check"></i> Custom integration</li>
+      </ul>
+      <button class="buy-btn" onclick="showPaymentModal('business')">Upgrade to Business</button>
+    </div>
+  </div>
+
+  <!-- ONE-TIME CREDITS -->
+  <div class="mb-6">
+    <h3 class="text-sm font-bold text-white mb-3">One-Time Credit Packages</h3>
+    <div class="grid grid-cols-2 gap-2">
+      <button class="plan-card text-center" onclick="showPaymentModal('credits100')">
+        <div class="plan-price text-lg">100</div>
+        <div class="plan-billing">$2.99</div>
+        <div class="text-xs text-slate-600 mt-1">20 images</div>
+      </button>
+      <button class="plan-card text-center" onclick="showPaymentModal('credits500')">
+        <div class="plan-price text-lg">500</div>
+        <div class="plan-billing">$9.99</div>
+        <div class="text-xs text-slate-600 mt-1">100 images</div>
+      </button>
+      <button class="plan-card text-center" onclick="showPaymentModal('credits1000')">
+        <div class="plan-price text-lg">1000</div>
+        <div class="plan-billing">$19.99</div>
+        <div class="text-xs text-slate-600 mt-1">200 images</div>
+      </button>
+      <button class="plan-card text-center" onclick="showPaymentModal('credits5000')">
+        <div class="plan-price text-lg">5000</div>
+        <div class="plan-billing">$79.99</div>
+        <div class="text-xs text-slate-600 mt-1">1000 images</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- PAYMENT MODAL -->
+  <div id="paymentModal" style="display:none;" class="fixed inset-0 z-50 bg-black/80 backdrop-blur flex items-end">
+    <div class="w-full bg-slate-900 border-t border-white/10 rounded-3xl rounded-b-none p-6 max-h-96 overflow-y-auto">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold text-white" id="paymentTitle">Upgrade Plan</h2>
+        <button class="text-white text-lg" onclick="document.getElementById('paymentModal').style.display='none'">✕</button>
+      </div>
+
+      <!-- PAYMENT METHOD TABS -->
+      <div class="flex gap-2 mb-4">
+        <button class="flex-1 py-2 rounded-lg text-sm font-600 bg-cyan-600/20 border border-cyan-600/30 text-cyan-300" id="paypalTab" onclick="switchPayment('paypal')">
+          <i class="fa-brands fa-paypal mr-1"></i> PayPal
+        </button>
+        <button class="flex-1 py-2 rounded-lg text-sm font-600 bg-white/5 border border-white/10 text-white" id="cardTab" onclick="switchPayment('card')">
+          <i class="fa-solid fa-credit-card mr-1"></i> Card
+        </button>
+      </div>
+
+      <!-- PAYPAL BUTTON -->
+      <div id="paypalContainer" class="mb-4"></div>
+
+      <!-- CARD PAYMENT (Stripe placeholder) -->
+      <div id="cardContainer" style="display:none;" class="mb-4">
+        <input type="email" class="w-full bg-slate-800 border border-slate-700 text-white p-2 rounded mb-2" placeholder="Email">
+        <input type="text" class="w-full bg-slate-800 border border-slate-700 text-white p-2 rounded mb-2" placeholder="Card number">
+        <div class="grid grid-cols-2 gap-2">
+          <input type="text" class="bg-slate-800 border border-slate-700 text-white p-2 rounded" placeholder="MM/YY">
+          <input type="text" class="bg-slate-800 border border-slate-700 text-white p-2 rounded" placeholder="CVC">
+        </div>
+        <button class="w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-2 rounded mt-4">Pay Now</button>
+      </div>
+
+      <!-- BANK TRANSFER -->
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-3 text-center">
+        <p class="text-xs text-slate-500 mb-1">বা Bank Transfer / bKash / Nagad</p>
+        <p class="text-xs text-cyan-400 font-mono">+1(917)419-9814</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="mb-6">
+    <h3 class="text-sm font-bold text-white mb-3">Frequently Asked Questions</h3>
+    <div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>আমি কি যেকোনো সময় plan change করতে পারি?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">হ্যাঁ, যেকোনো সময় আপগ্রেড বা ডাউনগ্রেড করতে পারো। পরবর্তী বিলিং চক্র থেকে নতুন rate প্রয়োগ হবে।</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Credits কি expire হয়?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">সাবস্ক্রিপশন credits প্রতি মাসে reset হয়। One-time credits কখনো expire হয় না।</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Refund policy কী?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">30 দিনের মানি-ব্যাক গ্যারান্টি। কোনো প্রশ্ন জিজ্ঞাসা করা হবে না।</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="dashboard.html" class="bnav-item"><i class="fa-solid fa-user"></i><span>Dashboard</span></a>
+  <a href="#" class="bnav-item active"><i class="fa-solid fa-coins"></i><span>Pricing</span></a>
+  <a href="#" class="bnav-item"><i class="fa-solid fa-question"></i><span>Help</span></a>
+  <a href="index.html#contact" class="bnav-item"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+</nav>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  const app = initializeApp({
+    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+    authDomain:"mt-studio-92d1e.firebaseapp.com",
+    projectId:"mt-studio-92d1e",
+    storageBucket:"mt-studio-92d1e.firebasestorage.app",
+    messagingSenderId:"455687864985",
+    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
+  });
+  const auth = getAuth(app);
+
+  let currentUser = null;
+
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+  });
+
+  window.showPaymentModal = function(plan) {
+    if (!currentUser) {
+      if (confirm('Login করতে হবে। যাবে?')) window.location.href = 'index.html';
+      return;
+    }
+
+    const titles = {
+      'pro': 'Upgrade to Pro - $9.99/month',
+      'business': 'Upgrade to Business - $29.99/month',
+      'credits100': 'Buy 100 Credits - $2.99',
+      'credits500': 'Buy 500 Credits - $9.99',
+      'credits1000': 'Buy 1000 Credits - $19.99',
+      'credits5000': 'Buy 5000 Credits - $79.99'
+    };
+
+    document.getElementById('paymentTitle').textContent = titles[plan];
+    document.getElementById('paymentModal').style.display = 'flex';
+
+    // Setup PayPal button (simplified)
+    setTimeout(() => {
+      document.getElementById('paypalContainer').innerHTML = '<p class="text-xs text-slate-600 text-center py-3">PayPal button would render here</p>';
+    }, 100);
+  };
+
+  window.switchPayment = function(method) {
+    const paypalContainer = document.getElementById('paypalContainer');
+    const cardContainer = document.getElementById('cardContainer');
+    const paypalTab = document.getElementById('paypalTab');
+    const cardTab = document.getElementById('cardTab');
+
+    if (method === 'paypal') {
+      paypalContainer.style.display = 'block';
+      cardContainer.style.display = 'none';
+      paypalTab.classList.add('bg-cyan-600/20', 'border-cyan-600/30', 'text-cyan-300');
+      paypalTab.classList.remove('bg-white/5', 'border-white/10', 'text-white');
+      cardTab.classList.remove('bg-cyan-600/20', 'border-cyan-600/30', 'text-cyan-300');
+      cardTab.classList.add('bg-white/5', 'border-white/10', 'text-white');
+    } else {
+      paypalContainer.style.display = 'none';
+      cardContainer.style.display = 'block';
+      cardTab.classList.add('bg-cyan-600/20', 'border-cyan-600/30', 'text-cyan-300');
+      cardTab.classList.remove('bg-white/5', 'border-white/10', 'text-white');
+      paypalTab.classList.remove('bg-cyan-600/20', 'border-cyan-600/30', 'text-cyan-300');
+      paypalTab.classList.add('bg-white/5', 'border-white/10', 'text-white');
+    }
+  };
+
+  window.toggleFaq = function(el) {
+    el.classList.toggle('open');
+  };
+</script>
+
+</body>
+</html>
