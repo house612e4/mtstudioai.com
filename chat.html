@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chat — MT Studio</title>
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { background:#050B14; color:#e2e8f0; padding-bottom:0; }
+    .bottom-nav { position:fixed; bottom:0; left:0; right:0; z-index:50; background:rgba(5,11,20,0.96); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-around; padding:6px 0 14px; }
+    .bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:#475569; font-size:10px; font-weight:600; cursor:pointer; text-decoration:none; }
+    .bnav-item.active { color:#22d3ee; }
+    .bnav-item i { font-size:19px; }
+    .chat-container { display:flex; flex-direction:column; height:100vh; }
+    .chat-messages { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px; }
+    .message { display:flex; gap:8px; animation:slideIn 0.3s ease; }
+    .message.user { flex-direction:row-reverse; }
+    .message.bot .avatar, .message.user .avatar { width:28px; height:28px; border-radius:50%; flex-shrink:0; }
+    .message.bot .avatar { background:rgba(34,211,238,0.2); display:flex; align-items:center; justify-content:center; color:#22d3ee; font-size:12px; }
+    .message.user .avatar { background:rgba(139,92,246,0.2); display:flex; align-items:center; justify-content:center; color:#a78bfa; font-size:12px; }
+    .bubble { max-width:75%; padding:10px 14px; border-radius:12px; font-size:13px; line-height:1.5; }
+    .message.bot .bubble { background:rgba(255,255,255,0.07); color:#cbd5e1; border-radius:12px 12px 0px 12px; }
+    .message.user .bubble { background:linear-gradient(135deg,#0891b2,#7c3aed); color:white; border-radius:12px 12px 12px 0px; }
+    .typing-bubble { display:flex; gap:4px; align-items:center; padding:10px 14px; }
+    .typing-dot { width:6px; height:6px; background:#64748b; border-radius:50%; animation:bounce 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay:0.2s; }
+    .typing-dot:nth-child(3) { animation-delay:0.4s; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes slideIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .chat-input-area { padding:12px; border-top:1px solid rgba(255,255,255,0.05); background:rgba(5,11,20,0.8); }
+    .input-group { display:flex; gap:8px; }
+    #chatInput { flex:1; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.1); color:white; padding:10px 14px; border-radius:10px; font-size:13px; font-family:inherit; outline:none; resize:none; max-height:80px; }
+    #chatInput:focus { border-color:rgba(34,211,238,0.3); }
+    .send-btn { width:36px; height:36px; background:linear-gradient(135deg,#0891b2,#7c3aed); border:none; color:white; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.2s; font-size:14px; }
+    .send-btn:hover:not(:disabled) { box-shadow:0 0 20px rgba(8,145,178,0.3); }
+    .send-btn:disabled { opacity:0.5; cursor:not-allowed; }
+    .sidebar { position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(5,11,20,0.95); backdrop-filter:blur(20px); z-index:100; padding:16px; display:none; flex-direction:column; overflow-y:auto; }
+    .sidebar.open { display:flex; }
+    .sidebar-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .sidebar-item { padding:12px; background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.07); border-radius:10px; cursor:pointer; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; transition:all 0.2s; }
+    .sidebar-item:hover { background:rgba(15,23,42,0.8); border-color:rgba(34,211,238,0.2); }
+    .sidebar-item-title { font-size:12px; color:#cbd5e1; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .sidebar-item-delete { color:#ef4444; font-size:12px; cursor:pointer; margin-left:8px; }
+  </style>
+</head>
+<body class="bg-slate-950">
+
+<!-- SIDEBAR (Chat History) -->
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-header">
+    <h2 class="text-white font-bold">Chat History</h2>
+    <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <button onclick="newChat()" class="w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-2 rounded-lg mb-4 text-sm flex items-center justify-center gap-2">
+    <i class="fa-solid fa-plus"></i> New Chat
+  </button>
+  <div id="chatList" class="flex-1">
+    <div class="text-center py-6 text-slate-600 text-xs">No chats yet</div>
+  </div>
+</div>
+
+<!-- CHAT CONTAINER -->
+<div class="chat-container">
+
+  <!-- TOP NAV -->
+  <nav class="border-b border-white/5 px-4 py-3 flex items-center justify-between bg-slate-950/80 backdrop-blur">
+    <div class="flex items-center gap-3">
+      <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white text-lg p-1">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a href="index.html" class="text-slate-400 hover:text-white p-1">
+        <i class="fa-solid fa-arrow-left text-lg"></i>
+      </a>
+      <div>
+        <h1 class="text-sm font-extrabold text-white">AI Chat</h1>
+        <p class="text-[9px] text-slate-500">MT Studio</p>
+      </div>
+    </div>
+    <div id="creditsDisplay" class="text-xs font-bold text-cyan-300">লোড...</div>
+  </nav>
+
+  <!-- MESSAGES -->
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot">
+      <div class="avatar"><i class="fa-solid fa-sparkles"></i></div>
+      <div class="bubble">আস্সালামু আলাইকুম! 👋 আমি MT Studio AI assistant। তোমার যেকোনো প্রশ্ন জিজ্ঞাসা করতে পারো। প্রতি message = 1 credit।</div>
+    </div>
+  </div>
+
+  <!-- INPUT AREA -->
+  <div class="chat-input-area">
+    <div class="input-group">
+      <textarea id="chatInput" placeholder="কিছু লিখো..." rows="1"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="#" class="bnav-item"><i class="fa-solid fa-compass"></i><span>Inspire</span></a>
+  <a href="image-generator.html" class="bnav-item"><i class="fa-solid fa-image"></i><span>Image AI</span></a>
+  <a href="#" class="bnav-item active"><i class="fa-solid fa-message"></i><span>Chat</span></a>
+  <a href="index.html#contact" class="bnav-item"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+</nav>
+
+<!-- FIREBASE & LOGIC -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, updateDoc, increment, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const app = initializeApp({
+    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
+    authDomain:"mt-studio-92d1e.firebaseapp.com",
+    projectId:"mt-studio-92d1e",
+    storageBucket:"mt-studio-92d1e.firebasestorage.app",
+    messagingSenderId:"455687864985",
+    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
+  });
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const CHAT_COST = 1;
+  const WORKER_URL = 'https://hidden-sky-3109.studiomt46.workers.dev';
+  let currentUser = null;
+  let userCredits = 0;
+  let currentChatId = null;
+  let currentMessages = [];
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      currentUser = user;
+      const ref = doc(db, 'users', user.uid);
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        userCredits = snap.data().credits || 0;
+      }
+      updateCreditsDisplay();
+      await loadChats(user.uid);
+    } else {
+      document.getElementById('creditsDisplay').textContent = 'Login করো';
+    }
+  });
+
+  function updateCreditsDisplay() {
+    document.getElementById('creditsDisplay').textContent = userCredits + ' credits';
+  }
+
+  window.sendMessage = async function() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    if (!currentUser) {
+      if (confirm('Login করতে হবে। যাবে?')) window.location.href = 'index.html';
+      return;
+    }
+
+    if (userCredits < CHAT_COST) {
+      alert(`Credits কম! দরকার ${CHAT_COST}`);
+      return;
+    }
+
+    input.value = '';
+    addMessage('user', msg);
+    document.getElementById('sendBtn').disabled = true;
+
+    // Add typing indicator
+    const typingId = addTypingBubble();
+
+    try {
+      // Build conversation
+      const messages = [
+        { role: 'system', content: 'তুমি MT Studio-র একজন helpful assistant। বাংলায় উত্তর দাও। সংক্ষিপ্ত রাখো।' },
+        ...currentMessages.map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text })),
+        { role: 'user', content: msg }
+      ];
+
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages })
+      });
+
+      const data = await res.json();
+      removeTypingBubble(typingId);
+
+      if (data.choices && data.choices[0]) {
+        const reply = data.choices[0].message.content;
+        addMessage('bot', reply);
+
+        // Save to Firebase
+        if (!currentChatId) {
+          const chatRef = await addDoc(collection(db, 'chats'), {
+            userId: currentUser.uid,
+            title: msg.slice(0, 30),
+            createdAt: serverTimestamp()
+          });
+          currentChatId = chatRef.id;
+        }
+
+        await addDoc(collection(db, 'chats', currentChatId, 'messages'), {
+          role: 'user',
+          text: msg,
+          createdAt: serverTimestamp()
+        });
+
+        await addDoc(collection(db, 'chats', currentChatId, 'messages'), {
+          role: 'bot',
+          text: reply,
+          createdAt: serverTimestamp()
+        });
+
+        // Deduct credits
+        await updateDoc(doc(db, 'users', currentUser.uid), {
+          credits: increment(-CHAT_COST)
+        });
+        userCredits -= CHAT_COST;
+        updateCreditsDisplay();
+
+        await loadChats(currentUser.uid);
+
+      } else {
+        removeTypingBubble(typingId);
+        addMessage('bot', '❌ সমস্যা হয়েছে। আবার চেষ্টা করো।');
+      }
+
+    } catch(err) {
+      removeTypingBubble(typingId);
+      addMessage('bot', '❌ ' + (err.message || 'Error'));
+    }
+
+    document.getElementById('sendBtn').disabled = false;
+  };
+
+  function addMessage(role, text) {
+    const messagesDiv = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = 'message ' + role;
+    div.innerHTML = `
+      <div class="avatar">${role === 'user' ? '<i class="fa-solid fa-user"></i>' : '<i class="fa-solid fa-sparkles"></i>'}</div>
+      <div class="bubble">${text}</div>
+    `;
+    messagesDiv.appendChild(div);
+    currentMessages.push({ role, text });
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  function addTypingBubble() {
+    const messagesDiv = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = 'message bot';
+    div.id = 'typing-' + Date.now();
+    div.innerHTML = `
+      <div class="avatar"><i class="fa-solid fa-sparkles"></i></div>
+      <div class="typing-bubble">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    `;
+    messagesDiv.appendChild(div);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    return div.id;
+  }
+
+  function removeTypingBubble(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+
+  async function loadChats(uid) {
+    try {
+      const q = query(collection(db, 'chats'), where('userId','==',uid), orderBy('createdAt','desc'));
+      const snap = await getDocs(q);
+      const list = document.getElementById('chatList');
+      if (snap.empty) {
+        list.innerHTML = '<div class="text-center py-6 text-slate-600 text-xs">No chats yet</div>';
+        return;
+      }
+      list.innerHTML = snap.docs.map(doc => `
+        <div class="sidebar-item" onclick="openChat('${doc.id}')">
+          <span class="sidebar-item-title">${doc.data().title}</span>
+          <span class="sidebar-item-delete" onclick="deleteChat('${doc.id}', event)">🗑️</span>
+        </div>
+      `).join('');
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  window.openChat = async function(id) {
+    currentChatId = id;
+    currentMessages = [];
+    const messagesDiv = document.getElementById('chatMessages');
+    messagesDiv.innerHTML = '<div class="message bot"><div class="avatar"><i class="fa-solid fa-sparkles"></i></div><div class="bubble">Chat loaded...</div></div>';
+    toggleSidebar();
+
+    try {
+      const q = query(collection(db, 'chats', id, 'messages'), orderBy('createdAt','asc'));
+      const snap = await getDocs(q);
+      messagesDiv.innerHTML = '';
+      snap.forEach(doc => addMessage(doc.data().role, doc.data().text));
+    } catch(e) {
+      console.error(e);
+    }
+  };
+
+  window.deleteChat = async function(id, event) {
+    event.stopPropagation();
+    if (!confirm('Delete this chat?')) return;
+    // Note: Firestore delete needs server-side implementation
+    if (currentChatId === id) {
+      window.newChat();
+    }
+    await loadChats(currentUser.uid);
+  };
+
+  window.newChat = function() {
+    currentChatId = null;
+    currentMessages = [];
+    document.getElementById('chatMessages').innerHTML = `
+      <div class="message bot">
+        <div class="avatar"><i class="fa-solid fa-sparkles"></i></div>
+        <div class="bubble">নতুন chat শুরু হয়েছে। কিছু লিখো...</div>
+      </div>
+    `;
+    toggleSidebar();
+  };
+
+  window.toggleSidebar = function() {
+    document.getElementById('sidebar').classList.toggle('open');
+  };
+
+  // Auto-resize textarea
+  document.getElementById('chatInput').addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+  });
+
+  // Send on Enter (Shift+Enter for new line)
+  document.getElementById('chatInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      window.sendMessage();
+    }
+  });
+</script>
+
+</body>
+</html>
