@@ -3,293 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Image Generator — MT Studio</title>
+  <title>Advanced Image Generator — MT Studio</title>
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    body { background:#050B14; color:#e2e8f0; padding-bottom:80px; }
-    .bottom-nav { position:fixed; bottom:0; left:0; right:0; z-index:50; background:rgba(5,11,20,0.96); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-around; padding:6px 0 14px; }
-    .bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:#475569; font-size:10px; font-weight:600; cursor:pointer; text-decoration:none; }
-    .bnav-item.active { color:#22d3ee; }
-    .bnav-item i { font-size:19px; }
+    body { background: #000000; color: white; font-family: 'Outfit', sans-serif; padding-bottom: 80px; }
+    
+    /* Gradients */
+    .gradient-purple { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); }
+    .gradient-cyan { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+    
+    /* Animations */
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(168, 139, 250, 0.5); } 50% { box-shadow: 0 0 40px rgba(168, 139, 250, 0.8); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    
+    .animate-slide-up { animation: slideUp 0.6s ease-out; }
+    .animate-glow { animation: glow 2s ease-in-out infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+    /* Glass */
+    .glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    /* Buttons */
+    .btn-primary { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); border: none; color: white; padding: 12px 24px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(168, 139, 250, 0.4); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+    .btn-secondary:hover { background: rgba(168, 139, 250, 0.2); border-color: #a78bfa; }
+
+    /* Reference image upload */
+    .upload-zone {
+      border: 2px dashed rgba(168, 139, 250, 0.5);
+      border-radius: 16px;
+      padding: 40px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      background: rgba(168, 139, 250, 0.05);
+    }
+    .upload-zone:hover { border-color: #a78bfa; background: rgba(168, 139, 250, 0.1); }
+    .upload-zone.active { border-color: #a78bfa; background: rgba(168, 139, 250, 0.15); }
+
+    /* Reference preview */
+    .reference-preview { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(168, 139, 250, 0.3); }
+    .reference-remove { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; background: rgba(0, 0, 0, 0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+    /* Input fields */
+    .input-field { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; padding: 12px 14px; border-radius: 10px; font-size: 14px; transition: all 0.3s; }
+    .input-field:focus { outline: none; border-color: #a78bfa; background: rgba(168, 139, 250, 0.1); }
+
+    /* Bottom nav */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #666; text-decoration: none; font-size: 11px; font-weight: 600; transition: all 0.3s; }
+    .nav-item.active { color: #a78bfa; }
+    .nav-item i { font-size: 18px; }
+
+    /* Results */
+    .result-container { position: relative; border-radius: 16px; overflow: hidden; }
+    .image-placeholder { width: 100%; aspect-ratio: 1; background: rgba(168, 139, 250, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+
+    /* Loading spinner */
+    .spinner { width: 40px; height: 40px; border: 4px solid rgba(168, 139, 250, 0.2); border-top: 4px solid #a78bfa; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Tabs */
+    .tab-btn { background: none; border: none; color: #666; font-size: 14px; font-weight: 600; padding: 12px 16px; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.3s; }
+    .tab-btn.active { color: #a78bfa; border-bottom-color: #a78bfa; }
+
+    /* Grid for style/size options */
+    .option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
+    .option-btn { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; padding: 12px; border-radius: 10px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.3s; text-align: center; }
+    .option-btn:hover { border-color: #a78bfa; }
+    .option-btn.active { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); border-color: #a78bfa; }
   </style>
 </head>
-<body class="bg-slate-950">
+<body class="bg-black">
 
 <!-- TOP NAV -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 px-4 py-3 flex items-center justify-between">
-  <div class="flex items-center gap-3">
-    <a href="index.html" class="text-slate-400 hover:text-white p-1">
-      <i class="fa-solid fa-arrow-left text-lg"></i>
-    </a>
-    <div>
-      <h1 class="text-sm font-extrabold text-white">Image Generator</h1>
-      <p class="text-[9px] text-slate-500">MT Studio AI</p>
+<nav class="fixed top-0 left-0 right-0 z-50 glass mx-4 my-4 rounded-2xl max-w-md mx-auto">
+  <div class="flex items-center justify-between px-6 py-3">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="text-white hover:text-purple-400 transition">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <div>
+        <h1 class="text-sm font-bold">Image Generator</h1>
+        <p class="text-[10px] text-gray-500">With AI Enhancement</p>
+      </div>
     </div>
+    <div id="creditsDisplay" class="text-xs font-bold text-cyan-300">200 credits</div>
   </div>
-  <div id="creditsDisplay" class="text-xs font-bold text-cyan-300">লোড...</div>
 </nav>
 
 <!-- MAIN -->
-<main class="pt-16 px-4">
+<main class="pt-20 px-4">
 
-  <div class="pt-4 pb-4">
-    <p class="text-xs text-cyan-400 font-bold uppercase mb-1">✦ AI দিয়ে ছবি তৈরি করো</p>
-    <h2 class="text-2xl font-extrabold text-white">কল্পনাকে<br><span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">ছবিতে রূপ দাও</span></h2>
-    <p class="text-xs text-slate-500 mt-1.5">প্রতি ছবি = 5 credits</p>
-  </div>
+  <div class="max-w-4xl mx-auto">
 
-  <!-- PROMPT INPUT -->
-  <div class="mb-4">
-    <textarea id="promptInput" class="w-full bg-slate-900 border border-slate-700 text-white p-3 rounded-lg text-sm focus:border-cyan-500 outline-none" rows="3" placeholder="বাংলায় বা English-এ লেখো..." maxlength="1000"></textarea>
-    <div class="text-right text-xs text-slate-600 mt-1"><span id="charCount">0</span>/1000</div>
-  </div>
-
-  <!-- STYLE -->
-  <div class="mb-3">
-    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Style</p>
-    <div class="flex gap-2 overflow-x-auto pb-2">
-      <button class="style-btn active" onclick="selectStyle(this,'vivid')">✨ Vivid</button>
-      <button class="style-btn" onclick="selectStyle(this,'natural')">🌿 Natural</button>
-      <button class="style-btn" onclick="selectStyle(this,'cinematic')">🎬 Cinematic</button>
-      <button class="style-btn" onclick="selectStyle(this,'anime')">🎌 Anime</button>
-    </div>
-  </div>
-
-  <!-- SIZE -->
-  <div class="mb-4">
-    <p class="text-xs font-bold text-slate-500 uppercase mb-2">Size</p>
-    <div class="grid grid-cols-3 gap-2">
-      <button class="size-btn active" onclick="selectSize(this,'1024x1024')"><div class="w-8 h-8 bg-slate-700 rounded mb-1"></div><span class="text-[10px]">1:1</span></button>
-      <button class="size-btn" onclick="selectSize(this,'1792x1024')"><div class="w-10 h-6 bg-slate-700 rounded mb-1"></div><span class="text-[10px]">16:9</span></button>
-      <button class="size-btn" onclick="selectSize(this,'1024x1792')"><div class="w-6 h-10 bg-slate-700 rounded mb-1"></div><span class="text-[10px]">9:16</span></button>
-    </div>
-  </div>
-
-  <!-- GENERATE BUTTON -->
-  <button id="genBtn" class="w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-3 rounded-lg mb-5 flex items-center justify-center gap-2" onclick="generateImage()">
-    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Image
-  </button>
-
-  <!-- RESULT -->
-  <div id="resultArea" class="hidden mb-6">
-    <div id="loadingSkeleton" class="bg-slate-900 rounded-xl h-80 animate-pulse mb-3"></div>
-    <div id="imageCard" class="hidden bg-slate-900 rounded-xl overflow-hidden">
-      <img id="generatedImg" src="" alt="Generated" class="w-full block">
-      <div class="p-4 flex gap-2">
-        <a id="downloadBtn" href="#" download="mt-studio.png" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white py-2 rounded text-sm font-bold text-center flex items-center justify-center gap-1">
-          <i class="fa-solid fa-download"></i> Download
-        </a>
-        <button class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white py-2 rounded text-sm font-bold" onclick="shareImage()">
-          <i class="fa-solid fa-share"></i> Share
-        </button>
+    <!-- Reference Image Upload -->
+    <section class="mb-8 animate-slide-up">
+      <h2 class="text-xl font-bold mb-4">Upload Reference Image</h2>
+      <p class="text-sm text-gray-400 mb-4">Optional: Upload a reference photo for style guidance</p>
+      
+      <div id="uploadZone" class="upload-zone">
+        <i class="fa-solid fa-cloud-arrow-up text-4xl text-purple-400 mb-3 block"></i>
+        <p class="font-bold mb-2">Drop your image here or click to browse</p>
+        <p class="text-xs text-gray-500">JPG, PNG, WEBP up to 10MB</p>
+        <input type="file" id="referenceInput" accept="image/*" style="display: none;">
       </div>
-    </div>
-    <div id="errorBox" class="hidden bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-lg text-sm"></div>
-  </div>
 
-  <!-- HISTORY -->
-  <div>
-    <h3 class="text-sm font-bold text-white mb-3">আগের ছবি</h3>
-    <div id="historyGrid" class="grid grid-cols-3 gap-2 mb-4">
-      <div class="text-center py-8 col-span-3 text-slate-600 text-xs">এখনো কোনো ছবি তৈরি হয়নি</div>
+      <div id="referencePreview" style="display: none;" class="mt-4">
+        <div class="reference-preview">
+          <img id="previewImg" src="" alt="Reference" class="w-full h-48 object-cover">
+          <div class="reference-remove" onclick="removeReference()">
+            <i class="fa-solid fa-xmark text-white"></i>
+          </div>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">Reference image loaded</p>
+      </div>
+    </section>
+
+    <!-- Prompt Input -->
+    <section class="mb-8 animate-slide-up" style="animation-delay: 0.1s">
+      <h2 class="text-xl font-bold mb-4">Describe Your Vision</h2>
+      <textarea id="promptInput" class="input-field w-full h-24 resize-none" placeholder="এক্সাইটিং প্রম্পট লিখো... Be detailed for better results!"></textarea>
+      <p class="text-xs text-gray-500 mt-2" id="charCount">0/1000</p>
+    </section>
+
+    <!-- Style & Size Options -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      
+      <!-- Style Selection -->
+      <section class="animate-slide-up" style="animation-delay: 0.2s">
+        <h2 class="text-xl font-bold mb-4">Art Style</h2>
+        <div class="option-grid">
+          <button class="option-btn active" onclick="selectStyle(this, 'vivid')">✨ Vivid</button>
+          <button class="option-btn" onclick="selectStyle(this, 'natural')">🌿 Natural</button>
+          <button class="option-btn" onclick="selectStyle(this, 'cinematic')">🎬 Cinema</button>
+          <button class="option-btn" onclick="selectStyle(this, 'anime')">🎌 Anime</button>
+          <button class="option-btn" onclick="selectStyle(this, '3d')">💠 3D Render</button>
+          <button class="option-btn" onclick="selectStyle(this, 'painting')">🖌️ Oil Paint</button>
+        </div>
+      </section>
+
+      <!-- Size Selection -->
+      <section class="animate-slide-up" style="animation-delay: 0.3s">
+        <h2 class="text-xl font-bold mb-4">Image Size</h2>
+        <div class="option-grid">
+          <button class="option-btn active" onclick="selectSize(this, '1024x1024')">
+            <div class="text-xs">1:1</div>
+            <div class="text-[10px] text-gray-500">Square</div>
+          </button>
+          <button class="option-btn" onclick="selectSize(this, '1792x1024')">
+            <div class="text-xs">16:9</div>
+            <div class="text-[10px] text-gray-500">Wide</div>
+          </button>
+          <button class="option-btn" onclick="selectSize(this, '1024x1792')">
+            <div class="text-xs">9:16</div>
+            <div class="text-[10px] text-gray-500">Portrait</div>
+          </button>
+          <button class="option-btn" onclick="selectSize(this, '1440x1440')">
+            <div class="text-xs">HD</div>
+            <div class="text-[10px] text-gray-500">4K</div>
+          </button>
+        </div>
+      </section>
     </div>
+
+    <!-- Generate Button -->
+    <button id="genBtn" class="btn-primary w-full mb-8 text-lg py-4 animate-slide-up" style="animation-delay: 0.4s" onclick="generateImage()">
+      <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Generate Image (5 credits)
+    </button>
+
+    <!-- Result Section -->
+    <section id="resultSection" style="display: none;" class="mb-8 animate-slide-up">
+      <h2 class="text-xl font-bold mb-4">Your Creation</h2>
+      
+      <div id="loadingState" class="text-center py-16">
+        <div class="spinner mx-auto mb-4"></div>
+        <p class="text-gray-400">Creating magic... (30-60 seconds)</p>
+      </div>
+
+      <div id="imageState" style="display: none;">
+        <div class="result-container mb-4">
+          <img id="resultImg" src="" alt="Generated" class="w-full rounded-16 border border-purple-500/20">
+        </div>
+        <div class="flex gap-2 mb-4">
+          <button class="btn-primary flex-1 flex items-center justify-center gap-2" onclick="downloadImage()">
+            <i class="fa-solid fa-download"></i> Download
+          </button>
+          <button class="btn-secondary flex-1 flex items-center justify-center gap-2" onclick="shareImage()">
+            <i class="fa-solid fa-share-nodes"></i> Share
+          </button>
+        </div>
+      </div>
+
+      <div id="errorState" style="display: none;" class="bg-red-500/20 border border-red-500/30 text-red-400 p-4 rounded-12">
+        <p id="errorMsg">Something went wrong</p>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-4">Recent Creations</h2>
+      <div id="historyGrid" class="grid grid-cols-3 gap-2">
+        <div class="text-center py-8 col-span-3 text-gray-600 text-xs">No images yet</div>
+      </div>
+    </section>
+
   </div>
 
 </main>
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <a href="index.html" class="bnav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
-  <a href="#" class="bnav-item"><i class="fa-solid fa-compass"></i><span>Inspire</span></a>
-  <a href="#" class="bnav-item active"><i class="fa-solid fa-image"></i><span>Image AI</span></a>
-  <a href="#" class="bnav-item"><i class="fa-solid fa-grid-2"></i><span>Tools</span></a>
-  <a href="index.html#contact" class="bnav-item"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+  <a href="index.html" class="nav-item">
+    <i class="fa-solid fa-house"></i> <span>Home</span>
+  </a>
+  <a href="image-generator.html" class="nav-item active">
+    <i class="fa-solid fa-image"></i> <span>Image</span>
+  </a>
+  <a href="video-generator.html" class="nav-item">
+    <i class="fa-solid fa-video"></i> <span>Video</span>
+  </a>
+  <a href="chat.html" class="nav-item">
+    <i class="fa-solid fa-message"></i> <span>Chat</span>
+  </a>
+  <a href="pricing.html" class="nav-item">
+    <i class="fa-solid fa-coins"></i> <span>Pricing</span>
+  </a>
 </nav>
 
-<style>
-  .style-btn, .size-btn { background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.1); color:#94a3b8; padding:8px 12px; border-radius:8px; cursor:pointer; font-size:12px; font-weight:600; transition:all 0.2s; white-space:nowrap; }
-  .style-btn.active, .size-btn.active { background:rgba(34,211,238,0.15); border-color:rgba(34,211,238,0.4); color:#22d3ee; }
-  .style-btn:hover:not(.active), .size-btn:hover:not(.active) { border-color:rgba(255,255,255,0.2); }
-  .size-btn { flex-direction:column; align-items:center; }
-</style>
-
-<!-- FIREBASE & LOGIC -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, doc, getDoc, updateDoc, increment, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  const app = initializeApp({
-    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
-    authDomain:"mt-studio-92d1e.firebaseapp.com",
-    projectId:"mt-studio-92d1e",
-    storageBucket:"mt-studio-92d1e.firebasestorage.app",
-    messagingSenderId:"455687864985",
-    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
-  });
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  const IMAGE_COST = 5;
+<script>
   const WORKER_URL = 'https://hidden-sky-3109.studiomt46.workers.dev';
-  let currentUser = null;
-  let userCredits = 0;
+  let selectedStyle = 'vivid';
+  let selectedSize = '1024x1024';
+  let referenceImage = null;
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      currentUser = user;
-      const ref = doc(db, 'users', user.uid);
-      const snap = await getDoc(ref);
-      if (snap.exists()) {
-        userCredits = snap.data().credits || 0;
-      }
-      updateCreditsDisplay();
-      await loadHistory(user.uid);
-    } else {
-      document.getElementById('creditsDisplay').textContent = 'Login করো';
-      loadLocalHistory();
+  // Upload zone
+  document.getElementById('uploadZone').onclick = () => document.getElementById('referenceInput').click();
+  document.getElementById('referenceInput').onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        referenceImage = e.target.result;
+        document.getElementById('previewImg').src = referenceImage;
+        document.getElementById('uploadZone').style.display = 'none';
+        document.getElementById('referencePreview').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
     }
-  });
+  };
 
-  function updateCreditsDisplay() {
-    document.getElementById('creditsDisplay').textContent = userCredits + ' credits';
-  }
+  window.removeReference = function() {
+    referenceImage = null;
+    document.getElementById('uploadZone').style.display = 'block';
+    document.getElementById('referencePreview').style.display = 'none';
+    document.getElementById('referenceInput').value = '';
+  };
 
+  // Char counter
+  document.getElementById('promptInput').oninput = function() {
+    document.getElementById('charCount').textContent = this.value.length + '/1000';
+  };
+
+  // Style & Size selection
+  window.selectStyle = function(btn, style) {
+    document.querySelectorAll('[onclick*="selectStyle"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedStyle = style;
+  };
+
+  window.selectSize = function(btn, size) {
+    document.querySelectorAll('[onclick*="selectSize"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedSize = size;
+  };
+
+  // Generate image
   window.generateImage = async function() {
     const prompt = document.getElementById('promptInput').value.trim();
-    if (!prompt) { alert('Prompt লেখো!'); return; }
+    if (!prompt) { alert('লেখ কিছু বড়বাজ!'); return; }
 
-    if (!currentUser) {
-      if (confirm('Login করতে হবে। যাবে?')) window.location.href = 'index.html';
-      return;
-    }
-
-    if (userCredits < IMAGE_COST) {
-      alert(`Credits কম! দরকার ${IMAGE_COST}, আছে ${userCredits}`);
-      return;
-    }
-
+    document.getElementById('resultSection').style.display = 'block';
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('imageState').style.display = 'none';
+    document.getElementById('errorState').style.display = 'none';
     document.getElementById('genBtn').disabled = true;
-    document.getElementById('resultArea').classList.remove('hidden');
-    document.getElementById('loadingSkeleton').classList.remove('hidden');
-    document.getElementById('imageCard').classList.add('hidden');
-    document.getElementById('errorBox').classList.add('hidden');
 
     try {
+      let finalPrompt = prompt;
+      if (referenceImage) {
+        finalPrompt += ` [Reference style guide attached]`;
+      }
+
       const res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'image',
-          prompt: prompt,
-          size: window.selectedSize || '1024x1024',
-          style: window.selectedStyle || 'vivid'
+          prompt: finalPrompt,
+          size: selectedSize,
+          style: selectedStyle
         })
       });
 
       const data = await res.json();
 
       if (data.success && data.imageUrl) {
-        document.getElementById('generatedImg').src = data.imageUrl;
-        document.getElementById('downloadBtn').href = data.imageUrl;
-        document.getElementById('loadingSkeleton').classList.add('hidden');
-        document.getElementById('imageCard').classList.remove('hidden');
-
-        // Deduct credits
-        await updateDoc(doc(db, 'users', currentUser.uid), {
-          credits: increment(-IMAGE_COST)
-        });
-        userCredits -= IMAGE_COST;
-        updateCreditsDisplay();
-
-        // Save to history
-        await addDoc(collection(db, 'images'), {
-          userId: currentUser.uid,
-          prompt: prompt,
-          imageUrl: data.imageUrl,
-          createdAt: serverTimestamp()
-        });
-
-        addToLocalHistory({ imageUrl: data.imageUrl, prompt: prompt });
-        await loadHistory(currentUser.uid);
+        document.getElementById('resultImg').src = data.imageUrl;
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('imageState').style.display = 'block';
+        addToHistory(data.imageUrl, prompt);
       } else {
-        throw new Error(data.error || 'Failed');
+        throw new Error(data.error || 'Generation failed');
       }
-
     } catch(err) {
-      document.getElementById('loadingSkeleton').classList.add('hidden');
-      document.getElementById('errorBox').classList.remove('hidden');
-      document.getElementById('errorBox').textContent = '❌ ' + (err.message || 'সমস্যা হয়েছে');
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('errorState').style.display = 'block';
+      document.getElementById('errorMsg').textContent = err.message;
     }
 
     document.getElementById('genBtn').disabled = false;
   };
 
-  async function loadHistory(uid) {
-    try {
-      const q = query(collection(db, 'images'), where('userId','==',uid), orderBy('createdAt','desc'));
-      const snap = await getDocs(q);
-      const items = [];
-      snap.forEach(d => items.push(d.data()));
-      renderHistory(items);
-    } catch(e) {
-      loadLocalHistory();
-    }
-  }
-
-  function renderHistory(items) {
-    const grid = document.getElementById('historyGrid');
-    if (!items.length) {
-      grid.innerHTML = '<div class="col-span-3 text-center py-8 text-slate-600 text-xs">এখনো কোনো ছবি তৈরি হয়নি</div>';
-      return;
-    }
-    grid.innerHTML = items.map(item => `
-      <div class="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition" onclick="document.getElementById('generatedImg').src='${item.imageUrl}'; document.getElementById('downloadBtn').href='${item.imageUrl}';">
-        <img src="${item.imageUrl}" alt="${item.prompt}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-      </div>
-    `).join('');
-  }
-
-  function loadLocalHistory() {
-    const saved = JSON.parse(localStorage.getItem('mt_images') || '[]');
-    renderHistory(saved);
-  }
-
-  function addToLocalHistory(item) {
-    const saved = JSON.parse(localStorage.getItem('mt_images') || '[]');
-    saved.unshift(item);
-    localStorage.setItem('mt_images', JSON.stringify(saved.slice(0, 30)));
-  }
-
-  // UI
-  document.getElementById('promptInput').addEventListener('input', function() {
-    document.getElementById('charCount').textContent = this.value.length;
-  });
-
-  window.selectStyle = function(btn, style) {
-    document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    window.selectedStyle = style;
+  window.downloadImage = function() {
+    const url = document.getElementById('resultImg').src;
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'mt-studio-image.png';
+    a.click();
   };
 
-  window.selectSize = function(btn, size) {
-    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    window.selectedSize = size;
-  };
-
-  window.shareImage = async function() {
-    const url = document.getElementById('generatedImg').src;
+  window.shareImage = function() {
+    const url = document.getElementById('resultImg').src;
     if (navigator.share) {
-      try { await navigator.share({ title: 'MT Studio Image', url: url }); }
-      catch(e) {}
+      navigator.share({ title: 'MT Studio Image', url: url });
     } else {
       navigator.clipboard.writeText(url);
-      alert('URL copied!');
+      alert('Image URL copied!');
     }
   };
+
+  function addToHistory(url, prompt) {
+    const grid = document.getElementById('historyGrid');
+    if (grid.innerHTML.includes('No images')) {
+      grid.innerHTML = '';
+    }
+    const div = document.createElement('div');
+    div.className = 'rounded-10 overflow-hidden cursor-pointer hover:opacity-80 transition';
+    div.innerHTML = `<img src="${url}" alt="${prompt}" class="w-full aspect-square object-cover" loading="lazy">`;
+    div.onclick = () => document.getElementById('resultImg').src = url;
+    grid.insertBefore(div, grid.firstChild);
+  }
 </script>
 
 </body>
