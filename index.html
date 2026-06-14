@@ -3,612 +3,412 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MT Studio - Digital Solutions | ওয়েবসাইট ও অ্যাপ ডেভেলপমেন্ট</title>
-  <meta name="description" content="MT Studio crafts modern websites, mobile apps, brand visuals, and AI workflows for ambitious founders.">
-  <meta name="theme-color" content="#050B14">
+  <title>MT Studio - Bold AI Creative Suite</title>
+  <meta name="description" content="Create stunning images, videos, and content with AI. MT Studio's bold creative suite for modern creators.">
+  <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZYEQHPLJJ"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3ZYEQHPLJJ');</script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
-          colors: { midnight: '#050B14', formbg: '#0F172A' },
-          animation: {
-            blob: 'blob 10s infinite',
-            marquee: 'marquee 25s linear infinite',
-            popIn: 'popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards',
-          },
-          keyframes: {
-            blob: { '0%':{transform:'translate(0px,0px) scale(1)'},'33%':{transform:'translate(30px,-50px) scale(1.1)'},'66%':{transform:'translate(-20px,20px) scale(0.9)'},'100%':{transform:'translate(0px,0px) scale(1)'} },
-            marquee: { '0%':{transform:'translateX(0%)'},'100%':{transform:'translateX(-100%)'} },
-            popIn: { '0%':{opacity:0,transform:'scale(0.8) translateY(20px)'},'100%':{opacity:1,transform:'scale(1) translateY(0)'} }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    body { background-color: #050B14; color: #e2e8f0; overflow-x: hidden; font-family: 'Inter', sans-serif; padding-bottom: 72px; }
-    .bg-grid { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E"); }
-    .spring-press { transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1); }
-    .spring-press:active { transform: scale(0.96); }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #050B14; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
-    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 30px #0F172A inset !important;
-      -webkit-text-fill-color: white !important;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: #000000;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
     }
-    #chatMessages::-webkit-scrollbar { width: 4px; }
 
-    /* Bottom Nav */
+    /* Gradient backgrounds */
+    .gradient-purple { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); }
+    .gradient-cyan { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+    .gradient-pink { background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%); }
+    .gradient-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(168, 139, 250, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(168, 139, 250, 0.8); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .animate-float { animation: float 3s ease-in-out infinite; }
+    .animate-glow { animation: glow 2s ease-in-out infinite; }
+    .animate-slide-left { animation: slideInLeft 0.8s ease-out; }
+    .animate-slide-right { animation: slideInRight 0.8s ease-out; }
+    .animate-slide-up { animation: slideInUp 0.8s ease-out; }
+    .animate-scale-in { animation: scaleIn 0.8s ease-out; }
+    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* Glass morphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+    }
+
+    /* Interactive buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      border: none;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(168, 139, 250, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(168, 139, 250, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      border-color: #a78bfa;
+      background: rgba(168, 139, 250, 0.1);
+    }
+
+    /* Feature cards */
+    .feature-card {
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px 24px;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(168, 139, 250, 0.1) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .feature-card:hover {
+      border-color: rgba(168, 139, 250, 0.5);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(168, 139, 250, 0.2);
+    }
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      transition: transform 0.4s;
+    }
+    .feature-card:hover .feature-icon { transform: scale(1.1) rotate(5deg); }
+
+    /* Bottom nav */
     .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-      background: rgba(5,11,20,0.96); backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      display: flex; align-items: center; justify-content: space-around;
-      padding: 6px 0 14px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
     }
-    .bnav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px;
-      color: #475569; font-size: 10px; font-weight: 600;
-      cursor: pointer; padding: 4px 12px; transition: color 0.2s;
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #666666;
       text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-align: center;
     }
-    .bnav-item.active { color: #22d3ee; }
-    .bnav-item i { font-size: 19px; }
-    .bnav-create-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
-    .bnav-create {
-      width: 50px; height: 50px; border-radius: 50%;
-      background: linear-gradient(135deg, #22d3ee, #8b5cf6);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 20px rgba(34,211,238,0.4);
-      margin-top: -18px; border: 3px solid #050B14;
-      transition: transform 0.2s;
-    }
-    .bnav-create:hover { transform: scale(1.06); }
-    .bnav-create-label { font-size: 10px; font-weight: 600; color: #475569; }
-
-    /* Side Menu */
-    .sidemenu {
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(5,11,20,0.98); backdrop-filter: blur(24px);
-      transform: translateX(-100%); transition: transform 0.3s ease;
-      display: flex; flex-direction: column;
-    }
-    .sidemenu.open { transform: translateX(0); }
-    .sidemenu-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .sidemenu-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 16px 20px; color: #e2e8f0; font-size: 15px; font-weight: 600;
-      border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s;
-      text-decoration: none;
-    }
-    .sidemenu-item:hover { background: rgba(255,255,255,0.03); }
-    .sidemenu-item .icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 14px; color: #22d3ee; flex-shrink: 0; }
-    .sidemenu-section { padding: 12px 20px 4px; font-size: 10px; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 0.12em; }
-
-    /* Service Cards */
-    .svc-big {
-      background: #0A0F1C; border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 16px; overflow: hidden; position: relative;
-      min-height: 140px; cursor: pointer; transition: all 0.2s;
-    }
-    .svc-big:hover { border-color: rgba(34,211,238,0.3); }
-    .svc-small {
-      background: #0A0F1C; border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 12px; padding: 16px 6px 12px;
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      cursor: pointer; transition: all 0.2s;
-    }
-    .svc-small:hover { border-color: rgba(139,92,246,0.3); background: #111827; }
-    .svc-small-icon { font-size: 22px; }
-    .svc-small-label { font-size: 10px; font-weight: 600; color: #cbd5e1; text-align: center; line-height: 1.3; }
-
-    /* Portfolio scroll */
-    .portfolio-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
-    .portfolio-scroll::-webkit-scrollbar { display: none; }
-    .p-card {
-      min-width: 155px; background: #0A0F1C; border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; overflow: hidden; flex-shrink: 0; transition: all 0.2s;
-    }
-    .p-card:hover { border-color: rgba(34,211,238,0.25); }
-    .p-card-img { height: 105px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .p-card-body { padding: 10px 12px; }
-    .p-card-body h4 { font-size: 12px; font-weight: 700; color: white; margin-bottom: 2px; }
-    .p-card-body p { font-size: 10px; color: #64748b; }
-    .p-badge { position: absolute; top: 7px; left: 7px; font-size: 8px; font-weight: 700; text-transform: uppercase; padding: 2px 7px; border-radius: 99px; letter-spacing: 0.06em; }
-
-    /* Blog */
-    .blog-card {
-      background: #0A0F1C; border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; overflow: hidden; display: flex;
-      transition: all 0.2s; text-decoration: none;
-    }
-    .blog-card:hover { border-color: rgba(139,92,246,0.25); }
-    .blog-card-img { width: 90px; min-height: 90px; flex-shrink: 0; background: #111827; display: flex; align-items: center; justify-content: center; }
-    .blog-card-body { padding: 12px; flex: 1; }
-    .blog-cat { font-size: 9px; color: #a78bfa; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-    .blog-card-body h4 { font-size: 13px; font-weight: 700; color: white; line-height: 1.3; margin-bottom: 4px; }
-    .blog-card-body p { font-size: 11px; color: #64748b; line-height: 1.5; }
-
-    /* Modal styles */
-    .modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(5,11,20,0.92); backdrop-filter: blur(16px); display: none; align-items: flex-end; justify-content: center; }
-    .modal-overlay.active { display: flex; }
-    .modal-sheet { background: #0A0F1C; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px 24px 0 0; width: 100%; max-width: 480px; padding: 24px 24px 40px; max-height: 90vh; overflow-y: auto; position: relative; }
-    .modal-handle { width: 40px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 99px; margin: 0 auto 20px; }
-    .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.05); border: none; color: #94a3b8; width: 32px; height: 32px; border-radius: 50%; font-size: 15px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-
-    @keyframes fadeUp { from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);} }
-    @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);} }
-    @keyframes spin { to{transform:rotate(360deg);} }
-    .fade-up { animation: fadeUp 0.45s ease forwards; }
+    .nav-item:hover, .nav-item.active { color: #a78bfa; }
+    .nav-item i { font-size: 20px; }
   </style>
 </head>
-<body class="bg-grid">
+<body>
 
-<!-- Blobs -->
-<div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-[-1]">
-  <div class="absolute top-[-10%] left-[-10%] w-[35rem] h-[35rem] bg-cyan-600/15 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
-  <div class="absolute bottom-[-20%] right-[-10%] w-[35rem] h-[35rem] bg-violet-600/15 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay:4s;"></div>
-</div>
-
-<!-- TOP NAV -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-midnight/90 backdrop-blur-xl border-b border-white/5 px-4 py-3 flex items-center justify-between">
-  <div class="flex items-center gap-3">
-    <button onclick="openMenu()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-bars text-xl"></i></button>
-    <a href="#home" class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg overflow-hidden border border-cyan-500/30">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass mx-4 my-4 rounded-2xl max-w-md mx-auto">
+  <div class="flex items-center justify-between px-6 py-4">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg overflow-hidden border border-purple-500">
         <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover">
       </div>
-      <div>
-        <h1 class="text-sm font-extrabold text-white leading-tight">MT Studio</h1>
-        <p class="text-[9px] text-slate-500 uppercase tracking-widest">Digital Solutions</p>
-      </div>
-    </a>
-  </div>
-  <div class="flex items-center gap-2">
-    <button onclick="openAuth('signin')" class="nav-auth-btn text-sm font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-lg transition-all">Login</button>
-    <button onclick="openAuth('signup')" class="text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-violet-600 px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-[0_0_14px_rgba(34,211,238,0.3)] transition-all hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]">Start for Free <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+      <span class="font-bold text-sm">MT Studio</span>
+    </div>
+    <div class="flex gap-2">
+      <button class="btn-outline text-xs px-3 py-2 rounded-lg" onclick="alert('Login')">Login</button>
+      <button class="btn-primary text-xs px-4 py-2" onclick="alert('Signup')">Start Free</button>
+    </div>
   </div>
 </nav>
 
-<!-- SIDE MENU -->
-<div id="sideMenu" class="sidemenu">
-  <div class="sidemenu-header">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl overflow-hidden border border-cyan-500/30">
-        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover">
-      </div>
-      <div>
-        <h2 class="text-white font-extrabold text-base">MT Studio</h2>
-        <p class="text-[9px] text-slate-500 uppercase tracking-widest">Digital Solutions</p>
-      </div>
-    </div>
-    <button onclick="closeMenu()" class="bg-white/5 border-none text-white w-9 h-9 rounded-full flex items-center justify-center text-lg"><i class="fa-solid fa-xmark"></i></button>
-  </div>
-  <div class="flex-1 overflow-y-auto">
-    <div class="sidemenu-section">Navigation</div>
-    <a href="#home" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-house"></i></div> Home</a>
-    <a href="#services" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-sparkles"></i></div> Services</a>
-    <a href="#portfolio" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-folder-open"></i></div> Portfolio</a>
-    <a href="#contact" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-message"></i></div> Contact</a>
-    <a href="pricing.html" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-coins"></i></div> Pricing</a>
-    <div class="sidemenu-section">Tools</div>
-    <a href="image-generator.html" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-image"></i></div> Image Generator</a>
-    <a href="chat.html" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-message"></i></div> AI Chat</a>
-    <a href="content-writer.html" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-pen"></i></div> Content Writer</a>
-    <a href="dashboard.html" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-user"></i></div> Dashboard</a>
-    <div class="sidemenu-section">Help</div>
-    <a href="https://www.facebook.com/MTstudio2" target="_blank" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-brands fa-facebook"></i></div> Facebook</a>
-    <a href="mailto:studiomt46@gmail.com" onclick="closeMenu()" class="sidemenu-item"><div class="icon"><i class="fa-solid fa-envelope"></i></div> Email Us</a>
-  </div>
-</div>
-<div id="menuOverlay" style="display:none;position:fixed;inset:0;z-index:199;background:rgba(0,0,0,0.5);" onclick="closeMenu()"></div>
+<!-- Main Content -->
+<main class="pt-24 pb-80 px-4">
 
-<!-- MAIN -->
-<main class="pt-16" id="home">
+  <!-- Hero Section -->
+  <section class="max-w-6xl mx-auto mb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Left: Text Content -->
+      <div class="animate-slide-left">
+        <span class="inline-block px-4 py-2 gradient-purple rounded-full text-xs font-bold text-white mb-4">✨ AI-Powered Creativity</span>
+        
+        <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
+          Create Bold,<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">
+            Stunning Content
+          </span>
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Generate AI images with reference photos, create viral videos, and write compelling content—all in one bold creative suite.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <button class="btn-primary flex items-center justify-center gap-2">
+            <i class="fa-solid fa-rocket"></i> Start Creating Now
+          </button>
+          <button class="btn-outline flex items-center justify-center gap-2">
+            <i class="fa-solid fa-play"></i> Watch Demo
+          </button>
+        </div>
 
-  <!-- HERO -->
-  <section class="px-4 pt-8 pb-5 text-center fade-up">
-    <p class="text-xs text-cyan-400 font-bold uppercase tracking-[0.18em] mb-3">✦ আপনার স্বপ্ন ডিজিটালি পারফেক্ট </p>
-    <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">What would you like<br>to <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">create</span> today?</h2>
-  </section>
-
-  <!-- SERVICE GRID -->
-  <section class="px-3 pb-0 fade-up" id="services">
-    <div class="grid grid-cols-2 gap-2 mb-2">
-      <a href="image-generator.html" class="svc-big">
-        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/edit%20image.jpeg" alt="ছবি এডিট" class="w-full h-full object-cover absolute inset-0 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-        <div class="absolute top-3 left-3">
-          <div class="w-9 h-9 rounded-xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-            <i class="fa-solid fa-image text-cyan-400 text-base"></i>
+        <div class="flex gap-8 text-sm">
+          <div>
+            <div class="text-2xl font-black gradient-purple bg-clip-text text-transparent">500+</div>
+            <div class="text-gray-400">Active Creators</div>
+          </div>
+          <div>
+            <div class="text-2xl font-black gradient-cyan bg-clip-text text-transparent">50K+</div>
+            <div class="text-gray-400">Images Generated</div>
+          </div>
+          <div>
+            <div class="text-2xl font-black gradient-pink bg-clip-text text-transparent">4.9★</div>
+            <div class="text-gray-400">User Rating</div>
           </div>
         </div>
-        <div class="absolute bottom-3 left-0 right-0 text-center">
-          <span class="text-sm font-bold text-white">ছবি এডিট</span>
-        </div>
-      </a>
-      <a href="content-writer.html" class="svc-big">
-        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/edit%20video.jpeg" alt="ভিডিও এডিট" class="w-full h-full object-cover absolute inset-0 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-        <div class="absolute top-3 left-3">
-          <div class="w-9 h-9 rounded-xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-            <i class="fa-solid fa-pen text-violet-400 text-base"></i>
+      </div>
+
+      <!-- Right: Visual -->
+      <div class="animate-slide-right">
+        <div class="relative">
+          <!-- Large gradient card -->
+          <div class="gradient-purple rounded-3xl p-8 text-white shadow-2xl animate-float" style="animation-delay: 0s">
+            <i class="fa-solid fa-wand-magic-sparkles text-4xl mb-4"></i>
+            <h3 class="text-2xl font-bold mb-2">Image Generator</h3>
+            <p class="text-sm opacity-90">AI-powered with reference images</p>
+          </div>
+
+          <!-- Floating cards -->
+          <div class="gradient-cyan rounded-2xl p-6 text-white shadow-xl absolute -bottom-8 -right-8 animate-float" style="animation-delay: 0.2s">
+            <i class="fa-solid fa-video text-2xl mb-2"></i>
+            <p class="text-xs font-bold">Video Gen</p>
+          </div>
+
+          <div class="gradient-orange rounded-2xl p-6 text-white shadow-xl absolute -top-8 -right-16 animate-float" style="animation-delay: 0.4s">
+            <i class="fa-solid fa-pen-fancy text-2xl mb-2"></i>
+            <p class="text-xs font-bold">Content</p>
           </div>
         </div>
-        <div class="absolute bottom-3 left-0 right-0 text-center">
-          <span class="text-sm font-bold text-white">কন্টেন্ট তৈরি</span>
-        </div>
-      </a>
-    </div>
-    <div class="grid grid-cols-4 gap-1.5">
-      <a href="image-generator.html" class="svc-small">
-        <span class="svc-small-icon">✨</span>
-        <span class="svc-small-label">Image Gen</span>
-      </a>
-      <a href="chat.html" class="svc-small">
-        <span class="svc-small-icon">💬</span>
-        <span class="svc-small-label">AI Chat</span>
-      </a>
-      <a href="content-writer.html" class="svc-small">
-        <span class="svc-small-icon">📝</span>
-        <span class="svc-small-label">Content</span>
-      </a>
-      <a href="dashboard.html" class="svc-small">
-        <span class="svc-small-icon">📊</span>
-        <span class="svc-small-label">Dashboard</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- BANNER -->
-  <section class="px-3 pt-4 fade-up">
-    <a href="pricing.html" class="rounded-2xl overflow-hidden border border-violet-500/30 cursor-pointer relative shadow-[0_0_25px_rgba(139,92,246,0.1)] block">
-      <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/mt%20studio%20cover.jpeg" alt="MT Studio AI" class="w-full h-auto block">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-      <div class="absolute bottom-3 left-3">
-        <button class="bg-black/50 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-          <i class="fa-solid fa-sparkles text-cyan-400 text-[10px]"></i> Explore Plans
-        </button>
-      </div>
-    </a>
-  </section>
-
-  <!-- STATS -->
-  <section class="px-3 pt-4 fade-up">
-    <div class="grid grid-cols-4 gap-2">
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-xl p-3 text-center">
-        <h3 class="text-lg font-extrabold text-cyan-400">120+</h3>
-        <p class="text-[9px] text-slate-500 mt-0.5">Projects</p>
-      </div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-xl p-3 text-center">
-        <h3 class="text-lg font-extrabold text-violet-400">48h</h3>
-        <p class="text-[9px] text-slate-500 mt-0.5">Delivery</p>
-      </div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-xl p-3 text-center">
-        <h3 class="text-lg font-extrabold text-green-400">4.9</h3>
-        <p class="text-[9px] text-slate-500 mt-0.5">Rating</p>
-      </div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-xl p-3 text-center">
-        <h3 class="text-lg font-extrabold text-pink-400">100%</h3>
-        <p class="text-[9px] text-slate-500 mt-0.5">On-time</p>
       </div>
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section class="px-3 pt-6 fade-up" id="portfolio">
-    <div class="flex justify-between items-center mb-3">
-      <h2 class="text-base font-extrabold text-white">MT Studio Suite</h2>
-      <a href="#portfolio" class="text-xs text-cyan-400 font-bold">More →</a>
+  <!-- Features Grid -->
+  <section class="max-w-6xl mx-auto mb-20">
+    <h2 class="text-4xl font-black text-center mb-4">Powerful Tools for Every Creator</h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">From AI image generation with reference support to professional video creation and content writing.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Image Generator Card -->
+      <div class="feature-card animate-scale-in" style="animation-delay: 0.1s">
+        <div class="feature-icon gradient-purple">🖼️</div>
+        <h3 class="text-xl font-bold mb-3">Image Generator</h3>
+        <p class="text-sm text-gray-400 mb-4">Upload reference photos and generate stunning AI images with exact style control.</p>
+        <a href="image-generator.html" class="text-purple-400 text-sm font-bold hover:text-purple-300 flex items-center gap-2">
+          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Video Generator Card -->
+      <div class="feature-card animate-scale-in" style="animation-delay: 0.2s">
+        <div class="feature-icon gradient-cyan">🎬</div>
+        <h3 class="text-xl font-bold mb-3">Video Generator</h3>
+        <p class="text-sm text-gray-400 mb-4">Create professional videos from text prompts. Shorts, reels, and full-length content.</p>
+        <a href="video-generator.html" class="text-cyan-400 text-sm font-bold hover:text-cyan-300 flex items-center gap-2">
+          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Content Writer Card -->
+      <div class="feature-card animate-scale-in" style="animation-delay: 0.3s">
+        <div class="feature-icon gradient-pink">✍️</div>
+        <h3 class="text-xl font-bold mb-3">Content Writer</h3>
+        <p class="text-sm text-gray-400 mb-4">Blog posts, social media captions, ads, and product descriptions in seconds.</p>
+        <a href="content-writer.html" class="text-pink-400 text-sm font-bold hover:text-pink-300 flex items-center gap-2">
+          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- AI Chat Card -->
+      <div class="feature-card animate-scale-in" style="animation-delay: 0.4s">
+        <div class="feature-icon gradient-orange">💬</div>
+        <h3 class="text-xl font-bold mb-3">AI Chat</h3>
+        <p class="text-sm text-gray-400 mb-4">Real-time conversations with advanced AI. Brainstorm ideas and get instant feedback.</p>
+        <a href="chat.html" class="text-orange-400 text-sm font-bold hover:text-orange-300 flex items-center gap-2">
+          Explore <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
     </div>
-    <div class="portfolio-scroll">
-      <a href="image-generator.html" class="p-card">
-        <div class="p-card-img bg-black">
-          <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/edit%20image.jpeg" alt="Smart Shot" class="w-full h-full object-cover opacity-85">
-          <div class="p-badge bg-green-500/20 border border-green-500/40 text-green-400">Live</div>
+  </section>
+
+  <!-- Pricing Preview -->
+  <section class="max-w-6xl mx-auto mb-20">
+    <h2 class="text-4xl font-black text-center mb-4">Simple, Bold Pricing</h2>
+    <p class="text-center text-gray-400 mb-12">Start free, upgrade when you're ready.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass p-8 rounded-2xl border-l-4 border-purple-500 hover:border-purple-400 transition">
+        <h3 class="text-2xl font-bold mb-2">Free</h3>
+        <p class="text-4xl font-black gradient-purple bg-clip-text text-transparent mb-6">$0</p>
+        <ul class="space-y-3 mb-8 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400"></i> 20 credits</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400"></i> 2 images/month</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400"></i> Chat access</li>
+          <li class="flex gap-2"><i class="fa-solid fa-xmark text-gray-600"></i> No videos</li>
+        </ul>
+        <button class="btn-outline w-full">Get Started</button>
+      </div>
+
+      <div class="glass p-8 rounded-2xl border-l-4 border-cyan-500 hover:border-cyan-400 transition ring-2 ring-cyan-500/20">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h3 class="text-2xl font-bold">Pro</h3>
+            <p class="text-xs text-gray-400">Most Popular</p>
+          </div>
+          <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-bold">Save 20%</span>
         </div>
-        <div class="p-card-body">
-          <h4 class="text-green-400">Image Gen</h4>
-          <p>DALL-E 3</p>
-        </div>
-      </a>
-      <a href="chat.html" class="p-card">
-        <div class="p-card-img bg-black">
-          <i class="fa-solid fa-message text-2xl text-cyan-400"></i>
-          <div class="p-badge bg-green-500/20 border border-green-500/40 text-green-400">Live</div>
-        </div>
-        <div class="p-card-body">
-          <h4 class="text-green-400">AI Chat</h4>
-          <p>GPT-4o-mini</p>
-        </div>
-      </a>
-      <a href="content-writer.html" class="p-card">
-        <div class="p-card-img bg-black">
-          <i class="fa-solid fa-pen text-2xl text-violet-400"></i>
-          <div class="p-badge bg-green-500/20 border border-green-500/40 text-green-400">Live</div>
-        </div>
-        <div class="p-card-body">
-          <h4 class="text-green-400">Content Writer</h4>
-          <p>4 types</p>
-        </div>
-      </a>
-      <a href="dashboard.html" class="p-card">
-        <div class="p-card-img bg-black">
-          <i class="fa-solid fa-chart-line text-2xl text-pink-400"></i>
-          <div class="p-badge bg-green-500/20 border border-green-500/40 text-green-400">Live</div>
-        </div>
-        <div class="p-card-body">
-          <h4 class="text-green-400">Dashboard</h4>
-          <p>User stats</p>
-        </div>
+        <p class="text-4xl font-black gradient-cyan bg-clip-text text-transparent mb-6">$9.99<span class="text-lg text-gray-400">/mo</span></p>
+        <ul class="space-y-3 mb-8 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 2000 credits</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Unlimited images</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 100 videos</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Priority support</li>
+        </ul>
+        <button class="btn-primary w-full">Upgrade to Pro</button>
+      </div>
+
+      <div class="glass p-8 rounded-2xl border-l-4 border-pink-500 hover:border-pink-400 transition">
+        <h3 class="text-2xl font-bold mb-2">Business</h3>
+        <p class="text-4xl font-black gradient-pink bg-clip-text text-transparent mb-6">$29.99<span class="text-lg text-gray-400">/mo</span></p>
+        <ul class="space-y-3 mb-8 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> 10K credits</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> Everything Pro</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> Unlimited videos</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-pink-400"></i> API access</li>
+        </ul>
+        <button class="btn-outline w-full">Contact Sales</button>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="pricing.html" class="text-purple-400 font-bold hover:text-purple-300 flex items-center justify-center gap-2">
+        See all pricing plans <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="px-3 pt-6 fade-up" id="contact">
-    <h2 class="text-base font-extrabold text-white mb-3">যোগাযোগ</h2>
-    <div class="flex flex-col gap-2">
-      <a href="https://wa.me/19174199814?text=Hello%20MT%20Studio" target="_blank" class="flex items-center gap-3 bg-[#0A0F1C] border border-white/5 hover:border-green-500/25 rounded-2xl p-4 transition-all">
-        <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 text-lg flex-shrink-0"><i class="fa-brands fa-whatsapp"></i></div>
-        <div><p class="text-sm font-semibold text-white">WhatsApp</p><span class="text-xs text-slate-500">+1 (917) 419-9814</span></div>
-        <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i>
-      </a>
-      <a href="https://m.me/MTstudio2" target="_blank" class="flex items-center gap-3 bg-[#0A0F1C] border border-white/5 hover:border-blue-500/25 rounded-2xl p-4 transition-all">
-        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-lg flex-shrink-0"><i class="fa-brands fa-facebook-messenger"></i></div>
-        <div><p class="text-sm font-semibold text-white">Messenger</p><span class="text-xs text-slate-500">Facebook চ্যাট</span></div>
-        <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i>
-      </a>
-      <a href="mailto:studiomt46@gmail.com" class="flex items-center gap-3 bg-[#0A0F1C] border border-white/5 hover:border-cyan-500/25 rounded-2xl p-4 transition-all">
-        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg flex-shrink-0"><i class="fa-solid fa-envelope"></i></div>
-        <div><p class="text-sm font-semibold text-white">Email</p><span class="text-xs text-slate-500">studiomt46@gmail.com</span></div>
-        <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="px-3 pt-6 pb-6 fade-up" id="faq">
-    <h2 class="text-base font-extrabold text-white mb-3">FAQ</h2>
-    <div class="flex flex-col gap-2">
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left bg-transparent border-none text-white">
-          <span class="text-sm font-semibold">সার্ভিসের দাম কত?</span>
-          <div class="faq-ico w-6 h-6 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-[11px]"></i></div>
-        </button>
-        <div class="faq-ans hidden px-4 pb-4 text-xs text-slate-400 leading-relaxed">সব সার্ভিস <span class="text-cyan-400 font-semibold">credit-based</span>। Free plan: 20 credits, Pro: 2000 credits।</div>
-      </div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left bg-transparent border-none text-white">
-          <span class="text-sm font-semibold">কিভাবে credits কিনবো?</span>
-          <div class="faq-ico w-6 h-6 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-[11px]"></i></div>
-        </button>
-        <div class="faq-ans hidden px-4 pb-4 text-xs text-slate-400 leading-relaxed"><a href="pricing.html" class="text-cyan-400 font-semibold">Pricing page</a>-এ সব প্ল্যান দেখবে। PayPal, Card বা Bank Transfer করতে পারবে।</div>
-      </div>
-      <div class="bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left bg-transparent border-none text-white">
-          <span class="text-sm font-semibold">কাজ শুরুর প্রক্রিয়া?</span>
-          <div class="faq-ico w-6 h-6 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-[11px]"></i></div>
-        </button>
-        <div class="faq-ans hidden px-4 pb-4 text-xs text-slate-400 leading-relaxed">Login → Choose tool (Image/Chat/Content) → Input details → Generate → Download/Share</div>
-      </div>
+  <!-- CTA Section -->
+  <section class="max-w-4xl mx-auto mb-20">
+    <div class="glass p-12 rounded-3xl text-center">
+      <h2 class="text-4xl font-black mb-4">Ready to Create Bold Content?</h2>
+      <p class="text-lg text-gray-300 mb-8">Join 500+ creators who are already generating stunning AI content.</p>
+      <button class="btn-primary px-8 py-4 text-lg">Start Free Today</button>
     </div>
   </section>
 
 </main>
 
-<!-- BOTTOM NAV -->
+<!-- Bottom Navigation -->
 <nav class="bottom-nav">
-  <a href="#home" class="bnav-item active" onclick="setActive(this)">
-    <i class="fa-solid fa-house"></i><span>Home</span>
+  <a href="#" class="nav-item active">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
   </a>
-  <a href="image-generator.html" class="bnav-item" onclick="setActive(this)">
-    <i class="fa-solid fa-image"></i><span>Image</span>
+  <a href="image-generator.html" class="nav-item">
+    <i class="fa-solid fa-image"></i>
+    <span>Image</span>
   </a>
-  <div class="bnav-create-wrap" onclick="toggleRadial()">
-    <div class="bnav-create" id="createBtn"><i class="fa-solid fa-sparkles text-white text-lg" id="createIcon"></i></div>
-    <span class="bnav-create-label">Create</span>
-  </div>
-  <a href="chat.html" class="bnav-item" onclick="setActive(this)">
-    <i class="fa-solid fa-message"></i><span>Chat</span>
+  <a href="video-generator.html" class="nav-item">
+    <i class="fa-solid fa-video"></i>
+    <span>Video</span>
   </a>
-  <a href="pricing.html" class="bnav-item" onclick="setActive(this)">
-    <i class="fa-solid fa-coins"></i><span>Pricing</span>
+  <a href="chat.html" class="nav-item">
+    <i class="fa-solid fa-message"></i>
+    <span>Chat</span>
+  </a>
+  <a href="pricing.html" class="nav-item">
+    <i class="fa-solid fa-coins"></i>
+    <span>Pricing</span>
   </a>
 </nav>
-
-<!-- RADIAL MENU -->
-<div id="radialBg" style="display:none;position:fixed;inset:0;z-index:95;background:rgba(5,11,20,0.85);backdrop-filter:blur(8px);" onclick="closeRadial()"></div>
-<div id="radialMenu" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:96;height:100%;pointer-events:none;">
-  <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:300px;height:300px;">
-    <div class="radial-item" id="ri0" style="position:absolute;bottom:70px;left:10px;pointer-events:all;" onclick="window.location.href='image-generator.html';">
-      <div style="width:56px;height:56px;border-radius:50%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);cursor:pointer;"><span style="font-size:22px;">🖼️</span></div>
-      <span style="display:block;text-align:center;font-size:11px;font-weight:600;color:white;margin-top:5px;">Image</span>
-    </div>
-    <div class="radial-item" id="ri1" style="position:absolute;bottom:140px;left:0;pointer-events:all;" onclick="window.location.href='chat.html';">
-      <div style="width:56px;height:56px;border-radius:50%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);cursor:pointer;"><span style="font-size:22px;">💬</span></div>
-      <span style="display:block;text-align:center;font-size:11px;font-weight:600;color:white;margin-top:5px;">Chat</span>
-    </div>
-    <div class="radial-item" id="ri2" style="position:absolute;bottom:185px;left:50%;transform:translateX(-50%);pointer-events:all;" onclick="window.location.href='content-writer.html';">
-      <div style="width:56px;height:56px;border-radius:50%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);cursor:pointer;"><span style="font-size:22px;">📝</span></div>
-      <span style="display:block;text-align:center;font-size:11px;font-weight:600;color:white;margin-top:5px;">Content</span>
-    </div>
-    <div class="radial-item" id="ri3" style="position:absolute;bottom:140px;right:0;pointer-events:all;" onclick="window.location.href='dashboard.html';">
-      <div style="width:56px;height:56px;border-radius:50%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);cursor:pointer;"><span style="font-size:22px;">📊</span></div>
-      <span style="display:block;text-align:center;font-size:11px;font-weight:600;color:white;margin-top:5px;">Dashboard</span>
-    </div>
-    <div class="radial-item" id="ri4" style="position:absolute;bottom:70px;right:10px;pointer-events:all;" onclick="window.location.href='pricing.html';">
-      <div style="width:56px;height:56px;border-radius:50%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);cursor:pointer;"><span style="font-size:22px;">💳</span></div>
-      <span style="display:block;text-align:center;font-size:11px;font-weight:600;color:white;margin-top:5px;">Pricing</span>
-    </div>
-    <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);pointer-events:all;cursor:pointer;" onclick="closeRadial()">
-      <div class="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-        <i class="fa-solid fa-xmark text-white text-lg"></i>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, collection, getDocs, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  const app = initializeApp({
-    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
-    authDomain:"mt-studio-92d1e.firebaseapp.com",
-    projectId:"mt-studio-92d1e",
-    storageBucket:"mt-studio-92d1e.firebasestorage.app",
-    messagingSenderId:"455687864985",
-    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
-  });
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  onAuthStateChanged(auth, user => {
-    const lb = document.querySelector('.nav-auth-btn');
-    const sb = lb?.nextElementSibling;
-    if(user && lb && sb){
-      lb.innerHTML = `<div style="width:26px;height:26px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(34,211,238,0.4);"><img src="${user.photoURL||'https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg'}" style="width:100%;height:100%;object-fit:cover;"></div>`;
-      sb.innerHTML = `<i class="fa-solid fa-right-from-bracket" style="font-size:11px;"></i> Logout`;
-      sb.onclick = ()=>{ signOut(auth); alert('Logged out!'); window.location.href='index.html'; };
-    }
-  });
-
-  window.firebaseGoogleSignIn = async()=>{
-    try{ await signInWithPopup(auth,new GoogleAuthProvider()); closeAuth(); alert('Welcome! Google login successful.'); }
-    catch(e){ if(e.code!=='auth/popup-closed-by-user') alert('Google login failed.'); }
-  };
-  window.firebaseFacebookSignIn = async()=>{
-    try{ await signInWithPopup(auth,new FacebookAuthProvider()); closeAuth(); alert('Welcome! Facebook login successful.'); }
-    catch(e){ if(e.code!=='auth/popup-closed-by-user') alert('Facebook login failed.'); }
-  };
-  window.doSignup = async()=>{
-    const email=document.getElementById('suEmail').value;
-    if(!email){ alert('Email required'); return; }
-    try{ await createUserWithEmailAndPassword(auth,email,'mt2024!'); closeAuth(); alert('Account created!'); }
-    catch(e){ alert('Error: ' + (e.code==='auth/email-already-in-use' ? 'Email already exists' : e.message)); }
-  };
-  window.doSignin = async()=>{
-    const email=document.getElementById('siEmail').value;
-    const pass=document.getElementById('siPass').value;
-    try{ await signInWithEmailAndPassword(auth,email,pass); closeAuth(); alert('Signed in!'); }
-    catch(e){ alert('Error: ' + (e.code==='auth/user-not-found' ? 'User not found' : e.code==='auth/wrong-password' ? 'Wrong password' : e.message)); }
-  };
-</script>
-
-<script>
-  const EMAILJS_PUBLIC_KEY='p_mMJON6oBY_Fg3u_';
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-
-  // Menu
-  function openMenu(){ document.getElementById('sideMenu').classList.add('open'); document.getElementById('menuOverlay').style.display='block'; document.body.style.overflow='hidden'; }
-  function closeMenu(){ document.getElementById('sideMenu').classList.remove('open'); document.getElementById('menuOverlay').style.display='none'; document.body.style.overflow=''; }
-
-  // Auth
-  function openAuth(mode){ document.getElementById('authModal').classList.add('active'); switchAuth(mode); document.body.style.overflow='hidden'; }
-  function closeAuth(){ document.getElementById('authModal').classList.remove('active'); document.body.style.overflow=''; }
-  function handleAuthClick(e){ if(e.target===document.getElementById('authModal')) closeAuth(); }
-  function switchAuth(mode){
-    const su=document.getElementById('suForm'),si=document.getElementById('siForm');
-    if(mode==='signup'){ su.style.display=''; si.style.display='none'; }
-    else{ su.style.display='none'; si.style.display=''; }
-  }
-
-  function toggleFaq(btn){
-    const item=btn.closest('.bg-\\[\\#0A0F1C\\]')||btn.parentElement;
-    const ans=item.querySelector('.faq-ans');
-    const ico=item.querySelector('.faq-ico');
-    const open=ans&&!ans.classList.contains('hidden');
-    document.querySelectorAll('.faq-ans').forEach(a=>a.classList.add('hidden'));
-    document.querySelectorAll('.faq-ico').forEach(i=>i.style.transform='rotate(0deg)');
-    if(ans&&!open){ ans.classList.remove('hidden'); ico.style.transform='rotate(45deg)'; }
-  }
-
-  function setActive(el){ document.querySelectorAll('.bnav-item').forEach(i=>i.classList.remove('active')); el.classList.add('active'); }
-
-  // Radial
-  function toggleRadial(){
-    const bg=document.getElementById('radialBg');
-    const menu=document.getElementById('radialMenu');
-    const items=document.querySelectorAll('.radial-item');
-    const icon=document.getElementById('createIcon');
-    if(bg.style.display==='none'){
-      bg.style.display='block'; menu.style.display='block';
-      icon.className='fa-solid fa-xmark text-white text-lg';
-      document.body.style.overflow='hidden';
-      setTimeout(()=>{ items.forEach((item,i)=>setTimeout(()=>item.classList.add('show'),i*50)); },10);
-    } else closeRadial();
-  }
-  function closeRadial(){
-    const items=document.querySelectorAll('.radial-item');
-    items.forEach(i=>i.classList.remove('show'));
-    setTimeout(()=>{
-      document.getElementById('radialBg').style.display='none';
-      document.getElementById('radialMenu').style.display='none';
-      document.getElementById('createIcon').className='fa-solid fa-sparkles text-white text-lg';
-      document.body.style.overflow='';
-    },200);
-  }
-</script>
-
-<!-- AUTH MODAL HTML (hidden) -->
-<div id="authModal" class="modal-overlay" onclick="handleAuthClick(event)">
-  <div class="modal-sheet">
-    <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeAuth()"><i class="fa-solid fa-xmark"></i></button>
-    <div class="flex items-center gap-3 mb-5">
-      <div class="w-11 h-11 rounded-xl overflow-hidden border border-cyan-500/25">
-        <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover">
-      </div>
-      <div>
-        <h2 id="authTitle" class="text-xl font-extrabold text-white">Welcome</h2>
-        <p id="authSub" class="text-xs text-slate-500">Start creating</p>
-      </div>
-    </div>
-
-    <div id="suForm">
-      <button class="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold py-3 rounded-lg mb-2 flex items-center justify-center gap-2" onclick="window.firebaseGoogleSignIn()"><img src="https://www.svgrepo.com/show/475656/google-color.svg" style="width:18px;height:18px;" alt="Google"> Google</button>
-      <button class="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold py-3 rounded-lg mb-4 flex items-center justify-center gap-2" onclick="window.firebaseFacebookSignIn()"><i class="fa-brands fa-facebook" style="color:#1877F2;"></i> Facebook</button>
-      <input type="email" id="suEmail" class="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-lg mb-3 text-sm" placeholder="your@email.com">
-      <button class="w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-3 rounded-lg" onclick="doSignup()">Create Account</button>
-      <p class="text-center text-xs text-slate-500 mt-4">Already have account? <button onclick="switchAuth('signin')" class="text-cyan-400 font-bold" style="background:none;border:none;cursor:pointer;">Sign in</button></p>
-    </div>
-
-    <div id="siForm" style="display:none;">
-      <button class="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold py-3 rounded-lg mb-2 flex items-center justify-center gap-2" onclick="window.firebaseGoogleSignIn()"><img src="https://www.svgrepo.com/show/475656/google-color.svg" style="width:18px;height:18px;" alt="Google"> Google</button>
-      <button class="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold py-3 rounded-lg mb-4 flex items-center justify-center gap-2" onclick="window.firebaseFacebookSignIn()"><i class="fa-brands fa-facebook" style="color:#1877F2;"></i> Facebook</button>
-      <input type="email" id="siEmail" class="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-lg mb-2 text-sm" placeholder="your@email.com">
-      <input type="password" id="siPass" class="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-lg mb-3 text-sm" placeholder="Password">
-      <button class="w-full bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-bold py-3 rounded-lg" onclick="doSignin()">Sign In</button>
-      <p class="text-center text-xs text-slate-500 mt-4">No account? <button onclick="switchAuth('signup')" class="text-cyan-400 font-bold" style="background:none;border:none;cursor:pointer;">Create one</button></p>
-    </div>
-  </div>
-</div>
-
-<style>
-  .radial-item { display: flex; flex-direction: column; align-items: center; opacity: 0; transform: scale(0.5) translateY(20px); transition: opacity 0.25s, transform 0.25s; }
-  .radial-item.show { opacity: 1; transform: scale(1) translateY(0); }
-</style>
 
 </body>
 </html>
