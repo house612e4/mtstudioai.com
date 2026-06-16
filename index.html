@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MT Studio - AI Creative Suite</title>
+  <title>MT Studio - AI Creative Suite | বাংলায় AI সমাধান</title>
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -11,280 +11,397 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+    body { background: #000; color: #fff; font-family: 'Outfit', sans-serif; }
 
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
     @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(168,139,250,0.4)} 50%{box-shadow:0 0 50px rgba(168,139,250,0.8)} }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
     .animate-float { animation: float 3s ease-in-out infinite; }
     .animate-slide-up { animation: slideUp 0.7s ease-out; }
     .animate-glow { animation: glow 2s ease-in-out infinite; }
-    .animate-fade { animation: fadeIn 0.4s ease-out; }
 
     .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
     .gradient-text { background: linear-gradient(135deg, #a78bfa, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    .btn-primary { background: linear-gradient(135deg, #a78bfa, #7c3aed); border: none; color: white; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'Outfit', sans-serif; font-size: 15px; }
+    .btn-primary { background: linear-gradient(135deg, #a78bfa, #7c3aed); border: none; color: white; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(168,139,250,0.5); }
-    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: white; padding: 12px 28px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Outfit', sans-serif; }
-    .btn-outline:hover { border-color: #a78bfa; background: rgba(167,139,250,0.1); }
 
-    /* Modal */
-    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
-    .modal.open { display: flex; }
-    .modal-box { background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 32px 24px; width: 100%; max-width: 400px; animation: slideUp 0.3s ease-out; }
+    .feature-card { background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; transition: all 0.3s; }
+    .feature-card:hover { border-color: rgba(168,139,250,0.4); transform: translateY(-4px); }
 
-    .input-field { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 14px 16px; color: white; font-size: 15px; font-family: 'Outfit', sans-serif; outline: none; transition: border 0.3s; }
-    .input-field:focus { border-color: #a78bfa; }
-    .input-field::placeholder { color: #666; }
+    /* Chat Widget */
+    .chat-widget { position: fixed; bottom: 20px; right: 20px; width: 350px; height: 500px; background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; flex-direction: column; z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+    .chat-header { background: linear-gradient(135deg, #a78bfa, #7c3aed); padding: 16px; border-radius: 16px 16px 0 0; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+    .chat-body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .chat-message { padding: 10px 12px; border-radius: 8px; font-size: 13px; max-width: 80%; }
+    .chat-message.user { background: #a78bfa; align-self: flex-end; }
+    .chat-message.bot { background: rgba(255,255,255,0.08); align-self: flex-start; }
+    .chat-input { padding: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
+    .chat-input input { flex: 1; background: rgba(255,255,255,0.08); border: none; border-radius: 8px; padding: 8px 12px; color: white; font-size: 13px; }
+    .chat-input button { background: #a78bfa; border: none; padding: 8px 12px; border-radius: 8px; color: white; cursor: pointer; font-weight: 700; }
 
-    /* Feature cards */
-    .feature-card { background: #111; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 24px; transition: all 0.3s; cursor: pointer; text-decoration: none; display: block; }
-    .feature-card:hover { border-color: rgba(168,139,250,0.4); transform: translateY(-4px); background: #151515; }
-
-    /* Bottom nav */
-    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
     .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #555; text-decoration: none; font-size: 10px; font-weight: 600; transition: all 0.3s; }
     .nav-item.active, .nav-item:hover { color: #a78bfa; }
     .nav-item i { font-size: 20px; }
 
-    /* Top bar */
-    .top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .modal.open { display: flex; }
+    .modal-box { background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 32px 24px; width: 100%; max-width: 400px; max-height: 90vh; overflow-y: auto; }
 
-    /* Error / Success */
-    .alert { padding: 12px 16px; border-radius: 10px; font-size: 13px; margin-bottom: 16px; display: none; }
-    .alert.show { display: block; }
-    .alert-error { background: rgba(244,63,94,0.2); border: 1px solid rgba(244,63,94,0.4); color: #fda4af; }
-    .alert-success { background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); color: #6ee7b7; }
+    .blog-card { background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; transition: all 0.3s; }
+    .blog-card:hover { border-color: rgba(168,139,250,0.4); transform: translateY(-4px); }
+    .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+    .blog-card-content { padding: 16px; }
+    .blog-card-content h3 { font-weight: 700; margin-bottom: 8px; }
+    .blog-card-content p { font-size: 13px; color: #999; }
 
-    /* Spinner */
-    .spinner { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 0.8s linear infinite; display: inline-block; margin-right: 8px; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .work-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1; }
+    .work-item img { width: 100%; height: 100%; object-fit: cover; }
+    .work-item-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    .work-item:hover .work-item-overlay { opacity: 1; }
+    .work-item-text { color: white; text-align: center; }
 
-    /* Credit badge */
-    .credit-badge { background: linear-gradient(135deg, #f97316, #ea580c); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 20px 100px; }
+    .social-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .social-links a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s; }
+    .social-links a:hover { background: #a78bfa; border-color: #a78bfa; transform: translateY(-4px); }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div class="flex items-center gap-3">
-    <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-9 h-9 rounded-xl" onerror="this.style.display='none'">
-    <span class="font-bold text-lg">MT Studio</span>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass mx-4 my-4 rounded-2xl max-w-md mx-auto">
+  <div class="flex items-center justify-between px-6 py-4">
+    <div class="flex items-center gap-2">
+      <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-8 h-8 rounded-lg" onerror="this.style.display='none'">
+      <span class="font-bold">MT Studio</span>
+    </div>
+    <div class="flex gap-2">
+      <button class="text-sm text-gray-400 hover:text-white" onclick="scrollToSection('features')">সেবা</button>
+      <button class="text-sm text-gray-400 hover:text-white" onclick="scrollToSection('work')">কাজ</button>
+      <button class="text-sm text-gray-400 hover:text-white" onclick="scrollToSection('blog')">ব্লগ</button>
+      <button class="btn-primary text-xs px-4 py-2" onclick="openModal('signupModal')">শুরু করো</button>
+    </div>
   </div>
-  <div class="flex gap-2" id="authButtons">
-    <button class="btn-outline text-sm py-2 px-4" onclick="openModal('loginModal')">লগইন</button>
-    <button class="btn-primary text-sm py-2 px-4" onclick="openModal('signupModal')">শুরু করো</button>
-  </div>
-  <div class="hidden items-center gap-3" id="userBar">
-    <span class="credit-badge" id="creditDisplay">⚡ ...</span>
-    <button class="btn-outline text-sm py-2 px-4" onclick="goToDashboard()">Dashboard</button>
-  </div>
-</div>
+</nav>
 
-<!-- HERO SECTION -->
+<!-- Main Content -->
 <main style="padding-top: 80px; padding-bottom: 100px;">
 
   <!-- Hero -->
-  <section class="text-center px-6 py-16 animate-slide-up">
+  <section class="text-center px-6 py-20 animate-slide-up">
     <div class="inline-block bg-purple-500/20 border border-purple-500/30 rounded-full px-4 py-2 text-sm font-bold mb-6">
-      🎁 সাইনআপে ১০০ ক্রেডিট ফ্রী!
+      🎨 বাংলায় AI Creative Platform
     </div>
     <h1 class="text-5xl font-black mb-4 leading-tight">
-      AI দিয়ে<br>
-      <span class="gradient-text">সব কিছু বানাও</span>
+      ছবি, ভিডিও,<br>
+      <span class="gradient-text">কন্টেন্ট — সবকিছু</span>
     </h1>
-    <p class="text-gray-400 text-lg mb-10 max-w-sm mx-auto">ছবি, ভিডিও, প্রমপট, কন্টেন্ট, ওয়েবসাইট, আ্যাপস— সব এক জায়গায়। বাংলায়।</p>
-    <div class="flex gap-3 justify-center flex-wrap">
-      <button class="btn-primary animate-glow" onclick="openModal('signupModal')">
-        বিনামূল্যে শুরু করো 🚀
-      </button>
-      <button class="btn-outline" onclick="openModal('loginModal')">
-        লগইন করো
-      </button>
-    </div>
-    
-    <!-- Stats -->
+    <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">AI দিয়ে সব কিছু বানাও। বাংলায়। মাত্র এক ক্লিকে।</p>
+    <button class="btn-primary animate-glow text-lg px-8 py-4 mb-6" onclick="openModal('signupModal')">
+      ফ্রি শুরু করো 🚀
+    </button>
     <div class="flex justify-center gap-8 mt-12">
-      <div>
-        <p class="text-2xl font-black gradient-text">১০০+</p>
-        <p class="text-xs text-gray-500">ব্যবহারকারী</p>
-      </div>
-      <div>
-        <p class="text-2xl font-black gradient-text">৫০০০+</p>
-        <p class="text-xs text-gray-500">ছবি তৈরি</p>
-      </div>
-      <div>
-        <p class="text-2xl font-black gradient-text">৯৯%</p>
-        <p class="text-xs text-gray-500">সন্তুষ্ট</p>
-      </div>
+      <div><p class="text-2xl font-black gradient-text">১০০+</p><p class="text-xs text-gray-500">সক্রিয় ব্যবহারকারী</p></div>
+      <div><p class="text-2xl font-black gradient-text">৫০,০০০+</p><p class="text-xs text-gray-500">তৈরিকৃত সামগ্রী</p></div>
+      <div><p class="text-2xl font-black gradient-text">৯৯%</p><p class="text-xs text-gray-500">সন্তুষ্টির হার</p></div>
     </div>
   </section>
 
-  <!-- Feature Cards -->
-  <section class="px-5 mb-12">
-    <h2 class="text-2xl font-black text-center mb-8">যা যা করতে পারবে</h2>
-    <div class="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-
-      <a href="image-generator.html" class="feature-card">
-        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-3 animate-float">
-          <i class="fa-solid fa-image text-purple-400 text-xl"></i>
-        </div>
-        <h3 class="font-bold mb-1">AI ছবি</h3>
-        <p class="text-xs text-gray-500">টেক্সট থেকে ছবি বানাও</p>
+  <!-- Features -->
+  <section id="features" class="px-6 py-20">
+    <h2 class="text-3xl font-black text-center mb-12">আমাদের সেবা</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="feature-card">
+        <div class="text-4xl mb-4">🖼️</div>
+        <h3 class="font-bold mb-2">AI ছবি জেনারেটর</h3>
+        <p class="text-sm text-gray-400">রেফারেন্স ইমেজ সহ অসাধারণ ছবি তৈরি করো</p>
         <p class="text-xs text-orange-400 mt-2 font-bold">৫ ক্রেডিট</p>
-      </a>
-
-      <a href="video-generator.html" class="feature-card">
-        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-3 animate-float" style="animation-delay:0.5s">
-          <i class="fa-solid fa-video text-cyan-400 text-xl"></i>
-        </div>
-        <h3 class="font-bold mb-1">AI ভিডিও</h3>
-        <p class="text-xs text-gray-500">স্বয়ংক্রিয় ভিডিও তৈরি</p>
+      </div>
+      <div class="feature-card">
+        <div class="text-4xl mb-4">🎬</div>
+        <h3 class="font-bold mb-2">AI ভিডিও জেনারেটর</h3>
+        <p class="text-sm text-gray-400">স্বয়ংক্রিয় ভিডিও তৈরি করো মিনিটে</p>
         <p class="text-xs text-orange-400 mt-2 font-bold">২০ ক্রেডিট</p>
-      </a>
-
-      <a href="content-writer.html" class="feature-card">
-        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-3 animate-float" style="animation-delay:1s">
-          <i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i>
-        </div>
-        <h3 class="font-bold mb-1">কন্টেন্ট</h3>
-        <p class="text-xs text-gray-500">ব্লগ, পোস্ট, বিজ্ঞাপন</p>
+      </div>
+      <div class="feature-card">
+        <div class="text-4xl mb-4">✍️</div>
+        <h3 class="font-bold mb-2">AI কন্টেন্ট রাইটার</h3>
+        <p class="text-sm text-gray-400">ব্লগ, বিজ্ঞাপন, পোস্ট লিখাও</p>
         <p class="text-xs text-orange-400 mt-2 font-bold">৩ ক্রেডিট</p>
-      </a>
-
-      <a href="chat.html" class="feature-card">
-        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-3 animate-float" style="animation-delay:1.5s">
-          <i class="fa-solid fa-message text-orange-400 text-xl"></i>
-        </div>
-        <h3 class="font-bold mb-1">AI চ্যাট</h3>
-        <p class="text-xs text-gray-500">যেকোনো প্রশ্নের উত্তর</p>
+      </div>
+      <div class="feature-card">
+        <div class="text-4xl mb-4">💬</div>
+        <h3 class="font-bold mb-2">AI চ্যাট</h3>
+        <p class="text-sm text-gray-400">যেকোনো প্রশ্নের তাৎক্ষণিক উত্তর</p>
         <p class="text-xs text-orange-400 mt-2 font-bold">১ ক্রেডিট</p>
-      </a>
-
+      </div>
     </div>
   </section>
 
-  <!-- Pricing Preview -->
-  <section class="px-5 mb-12">
-    <h2 class="text-2xl font-black text-center mb-8">প্ল্যান ও মূল্য</h2>
-    <div class="grid grid-cols-3 gap-3 max-w-2xl mx-auto">
-      <div class="glass p-4 text-center">
-        <p class="font-bold text-sm mb-1">ফ্রি</p>
-        <p class="text-2xl font-black">০৳</p>
-        <p class="text-xs text-gray-500 mt-1">১০০ ক্রেডিট</p>
+  <!-- Image to Prompt Creator -->
+  <section class="px-6 py-20 bg-gradient-to-b from-transparent to-purple-500/5">
+    <div class="max-w-2xl mx-auto glass p-8 rounded-2xl">
+      <h2 class="text-2xl font-black mb-4">🎨 ছবি থেকে Prompt তৈরি করো</h2>
+      <p class="text-gray-400 mb-6">একটি ছবি আপলোড করো, AI তোমাকে বলে দেবে কিভাবে পুনরায় তৈরি করতে হবে</p>
+      <div class="upload-zone glass p-8 text-center cursor-pointer mb-4" onclick="document.getElementById('promptImageInput').click()">
+        <i class="fa-solid fa-cloud-arrow-up text-4xl text-purple-400 mb-2"></i>
+        <p class="font-bold mb-1">ছবি drag করো বা ক্লিক করো</p>
+        <p class="text-xs text-gray-500">PNG, JPG (Max 5MB)</p>
       </div>
-      <div class="glass p-4 text-center ring-2 ring-purple-500/40">
-        <p class="font-bold text-sm mb-1 text-purple-400">প্রো ⭐</p>
-        <p class="text-2xl font-black">৳৪৯৯</p>
-        <p class="text-xs text-gray-500 mt-1">২০০০ ক্রেডিট/মাস</p>
+      <input type="file" id="promptImageInput" accept="image/*" style="display:none">
+      <button class="btn-primary w-full" onclick="analyzeImage()">Prompt তৈরি করো</button>
+    </div>
+  </section>
+
+  <!-- Our Work / Portfolio -->
+  <section id="work" class="px-6 py-20">
+    <h2 class="text-3xl font-black text-center mb-12">আমাদের করা কাজ</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop" alt="AI Generated">
+        <div class="work-item-overlay">
+          <div class="work-item-text">
+            <p class="text-sm font-bold">AI ছবি</p>
+            <p class="text-xs text-gray-300">৫ ক্রেডিট</p>
+          </div>
+        </div>
       </div>
-      <div class="glass p-4 text-center">
-        <p class="font-bold text-sm mb-1">বিজনেস</p>
-        <p class="text-2xl font-black">৳১৪৯৯</p>
-        <p class="text-xs text-gray-500 mt-1">১০,০০০ ক্রেডিট/মাস</p>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=400&fit=crop" alt="Video">
+        <div class="work-item-overlay">
+          <div class="work-item-text">
+            <p class="text-sm font-bold">AI ভিডিও</p>
+            <p class="text-xs text-gray-300">২০ ক্রেডিট</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="Content">
+        <div class="work-item-overlay">
+          <div class="work-item-text">
+            <p class="text-sm font-bold">AI কন্টেন্ট</p>
+            <p class="text-xs text-gray-300">৩ ক্রেডিট</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1579472579022-f549ff39c636?w=400&h=400&fit=crop" alt="Creative">
+        <div class="work-item-overlay">
+          <div class="work-item-text">
+            <p class="text-sm font-bold">সৃজনশীল</p>
+            <p class="text-xs text-gray-300">Premium</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1561914453-eac4bc1371e1?w=400&h=400&fit=crop" alt="Design">
+        <div class="work-item-overlay">
+          <div class="work-item-text">
+            <p class="text-sm font-bold">ডিজাইন</p>
+            <p class="text-xs text-gray-300">Professional</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop" alt="Project">
+        <div class="work-item-overlay">
+          <div class="work-item-text">
+            <p class="text-sm font-bold">প্রকল্প</p>
+            <p class="text-xs text-gray-300">+ আরও অনেক</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="text-center mt-4">
-      <a href="pricing.html" class="text-purple-400 text-sm font-bold">বিস্তারিত দেখো →</a>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="px-6 py-20 bg-gradient-to-b from-transparent to-purple-500/5">
+    <h2 class="text-3xl font-black text-center mb-12">আমাদের ব্লগ</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1677442d019cecf8192a1216b37f9d2a6f5286c3?w=400&h=200&fit=crop" alt="Blog">
+        <div class="blog-card-content">
+          <h3>AI দিয়ে ছবি তৈরি করার সেরা উপায়</h3>
+          <p>আজই শিখে নাও কিভাবে AI ছবি জেনারেটর ব্যবহার করে পারফেক্ট ছবি তৈরি করতে হয়...</p>
+          <a href="#" class="text-purple-400 text-sm font-bold mt-3 inline-block">পড়ুন →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1598050108023-dffb3601d0a6?w=400&h=200&fit=crop" alt="Blog">
+        <div class="blog-card-content">
+          <h3>ভিডিও মার্কেটিং এর ভবিষ্যৎ</h3>
+          <p>AI ভিডিও জেনারেটর কিভাবে ভিডিও মার্কেটিং এর দুনিয়া বদলে দিচ্ছে...</p>
+          <a href="#" class="text-purple-400 text-sm font-bold mt-3 inline-block">পড়ুন →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400&h=200&fit=crop" alt="Blog">
+        <div class="blog-card-content">
+          <h3>কন্টেন্ট লেখার নতুন যুগ</h3>
+          <p>কিভাবে AI কন্টেন্ট রাইটার তোমার লেখার কাজ ৮০% কমিয়ে দিতে পারে...</p>
+          <a href="#" class="text-purple-400 text-sm font-bold mt-3 inline-block">পড়ুন →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="px-6 py-20">
+    <h2 class="text-3xl font-black text-center mb-12">সাশ্রয়ী মূল্য</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass p-8 text-center">
+        <h3 class="text-xl font-bold mb-2">ফ্রি</h3>
+        <p class="text-3xl font-black gradient-text mb-4">০৳</p>
+        <p class="text-sm text-gray-400">১০০ ক্রেডিট বোনাস</p>
+        <button class="btn-primary w-full mt-4 text-sm" onclick="openModal('signupModal')">শুরু করো</button>
+      </div>
+      <div class="glass p-8 text-center ring-2 ring-purple-500/40">
+        <p class="text-xs text-purple-400 font-bold">সবচেয়ে জনপ্রিয়</p>
+        <h3 class="text-xl font-bold mb-2">প্রো</h3>
+        <p class="text-3xl font-black gradient-text mb-4">৳৪৯৯</p>
+        <p class="text-sm text-gray-400">২০০০ ক্রেডিট/মাস</p>
+        <button class="btn-primary w-full mt-4 text-sm" onclick="openModal('signupModal')">আপগ্রেড করো</button>
+      </div>
+      <div class="glass p-8 text-center">
+        <h3 class="text-xl font-bold mb-2">বিজনেস</h3>
+        <p class="text-3xl font-black gradient-text mb-4">৳১৪৯৯</p>
+        <p class="text-sm text-gray-400">১০,০০০ ক্রেডিট/মাস</p>
+        <button class="btn-primary w-full mt-4 text-sm" onclick="openModal('signupModal')">যোগাযোগ করো</button>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="px-5 mb-4">
-    <div class="glass p-8 text-center">
-      <h2 class="text-2xl font-black mb-3">এখনই শুরু করো</h2>
-      <p class="text-gray-400 mb-6 text-sm">১০০ ফ্রি ক্রেডিট। কোনো কার্ড লাগবে না।</p>
-      <button class="btn-primary w-full" onclick="openModal('signupModal')">
-        ফ্রি একাউন্ট বানাও 🎉
-      </button>
+  <section class="px-6 py-20">
+    <div class="glass p-12 text-center max-w-2xl mx-auto rounded-2xl">
+      <h2 class="text-3xl font-black mb-4">আজই শুরু করো</h2>
+      <p class="text-gray-400 mb-6">১০০ ফ্রি ক্রেডিট পান। কোনো কার্ড লাগবে না।</p>
+      <button class="btn-primary px-8 py-4 text-lg" onclick="openModal('signupModal')">ফ্রি একাউন্ট বানাও 🚀</button>
     </div>
   </section>
 
 </main>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-  <a href="index.html" class="nav-item active">
-    <i class="fa-solid fa-house"></i><span>Home</span>
-  </a>
-  <a href="image-generator.html" class="nav-item">
-    <i class="fa-solid fa-image"></i><span>Image</span>
-  </a>
-  <a href="video-generator.html" class="nav-item">
-    <i class="fa-solid fa-video"></i><span>Video</span>
-  </a>
-  <a href="chat.html" class="nav-item">
-    <i class="fa-solid fa-message"></i><span>Chat</span>
-  </a>
-  <a href="pricing.html" class="nav-item">
-    <i class="fa-solid fa-coins"></i><span>Pricing</span>
-  </a>
-</nav>
+<!-- Chat Widget -->
+<div class="chat-widget" id="chatWidget" style="display:none;">
+  <div class="chat-header">
+    <span>MT Studio AI Chat</span>
+    <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message bot">স্বাগতম! আমি কিভাবে সাহায্য করতে পারি?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="কিছু লেখো...">
+    <button onclick="sendChatMessage()">পাঠাও</button>
+  </div>
+</div>
 
-<!-- SIGNUP MODAL -->
+<button class="fixed bottom-20 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold text-2xl shadow-lg hover:scale-110 transition" onclick="toggleChat()">
+  💬
+</button>
+
+<!-- Signup Modal -->
 <div class="modal" id="signupModal">
   <div class="modal-box">
     <div class="flex justify-between items-center mb-6">
       <h2 class="text-xl font-black">একাউন্ট বানাও</h2>
-      <button onclick="closeModal('signupModal')" class="text-gray-500 hover:text-white text-xl">✕</button>
+      <button onclick="closeModal('signupModal')" class="text-gray-500 hover:text-white">✕</button>
     </div>
-
     <div class="bg-purple-500/20 border border-purple-500/30 rounded-xl p-3 mb-6 text-center">
-      <p class="text-sm font-bold">🎁 সাইনআপ করলেই ১০০ ক্রেডিট ফ্রী পাবে!</p>
+      <p class="text-sm font-bold">🎁 সাইনআপে ১০০ ক্রেডিট ফ্রী!</p>
     </div>
-
-    <div id="signupAlert" class="alert"></div>
-
     <div class="space-y-4">
-      <input type="text" id="signupName" class="input-field" placeholder="তোমার নাম">
-      <input type="email" id="signupEmail" class="input-field" placeholder="ইমেইল">
-      <input type="password" id="signupPassword" class="input-field" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)">
-      <button class="btn-primary w-full" id="signupBtn" onclick="handleSignup()">
-        ফ্রি একাউন্ট বানাও 🚀
-      </button>
+      <input type="text" id="signupName" class="w-full bg-rgba(255,255,255,0.08) border border-rgba(255,255,255,0.15) rounded-10 p-3 text-white" placeholder="তোমার নাম">
+      <input type="email" id="signupEmail" class="w-full bg-rgba(255,255,255,0.08) border border-rgba(255,255,255,0.15) rounded-10 p-3 text-white" placeholder="ইমেইল">
+      <input type="password" id="signupPassword" class="w-full bg-rgba(255,255,255,0.08) border border-rgba(255,255,255,0.15) rounded-10 p-3 text-white" placeholder="পাসওয়ার্ড">
+      <button class="btn-primary w-full" onclick="handleSignup()">ফ্রি একাউন্ট বানাও 🚀</button>
     </div>
-
-    <p class="text-center text-gray-500 text-sm mt-4">
-      আগে থেকে একাউন্ট আছে? 
-      <span class="text-purple-400 cursor-pointer font-bold" onclick="switchModal('signupModal','loginModal')">লগইন করো</span>
-    </p>
   </div>
 </div>
 
-<!-- LOGIN MODAL -->
-<div class="modal" id="loginModal">
-  <div class="modal-box">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-xl font-black">লগইন করো</h2>
-      <button onclick="closeModal('loginModal')" class="text-gray-500 hover:text-white text-xl">✕</button>
+<!-- Footer -->
+<footer>
+  <div class="max-w-6xl mx-auto mb-8">
+    <h3 class="text-lg font-bold text-center mb-6">আমাদের সাথে যুক্ত থাকো</h3>
+    <div class="social-links">
+      <a href="https://facebook.com/MTstudio2" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
     </div>
-
-    <div id="loginAlert" class="alert"></div>
-
-    <div class="space-y-4">
-      <input type="email" id="loginEmail" class="input-field" placeholder="ইমেইল">
-      <input type="password" id="loginPassword" class="input-field" placeholder="পাসওয়ার্ড">
-      <button class="btn-primary w-full" id="loginBtn" onclick="handleLogin()">
-        লগইন করো
-      </button>
-    </div>
-
-    <p class="text-center text-gray-500 text-sm mt-4">
-      একাউন্ট নেই? 
-      <span class="text-purple-400 cursor-pointer font-bold" onclick="switchModal('loginModal','signupModal')">ফ্রি সাইনআপ করো</span>
-    </p>
   </div>
-</div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 text-center md:text-left">
+    <div>
+      <h4 class="font-bold mb-3">পণ্য</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#features" class="hover:text-white">সেবা</a></li>
+        <li><a href="#pricing" class="hover:text-white">মূল্য</a></li>
+        <li><a href="#work" class="hover:text-white">কাজ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3">কোম্পানি</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#blog" class="hover:text-white">ব্লগ</a></li>
+        <li><a href="#" class="hover:text-white">সম্পর্কে</a></li>
+        <li><a href="#" class="hover:text-white">যোগাযোগ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3">যোগাযোগ</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="mailto:studiomt46@gmail.com">Email</a></li>
+        <li><a href="https://wa.me/+11917419814">WhatsApp</a></li>
+        <li><a href="tel:+11917419814">ফোন</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-3">আইনি</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#" class="hover:text-white">গোপনীয়তা নীতি</a></li>
+        <li><a href="#" class="hover:text-white">শর্তাবলী</a></li>
+        <li><a href="#" class="hover:text-white">ব্যবহার শর্ত</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-center border-t border-rgba(255,255,255,0.1) pt-8 text-sm text-gray-500">
+    <p>© 2026 MT Studio. সর্বস্বত্ব সংরক্ষিত। বাংলায় তৈরি। বিশ্বের জন্য।</p>
+    <p class="mt-2">পরিচালনা: <a href="#" class="text-purple-400 hover:text-purple-300">MT Team</a></p>
+  </div>
+</footer>
+
+<!-- Bottom Navigation -->
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active">
+    <i class="fa-solid fa-house"></i> <span>Home</span>
+  </a>
+  <a href="image-generator.html" class="nav-item">
+    <i class="fa-solid fa-image"></i> <span>Image</span>
+  </a>
+  <a href="video-generator.html" class="nav-item">
+    <i class="fa-solid fa-video"></i> <span>Video</span>
+  </a>
+  <a href="chat.html" class="nav-item">
+    <i class="fa-solid fa-message"></i> <span>Chat</span>
+  </a>
+  <a href="pricing.html" class="nav-item">
+    <i class="fa-solid fa-coins"></i> <span>Pricing</span>
+  </a>
+</nav>
 
 <!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { getAuth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
@@ -292,48 +409,22 @@
     projectId: "mt-studio-92d1e",
     storageBucket: "mt-studio-92d1e.firebasestorage.app",
     messagingSenderId: "455687864985",
-    appId: "1:455687864985:web:327dedaffdb7b5f8606e08"
+    appId: "1:455687874985:web:327dedaffdb7b5f8606e08"
   };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Auth state
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      document.getElementById('authButtons').classList.add('hidden');
-      document.getElementById('userBar').classList.remove('hidden');
-      document.getElementById('userBar').classList.add('flex');
-
-      // Load credits
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
-      if (userDoc.exists()) {
-        const credits = userDoc.data().credits || 0;
-        document.getElementById('creditDisplay').textContent = `⚡ ${credits} ক্রেডিট`;
-      }
-    }
-  });
-
-  // Signup
   window.handleSignup = async () => {
     const name = document.getElementById('signupName').value.trim();
     const email = document.getElementById('signupEmail').value.trim();
     const password = document.getElementById('signupPassword').value;
-    const btn = document.getElementById('signupBtn');
-    const alert = document.getElementById('signupAlert');
 
     if (!name || !email || !password) {
-      showAlert('signupAlert', 'সব তথ্য দাও।', 'error');
+      alert('সব তথ্য দাও');
       return;
     }
-    if (password.length < 6) {
-      showAlert('signupAlert', 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষর হতে হবে।', 'error');
-      return;
-    }
-
-    btn.innerHTML = '<span class="spinner"></span> একটু অপেক্ষা...';
-    btn.disabled = true;
 
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
@@ -341,7 +432,6 @@
 
       await updateProfile(user, { displayName: name });
 
-      // Save user with 100 credits
       await setDoc(doc(db, 'users', user.uid), {
         uid: user.uid,
         name: name,
@@ -355,68 +445,37 @@
         plan: 'free'
       });
 
-      showAlert('signupAlert', '✅ সাইনআপ সফল! ১০০ ক্রেডিট পেয়েছো!', 'success');
-
-      setTimeout(() => {
-        closeModal('signupModal');
-        window.location.href = 'dashboard.html';
-      }, 1500);
-
-    } catch (error) {
-      let msg = 'কোনো সমস্যা হয়েছে। আবার চেষ্টা করো।';
-      if (error.code === 'auth/email-already-in-use') msg = 'এই ইমেইল দিয়ে আগেই একাউন্ট আছে।';
-      if (error.code === 'auth/invalid-email') msg = 'ইমেইল সঠিক নয়।';
-      if (error.code === 'auth/weak-password') msg = 'পাসওয়ার্ড দুর্বল।';
-      showAlert('signupAlert', msg, 'error');
-      btn.innerHTML = 'ফ্রি একাউন্ট বানাও 🚀';
-      btn.disabled = false;
+      alert('✅ সাইনআপ সফল! ১০০ ক্রেডিট পেয়েছো!');
+      window.location.href = 'dashboard.html';
+    } catch (e) {
+      alert('Error: ' + e.message);
     }
   };
-
-  // Login
-  window.handleLogin = async () => {
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    const btn = document.getElementById('loginBtn');
-
-    if (!email || !password) {
-      showAlert('loginAlert', 'ইমেইল ও পাসওয়ার্ড দাও।', 'error');
-      return;
-    }
-
-    btn.innerHTML = '<span class="spinner"></span> লগইন হচ্ছে...';
-    btn.disabled = true;
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      showAlert('loginAlert', '✅ লগইন সফল!', 'success');
-      setTimeout(() => {
-        closeModal('loginModal');
-        window.location.href = 'dashboard.html';
-      }, 1000);
-    } catch (error) {
-      let msg = 'কোনো সমস্যা হয়েছে।';
-      if (error.code === 'auth/user-not-found') msg = 'এই ইমেইলে কোনো একাউন্ট নেই।';
-      if (error.code === 'auth/wrong-password') msg = 'পাসওয়ার্ড ভুল।';
-      if (error.code === 'auth/invalid-credential') msg = 'ইমেইল বা পাসওয়ার্ড ভুল।';
-      showAlert('loginAlert', msg, 'error');
-      btn.innerHTML = 'লগইন করো';
-      btn.disabled = false;
-    }
-  };
-
-  window.goToDashboard = () => { window.location.href = 'dashboard.html'; };
-
-  // Helpers
-  function showAlert(id, msg, type) {
-    const el = document.getElementById(id);
-    el.textContent = msg;
-    el.className = `alert show alert-${type}`;
-  }
 
   window.openModal = (id) => { document.getElementById(id).classList.add('open'); };
   window.closeModal = (id) => { document.getElementById(id).classList.remove('open'); };
-  window.switchModal = (from, to) => { closeModal(from); openModal(to); };
+  window.scrollToSection = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); };
+
+  window.toggleChat = () => {
+    const widget = document.getElementById('chatWidget');
+    widget.style.display = widget.style.display === 'none' ? 'flex' : 'none';
+  };
+
+  window.sendChatMessage = () => {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML += `<div class="chat-message user">${msg}</div>`;
+    input.value = '';
+    chatBody.innerHTML += `<div class="chat-message bot">ধন্যবাদ প্রশ্নের জন্য! আমি শীঘ্রই উত্তর দেব। 🤖</div>`;
+    chatBody.scrollTop = chatBody.scrollHeight;
+  };
+
+  window.analyzeImage = () => {
+    alert('ছবি থেকে Prompt তৈরির ফিচার শীঘ্রই আসছে!');
+  };
 </script>
 
 </body>
