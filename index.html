@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MT Studio — AI Creative Studio | ডিজিটাল সলিউশন</title>
-  <meta name="description" content="MT Studio — AI-powered creative studio. ওয়েবসাইট, মোবাইল অ্যাপ, AI ভিডিও, ছবি এডিট, কন্টেন্ট।">
+  <meta name="description" content="MT Studio — AI-powered creative studio. ওয়েবসাইট, মোবাইল অ্যাপ, AI ভিডিও, ছবি এডিট।">
   <meta name="theme-color" content="#050B14">
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg">
@@ -15,68 +15,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
-
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
-          colors: { midnight: '#050B14', formbg: '#0F172A' },
-          animation: {
-            blob: 'blob 10s infinite',
-            marquee: 'marquee 25s linear infinite',
-            popIn: 'popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards',
-            fadeUp: 'fadeUp 0.5s ease forwards',
-          },
-          keyframes: {
-            blob: {'0%':{transform:'translate(0,0) scale(1)'},'33%':{transform:'translate(30px,-50px) scale(1.1)'},'66%':{transform:'translate(-20px,20px) scale(0.9)'},'100%':{transform:'translate(0,0) scale(1)'}},
-            marquee: {'0%':{transform:'translateX(0%)'},'100%':{transform:'translateX(-100%)'}},
-            popIn: {'0%':{opacity:0,transform:'scale(0.8) translateY(20px)'},'100%':{opacity:1,transform:'scale(1) translateY(0)'}},
-            fadeUp: {'0%':{opacity:0,transform:'translateY(16px)'},'100%':{opacity:1,transform:'translateY(0)'}},
-          }
-        }
-      }
-    }
+    tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']},colors:{midnight:'#050B14',formbg:'#0F172A'},animation:{blob:'blob 10s infinite',marquee:'marquee 25s linear infinite',popIn:'popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards'},keyframes:{blob:{'0%':{transform:'translate(0,0) scale(1)'},'33%':{transform:'translate(30px,-50px) scale(1.1)'},'66%':{transform:'translate(-20px,20px) scale(0.9)'},'100%':{transform:'translate(0,0) scale(1)'}},marquee:{'0%':{transform:'translateX(0%)'},'100%':{transform:'translateX(-100%)'}},popIn:{'0%':{opacity:0,transform:'scale(0.8) translateY(20px)'},'100%':{opacity:1,transform:'scale(1) translateY(0)'}}}}}}
   </script>
-
   <style>
-    :root { --cyan:#22d3ee; --violet:#8b5cf6; --pink:#ec4899; }
-    body { background:#050B14; color:#e2e8f0; overflow-x:hidden; font-family:'Inter',sans-serif; padding-bottom:72px; }
-    .bg-grid { background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E"); }
-    .hero-bg { background:linear-gradient(rgba(5,11,20,0.82),rgba(5,11,20,0.82)),url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80') center/cover fixed; }
-    .spring-press:active { transform:scale(0.96); }
-    ::-webkit-scrollbar { width:4px; }
-    ::-webkit-scrollbar-track { background:#050B14; }
-    ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:4px; }
-    input:-webkit-autofill { -webkit-box-shadow:0 0 0 30px #0F172A inset!important; -webkit-text-fill-color:white!important; }
-    .glass { background:rgba(10,15,28,0.7); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.08); }
-    /* Bottom Nav */
-    .bnav { position:fixed; bottom:0; left:0; right:0; z-index:89; background:rgba(5,11,20,0.96); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.06); }
-    /* AI Tool Modal */
-    .tool-modal { position:fixed; inset:0; z-index:110; background:rgba(5,11,20,0.95); backdrop-filter:blur(20px); display:none; overflow-y:auto; }
-    .tool-modal.open { display:block; }
-    /* Radial */
-    .ri { display:flex; flex-direction:column; align-items:center; opacity:0; transform:scale(0.4) translateY(20px); transition:opacity 0.2s,transform 0.2s; }
-    .ri.show { opacity:1; transform:scale(1) translateY(0); }
-    .rb { width:56px; height:56px; border-radius:50%; background:#0A0F1C; border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform 0.15s; }
-    .rb:hover { transform:scale(1.08); border-color:rgba(34,211,238,0.4); }
-    .rl { font-size:11px; font-weight:600; color:white; margin-top:5px; }
-    /* Typing dots */
-    @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);} }
-    @keyframes spin { to{transform:rotate(360deg);} }
-    /* Tool UI */
-    .tool-btn { background:linear-gradient(135deg,#0891b2,#7c3aed); color:white; padding:12px 24px; border-radius:12px; font-weight:700; border:none; cursor:pointer; font-family:'Inter',sans-serif; transition:opacity 0.2s; }
-    .tool-btn:hover { opacity:0.85; }
-    .tool-btn:disabled { opacity:0.5; cursor:not-allowed; }
-    .tool-input { width:100%; background:#0A0F1C; border:1px solid rgba(255,255,255,0.1); color:white; padding:12px 16px; border-radius:12px; font-family:'Inter',sans-serif; font-size:14px; outline:none; transition:border-color 0.2s; }
-    .tool-input:focus { border-color:rgba(34,211,238,0.5); }
-    .tool-input::placeholder { color:#475569; }
-    .tool-result { background:#0A0F1C; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; min-height:80px; font-size:14px; line-height:1.7; color:#cbd5e1; white-space:pre-wrap; word-break:break-word; }
+    body{background:#050B14;color:#e2e8f0;overflow-x:hidden;font-family:'Inter',sans-serif;padding-bottom:72px;}
+    .bg-grid{background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E");}
+    .hero-bg{background:linear-gradient(rgba(5,11,20,0.82),rgba(5,11,20,0.82)),url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80') center/cover fixed;}
+    .spring-press:active{transform:scale(0.96);}
+    ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#050B14;}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px;}
+    input:-webkit-autofill{-webkit-box-shadow:0 0 0 30px #0F172A inset!important;-webkit-text-fill-color:white!important;}
+    .glass{background:rgba(10,15,28,0.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);}
+    .bnav{position:fixed;bottom:0;left:0;right:0;z-index:89;background:rgba(5,11,20,0.96);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.06);}
+    .tool-modal{position:fixed;inset:0;z-index:110;background:rgba(5,11,20,0.97);backdrop-filter:blur(20px);display:none;overflow-y:auto;}
+    .tool-modal.open{display:block;}
+    .ri{display:flex;flex-direction:column;align-items:center;opacity:0;transform:scale(0.4) translateY(20px);transition:opacity 0.2s,transform 0.2s;}
+    .ri.show{opacity:1;transform:scale(1) translateY(0);}
+    .rb{width:56px;height:56px;border-radius:50%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.15s;}
+    .rb:hover{transform:scale(1.08);border-color:rgba(34,211,238,0.4);}
+    .rl{font-size:11px;font-weight:600;color:white;margin-top:5px;}
+    .tool-btn{background:linear-gradient(135deg,#0891b2,#7c3aed);color:white;padding:12px 24px;border-radius:12px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity 0.2s;width:100%;font-size:15px;}
+    .tool-btn:hover{opacity:0.85;}.tool-btn:disabled{opacity:0.5;cursor:not-allowed;}
+    .tool-input{width:100%;background:#0A0F1C;border:1px solid rgba(255,255,255,0.1);color:white;padding:12px 16px;border-radius:12px;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+    .tool-input:focus{border-color:rgba(34,211,238,0.5);}.tool-input::placeholder{color:#475569;}
+    .tool-result{background:#0A0F1C;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;min-height:80px;font-size:14px;line-height:1.7;color:#cbd5e1;white-space:pre-wrap;word-break:break-word;}
+    .blog-filter-btn.active-filter{border-color:rgba(139,92,246,0.5);background:rgba(139,92,246,0.15);color:#c4b5fd;}
+    .sidemenu{position:fixed;inset:0;z-index:200;background:rgba(5,11,20,0.98);backdrop-filter:blur(24px);transform:translateX(-100%);transition:transform 0.3s ease;display:flex;flex-direction:column;}
+    .sidemenu.open{transform:translateX(0);}
+    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+    @keyframes spin{to{transform:rotate(360deg);}}
   </style>
 </head>
 <body class="bg-grid">
-
-<!-- Blobs -->
 <div class="fixed inset-0 pointer-events-none overflow-hidden z-[-1]">
   <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-cyan-600/15 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
   <div class="absolute bottom-[-20%] right-[-10%] w-[40rem] h-[40rem] bg-violet-600/15 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay:4s;"></div>
@@ -88,13 +58,8 @@
     <div class="flex items-center gap-3">
       <button onclick="openSideMenu()" class="text-slate-400 hover:text-white mr-1"><i class="fa-solid fa-bars text-xl"></i></button>
       <a href="#home" class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-xl overflow-hidden border border-cyan-500/30">
-          <img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover">
-        </div>
-        <div>
-          <h1 class="text-white font-extrabold text-sm leading-tight">MT Studio</h1>
-          <p class="text-[9px] text-slate-500 uppercase tracking-widest">Digital Solutions</p>
-        </div>
+        <div class="w-9 h-9 rounded-xl overflow-hidden border border-cyan-500/30"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div>
+        <div><h1 class="text-white font-extrabold text-sm leading-tight">MT Studio</h1><p class="text-[9px] text-slate-500 uppercase tracking-widest">Digital Solutions</p></div>
       </a>
     </div>
     <div class="flex items-center gap-2">
@@ -105,7 +70,7 @@
 </nav>
 
 <!-- SIDE MENU -->
-<div id="sideMenu" class="fixed inset-0 z-[200] bg-midnight/98 backdrop-blur-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+<div id="sideMenu" class="sidemenu">
   <div class="flex items-center justify-between px-5 py-4 border-b border-white/5">
     <div class="flex items-center gap-3">
       <div class="w-9 h-9 rounded-xl overflow-hidden border border-cyan-500/30"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div>
@@ -115,22 +80,22 @@
   </div>
   <div class="flex-1 overflow-y-auto py-2">
     <p class="px-5 py-2 text-[10px] font-bold text-slate-600 uppercase tracking-wider">Navigation</p>
-    <a href="#home" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-cyan-400"><i class="fa-solid fa-house text-sm"></i></div> Home</a>
-    <a href="#ai-tools" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-violet-400"><i class="fa-solid fa-wand-magic-sparkles text-sm"></i></div> AI Tools</a>
-    <a href="#craft" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-pink-400"><i class="fa-solid fa-sparkles text-sm"></i></div> Services</a>
-    <a href="#portfolio" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-green-400"><i class="fa-solid fa-folder-open text-sm"></i></div> Portfolio</a>
-    <a href="#blog" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-yellow-400"><i class="fa-solid fa-rss text-sm"></i></div> Blog</a>
-    <a href="#contact" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><i class="fa-solid fa-message text-sm"></i></div> Contact</a>
-    <a href="#faq" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-orange-400"><i class="fa-solid fa-circle-question text-sm"></i></div> FAQ</a>
+    <a href="#home" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-cyan-400"><i class="fa-solid fa-house text-sm"></i></div> Home</a>
+    <a href="#ai-tools" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-violet-400"><i class="fa-solid fa-wand-magic-sparkles text-sm"></i></div> AI Tools</a>
+    <a href="#craft" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-pink-400"><i class="fa-solid fa-sparkles text-sm"></i></div> Services</a>
+    <a href="#portfolio" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-green-400"><i class="fa-solid fa-folder-open text-sm"></i></div> Portfolio</a>
+    <a href="#blog" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-yellow-400"><i class="fa-solid fa-rss text-sm"></i></div> Blog</a>
+    <a href="#contact" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><i class="fa-solid fa-message text-sm"></i></div> Contact</a>
+    <a href="#faq" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-orange-400"><i class="fa-solid fa-circle-question text-sm"></i></div> FAQ</a>
     <p class="px-5 py-2 text-[10px] font-bold text-slate-600 uppercase tracking-wider mt-2">Help</p>
-    <a href="https://www.facebook.com/MTstudio2" target="_blank" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><i class="fa-brands fa-facebook text-sm"></i></div> What's New</a>
-    <a href="mailto:studiomt46@gmail.com" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 transition text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-cyan-400"><i class="fa-solid fa-envelope text-sm"></i></div> Email Us</a>
+    <a href="https://www.facebook.com/MTstudio2" target="_blank" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><i class="fa-brands fa-facebook text-sm"></i></div> What's New</a>
+    <a href="mailto:studiomt46@gmail.com" onclick="closeSideMenu()" class="flex items-center gap-3 px-5 py-4 border-b border-white/5 hover:bg-white/3 text-white font-semibold"><div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-cyan-400"><i class="fa-solid fa-envelope text-sm"></i></div> Email Us</a>
   </div>
 </div>
 <div id="menuOverlay" onclick="closeSideMenu()" class="hidden fixed inset-0 z-[199] bg-black/50"></div>
 
 <!-- HERO -->
-<section id="home" class="hero-bg border-b border-white/5 pt-20">
+<section id="home" class="hero-bg border-b border-white/5 pt-16">
   <div class="max-w-5xl mx-auto px-5 text-center pt-10 pb-6">
     <p class="text-cyan-400 text-xs tracking-[0.25em] font-bold uppercase mb-4 flex items-center justify-center gap-2"><i class="fa-solid fa-sparkles"></i> AI Creative Studio</p>
     <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">আপনার স্বপ্ন<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400">ডিজিটালি পারফেক্ট</span></h1>
@@ -146,7 +111,6 @@
       <span class="bg-black/40 border border-white/10 px-3 py-1.5 rounded-full text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI</span>
     </div>
   </div>
-  <!-- Service Grid + Banner -->
   <div class="max-w-md mx-auto px-4 pb-6">
     <div class="grid grid-cols-2 gap-3 mb-3">
       <div onclick="openTool('image-to-prompt')" class="relative rounded-2xl overflow-hidden cursor-pointer group" style="height:140px;background:#0A0F1C;border:1px solid rgba(255,255,255,0.07);">
@@ -234,47 +198,14 @@
 <!-- SERVICES -->
 <section id="craft" class="py-16 px-4">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase"><i class="fa-solid fa-sparkles"></i> সার্ভিস</p>
-      <h2 class="text-3xl md:text-5xl font-bold text-white">আমাদের সার্ভিস</h2>
-    </div>
+    <div class="text-center mb-12"><p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase"><i class="fa-solid fa-sparkles"></i> সার্ভিস</p><h2 class="text-3xl md:text-5xl font-bold text-white">আমাদের সার্ভিস</h2></div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div onclick="openServiceDetails('web')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-cyan-500/30 rounded-3xl p-7 cursor-pointer transition-all">
-        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-globe text-cyan-400 text-xl"></i></div>
-        <h3 class="text-xl font-bold text-white mb-2">Web Apps</h3>
-        <p class="text-slate-400 text-sm mb-3">ওয়েব অ্যাপ ডেভেলপমেন্ট</p>
-        <p class="text-slate-500 text-xs">Custom platforms & dashboards</p>
-      </div>
-      <div onclick="openServiceDetails('mobile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-violet-500/30 rounded-3xl p-7 cursor-pointer transition-all">
-        <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-mobile-screen text-violet-400 text-xl"></i></div>
-        <h3 class="text-xl font-bold text-white mb-2">Mobile Apps</h3>
-        <p class="text-slate-400 text-sm mb-3">মোবাইল অ্যাপ বিল্ড</p>
-        <p class="text-slate-500 text-xs">iOS & Android Native Apps</p>
-      </div>
-      <div onclick="openServiceDetails('design')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-pink-500/30 rounded-3xl p-7 cursor-pointer transition-all">
-        <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i></div>
-        <h3 class="text-xl font-bold text-white mb-2">UI / UX Design</h3>
-        <p class="text-slate-400 text-sm mb-3">ইউআই / ইউএক্স ডিজাইন</p>
-        <p class="text-slate-500 text-xs">Premium App Design</p>
-      </div>
-      <div onclick="openServiceDetails('profile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-blue-500/30 rounded-3xl p-7 cursor-pointer transition-all">
-        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i></div>
-        <h3 class="text-xl font-bold text-white mb-2">Profile Fix</h3>
-        <p class="text-slate-400 text-sm mb-3">প্রোফাইল ট্রাবলশুটিং</p>
-        <p class="text-slate-500 text-xs">Recovery & Restriction Removal</p>
-      </div>
-      <div onclick="openServiceDetails('video')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-fuchsia-500/30 rounded-3xl p-7 cursor-pointer transition-all">
-        <div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-wand-magic text-fuchsia-400 text-xl"></i></div>
-        <h3 class="text-xl font-bold text-white mb-2">Video & Photo</h3>
-        <p class="text-slate-400 text-sm mb-3">ভিডিও ও ফটো এডিটিং</p>
-        <p class="text-slate-500 text-xs">Reels, Shorts & Product</p>
-      </div>
-      <div onclick="openTool('image-to-prompt')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-emerald-500/30 rounded-3xl p-7 cursor-pointer transition-all">
-        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-robot text-emerald-400 text-xl"></i></div>
-        <h3 class="text-xl font-bold text-white mb-2">AI Prompts</h3>
-        <p class="text-slate-400 text-sm mb-3">এআই প্রম্পট ইঞ্জিনিয়ারিং</p>
-        <p class="text-slate-500 text-xs">Midjourney · Flux · ChatGPT</p>
-      </div>
+      <div onclick="openServiceDetails('web')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-cyan-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-globe text-cyan-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">Web Apps</h3><p class="text-slate-400 text-sm mb-2">ওয়েব অ্যাপ ডেভেলপমেন্ট</p><p class="text-slate-500 text-xs">Custom platforms & dashboards</p></div>
+      <div onclick="openServiceDetails('mobile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-violet-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-mobile-screen text-violet-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">Mobile Apps</h3><p class="text-slate-400 text-sm mb-2">মোবাইল অ্যাপ বিল্ড</p><p class="text-slate-500 text-xs">iOS & Android Native</p></div>
+      <div onclick="openServiceDetails('design')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-pink-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-pen-nib text-pink-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">UI / UX Design</h3><p class="text-slate-400 text-sm mb-2">ইউআই / ইউএক্স ডিজাইন</p><p class="text-slate-500 text-xs">Premium App Design</p></div>
+      <div onclick="openServiceDetails('profile')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-blue-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-shield-halved text-blue-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">Profile Fix</h3><p class="text-slate-400 text-sm mb-2">প্রোফাইল ট্রাবলশুটিং</p><p class="text-slate-500 text-xs">Recovery & Restriction Removal</p></div>
+      <div onclick="openServiceDetails('video')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-fuchsia-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-wand-magic text-fuchsia-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">Video & Photo</h3><p class="text-slate-400 text-sm mb-2">ভিডিও ও ফটো এডিটিং</p><p class="text-slate-500 text-xs">Reels, Shorts & Product</p></div>
+      <div onclick="openTool('image-to-prompt')" class="spring-press group bg-[#0A0F1C] hover:bg-[#111827] border border-white/5 hover:border-emerald-500/30 rounded-3xl p-7 cursor-pointer transition-all"><div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5"><i class="fa-solid fa-robot text-emerald-400 text-xl"></i></div><h3 class="text-xl font-bold text-white mb-2">AI Prompts</h3><p class="text-slate-400 text-sm mb-2">এআই প্রম্পট ইঞ্জিনিয়ারিং</p><p class="text-slate-500 text-xs">Midjourney · Flux · ChatGPT</p></div>
     </div>
   </div>
 </section>
@@ -294,9 +225,9 @@
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-10"><h2 class="text-3xl font-bold text-white">Loved by Our Clients</h2><p class="text-slate-400 mt-2 text-sm">Real stories from people we've worked with</p></div>
     <div class="grid md:grid-cols-3 gap-5">
-      <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★☆</div><p class="text-slate-300 italic text-sm mb-5">"MT Studio completely transformed our online presence. The website is fast and converting really well!"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-sm">RI</div><div><p class="text-white font-medium text-sm">Rafiqul Islam</p><p class="text-slate-500 text-xs">CEO, TechMart BD</p></div></div></div>
+      <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★☆</div><p class="text-slate-300 italic text-sm mb-5">"MT Studio completely transformed our online presence. Fast and converting really well!"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-sm">RI</div><div><p class="text-white font-medium text-sm">Rafiqul Islam</p><p class="text-slate-500 text-xs">CEO, TechMart BD</p></div></div></div>
       <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★★</div><p class="text-slate-300 italic text-sm mb-5">"They recovered my restricted Facebook page within 24 hours. Professional team!"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-sm">KH</div><div><p class="text-white font-medium text-sm">Kamrul Hasan</p><p class="text-slate-500 text-xs">Content Creator</p></div></div></div>
-      <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★☆</div><p class="text-slate-300 italic text-sm mb-5">"The UI/UX for our mobile app is outstanding. Best agency I've worked with in Bangladesh."</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold text-sm">SJ</div><div><p class="text-white font-medium text-sm">Sadia Jahan</p><p class="text-slate-500 text-xs">Founder, EduCare</p></div></div></div>
+      <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★☆</div><p class="text-slate-300 italic text-sm mb-5">"The UI/UX for our mobile app is outstanding. Best agency in Bangladesh."</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold text-sm">SJ</div><div><p class="text-white font-medium text-sm">Sadia Jahan</p><p class="text-slate-500 text-xs">Founder, EduCare</p></div></div></div>
     </div>
   </div>
 </section>
@@ -304,59 +235,25 @@
 <!-- PORTFOLIO -->
 <section id="portfolio" class="py-16 px-4">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase"><i class="fa-solid fa-folder-open"></i> Portfolio</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-white">আমাদের কাজ</h2>
-    </div>
+    <div class="text-center mb-12"><p class="text-cyan-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase"><i class="fa-solid fa-folder-open"></i> Portfolio</p><h2 class="text-3xl md:text-4xl font-bold text-white">আমাদের কাজ</h2></div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <a href="https://taniyaworld.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(236,72,153,0.1)]">
-        <div class="h-52 flex items-center justify-center bg-pink-900/20 relative"><i class="fa-solid fa-lock text-5xl text-pink-400"></i><div class="absolute top-4 left-4 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div>
-        <div class="p-5"><h3 class="text-white font-bold mb-1">Taniya's World</h3><p class="text-slate-400 text-sm">Private Web App</p></div>
-      </a>
-      <a href="https://realbadsha.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(6,182,212,0.1)]">
-        <div class="h-52 flex items-center justify-center bg-cyan-900/20 relative"><i class="fa-solid fa-crown text-5xl text-cyan-400"></i><div class="absolute top-4 left-4 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div>
-        <div class="p-5"><h3 class="text-white font-bold mb-1">Real Badsha</h3><p class="text-slate-400 text-sm">বাদশার দুনিয়া</p></div>
-      </a>
-      <a href="https://amaderhisab.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
-        <div class="h-52 flex items-center justify-center bg-blue-900/20 relative"><i class="fa-solid fa-calculator text-5xl text-blue-400"></i><div class="absolute top-4 left-4 bg-blue-500/20 border border-blue-500/40 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div>
-        <div class="p-5"><h3 class="text-white font-bold mb-1">ডিজিটাল হিসাব</h3><p class="text-slate-400 text-sm">Expense Tracker App</p></div>
-      </a>
-      <a href="https://house612e4.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.1)]">
-        <div class="h-52 flex items-center justify-center bg-emerald-900/20 relative"><i class="fa-solid fa-building text-5xl text-emerald-400"></i><div class="absolute top-4 left-4 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div>
-        <div class="p-5"><h3 class="text-white font-bold mb-1">৬১২ বাসা</h3><p class="text-slate-400 text-sm">Bill Tracker App</p></div>
-      </a>
-      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-dashed border-white/10 h-full min-h-[220px] flex items-center justify-center cursor-pointer hover:border-white/20 transition" onclick="toggleModal(true)">
-        <div class="text-center p-8"><div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-plus text-slate-500 text-2xl"></i></div><p class="text-slate-400 font-medium text-sm">আপনার প্রজেক্ট</p><p class="text-slate-600 text-xs mt-1">এখানে থাকতে পারে</p></div>
-      </div>
+      <a href="https://taniyaworld.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-pink-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(236,72,153,0.1)]"><div class="h-52 flex items-center justify-center bg-pink-900/20 relative"><i class="fa-solid fa-lock text-5xl text-pink-400"></i><div class="absolute top-4 left-4 bg-pink-500/20 border border-pink-500/40 text-pink-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div><div class="p-5"><h3 class="text-white font-bold mb-1">Taniya's World</h3><p class="text-slate-400 text-sm">Private Web App</p></div></a>
+      <a href="https://realbadsha.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(6,182,212,0.1)]"><div class="h-52 flex items-center justify-center bg-cyan-900/20 relative"><i class="fa-solid fa-crown text-5xl text-cyan-400"></i><div class="absolute top-4 left-4 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div><div class="p-5"><h3 class="text-white font-bold mb-1">Real Badsha</h3><p class="text-slate-400 text-sm">বাদশার দুনিয়া</p></div></a>
+      <a href="https://amaderhisab.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]"><div class="h-52 flex items-center justify-center bg-blue-900/20 relative"><i class="fa-solid fa-calculator text-5xl text-blue-400"></i><div class="absolute top-4 left-4 bg-blue-500/20 border border-blue-500/40 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div><div class="p-5"><h3 class="text-white font-bold mb-1">ডিজিটাল হিসাব</h3><p class="text-slate-400 text-sm">Expense Tracker App</p></div></a>
+      <a href="https://house612e4.netlify.app" target="_blank" class="group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.1)]"><div class="h-52 flex items-center justify-center bg-emerald-900/20 relative"><i class="fa-solid fa-building text-5xl text-emerald-400"></i><div class="absolute top-4 left-4 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-full">Live ↗</div></div><div class="p-5"><h3 class="text-white font-bold mb-1">৬১২ বাসা</h3><p class="text-slate-400 text-sm">Bill Tracker App</p></div></a>
+      <div class="bg-[#111827] rounded-3xl overflow-hidden border border-dashed border-white/10 h-full min-h-[220px] flex items-center justify-center cursor-pointer hover:border-white/20 transition" onclick="toggleModal(true)"><div class="text-center p-8"><div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-plus text-slate-500 text-2xl"></i></div><p class="text-slate-400 font-medium text-sm">আপনার প্রজেক্ট</p><p class="text-slate-600 text-xs mt-1">এখানে থাকতে পারে</p></div></div>
     </div>
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact" class="py-16 px-4 bg-[#0A0F1C] border-y border-white/5">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-pink-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase">যোগাযোগ করুন</p>
-      <h2 class="text-3xl font-bold text-white mb-2">আমাদের সাথে কথা বলুন</h2>
-      <p class="text-slate-400 text-sm">প্রজেক্ট বা যেকোনো প্রশ্নে সরাসরি যোগাযোগ করুন</p>
-    </div>
+    <div class="text-center mb-12"><p class="text-pink-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase">যোগাযোগ করুন</p><h2 class="text-3xl font-bold text-white mb-2">আমাদের সাথে কথা বলুন</h2><p class="text-slate-400 text-sm">প্রজেক্ট বা যেকোনো প্রশ্নে সরাসরি যোগাযোগ করুন</p></div>
     <div class="grid md:grid-cols-5 gap-7 items-start">
       <div class="md:col-span-2 flex flex-col gap-3">
-        <a href="https://wa.me/19174199814?text=Hello%20MT%20Studio" target="_blank" class="flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-green-500/40 rounded-2xl p-4 transition-all">
-          <div class="w-11 h-11 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0"><i class="fa-brands fa-whatsapp text-green-400 text-xl"></i></div>
-          <div><p class="text-white font-semibold text-sm">WhatsApp</p><p class="text-slate-400 text-xs">+1 (917) 419-9814</p></div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i>
-        </a>
-        <a href="https://m.me/MTstudio2" target="_blank" class="flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-blue-500/40 rounded-2xl p-4 transition-all">
-          <div class="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0"><i class="fa-brands fa-facebook-messenger text-blue-400 text-xl"></i></div>
-          <div><p class="text-white font-semibold text-sm">Messenger</p><p class="text-slate-400 text-xs">Facebook-এ চ্যাট</p></div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i>
-        </a>
-        <a href="mailto:studiomt46@gmail.com" class="flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-cyan-500/40 rounded-2xl p-4 transition-all">
-          <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-envelope text-cyan-400 text-xl"></i></div>
-          <div><p class="text-white font-semibold text-sm">Email</p><p class="text-slate-400 text-xs">studiomt46@gmail.com</p></div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i>
-        </a>
+        <a href="https://wa.me/19174199814?text=Hello%20MT%20Studio" target="_blank" class="flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-green-500/40 rounded-2xl p-4 transition-all"><div class="w-11 h-11 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0"><i class="fa-brands fa-whatsapp text-green-400 text-xl"></i></div><div><p class="text-white font-semibold text-sm">WhatsApp</p><p class="text-slate-400 text-xs">+1 (917) 419-9814</p></div><i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i></a>
+        <a href="https://m.me/MTstudio2" target="_blank" class="flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-blue-500/40 rounded-2xl p-4 transition-all"><div class="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0"><i class="fa-brands fa-facebook-messenger text-blue-400 text-xl"></i></div><div><p class="text-white font-semibold text-sm">Messenger</p><p class="text-slate-400 text-xs">Facebook-এ চ্যাট</p></div><i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i></a>
+        <a href="mailto:studiomt46@gmail.com" class="flex items-center gap-4 bg-[#111827] border border-white/10 hover:border-cyan-500/40 rounded-2xl p-4 transition-all"><div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-envelope text-cyan-400 text-xl"></i></div><div><p class="text-white font-semibold text-sm">Email</p><p class="text-slate-400 text-xs">studiomt46@gmail.com</p></div><i class="fa-solid fa-arrow-up-right-from-square text-slate-600 ml-auto text-xs"></i></a>
       </div>
       <div class="md:col-span-3 bg-[#111827] border border-white/10 rounded-3xl p-7">
         <h3 class="text-white font-bold text-lg mb-5 flex items-center gap-2"><i class="fa-solid fa-paper-plane text-cyan-400 text-sm"></i> মেসেজ পাঠান</h3>
@@ -365,20 +262,9 @@
             <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">নাম *</label><input type="text" required placeholder="আপনার নাম" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 text-sm"></div>
             <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">ফোন *</label><input type="tel" required placeholder="+880 1XXX" class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 text-sm"></div>
           </div>
-          <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">সার্ভিস *</label>
-            <select required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white focus:outline-none focus:ring-1 focus:ring-cyan-500 text-sm appearance-none">
-              <option value="" disabled selected>সার্ভিস বেছে নিন...</option>
-              <option>ওয়েবসাইট বানাতে চাই</option>
-              <option>মোবাইল অ্যাপ বানাতে চাই</option>
-              <option>UI/UX ডিজাইন</option>
-              <option>Facebook Page Fix</option>
-              <option>ভিডিও / ফটো এডিটিং</option>
-              <option>AI Prompt</option>
-              <option>অন্য কিছু</option>
-            </select>
-          </div>
+          <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">সার্ভিস *</label><select required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white focus:outline-none focus:ring-1 focus:ring-cyan-500 text-sm appearance-none"><option value="" disabled selected>সার্ভিস বেছে নিন...</option><option>ওয়েবসাইট বানাতে চাই</option><option>মোবাইল অ্যাপ বানাতে চাই</option><option>UI/UX ডিজাইন</option><option>Facebook Page Fix</option><option>ভিডিও / ফটো এডিটিং</option><option>AI Prompt</option><option>অন্য কিছু</option></select></div>
           <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">মেসেজ *</label><textarea required rows="3" placeholder="আপনার প্রজেক্টের বিস্তারিত..." class="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0A0F1C] text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 text-sm resize-none"></textarea></div>
-          <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-violet-600 text-white font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2"><i class="fa-solid fa-paper-plane text-sm"></i> মেসেজ পাঠান</button>
+          <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-violet-600 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2"><i class="fa-solid fa-paper-plane text-sm"></i> মেসেজ পাঠান</button>
         </form>
       </div>
     </div>
@@ -388,16 +274,13 @@
 <!-- FAQ -->
 <section id="faq" class="py-16 px-4">
   <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase">সাধারণ প্রশ্ন</p>
-      <h2 class="text-3xl font-bold text-white">FAQ</h2>
-    </div>
+    <div class="text-center mb-12"><p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase">সাধারণ প্রশ্ন</p><h2 class="text-3xl font-bold text-white">FAQ</h2></div>
     <div class="space-y-3" id="faqContainer">
-      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left"><span class="text-white font-semibold text-sm pr-4">সার্ভিসের দাম কত?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed">এখন সব সার্ভিস <span class="text-cyan-400 font-semibold">সম্পূর্ণ বিনামূল্যে</span> (Limited Offer)।</p></div></div>
-      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left"><span class="text-white font-semibold text-sm pr-4">ওয়েবসাইট বানাতে কতদিন লাগে?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed">সাধারণ ওয়েবসাইট <span class="text-white font-semibold">৪৮ ঘণ্টায়</span> ডেলিভারি।</p></div></div>
-      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left"><span class="text-white font-semibold text-sm pr-4">Facebook Page কীভাবে ফিক্স করেন?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed">Facebook-এর official review process-এ। সাধারণত <span class="text-white font-semibold">২৪ ঘণ্টায়</span> সমাধান।</p></div></div>
-      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left"><span class="text-white font-semibold text-sm pr-4">কাজ শুরুর প্রক্রিয়া?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><ol class="text-slate-400 text-sm space-y-2"><li class="flex gap-2"><span class="text-cyan-400 font-bold">১.</span> WhatsApp বা Messenger-এ যোগাযোগ</li><li class="flex gap-2"><span class="text-cyan-400 font-bold">২.</span> প্রজেক্টের বিস্তারিত শেয়ার করুন</li><li class="flex gap-2"><span class="text-cyan-400 font-bold">৩.</span> পরিকল্পনা জানানো হবে</li><li class="flex gap-2"><span class="text-cyan-400 font-bold">৪.</span> কাজ শুরু ও ডেলিভারি</li></ol></div></div>
-      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left"><span class="text-white font-semibold text-sm pr-4">ডেলিভারির পরে সাপোর্ট?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed"><span class="text-white font-semibold">২ সপ্তাহ</span> বিনামূল্যে সাপোর্ট। WhatsApp ও Messenger সর্বদা।</p></div></div>
+      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left bg-transparent border-none text-white"><span class="text-sm font-semibold pr-4">সার্ভিসের দাম কত?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed">এখন সব সার্ভিস <span class="text-cyan-400 font-semibold">সম্পূর্ণ বিনামূল্যে</span> (Limited Offer)।</p></div></div>
+      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left bg-transparent border-none text-white"><span class="text-sm font-semibold pr-4">ওয়েবসাইট বানাতে কতদিন লাগে?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed">সাধারণ ওয়েবসাইট <span class="text-white font-semibold">৪৮ ঘণ্টায়</span> ডেলিভারি। কাস্টম প্রজেক্ট ৩–৭ দিন।</p></div></div>
+      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left bg-transparent border-none text-white"><span class="text-sm font-semibold pr-4">Facebook Page কীভাবে ফিক্স করেন?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed">Facebook-এর official review process-এ। সাধারণত <span class="text-white font-semibold">২৪ ঘণ্টায়</span> সমাধান।</p></div></div>
+      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left bg-transparent border-none text-white"><span class="text-sm font-semibold pr-4">কাজ শুরুর প্রক্রিয়া?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><ol class="text-slate-400 text-sm space-y-2"><li class="flex gap-2"><span class="text-cyan-400 font-bold">১.</span> WhatsApp বা Messenger-এ যোগাযোগ</li><li class="flex gap-2"><span class="text-cyan-400 font-bold">২.</span> প্রজেক্টের বিস্তারিত শেয়ার করুন</li><li class="flex gap-2"><span class="text-cyan-400 font-bold">৩.</span> পরিকল্পনা জানানো হবে</li><li class="flex gap-2"><span class="text-cyan-400 font-bold">৪.</span> কাজ শুরু ও ডেলিভারি</li></ol></div></div>
+      <div class="faq-item bg-[#0A0F1C] border border-white/5 rounded-2xl overflow-hidden"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left bg-transparent border-none text-white"><span class="text-sm font-semibold pr-4">ডেলিভারির পরে সাপোর্ট?</span><div class="faq-icon w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300"><i class="fa-solid fa-plus text-slate-400 text-sm"></i></div></button><div class="faq-answer hidden px-5 pb-5"><p class="text-slate-400 text-sm leading-relaxed"><span class="text-white font-semibold">২ সপ্তাহ</span> বিনামূল্যে সাপোর্ট। WhatsApp ও Messenger সর্বদা।</p></div></div>
     </div>
   </div>
 </section>
@@ -406,11 +289,7 @@
 <section id="blog" class="py-16 px-4 bg-[#0A0F1C] border-y border-white/5">
   <div class="max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-12">
-      <div>
-        <p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center gap-2"><i class="fa-solid fa-rss"></i> Blog</p>
-        <h2 class="text-3xl font-bold text-white mb-2">আমাদের Blog</h2>
-        <p class="text-slate-400 text-sm">AI, ওয়েব ডেভেলপমেন্ট ও ডিজিটাল টিপস</p>
-      </div>
+      <div><p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center gap-2"><i class="fa-solid fa-rss"></i> Blog</p><h2 class="text-3xl font-bold text-white mb-2">আমাদের Blog</h2><p class="text-slate-400 text-sm">AI, ওয়েব ডেভেলপমেন্ট ও ডিজিটাল টিপস</p></div>
       <div class="flex gap-2 flex-wrap">
         <button onclick="filterBlog('all')" id="filter-all" class="blog-filter-btn active-filter text-xs font-bold px-4 py-2 rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-300">সব</button>
         <button onclick="filterBlog('ওয়েব ডেভেলপমেন্ট')" id="filter-web" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">ওয়েব</button>
@@ -418,9 +297,7 @@
         <button onclick="filterBlog('Facebook Tips')" id="filter-fb" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">Facebook</button>
       </div>
     </div>
-    <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div id="blogLoading" class="md:col-span-3 text-center py-14"><div class="w-10 h-10 border-2 border-violet-500/30 border-t-violet-400 rounded-full mx-auto mb-4" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-500 text-sm">লোড হচ্ছে...</p></div>
-    </div>
+    <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"><div id="blogLoading" class="md:col-span-3 text-center py-14"><div class="w-10 h-10 border-2 border-violet-500/30 border-t-violet-400 rounded-full mx-auto mb-4" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-500 text-sm">লোড হচ্ছে...</p></div></div>
     <div id="blogEmpty" class="hidden text-center py-16"><i class="fa-solid fa-pen-to-square text-5xl text-slate-700 mb-4 block"></i><p class="text-slate-500">শীঘ্রই পোস্ট আসছে!</p></div>
   </div>
 </section>
@@ -452,10 +329,7 @@
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10 mb-14">
       <div class="col-span-2">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-11 h-11 rounded-xl overflow-hidden border border-cyan-500/30"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div>
-          <div><p class="text-white font-bold">MT Studio</p><p class="text-[10px] text-slate-400 uppercase tracking-widest">Digital Solutions</p></div>
-        </div>
+        <div class="flex items-center gap-3 mb-6"><div class="w-11 h-11 rounded-xl overflow-hidden border border-cyan-500/30"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div><p class="text-white font-bold">MT Studio</p><p class="text-[10px] text-slate-400 uppercase tracking-widest">Digital Solutions</p></div></div>
         <div class="flex items-center gap-3 mb-6">
           <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:scale-110 transition-all shadow-[0_0_12px_rgba(24,119,242,0.5)]"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
@@ -464,43 +338,15 @@
         </div>
         <div class="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-3 w-fit"><div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div><span class="text-green-300 text-xs font-bold">100% FREE — Limited Offer</span></div>
       </div>
-      <div>
-        <h4 class="text-white font-semibold mb-5 text-sm">Use cases</h4>
-        <ul class="space-y-3 text-sm text-slate-400">
-          <li><a href="#" onclick="openServiceDetails('web')" class="hover:text-cyan-400 transition">Web Applications</a></li>
-          <li><a href="#" onclick="openServiceDetails('mobile')" class="hover:text-cyan-400 transition">iOS & Android</a></li>
-          <li><a href="#" onclick="openServiceDetails('design')" class="hover:text-cyan-400 transition">Product Design</a></li>
-          <li><a href="#" onclick="openServiceDetails('ai')" class="hover:text-cyan-400 transition">AI Automation</a></li>
-          <li><a href="#" onclick="openServiceDetails('profile')" class="hover:text-cyan-400 transition">Profile Recovery</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-semibold mb-5 text-sm">Company</h4>
-        <ul class="space-y-3 text-sm text-slate-400">
-          <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
-          <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
-          <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
-          <li><a href="#contact" class="hover:text-white transition">Contact Us</a></li>
-          <li><a href="#pricing" class="hover:text-white transition">Packages</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-semibold mb-5 text-sm">Support</h4>
-        <ul class="space-y-3 text-sm text-slate-400">
-          <li><a href="https://wa.me/19174199814" target="_blank" class="hover:text-white transition">WhatsApp</a></li>
-          <li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Messenger</a></li>
-          <li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">Email</a></li>
-        </ul>
-      </div>
+      <div><h4 class="text-white font-semibold mb-5 text-sm">Use cases</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="#" onclick="openServiceDetails('web')" class="hover:text-cyan-400 transition">Web Applications</a></li><li><a href="#" onclick="openServiceDetails('mobile')" class="hover:text-cyan-400 transition">iOS & Android</a></li><li><a href="#" onclick="openServiceDetails('design')" class="hover:text-cyan-400 transition">Product Design</a></li><li><a href="#" onclick="openServiceDetails('ai')" class="hover:text-cyan-400 transition">AI Automation</a></li><li><a href="#" onclick="openServiceDetails('profile')" class="hover:text-cyan-400 transition">Profile Recovery</a></li></ul></div>
+      <div><h4 class="text-white font-semibold mb-5 text-sm">Company</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li><li><a href="#faq" class="hover:text-white transition">FAQ</a></li><li><a href="#blog" class="hover:text-white transition">Blog</a></li><li><a href="#contact" class="hover:text-white transition">Contact Us</a></li><li><a href="#pricing" class="hover:text-white transition">Packages</a></li></ul></div>
+      <div><h4 class="text-white font-semibold mb-5 text-sm">Support</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="https://wa.me/19174199814" target="_blank" class="hover:text-white transition">WhatsApp</a></li><li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Messenger</a></li><li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">Email</a></li></ul></div>
     </div>
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span>
-      <div class="flex gap-6 text-xs text-slate-500"><a href="#" class="hover:text-white transition">Privacy</a><a href="#" class="hover:text-white transition">Terms of use</a></div>
-    </div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"><span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span><div class="flex gap-6 text-xs text-slate-500"><a href="#" class="hover:text-white transition">Privacy</a><a href="#" class="hover:text-white transition">Terms of use</a></div></div>
   </div>
 </footer>
 
-<!-- BOTTOM NAV (Mobile) -->
+<!-- BOTTOM NAV -->
 <nav class="bnav md:hidden">
   <div class="flex justify-around items-center py-2 px-1">
     <a href="#home" class="flex flex-col items-center gap-0.5 text-cyan-400 py-1 px-3"><i class="fa-solid fa-house text-xl"></i><span class="text-[9px] font-semibold">Home</span></a>
@@ -513,15 +359,11 @@
     <a href="#contact" class="flex flex-col items-center gap-0.5 text-slate-500 hover:text-white py-1 px-3 transition-colors"><i class="fa-solid fa-message text-xl"></i><span class="text-[9px] font-semibold">Contact</span></a>
   </div>
 </nav>
-
-<!-- CHAT WIDGET (Mahir) -->
+<!-- CHAT WIDGET -->
 <div id="chatWrapper" class="fixed bottom-20 right-4 z-[90] flex flex-col items-end gap-3 md:bottom-6">
   <div id="chatWidget" class="hidden flex-col bg-[#0B1121]/96 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] w-[300px] sm:w-[340px] overflow-hidden">
     <div class="bg-gradient-to-r from-cyan-600 to-violet-600 p-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-white/20"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div>
-        <div><h4 class="text-white text-sm font-bold">Mahir — MT Studio</h4><p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online</p></div>
-      </div>
+      <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full overflow-hidden border-2 border-white/20"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div><h4 class="text-white text-sm font-bold">Mahir — MT Studio</h4><p class="text-cyan-200 text-[10px] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online</p></div></div>
       <button onclick="toggleChat()" class="text-white/80 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
     </div>
     <div id="chatMessages" class="p-4 h-60 overflow-y-auto flex flex-col gap-3 bg-[#0A0F1C]/60">
@@ -539,8 +381,7 @@
   </button>
 </div>
 
-<!-- AI TOOL MODALS -->
-<!-- Image to Prompt -->
+<!-- AI TOOL: Image to Prompt -->
 <div id="tool-image-to-prompt" class="tool-modal">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
@@ -557,19 +398,15 @@
       </div>
       <div id="imgPreviewWrap" class="hidden mb-5">
         <img id="imgPreview" class="w-full max-h-64 object-contain rounded-xl border border-white/10 mb-3">
-        <button onclick="generatePrompt()" id="generateBtn" class="tool-btn w-full"><i class="fa-solid fa-sparkles mr-2"></i> Prompt তৈরি করুন</button>
+        <button onclick="generatePrompt()" id="generateBtn" class="tool-btn"><i class="fa-solid fa-sparkles mr-2"></i> Prompt তৈরি করুন</button>
       </div>
       <div id="promptLoading" class="hidden text-center py-6"><div class="w-8 h-8 border-2 border-violet-500/30 border-t-violet-400 rounded-full mx-auto mb-3" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-400 text-sm">AI বিশ্লেষণ করছে...</p></div>
-      <div id="promptResult" class="hidden">
-        <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> AI Prompt তৈরি হয়েছে</h3>
-        <div id="promptText" class="tool-result mb-3"></div>
-        <button onclick="copyPrompt()" class="tool-btn flex items-center gap-2"><i class="fa-solid fa-copy"></i> Copy করুন</button>
-      </div>
+      <div id="promptResult" class="hidden"><h3 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> AI Prompt তৈরি হয়েছে</h3><div id="promptText" class="tool-result mb-3"></div><button onclick="copyPrompt()" class="tool-btn flex items-center justify-center gap-2"><i class="fa-solid fa-copy"></i> Copy করুন</button></div>
     </div>
   </div>
 </div>
 
-<!-- Content Writer -->
+<!-- AI TOOL: Content Writer -->
 <div id="tool-content" class="tool-modal">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
@@ -578,40 +415,24 @@
       <div><h2 class="text-white font-bold text-sm">AI Content Writer</h2><p class="text-slate-500 text-xs">বাংলায় কন্টেন্ট তৈরি করুন</p></div>
     </div>
     <div class="flex-1 p-5 max-w-2xl mx-auto w-full">
-      <div class="mb-4">
-        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">কন্টেন্টের ধরন</label>
+      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">কন্টেন্টের ধরন</label>
         <div class="grid grid-cols-2 gap-2">
-          <button onclick="selectContentType('caption',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-cyan-500/40 hover:text-cyan-400 text-left flex items-center gap-2"><i class="fa-brands fa-facebook text-blue-400"></i> Facebook Caption</button>
-          <button onclick="selectContentType('script',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-violet-500/40 hover:text-violet-400 text-left flex items-center gap-2"><i class="fa-brands fa-tiktok text-white"></i> Reel Script</button>
-          <button onclick="selectContentType('blog',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-green-500/40 hover:text-green-400 text-left flex items-center gap-2"><i class="fa-solid fa-rss text-green-400"></i> Blog Post</button>
-          <button onclick="selectContentType('ad',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-pink-500/40 hover:text-pink-400 text-left flex items-center gap-2"><i class="fa-solid fa-bullhorn text-pink-400"></i> Ad Copy</button>
+          <button onclick="selectContentType('caption',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-cyan-500/40 text-left flex items-center gap-2"><i class="fa-brands fa-facebook text-blue-400"></i> Facebook Caption</button>
+          <button onclick="selectContentType('script',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-violet-500/40 text-left flex items-center gap-2"><i class="fa-brands fa-tiktok text-white"></i> Reel Script</button>
+          <button onclick="selectContentType('blog',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-green-500/40 text-left flex items-center gap-2"><i class="fa-solid fa-rss text-green-400"></i> Blog Post</button>
+          <button onclick="selectContentType('ad',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-pink-500/40 text-left flex items-center gap-2"><i class="fa-solid fa-bullhorn text-pink-400"></i> Ad Copy</button>
         </div>
       </div>
-      <div class="mb-4">
-        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">বিষয় / Topic</label>
-        <textarea id="contentTopic" rows="3" placeholder="যেমন: MT Studio-র ফ্রি ওয়েব ডিজাইন অফার..." class="tool-input resize-none"></textarea>
-      </div>
-      <div class="mb-5">
-        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Tone</label>
-        <select id="contentTone" class="tool-input">
-          <option value="emotional">Emotional (আবেগময়)</option>
-          <option value="professional">Professional (পেশাদার)</option>
-          <option value="funny">Funny (মজাদার)</option>
-          <option value="urgent">Urgent (জরুরি)</option>
-        </select>
-      </div>
-      <button onclick="generateContent()" id="contentBtn" class="tool-btn w-full mb-5"><i class="fa-solid fa-sparkles mr-2"></i> কন্টেন্ট তৈরি করুন</button>
+      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">বিষয় / Topic</label><textarea id="contentTopic" rows="3" placeholder="যেমন: MT Studio-র ফ্রি ওয়েব ডিজাইন অফার..." class="tool-input resize-none"></textarea></div>
+      <div class="mb-5"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Tone</label><select id="contentTone" class="tool-input"><option value="emotional">Emotional (আবেগময়)</option><option value="professional">Professional (পেশাদার)</option><option value="funny">Funny (মজাদার)</option><option value="urgent">Urgent (জরুরি)</option></select></div>
+      <button onclick="generateContent()" id="contentBtn" class="tool-btn mb-5"><i class="fa-solid fa-sparkles mr-2"></i> কন্টেন্ট তৈরি করুন</button>
       <div id="contentLoading" class="hidden text-center py-6"><div class="w-8 h-8 border-2 border-cyan-500/30 border-t-cyan-400 rounded-full mx-auto mb-3" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-400 text-sm">AI লিখছে...</p></div>
-      <div id="contentResult" class="hidden">
-        <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> কন্টেন্ট তৈরি হয়েছে</h3>
-        <div id="contentText" class="tool-result mb-3"></div>
-        <button onclick="copyContent()" class="tool-btn flex items-center gap-2"><i class="fa-solid fa-copy"></i> Copy করুন</button>
-      </div>
+      <div id="contentResult" class="hidden"><h3 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> কন্টেন্ট তৈরি হয়েছে</h3><div id="contentText" class="tool-result mb-3"></div><button onclick="copyContent()" class="tool-btn flex items-center justify-center gap-2"><i class="fa-solid fa-copy"></i> Copy করুন</button></div>
     </div>
   </div>
 </div>
 
-<!-- Web Builder -->
+<!-- AI TOOL: Web Builder -->
 <div id="tool-webgen" class="tool-modal">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
@@ -620,20 +441,11 @@
       <div><h2 class="text-white font-bold text-sm">AI Web Builder</h2><p class="text-slate-500 text-xs">requirement দিলে সাইট বানিয়ে দেবে</p></div>
     </div>
     <div class="flex-1 p-5 max-w-2xl mx-auto w-full">
-      <div class="mb-4">
-        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">আপনার website-এর বিবরণ</label>
-        <textarea id="webReq" rows="5" placeholder="যেমন: আমার একটা রেস্টুরেন্টের ওয়েবসাইট লাগবে। নাম 'ভাত ঘর হোটেল', ঢাকায় অবস্থিত। মেনু, যোগাযোগ এবং সম্পর্কে পেজ থাকবে। Dark theme, Bengali ভাষায়।" class="tool-input resize-none"></textarea>
-      </div>
-      <button onclick="generateWeb()" id="webBtn" class="tool-btn w-full mb-5"><i class="fa-solid fa-code mr-2"></i> Website তৈরি করুন</button>
+      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Website-এর বিবরণ</label><textarea id="webReq" rows="5" placeholder="যেমন: আমার একটা রেস্টুরেন্টের ওয়েবসাইট লাগবে। নাম 'ভাত ঘর হোটেল'। মেনু, যোগাযোগ পেজ থাকবে। Dark theme, বাংলায়।" class="tool-input resize-none"></textarea></div>
+      <button onclick="generateWeb()" id="webBtn" class="tool-btn mb-5"><i class="fa-solid fa-code mr-2"></i> Website তৈরি করুন</button>
       <div id="webLoading" class="hidden text-center py-8"><div class="w-8 h-8 border-2 border-green-500/30 border-t-green-400 rounded-full mx-auto mb-3" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-400 text-sm">AI কোড লিখছে...</p></div>
       <div id="webResult" class="hidden">
-        <div class="flex items-center justify-between mb-3">
-          <h3 class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> Website তৈরি হয়েছে</h3>
-          <div class="flex gap-2">
-            <button onclick="previewWeb()" class="text-xs bg-cyan-600/20 border border-cyan-500/30 text-cyan-400 px-3 py-1.5 rounded-lg font-semibold hover:bg-cyan-600/30 transition"><i class="fa-solid fa-eye mr-1"></i> Preview</button>
-            <button onclick="downloadWeb()" class="text-xs bg-green-600/20 border border-green-500/30 text-green-400 px-3 py-1.5 rounded-lg font-semibold hover:bg-green-600/30 transition"><i class="fa-solid fa-download mr-1"></i> Download</button>
-          </div>
-        </div>
+        <div class="flex items-center justify-between mb-3"><h3 class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> Website তৈরি হয়েছে</h3><div class="flex gap-2"><button onclick="previewWeb()" class="text-xs bg-cyan-600/20 border border-cyan-500/30 text-cyan-400 px-3 py-1.5 rounded-lg font-semibold hover:bg-cyan-600/30 transition"><i class="fa-solid fa-eye mr-1"></i> Preview</button><button onclick="downloadWeb()" class="text-xs bg-green-600/20 border border-green-500/30 text-green-400 px-3 py-1.5 rounded-lg font-semibold hover:bg-green-600/30 transition"><i class="fa-solid fa-download mr-1"></i> Download</button></div></div>
         <div id="webPreviewFrame" class="hidden mb-3 rounded-xl overflow-hidden border border-white/10" style="height:400px;"><iframe id="webIframe" class="w-full h-full bg-white"></iframe></div>
         <div id="webCode" class="tool-result text-xs font-mono max-h-64 overflow-y-auto"></div>
       </div>
@@ -641,7 +453,7 @@
   </div>
 </div>
 
-<!-- Image Generator -->
+<!-- AI TOOL: Image Generator -->
 <div id="tool-image-gen" class="tool-modal">
   <div class="min-h-screen flex flex-col">
     <div class="bg-midnight/90 backdrop-blur-xl border-b border-white/10 px-5 py-4 flex items-center gap-3 sticky top-0 z-10">
@@ -650,17 +462,10 @@
       <div><h2 class="text-white font-bold text-sm">AI Image Generator</h2><p class="text-slate-500 text-xs">DALL-E 3 দিয়ে ছবি তৈরি</p></div>
     </div>
     <div class="flex-1 p-5 max-w-2xl mx-auto w-full">
-      <div class="mb-4">
-        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Prompt (English-এ লিখুন)</label>
-        <textarea id="imagePromptInput" rows="4" placeholder="e.g. A professional Bengali man in a modern digital studio, cinematic lighting, 4K, ultra realistic" class="tool-input resize-none"></textarea>
-      </div>
-      <button onclick="generateImage()" id="imageGenBtn" class="tool-btn w-full mb-5"><i class="fa-solid fa-sparkles mr-2"></i> ছবি তৈরি করুন</button>
+      <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Prompt (English-এ লিখুন)</label><textarea id="imagePromptInput" rows="4" placeholder="e.g. A professional Bengali man in a modern digital studio, cinematic lighting, 4K, ultra realistic" class="tool-input resize-none"></textarea></div>
+      <button onclick="generateImage()" id="imageGenBtn" class="tool-btn mb-5"><i class="fa-solid fa-sparkles mr-2"></i> ছবি তৈরি করুন</button>
       <div id="imageGenLoading" class="hidden text-center py-8"><div class="w-8 h-8 border-2 border-pink-500/30 border-t-pink-400 rounded-full mx-auto mb-3" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-400 text-sm">AI ছবি আঁকছে...</p></div>
-      <div id="imageGenResult" class="hidden">
-        <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> ছবি তৈরি হয়েছে</h3>
-        <img id="generatedImage" class="w-full rounded-xl border border-white/10 mb-3">
-        <a id="downloadImageBtn" download="mt-studio-ai.png" class="tool-btn inline-flex items-center gap-2"><i class="fa-solid fa-download"></i> Download করুন</a>
-      </div>
+      <div id="imageGenResult" class="hidden"><h3 class="text-white font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-check-circle text-green-400"></i> ছবি তৈরি হয়েছে</h3><img id="generatedImage" class="w-full rounded-xl border border-white/10 mb-3"><a id="downloadImageBtn" download="mt-studio-ai.png" class="tool-btn inline-flex items-center justify-center gap-2"><i class="fa-solid fa-download"></i> Download করুন</a></div>
     </div>
   </div>
 </div>
@@ -672,16 +477,9 @@
     <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl overflow-hidden">
       <div class="p-8 border-b border-white/5 relative overflow-hidden">
         <div id="sdBgGlow" class="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="flex items-center gap-5 relative z-10">
-          <div id="sdIconWrapper" class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"></div>
-          <div><h2 id="sdTitle" class="text-2xl font-bold text-white mb-1"></h2><p id="sdSubtitle" class="text-slate-400 text-sm"></p></div>
-        </div>
+        <div class="flex items-center gap-5 relative z-10"><div id="sdIconWrapper" class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"></div><div><h2 id="sdTitle" class="text-2xl font-bold text-white mb-1"></h2><p id="sdSubtitle" class="text-slate-400 text-sm"></p></div></div>
       </div>
-      <div class="p-8">
-        <h4 class="text-white font-semibold mb-4">Features:</h4>
-        <ul id="sdFeatures" class="space-y-2 mb-8 text-sm text-slate-400"></ul>
-        <button onclick="closeServiceDetails(); toggleModal(true)" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl transition">প্রজেক্ট শুরু করুন →</button>
-      </div>
+      <div class="p-8"><h4 class="text-white font-semibold mb-4">Features:</h4><ul id="sdFeatures" class="space-y-2 mb-8 text-sm text-slate-400"></ul><button onclick="closeServiceDetails(); toggleModal(true)" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl transition">প্রজেক্ট শুরু করুন →</button></div>
     </div>
   </div>
 </div>
@@ -694,13 +492,10 @@
     <div class="text-center mb-6"><h2 id="authTitle" class="text-2xl font-extrabold text-white mb-2">Get started with MT Studio</h2><p id="authSubtitle" class="text-slate-400 text-sm">Sign up for free — সব সার্ভিস এখন ফ্রি</p></div>
     <div class="bg-[#0A0F1C] border border-white/10 rounded-2xl p-6">
       <form id="signupForm" onsubmit="handleAuthSubmit(event,'signup')" class="space-y-4">
-        <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">First name*</label><input type="text" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="First name"></div>
-          <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Last name*</label><input type="text" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="Last name"></div>
-        </div>
+        <div class="grid grid-cols-2 gap-3"><div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">First name*</label><input type="text" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="First name"></div><div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Last name*</label><input type="text" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="Last name"></div></div>
         <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Email*</label><input type="email" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="name@email.com"></div>
         <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Password*</label><input type="password" id="suPassword" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="Create password"></div>
-        <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-violet-600 text-white font-bold py-4 rounded-xl mt-2">Sign up with email</button>
+        <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-violet-600 text-white font-bold py-4 rounded-xl">Sign up with email</button>
         <button type="button" onclick="window.firebaseGoogleSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-xl hover:bg-white/5 transition text-slate-300 font-medium text-sm"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5"> Continue with Google</button>
         <button type="button" onclick="window.firebaseFacebookSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-xl hover:bg-white/5 transition text-slate-300 font-medium text-sm"><i class="fa-brands fa-facebook text-[#1877F2] text-xl"></i> Continue with Facebook</button>
         <p class="text-center text-slate-400 text-sm pt-2">Already have an account? <button type="button" onclick="switchAuthMode('signin')" class="text-cyan-400 font-semibold hover:underline">Log in</button></p>
@@ -736,90 +531,40 @@
     <div class="ri" id="ri2" style="position:absolute;bottom:178px;left:50%;transform:translateX(-50%);pointer-events:all;" onclick="openTool('content');closeRadial();"><div class="rb"><span style="font-size:22px;">📝</span></div><span class="rl">Content</span></div>
     <div class="ri" id="ri3" style="position:absolute;bottom:136px;right:0;pointer-events:all;" onclick="openTool('webgen');closeRadial();"><div class="rb"><span style="font-size:22px;">🌐</span></div><span class="rl">Web</span></div>
     <div class="ri" id="ri4" style="position:absolute;bottom:68px;right:6px;pointer-events:all;" onclick="toggleChat();closeRadial();"><div class="rb"><span style="font-size:22px;">💬</span></div><span class="rl">Mahir</span></div>
-    <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);pointer-events:all;cursor:pointer;" onclick="closeRadial()">
-      <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-xmark text-white" style="font-size:18px;"></i></div>
-    </div>
+    <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);pointer-events:all;cursor:pointer;" onclick="closeRadial()"><div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-xmark text-white" style="font-size:18px;"></i></div></div>
   </div>
 </div>
-
 <!-- Firebase -->
 <script type="module">
   import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
   import { getFirestore, collection, getDocs, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  const cfg = {
-    apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",
-    authDomain:"mt-studio-92d1e.firebaseapp.com",
-    projectId:"mt-studio-92d1e",
-    storageBucket:"mt-studio-92d1e.firebasestorage.app",
-    messagingSenderId:"455687864985",
-    appId:"1:455687864985:web:327dedaffdb7b5f8606e08"
-  };
-  const app = getApps().length ? getApps()[0] : initializeApp(cfg);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  onAuthStateChanged(auth, user => {
-    const navBtns = document.querySelectorAll('.nav-auth-btn');
-    if(user){
-      navBtns.forEach(btn=>{
-        btn.innerHTML=`<div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full overflow-hidden border border-cyan-500/40"><img src="${user.photoURL||'https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg'}" class="w-full h-full object-cover"></div><span class="text-xs text-white hidden sm:inline">${(user.displayName||user.email).split(' ')[0]}</span></div>`;
-      });
-      const startBtn = document.querySelector('button[onclick="toggleModal(true)"]');
-      if(startBtn){ startBtn.innerHTML='<i class="fa-solid fa-right-from-bracket text-xs"></i> Logout'; startBtn.onclick=()=>window.fbSignOut(); }
-    }
+  const cfg={apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",authDomain:"mt-studio-92d1e.firebaseapp.com",projectId:"mt-studio-92d1e",storageBucket:"mt-studio-92d1e.firebasestorage.app",messagingSenderId:"455687864985",appId:"1:455687864985:web:327dedaffdb7b5f8606e08"};
+  const app=getApps().length?getApps()[0]:initializeApp(cfg);
+  const auth=getAuth(app),db=getFirestore(app);
+  onAuthStateChanged(auth,user=>{
+    document.querySelectorAll('.nav-auth-btn').forEach(btn=>{
+      if(user){btn.innerHTML=`<div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full overflow-hidden border border-cyan-500/40"><img src="${user.photoURL||'https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg'}" class="w-full h-full object-cover"></div></div>`;}
+      else{btn.textContent='Login';btn.onclick=()=>toggleModal(true);}
+    });
   });
-
-  window.firebaseSignUp = async(email,pass,first,last)=>{
-    try{
-      const c=await createUserWithEmailAndPassword(auth,email,pass);
-      await updateProfile(c.user,{displayName:`${first} ${last}`});
-      showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");
-      toggleModal(false);
-    }catch(e){
-      const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';
-      showSuccessModal("❌ Error",m);
-    }
-  };
-  window.firebaseSignIn = async(email,pass)=>{
-    try{ await signInWithEmailAndPassword(auth,email,pass); showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।"); toggleModal(false); }
-    catch(e){
-      const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';
-      showSuccessModal("❌ Error",m);
-    }
-  };
-  window.firebaseGoogleSignIn=async()=>{
-    try{ await signInWithPopup(auth,new GoogleAuthProvider()); showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।"); toggleModal(false); }
-    catch(e){ if(e.code!=='auth/popup-closed-by-user') showSuccessModal("❌ Error","Google লগইন সমস্যা।"); }
-  };
-  window.firebaseFacebookSignIn=async()=>{
-    try{ await signInWithPopup(auth,new FacebookAuthProvider()); showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।"); toggleModal(false); }
-    catch(e){ if(e.code!=='auth/popup-closed-by-user') showSuccessModal("❌ Error","Facebook লগইন সমস্যা।"); }
-  };
-  window.fbSignOut=async()=>{ await signOut(auth); showSuccessModal("লগআউট","আবার দেখা হবে! 👋"); };
-
-  // Blog
+  window.firebaseGoogleSignIn=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("❌ Error","Google লগইন সমস্যা।");}};
+  window.firebaseFacebookSignIn=async()=>{try{await signInWithPopup(auth,new FacebookAuthProvider());showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("❌ Error","Facebook লগইন সমস্যা।");}};
+  window.firebaseSignUp=async(email,pass,first,last)=>{try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("❌ Error",m);}};
+  window.firebaseSignIn=async(email,pass)=>{try{await signInWithEmailAndPassword(auth,email,pass);showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");toggleModal(false);}catch(e){const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';showSuccessModal("❌ Error",m);}};
+  window.fbSignOut=async()=>{await signOut(auth);showSuccessModal("লগআউট","আবার দেখা হবে! 👋");};
   let allPosts=[];
   async function fetchPosts(){
-    try{
-      const q=query(collection(db,'blogPosts'),where('status','==','published'),orderBy('createdAt','desc'));
-      const snap=await getDocs(q);
-      allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));
-      renderPosts(allPosts);
-    }catch(e){ document.getElementById('blogEmpty').classList.remove('hidden'); document.getElementById('blogLoading')?.remove(); }
+    try{const q=query(collection(db,'blogPosts'),where('status','==','published'),orderBy('createdAt','desc'));const snap=await getDocs(q);allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));renderPosts(allPosts);}
+    catch(e){document.getElementById('blogEmpty').classList.remove('hidden');document.getElementById('blogLoading')?.remove();}
   }
   function renderPosts(posts){
-    const grid=document.getElementById('blogGrid');
-    const empty=document.getElementById('blogEmpty');
-    document.getElementById('blogLoading')?.remove();
-    grid.innerHTML='';
-    if(!posts.length){ empty.classList.remove('hidden'); return; }
-    empty.classList.add('hidden');
+    const grid=document.getElementById('blogGrid'),empty=document.getElementById('blogEmpty');
+    document.getElementById('blogLoading')?.remove();grid.innerHTML='';
+    if(!posts.length){empty.classList.remove('hidden');return;}empty.classList.add('hidden');
     posts.forEach(p=>{
       const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('bn-BD',{year:'numeric',month:'short',day:'numeric'}):'';
-      const card=document.createElement('a');
-      card.href=`post.html?id=${p.id}`;
+      const card=document.createElement('a');card.href=`post.html?id=${p.id}`;
       card.className='group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-violet-500/40 transition-all shadow-lg';
       card.innerHTML=`${p.cover?`<div class="h-44 overflow-hidden"><img src="${p.cover}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"></div>`:`<div class="h-44 bg-gradient-to-br from-violet-900/30 to-cyan-900/30 flex items-center justify-center"><i class="fa-solid fa-pen-to-square text-4xl text-violet-400/40"></i></div>`}<div class="p-5"><div class="flex items-center gap-2 mb-2"><span class="text-[10px] bg-violet-500/10 border border-violet-500/20 text-violet-300 px-2.5 py-1 rounded-full font-bold">${p.category||'General'}</span><span class="text-slate-600 text-xs">${date}</span></div><h3 class="text-white font-bold mb-2 leading-snug group-hover:text-violet-300 transition">${p.title}</h3><p class="text-slate-400 text-sm line-clamp-2">${p.excerpt||''}</p></div>`;
       grid.appendChild(card);
@@ -829,28 +574,24 @@
     document.querySelectorAll('.blog-filter-btn').forEach(b=>b.classList.remove('active-filter'));
     renderPosts(cat==='all'?allPosts:allPosts.filter(p=>p.category===cat));
     const map={all:'filter-all','ওয়েব ডেভেলপমেন্ট':'filter-web','AI Tools':'filter-ai','Facebook Tips':'filter-fb'};
-    if(map[cat]) document.getElementById(map[cat])?.classList.add('active-filter');
+    if(map[cat])document.getElementById(map[cat])?.classList.add('active-filter');
   };
   fetchPosts();
 </script>
 
-<style>.blog-filter-btn.active-filter{border-color:rgba(139,92,246,0.5);background:rgba(139,92,246,0.15);color:#c4b5fd;}</style>
-
-<!-- Main JS -->
 <script>
   const EMAILJS_SERVICE_ID='service_w8zocpp',EMAILJS_TEMPLATE_ID='template_v1hge8r',EMAILJS_PUBLIC_KEY='p_mMJON6oBY_Fg3u_';
   emailjs.init(EMAILJS_PUBLIC_KEY);
-
   const WORKER='https://hidden-sky-3109.studiomt46.workers.dev';
 
-  // ── UI ─────────────────────────────────────────────────────────────────────
-  function openSideMenu(){ document.getElementById('sideMenu').classList.replace('-translate-x-full','translate-x-0'); document.getElementById('menuOverlay').classList.remove('hidden'); document.body.style.overflow='hidden'; }
-  function closeSideMenu(){ document.getElementById('sideMenu').classList.replace('translate-x-0','-translate-x-full'); document.getElementById('menuOverlay').classList.add('hidden'); document.body.style.overflow=''; }
+  // ── UI ────────────────────────────────────────────────────
+  function openSideMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('menuOverlay').classList.remove('hidden');document.body.style.overflow='hidden';}
+  function closeSideMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('menuOverlay').classList.add('hidden');document.body.style.overflow='';}
 
   function toggleModal(show){
-    const m=document.getElementById('quoteModal'),c=m.querySelector('div>div:last-child');
-    if(show){ switchAuthMode('signup'); m.classList.remove('hidden'); m.classList.add('flex'); document.body.style.overflow='hidden'; setTimeout(()=>{m.style.opacity='1';c?.classList.remove('scale-95');c?.classList.add('scale-100');},10); }
-    else{ m.style.opacity='0'; document.body.style.overflow=''; setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300); }
+    const m=document.getElementById('quoteModal');
+    if(show){switchAuthMode('signup');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';setTimeout(()=>m.style.opacity='1',10);}
+    else{m.style.opacity='0';document.body.style.overflow='';setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);}
   }
   function switchAuthMode(mode){
     document.getElementById('signupForm').classList.toggle('hidden',mode!=='signup');
@@ -860,33 +601,20 @@
   }
   function handleAuthSubmit(e,mode){
     e.preventDefault();
-    if(mode==='signup'){
-      const f=e.target,first=f.querySelector('input[placeholder="First name"]').value,last=f.querySelector('input[placeholder="Last name"]').value,email=f.querySelector('input[type="email"]').value,pass=document.getElementById('suPassword').value;
-      if(pass.length<6){showSuccessModal("❌ Error","Password কমপক্ষে ৬ অক্ষর।");return;}
-      window.firebaseSignUp(email,pass,first,last);
-    } else {
-      const f=e.target,email=f.querySelector('input[type="email"]').value,pass=document.getElementById('siPassword').value;
-      window.firebaseSignIn(email,pass);
-    }
+    if(mode==='signup'){const f=e.target,first=f.querySelector('[placeholder="First name"]').value,last=f.querySelector('[placeholder="Last name"]').value,email=f.querySelector('[type="email"]').value,pass=document.getElementById('suPassword').value;if(pass.length<6){showSuccessModal("❌ Error","Password কমপক্ষে ৬ অক্ষর।");return;}window.firebaseSignUp(email,pass,first,last);}
+    else{const f=e.target,email=f.querySelector('[type="email"]').value,pass=document.getElementById('siPassword').value;window.firebaseSignIn(email,pass);}
   }
 
   function showSuccessModal(title,msg){
-    const m=document.getElementById('successModal'),c=m.querySelector('div');
-    document.getElementById('successTitle').textContent=title;
-    document.getElementById('successMessage').textContent=msg;
-    m.classList.remove('hidden');m.classList.add('flex');
-    setTimeout(()=>{m.style.opacity='1';c.classList.remove('scale-95');c.classList.add('scale-100');},10);
+    document.getElementById('successTitle').textContent=title;document.getElementById('successMessage').textContent=msg;
+    const m=document.getElementById('successModal');m.classList.remove('hidden');m.classList.add('flex');setTimeout(()=>m.style.opacity='1',10);
   }
-  function closeSuccessModal(){
-    const m=document.getElementById('successModal');
-    m.style.opacity='0';
-    setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);
-  }
+  function closeSuccessModal(){const m=document.getElementById('successModal');m.style.opacity='0';setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);}
 
   function openServiceDetails(key){
     const data={
       web:{title:'Web Apps Development',subtitle:'স্কেলেবল ওয়েবসাইট ও ড্যাশবোর্ড',icon:'fa-globe',color:'text-cyan-400',bg:'bg-cyan-500/10',glow:'bg-cyan-500/15',features:['Custom Platforms & Dashboards','E-commerce Websites','Admin Panels','Progressive Web Apps']},
-      mobile:{title:'Mobile App Build',subtitle:'iOS ও Android অ্যাপ',icon:'fa-mobile-screen',color:'text-violet-400',bg:'bg-violet-500/10',glow:'bg-violet-500/15',features:['Native iOS App','Android APK Build','React Native','UI/UX Design']},
+      mobile:{title:'Mobile App Build',subtitle:'iOS ও Android অ্যাপ',icon:'fa-mobile-screen',color:'text-violet-400',bg:'bg-violet-500/10',glow:'bg-violet-500/15',features:['Native iOS App','Android APK','React Native','UI/UX Design']},
       design:{title:'UI / UX Design',subtitle:'প্রিমিয়াম ডিজাইন',icon:'fa-pen-nib',color:'text-pink-400',bg:'bg-pink-500/10',glow:'bg-pink-500/15',features:['App Wireframing','Clickable Prototypes','Brand Identity','Figma Design']},
       profile:{title:'Profile Troubleshooting',subtitle:'সোশ্যাল মিডিয়া ফিক্স',icon:'fa-shield-halved',color:'text-blue-400',bg:'bg-blue-500/10',glow:'bg-blue-500/15',features:['Facebook Page Recovery','Account Restriction Removal','Instagram Fix','24h Resolution']},
       video:{title:'Video & Photo Editing',subtitle:'ভিডিও ও ফটো এডিটিং',icon:'fa-wand-magic',color:'text-fuchsia-400',bg:'bg-fuchsia-500/10',glow:'bg-fuchsia-500/15',features:['Reels & Shorts','Color Grading','Thumbnail Design','Product Photography']},
@@ -899,15 +627,9 @@
     document.getElementById('sdIconWrapper').innerHTML=`<i class="fa-solid ${d.icon}"></i>`;
     document.getElementById('sdBgGlow').className=`absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl pointer-events-none ${d.glow}`;
     document.getElementById('sdFeatures').innerHTML=d.features.map(f=>`<li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i> ${f}</li>`).join('');
-    const m=document.getElementById('serviceDetailsModal');
-    m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';
-    setTimeout(()=>m.style.opacity='1',10);
+    const m=document.getElementById('serviceDetailsModal');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';setTimeout(()=>m.style.opacity='1',10);
   }
-  function closeServiceDetails(){
-    const m=document.getElementById('serviceDetailsModal');
-    m.style.opacity='0';document.body.style.overflow='';
-    setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);
-  }
+  function closeServiceDetails(){const m=document.getElementById('serviceDetailsModal');m.style.opacity='0';document.body.style.overflow='';setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);}
 
   function toggleFaq(btn){
     const item=btn.closest('.faq-item'),ans=item.querySelector('.faq-answer'),ico=item.querySelector('.faq-icon'),open=!ans.classList.contains('hidden');
@@ -917,179 +639,128 @@
   }
 
   function handleContactSubmit(e){
-    e.preventDefault();
-    const f=e.target,btn=f.querySelector('button[type="submit"]');
+    e.preventDefault();const f=e.target,btn=f.querySelector('button[type="submit"]');
     btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i> পাঠানো হচ্ছে...';
-    emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{
-      from_name:f.querySelector('input[type="text"]').value,
-      phone:f.querySelector('input[type="tel"]').value,
-      service_type:f.querySelector('select').value,
-      message:f.querySelector('textarea').value,
-    }).then(()=>{showSuccessModal("মেসেজ পাঠানো হয়েছে! ✅","২৪ ঘণ্টার মধ্যে রিপ্লাই পাবেন।");f.reset();})
+    emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{from_name:f.querySelector('[type="text"]').value,phone:f.querySelector('[type="tel"]').value,service_type:f.querySelector('select').value,message:f.querySelector('textarea').value})
+    .then(()=>{showSuccessModal("মেসেজ পাঠানো হয়েছে! ✅","২৪ ঘণ্টার মধ্যে রিপ্লাই পাবেন।");f.reset();})
     .catch(()=>showSuccessModal("সমস্যা হয়েছে ❌","WhatsApp বা Messenger-এ যোগাযোগ করুন।"))
     .finally(()=>{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-paper-plane text-sm mr-2"></i> মেসেজ পাঠান';});
   }
 
-  function handlePackageClick(pkg){ showSuccessModal("🎉 Free Offer!",`${pkg} Package এখন 100% ফ্রি! Sign up করলে আমরা যোগাযোগ করব।`); setTimeout(()=>{closeSuccessModal();toggleModal(true);},1800); }
+  function handlePackageClick(pkg){showSuccessModal("🎉 Free Offer!",`${pkg} Package এখন 100% ফ্রি! Sign up করলে যোগাযোগ করব।`);setTimeout(()=>{closeSuccessModal();toggleModal(true);},1800);}
 
-  // ── Radial ──────────────────────────────────────────────────────────────────
+  // ── Radial ────────────────────────────────────────────────
   function toggleRadial(){
     const bg=document.getElementById('radialBg'),m=document.getElementById('radialWrap'),items=document.querySelectorAll('.ri');
-    if(bg.style.display==='none'){ bg.style.display='block';m.style.display='block';document.body.style.overflow='hidden'; setTimeout(()=>items.forEach((el,i)=>setTimeout(()=>el.classList.add('show'),i*45)),10); }
+    if(bg.style.display==='none'){bg.style.display='block';m.style.display='block';document.body.style.overflow='hidden';setTimeout(()=>items.forEach((el,i)=>setTimeout(()=>el.classList.add('show'),i*45)),10);}
     else closeRadial();
   }
   function closeRadial(){
     document.querySelectorAll('.ri').forEach(i=>i.classList.remove('show'));
-    setTimeout(()=>{ document.getElementById('radialBg').style.display='none'; document.getElementById('radialWrap').style.display='none'; document.body.style.overflow=''; },160);
+    setTimeout(()=>{document.getElementById('radialBg').style.display='none';document.getElementById('radialWrap').style.display='none';document.body.style.overflow='';},160);
   }
 
-  // ── Chat (Mahir) ─────────────────────────────────────────────────────────────
+  // ── Chat ──────────────────────────────────────────────────
   function toggleChat(){
     const w=document.getElementById('chatWidget');
-    if(w.classList.contains('hidden')){ w.classList.remove('hidden'); setTimeout(()=>{ w.classList.remove('translate-y-4','opacity-0'); },10); }
-    else{ w.classList.add('translate-y-4','opacity-0'); setTimeout(()=>w.classList.add('hidden'),300); }
+    if(w.classList.contains('hidden')){w.classList.remove('hidden');}else{w.classList.add('hidden');}
   }
-
-  const MAHIR_SYS=`তোমার নাম Mahir। তুমি MT Studio-র একজন real team member। AI বা bot না। স্বাভাবিক বাংলায় কথা বলো, বন্ধুসুলভ। MT Studio: ছবি এডিট, ভিডিও এডিট, Image to Prompt, Content, ওয়েবসাইট, Social Media Automation। সব ফ্রি। WhatsApp: +1(917)419-9814।`;
+  const MAHIR_SYS=`তোমার নাম Mahir। তুমি MT Studio-র একজন real team member। AI বা bot না। স্বাভাবিক বাংলায় কথা বলো, বন্ধুসুলভ, ছোট sentence। MT Studio: ছবি এডিট, ভিডিও এডিট, Image to Prompt, Content, ওয়েবসাইট, Social Media Automation। সব ফ্রি। WhatsApp: +1(917)419-9814।`;
   let chatHist=[];
-
   function addChatMsg(text,isUser){
     const box=document.getElementById('chatMessages'),div=document.createElement('div');
-    if(isUser){ div.className='bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm self-end ml-auto w-10/12 shadow-md'; div.textContent=text; }
-    else{ div.className='bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 flex items-start gap-2'; div.innerHTML=`<div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-0.5"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div>${text}</div>`; }
-    box.appendChild(div); box.scrollTop=box.scrollHeight;
+    if(isUser){div.className='bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm self-end ml-auto w-10/12 shadow-md';div.textContent=text;}
+    else{div.className='bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 flex items-start gap-2';div.innerHTML=`<div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-0.5"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div>${text}</div>`;}
+    box.appendChild(div);box.scrollTop=box.scrollHeight;
   }
   function addTypingDots(){
     const box=document.getElementById('chatMessages'),div=document.createElement('div');
-    div.id='typingDots'; div.className='bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-auto flex items-center gap-2';
+    div.id='typingDots';div.className='bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm flex items-center gap-2';
     div.innerHTML=`<div class="w-6 h-6 rounded-full overflow-hidden shrink-0"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div><div class="flex gap-1"><span style="width:7px;height:7px;background:#64748b;border-radius:50%;animation:bounce 1s infinite 0ms;display:inline-block;"></span><span style="width:7px;height:7px;background:#64748b;border-radius:50%;animation:bounce 1s infinite 200ms;display:inline-block;"></span><span style="width:7px;height:7px;background:#64748b;border-radius:50%;animation:bounce 1s infinite 400ms;display:inline-block;"></span></div>`;
-    box.appendChild(div); box.scrollTop=box.scrollHeight;
+    box.appendChild(div);box.scrollTop=box.scrollHeight;
   }
   async function handleChatSubmit(e){
-    e.preventDefault();
-    const input=document.getElementById('chatInput'),msg=input.value.trim();
-    if(!msg)return; input.value=''; input.disabled=true;
-    addChatMsg(msg,true); chatHist.push({role:'user',content:msg}); addTypingDots();
+    e.preventDefault();const input=document.getElementById('chatInput'),msg=input.value.trim();if(!msg)return;
+    input.value='';input.disabled=true;addChatMsg(msg,true);chatHist.push({role:'user',content:msg});addTypingDots();
     try{
       const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'system',content:MAHIR_SYS},...chatHist]})});
-      const data=await res.json();
-      const reply=data?.choices?.[0]?.message?.content||'একটু সমস্যা হচ্ছে। WhatsApp: +1(917)419-9814';
-      document.getElementById('typingDots')?.remove();
-      chatHist.push({role:'assistant',content:reply});
-      addChatMsg(reply.replace(/\n/g,'<br>'),false);
-    }catch(err){ document.getElementById('typingDots')?.remove(); addChatMsg('নেটওয়ার্ক সমস্যা। WhatsApp: +1(917)419-9814',false); }
-    input.disabled=false; input.focus();
+      const data=await res.json();const reply=data?.choices?.[0]?.message?.content||'একটু সমস্যা হচ্ছে। WhatsApp: +1(917)419-9814';
+      document.getElementById('typingDots')?.remove();chatHist.push({role:'assistant',content:reply});addChatMsg(reply.replace(/\n/g,'<br>'),false);
+    }catch(err){document.getElementById('typingDots')?.remove();addChatMsg('নেটওয়ার্ক সমস্যা। WhatsApp: +1(917)419-9814',false);}
+    input.disabled=false;input.focus();
   }
 
-  // ── AI TOOLS ─────────────────────────────────────────────────────────────────
-  function openTool(name){ document.getElementById(`tool-${name}`).classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeTool(name){ document.getElementById(`tool-${name}`).classList.remove('open'); document.body.style.overflow=''; }
+  // ── AI TOOLS ──────────────────────────────────────────────
+  function openTool(name){document.getElementById(`tool-${name}`).classList.add('open');document.body.style.overflow='hidden';}
+  function closeTool(name){document.getElementById(`tool-${name}`).classList.remove('open');document.body.style.overflow='';}
 
   // Image to Prompt
-  let uploadedImageData=null, uploadedMime=null;
+  let uploadedImageData=null,uploadedMime=null;
   function handleImageUpload(e){
-    const file=e.target.files[0]; if(!file)return;
-    uploadedMime=file.type;
+    const file=e.target.files[0];if(!file)return;uploadedMime=file.type;
     const reader=new FileReader();
-    reader.onload=ev=>{
-      uploadedImageData=ev.target.result.split(',')[1];
-      document.getElementById('imgPreview').src=ev.target.result;
-      document.getElementById('imgDropZone').classList.add('hidden');
-      document.getElementById('imgPreviewWrap').classList.remove('hidden');
-      document.getElementById('promptResult').classList.add('hidden');
-    };
+    reader.onload=ev=>{uploadedImageData=ev.target.result.split(',')[1];document.getElementById('imgPreview').src=ev.target.result;document.getElementById('imgDropZone').classList.add('hidden');document.getElementById('imgPreviewWrap').classList.remove('hidden');document.getElementById('promptResult').classList.add('hidden');};
     reader.readAsDataURL(file);
   }
   async function generatePrompt(){
     if(!uploadedImageData)return;
-    document.getElementById('generateBtn').disabled=true;
-    document.getElementById('promptLoading').classList.remove('hidden');
-    document.getElementById('promptResult').classList.add('hidden');
+    document.getElementById('generateBtn').disabled=true;document.getElementById('promptLoading').classList.remove('hidden');document.getElementById('promptResult').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/image-to-prompt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:uploadedImageData,mimeType:uploadedMime})});
-      const data=await res.json();
-      const text=data?.choices?.[0]?.message?.content||'Prompt তৈরি করা যায়নি।';
-      document.getElementById('promptText').textContent=text;
-      document.getElementById('promptResult').classList.remove('hidden');
-    }catch(e){ alert('সমস্যা হয়েছে। আবার চেষ্টা করুন।'); }
-    finally{ document.getElementById('promptLoading').classList.add('hidden'); document.getElementById('generateBtn').disabled=false; }
+      const data=await res.json();const text=data?.choices?.[0]?.message?.content||'Prompt তৈরি করা যায়নি।';
+      document.getElementById('promptText').textContent=text;document.getElementById('promptResult').classList.remove('hidden');
+    }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে। আবার চেষ্টা করুন।');}
+    finally{document.getElementById('promptLoading').classList.add('hidden');document.getElementById('generateBtn').disabled=false;}
   }
-  function copyPrompt(){ navigator.clipboard.writeText(document.getElementById('promptText').textContent); showSuccessModal("✅ Copied!","Prompt clipboard-এ copy হয়েছে।"); }
+  function copyPrompt(){navigator.clipboard.writeText(document.getElementById('promptText').textContent);showSuccessModal("✅ Copied!","Prompt clipboard-এ copy হয়েছে।");}
 
   // Content Writer
   let selectedContentType='caption';
   function selectContentType(type,btn){
     selectedContentType=type;
-    document.querySelectorAll('.content-type-btn').forEach(b=>{ b.classList.remove('border-cyan-500/50','text-cyan-400','bg-cyan-500/10'); b.classList.add('border-white/10','text-slate-400','bg-[#0A0F1C]'); });
-    btn.classList.add('border-cyan-500/50','text-cyan-400','bg-cyan-500/10');
-    btn.classList.remove('border-white/10','text-slate-400','bg-[#0A0F1C]');
+    document.querySelectorAll('.content-type-btn').forEach(b=>{b.classList.remove('border-cyan-500/50','text-cyan-400','bg-cyan-500/10');b.classList.add('border-white/10','text-slate-400','bg-[#0A0F1C]');});
+    btn.classList.add('border-cyan-500/50','text-cyan-400','bg-cyan-500/10');btn.classList.remove('border-white/10','text-slate-400','bg-[#0A0F1C]');
   }
   async function generateContent(){
     const topic=document.getElementById('contentTopic').value.trim(),tone=document.getElementById('contentTone').value;
-    if(!topic){alert('Topic লিখুন।');return;}
-    document.getElementById('contentBtn').disabled=true;
-    document.getElementById('contentLoading').classList.remove('hidden');
-    document.getElementById('contentResult').classList.add('hidden');
+    if(!topic){showSuccessModal('❌','Topic লিখুন।');return;}
+    document.getElementById('contentBtn').disabled=true;document.getElementById('contentLoading').classList.remove('hidden');document.getElementById('contentResult').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/content`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:selectedContentType,topic,tone})});
-      const data=await res.json();
-      const text=data?.choices?.[0]?.message?.content||'কন্টেন্ট তৈরি হয়নি।';
-      document.getElementById('contentText').textContent=text;
-      document.getElementById('contentResult').classList.remove('hidden');
-    }catch(e){ alert('সমস্যা হয়েছে।'); }
-    finally{ document.getElementById('contentLoading').classList.add('hidden'); document.getElementById('contentBtn').disabled=false; }
+      const data=await res.json();const text=data?.choices?.[0]?.message?.content||'কন্টেন্ট তৈরি হয়নি।';
+      document.getElementById('contentText').textContent=text;document.getElementById('contentResult').classList.remove('hidden');
+    }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে।');}
+    finally{document.getElementById('contentLoading').classList.add('hidden');document.getElementById('contentBtn').disabled=false;}
   }
-  function copyContent(){ navigator.clipboard.writeText(document.getElementById('contentText').textContent); showSuccessModal("✅ Copied!","কন্টেন্ট copy হয়েছে।"); }
+  function copyContent(){navigator.clipboard.writeText(document.getElementById('contentText').textContent);showSuccessModal("✅ Copied!","কন্টেন্ট copy হয়েছে।");}
 
   // Web Builder
   let generatedWebCode='';
   async function generateWeb(){
-    const req=document.getElementById('webReq').value.trim();
-    if(!req){alert('Website-এর বিবরণ লিখুন।');return;}
-    document.getElementById('webBtn').disabled=true;
-    document.getElementById('webLoading').classList.remove('hidden');
-    document.getElementById('webResult').classList.add('hidden');
-    document.getElementById('webPreviewFrame').classList.add('hidden');
+    const req=document.getElementById('webReq').value.trim();if(!req){showSuccessModal('❌','বিবরণ লিখুন।');return;}
+    document.getElementById('webBtn').disabled=true;document.getElementById('webLoading').classList.remove('hidden');document.getElementById('webResult').classList.add('hidden');document.getElementById('webPreviewFrame').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/webgen`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requirement:req})});
-      const data=await res.json();
-      let code=data?.choices?.[0]?.message?.content||'';
-      code=code.replace(/```html\n?/g,'').replace(/```\n?/g,'').trim();
-      generatedWebCode=code;
-      document.getElementById('webCode').textContent=code.substring(0,500)+'...\n[সম্পূর্ণ কোড Preview-এ দেখুন]';
-      document.getElementById('webResult').classList.remove('hidden');
-    }catch(e){ alert('সমস্যা হয়েছে।'); }
-    finally{ document.getElementById('webLoading').classList.add('hidden'); document.getElementById('webBtn').disabled=false; }
+      const data=await res.json();let code=data?.choices?.[0]?.message?.content||'';
+      code=code.replace(/```html\n?/g,'').replace(/```\n?/g,'').trim();generatedWebCode=code;
+      document.getElementById('webCode').textContent=code.substring(0,400)+'...\n[Preview-এ দেখুন]';document.getElementById('webResult').classList.remove('hidden');
+    }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে।');}
+    finally{document.getElementById('webLoading').classList.add('hidden');document.getElementById('webBtn').disabled=false;}
   }
-  function previewWeb(){
-    if(!generatedWebCode)return;
-    const frame=document.getElementById('webPreviewFrame'),iframe=document.getElementById('webIframe');
-    frame.classList.remove('hidden');
-    iframe.srcdoc=generatedWebCode;
-  }
-  function downloadWeb(){
-    if(!generatedWebCode)return;
-    const blob=new Blob([generatedWebCode],{type:'text/html'}),url=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=url; a.download='mt-studio-website.html'; a.click(); URL.revokeObjectURL(url);
-  }
+  function previewWeb(){if(!generatedWebCode)return;const frame=document.getElementById('webPreviewFrame');frame.classList.remove('hidden');document.getElementById('webIframe').srcdoc=generatedWebCode;}
+  function downloadWeb(){if(!generatedWebCode)return;const blob=new Blob([generatedWebCode],{type:'text/html'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mt-studio-website.html';a.click();URL.revokeObjectURL(url);}
 
   // Image Generator
   async function generateImage(){
-    const prompt=document.getElementById('imagePromptInput').value.trim();
-    if(!prompt){alert('Prompt লিখুন।');return;}
-    document.getElementById('imageGenBtn').disabled=true;
-    document.getElementById('imageGenLoading').classList.remove('hidden');
-    document.getElementById('imageGenResult').classList.add('hidden');
+    const prompt=document.getElementById('imagePromptInput').value.trim();if(!prompt){showSuccessModal('❌','Prompt লিখুন।');return;}
+    document.getElementById('imageGenBtn').disabled=true;document.getElementById('imageGenLoading').classList.remove('hidden');document.getElementById('imageGenResult').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/image-gen`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
-      const data=await res.json();
-      const url=data?.data?.[0]?.url;
-      if(!url){alert('ছবি তৈরি হয়নি। আবার চেষ্টা করুন।');return;}
-      document.getElementById('generatedImage').src=url;
-      document.getElementById('downloadImageBtn').href=url;
-      document.getElementById('imageGenResult').classList.remove('hidden');
-    }catch(e){ alert('সমস্যা হয়েছে।'); }
-    finally{ document.getElementById('imageGenLoading').classList.add('hidden'); document.getElementById('imageGenBtn').disabled=false; }
+      const data=await res.json();const url=data?.data?.[0]?.url;
+      if(!url){showSuccessModal('❌','ছবি তৈরি হয়নি। আবার চেষ্টা করুন।');return;}
+      document.getElementById('generatedImage').src=url;document.getElementById('downloadImageBtn').href=url;document.getElementById('imageGenResult').classList.remove('hidden');
+    }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে।');}
+    finally{document.getElementById('imageGenLoading').classList.add('hidden');document.getElementById('imageGenBtn').disabled=false;}
   }
 </script>
 </body>
