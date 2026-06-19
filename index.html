@@ -220,14 +220,25 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="py-14 px-4 bg-[#0A0F1C] border-y border-white/5">
+<!-- TESTIMONIALS (Dynamic Reviews) -->
+<section id="reviews" class="py-14 px-4 bg-[#0A0F1C] border-y border-white/5">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-10"><h2 class="text-3xl font-bold text-white">Loved by Our Clients</h2><p class="text-slate-400 mt-2 text-sm">Real stories from people we've worked with</p></div>
-    <div class="grid md:grid-cols-3 gap-5">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-white">Loved by Our Clients</h2>
+      <p class="text-slate-400 mt-2 text-sm">Real stories from people we've worked with</p>
+      <div id="reviewStats" class="flex items-center justify-center gap-2 mt-4 hidden">
+        <span class="text-yellow-400 text-xl">★★★★★</span>
+        <span class="text-white font-bold" id="avgRating">5.0</span>
+        <span class="text-slate-500 text-sm">(<span id="reviewCount">0</span> reviews)</span>
+      </div>
+    </div>
+    <div id="reviewsGrid" class="grid md:grid-cols-3 gap-5">
       <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★☆</div><p class="text-slate-300 italic text-sm mb-5">"MT Studio completely transformed our online presence. Fast and converting really well!"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-sm">RI</div><div><p class="text-white font-medium text-sm">Rafiqul Islam</p><p class="text-slate-500 text-xs">CEO, TechMart BD</p></div></div></div>
       <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★★</div><p class="text-slate-300 italic text-sm mb-5">"They recovered my restricted Facebook page within 24 hours. Professional team!"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-sm">KH</div><div><p class="text-white font-medium text-sm">Kamrul Hasan</p><p class="text-slate-500 text-xs">Content Creator</p></div></div></div>
       <div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">★★★★☆</div><p class="text-slate-300 italic text-sm mb-5">"The UI/UX for our mobile app is outstanding. Best agency in Bangladesh."</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold text-sm">SJ</div><div><p class="text-white font-medium text-sm">Sadia Jahan</p><p class="text-slate-500 text-xs">Founder, EduCare</p></div></div></div>
+    </div>
+    <div class="text-center mt-8">
+      <button onclick="openReviewModal()" class="spring-press text-sm font-bold text-cyan-400 border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/10 px-6 py-3 rounded-xl transition-all inline-flex items-center gap-2"><i class="fa-solid fa-star"></i> আপনার অভিজ্ঞতা শেয়ার করুন</button>
     </div>
   </div>
 </section>
@@ -512,6 +523,28 @@
   </div>
 </div>
 
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="fixed inset-0 z-[115] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-xl p-4 opacity-0 transition-opacity duration-300">
+  <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-7 max-w-sm w-full relative">
+    <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-white/5 rounded-full w-8 h-8 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+    <div class="text-center mb-5">
+      <div class="w-14 h-14 rounded-2xl overflow-hidden border border-cyan-500/30 mx-auto mb-3"><img src="https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg" class="w-full h-full object-cover"></div>
+      <h3 class="text-white font-bold text-lg mb-1">আপনার অভিজ্ঞতা কেমন ছিল?</h3>
+      <p class="text-slate-400 text-sm">MT Studio সম্পর্কে আপনার মতামত জানান</p>
+    </div>
+    <div class="flex justify-center gap-2 mb-5" id="starRow">
+      <button onclick="setStarRating(1)" class="star-btn text-3xl text-slate-600 transition-colors" data-star="1">★</button>
+      <button onclick="setStarRating(2)" class="star-btn text-3xl text-slate-600 transition-colors" data-star="2">★</button>
+      <button onclick="setStarRating(3)" class="star-btn text-3xl text-slate-600 transition-colors" data-star="3">★</button>
+      <button onclick="setStarRating(4)" class="star-btn text-3xl text-slate-600 transition-colors" data-star="4">★</button>
+      <button onclick="setStarRating(5)" class="star-btn text-3xl text-slate-600 transition-colors" data-star="5">★</button>
+    </div>
+    <textarea id="reviewText" rows="3" placeholder="আপনার মতামত লিখুন (optional)..." class="tool-input resize-none mb-4"></textarea>
+    <button onclick="submitReview()" id="reviewSubmitBtn" class="tool-btn"><i class="fa-solid fa-paper-plane mr-2"></i> জমা দিন</button>
+    <button onclick="closeReviewModal()" class="w-full text-center text-slate-500 text-sm mt-3 hover:text-slate-300 transition">এখন না</button>
+  </div>
+</div>
+
 <!-- SUCCESS MODAL -->
 <div id="successModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
   <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center">
@@ -538,16 +571,26 @@
 <script type="module">
   import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, collection, getDocs, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, addDoc, query, orderBy, where, serverTimestamp, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
   const cfg={apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",authDomain:"mt-studio-92d1e.firebaseapp.com",projectId:"mt-studio-92d1e",storageBucket:"mt-studio-92d1e.firebasestorage.app",messagingSenderId:"455687864985",appId:"1:455687864985:web:327dedaffdb7b5f8606e08"};
   const app=getApps().length?getApps()[0]:initializeApp(cfg);
   const auth=getAuth(app),db=getFirestore(app);
+  window.isLoggedIn=false;
+  window.pendingAction=null;
   onAuthStateChanged(auth,user=>{
+    window.isLoggedIn=!!user;
     document.querySelectorAll('.nav-auth-btn').forEach(btn=>{
       if(user){btn.innerHTML=`<div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full overflow-hidden border border-cyan-500/40"><img src="${user.photoURL||'https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg'}" class="w-full h-full object-cover"></div></div>`;}
       else{btn.textContent='Login';btn.onclick=()=>toggleModal(true);}
     });
+    // If user just signed up/logged in and had a pending AI action, run it now
+    if(user && window.pendingAction){
+      const action=window.pendingAction;
+      window.pendingAction=null;
+      setTimeout(()=>{ closeModal2(); action(); }, 400);
+    }
   });
+  function closeModal2(){ const m=document.getElementById('quoteModal'); if(m){ m.style.opacity='0'; document.body.style.overflow=''; setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);} }
   window.firebaseGoogleSignIn=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("❌ Error","Google লগইন সমস্যা।");}};
   window.firebaseFacebookSignIn=async()=>{try{await signInWithPopup(auth,new FacebookAuthProvider());showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("❌ Error","Facebook লগইন সমস্যা।");}};
   window.firebaseSignUp=async(email,pass,first,last)=>{try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("❌ Error",m);}};
@@ -577,6 +620,37 @@
     if(map[cat])document.getElementById(map[cat])?.classList.add('active-filter');
   };
   fetchPosts();
+
+  // ── Reviews ──────────────────────────────────────────────
+  async function fetchReviews(){
+    try{
+      const q=query(collection(db,'reviews'),where('rating','>=',4),orderBy('createdAt','desc'),limit(9));
+      const snap=await getDocs(q);
+      const reviews=snap.docs.map(d=>d.data());
+      if(reviews.length) renderReviews(reviews);
+    }catch(e){ /* keep default testimonials if fetch fails */ }
+  }
+  function renderReviews(reviews){
+    const grid=document.getElementById('reviewsGrid');
+    const colors=['cyan','pink','violet','green','blue','fuchsia'];
+    grid.innerHTML=reviews.map((r,i)=>{
+      const stars='★'.repeat(r.rating)+'☆'.repeat(5-r.rating);
+      const initials=(r.name||'User').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+      const color=colors[i%colors.length];
+      return `<div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">${stars}</div><p class="text-slate-300 italic text-sm mb-5">"${r.text||'Great experience with MT Studio!'}"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-${color}-600 rounded-full flex items-center justify-center text-white font-bold text-sm">${initials}</div><div><p class="text-white font-medium text-sm">${r.name||'MT Studio User'}</p><p class="text-slate-500 text-xs">Verified Customer</p></div></div></div>`;
+    }).join('');
+    const avg=(reviews.reduce((s,r)=>s+r.rating,0)/reviews.length).toFixed(1);
+    document.getElementById('avgRating').textContent=avg;
+    document.getElementById('reviewCount').textContent=reviews.length;
+    document.getElementById('reviewStats').classList.remove('hidden');
+  }
+  window.submitReviewToFirestore=async(rating,text)=>{
+    const user=auth.currentUser;
+    const name=user?(user.displayName||user.email.split('@')[0]):'Anonymous';
+    await addDoc(collection(db,'reviews'),{name,rating,text:text||'',createdAt:serverTimestamp(),uid:user?.uid||null});
+  };
+  window.fetchReviewsHook=fetchReviews;
+  fetchReviews();
 </script>
 
 <script>
@@ -597,7 +671,9 @@
     document.getElementById('signupForm').classList.toggle('hidden',mode!=='signup');
     document.getElementById('signinForm').classList.toggle('hidden',mode!=='signin');
     document.getElementById('authTitle').textContent=mode==='signup'?'Get started with MT Studio':'Welcome back';
-    document.getElementById('authSubtitle').textContent=mode==='signup'?'Sign up for free — সব সার্ভিস এখন ফ্রি':'আপনার MT Studio account-এ log in করুন';
+    if(!window.pendingAction){
+      document.getElementById('authSubtitle').textContent=mode==='signup'?'Sign up for free — সব সার্ভিস এখন ফ্রি':'আপনার MT Studio account-এ log in করুন';
+    }
   }
   function handleAuthSubmit(e,mode){
     e.preventDefault();
@@ -702,13 +778,27 @@
     reader.onload=ev=>{uploadedImageData=ev.target.result.split(',')[1];document.getElementById('imgPreview').src=ev.target.result;document.getElementById('imgDropZone').classList.add('hidden');document.getElementById('imgPreviewWrap').classList.remove('hidden');document.getElementById('promptResult').classList.add('hidden');};
     reader.readAsDataURL(file);
   }
+  function requireAuth(action){
+    if(window.isLoggedIn){ action(); return; }
+    window.pendingAction=action;
+    toggleModal(true);
+    showAuthGateMessage();
+  }
+  function showAuthGateMessage(){
+    const sub=document.getElementById('authSubtitle');
+    if(sub) sub.textContent='Result দেখার আগে একবার Sign up করুন — মাত্র ১ মিনিট লাগবে, সম্পূর্ণ ফ্রি!';
+  }
   async function generatePrompt(){
     if(!uploadedImageData)return;
+    requireAuth(()=>doGeneratePrompt());
+  }
+  async function doGeneratePrompt(){
     document.getElementById('generateBtn').disabled=true;document.getElementById('promptLoading').classList.remove('hidden');document.getElementById('promptResult').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/image-to-prompt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:uploadedImageData,mimeType:uploadedMime})});
       const data=await res.json();const text=data?.choices?.[0]?.message?.content||'Prompt তৈরি করা যায়নি।';
       document.getElementById('promptText').textContent=text;document.getElementById('promptResult').classList.remove('hidden');
+      maybePromptReview();
     }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে। আবার চেষ্টা করুন।');}
     finally{document.getElementById('promptLoading').classList.add('hidden');document.getElementById('generateBtn').disabled=false;}
   }
@@ -722,13 +812,18 @@
     btn.classList.add('border-cyan-500/50','text-cyan-400','bg-cyan-500/10');btn.classList.remove('border-white/10','text-slate-400','bg-[#0A0F1C]');
   }
   async function generateContent(){
-    const topic=document.getElementById('contentTopic').value.trim(),tone=document.getElementById('contentTone').value;
+    const topic=document.getElementById('contentTopic').value.trim();
     if(!topic){showSuccessModal('❌','Topic লিখুন।');return;}
+    requireAuth(()=>doGenerateContent());
+  }
+  async function doGenerateContent(){
+    const topic=document.getElementById('contentTopic').value.trim(),tone=document.getElementById('contentTone').value;
     document.getElementById('contentBtn').disabled=true;document.getElementById('contentLoading').classList.remove('hidden');document.getElementById('contentResult').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/content`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:selectedContentType,topic,tone})});
       const data=await res.json();const text=data?.choices?.[0]?.message?.content||'কন্টেন্ট তৈরি হয়নি।';
       document.getElementById('contentText').textContent=text;document.getElementById('contentResult').classList.remove('hidden');
+      maybePromptReview();
     }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে।');}
     finally{document.getElementById('contentLoading').classList.add('hidden');document.getElementById('contentBtn').disabled=false;}
   }
@@ -738,6 +833,10 @@
   let generatedWebCode='';
   async function generateWeb(){
     const req=document.getElementById('webReq').value.trim();if(!req){showSuccessModal('❌','বিবরণ লিখুন।');return;}
+    requireAuth(()=>doGenerateWeb());
+  }
+  async function doGenerateWeb(){
+    const req=document.getElementById('webReq').value.trim();
     document.getElementById('webBtn').disabled=true;document.getElementById('webLoading').classList.remove('hidden');document.getElementById('webResult').classList.add('hidden');document.getElementById('webPreviewFrame').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/webgen`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requirement:req})});
@@ -753,14 +852,65 @@
   // Image Generator
   async function generateImage(){
     const prompt=document.getElementById('imagePromptInput').value.trim();if(!prompt){showSuccessModal('❌','Prompt লিখুন।');return;}
+    requireAuth(()=>doGenerateImage());
+  }
+  async function doGenerateImage(){
+    const prompt=document.getElementById('imagePromptInput').value.trim();
     document.getElementById('imageGenBtn').disabled=true;document.getElementById('imageGenLoading').classList.remove('hidden');document.getElementById('imageGenResult').classList.add('hidden');
     try{
       const res=await fetch(`${WORKER}/image-gen`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
       const data=await res.json();const url=data?.data?.[0]?.url;
       if(!url){showSuccessModal('❌','ছবি তৈরি হয়নি। আবার চেষ্টা করুন।');return;}
       document.getElementById('generatedImage').src=url;document.getElementById('downloadImageBtn').href=url;document.getElementById('imageGenResult').classList.remove('hidden');
+      maybePromptReview();
     }catch(e){showSuccessModal('❌ Error','সমস্যা হয়েছে।');}
     finally{document.getElementById('imageGenLoading').classList.add('hidden');document.getElementById('imageGenBtn').disabled=false;}
+  }
+
+  // ── Review Modal ──────────────────────────────────────────
+  let selectedStarRating=0;
+  function openReviewModal(){
+    selectedStarRating=0;
+    document.querySelectorAll('.star-btn').forEach(b=>b.classList.remove('text-yellow-400'));
+    document.querySelectorAll('.star-btn').forEach(b=>b.classList.add('text-slate-600'));
+    document.getElementById('reviewText').value='';
+    const m=document.getElementById('reviewModal');
+    m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';
+    setTimeout(()=>m.style.opacity='1',10);
+  }
+  function closeReviewModal(){
+    const m=document.getElementById('reviewModal');
+    m.style.opacity='0';document.body.style.overflow='';
+    setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);
+  }
+  function setStarRating(n){
+    selectedStarRating=n;
+    document.querySelectorAll('.star-btn').forEach(b=>{
+      const v=parseInt(b.dataset.star);
+      if(v<=n){b.classList.remove('text-slate-600');b.classList.add('text-yellow-400');}
+      else{b.classList.remove('text-yellow-400');b.classList.add('text-slate-600');}
+    });
+  }
+  async function submitReview(){
+    if(selectedStarRating===0){showSuccessModal('❌','একটি Rating দিন।');return;}
+    const text=document.getElementById('reviewText').value.trim();
+    const btn=document.getElementById('reviewSubmitBtn');
+    btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i> জমা হচ্ছে...';
+    try{
+      await window.submitReviewToFirestore(selectedStarRating,text);
+      closeReviewModal();
+      showSuccessModal('ধন্যবাদ! 🙏','আপনার রিভিউ জমা হয়েছে।');
+      setTimeout(()=>fetchReviewsAgain(),800);
+    }catch(e){ showSuccessModal('❌ Error','রিভিউ জমা দিতে সমস্যা হয়েছে।'); }
+    finally{ btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-paper-plane mr-2"></i> জমা দিন'; }
+  }
+  function fetchReviewsAgain(){ if(window.fetchReviewsHook) window.fetchReviewsHook(); }
+
+  // Auto-prompt review after AI tool use or after signup (once per session)
+  function maybePromptReview(){
+    if(sessionStorage.getItem('mtReviewPrompted')) return;
+    sessionStorage.setItem('mtReviewPrompted','1');
+    setTimeout(()=>openReviewModal(), 2500);
   }
 </script>
 </body>
