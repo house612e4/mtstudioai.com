@@ -63,8 +63,8 @@
       </a>
     </div>
     <div class="flex items-center gap-2">
-      <button onclick="toggleModal(true)" class="nav-auth-btn text-sm font-semibold text-white bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg hover:bg-white/10 transition">Login</button>
-      <button onclick="toggleModal(true)" class="text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-violet-600 px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-[0_0_14px_rgba(34,211,238,0.3)]">Start Free <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+      <button onclick="toggleModal(true,'signin')" class="nav-auth-btn text-sm font-semibold text-white bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg hover:bg-white/10 transition">Login</button>
+      <button onclick="toggleModal(true,'signup')" class="text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-violet-600 px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-[0_0_14px_rgba(34,211,238,0.3)]">Start Free <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
     </div>
   </div>
 </nav>
@@ -149,22 +149,26 @@
       <p class="text-slate-400 text-sm">যেকোনো টুলে কাজ শুরু করুন — result দেখার আগে একবার ফ্রি Sign up করতে হবে</p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      <div onclick="openTool('image-to-prompt')" class="glass rounded-2xl p-5 cursor-pointer hover:border-violet-500/30 transition-all group text-center">
+      <div onclick="openTool('image-to-prompt')" class="glass rounded-2xl p-5 cursor-pointer hover:border-violet-500/30 transition-all group text-center relative">
+        <span id="toolBadge-image-to-prompt" class="hidden absolute top-2 right-2 bg-slate-800/90 border border-white/10 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded-full items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i> Login</span>
         <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-violet-500/20 transition-colors"><i class="fa-solid fa-wand-sparkles text-violet-400 text-xl"></i></div>
         <h3 class="text-white font-bold text-sm mb-1">Image → Prompt</h3>
         <p class="text-slate-500 text-xs">ছবি থেকে AI prompt</p>
       </div>
-      <div onclick="openTool('content')" class="glass rounded-2xl p-5 cursor-pointer hover:border-cyan-500/30 transition-all group text-center">
+      <div onclick="openTool('content')" class="glass rounded-2xl p-5 cursor-pointer hover:border-cyan-500/30 transition-all group text-center relative">
+        <span id="toolBadge-content" class="hidden absolute top-2 right-2 bg-slate-800/90 border border-white/10 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded-full items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i> Login</span>
         <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-cyan-500/20 transition-colors"><i class="fa-solid fa-pen-nib text-cyan-400 text-xl"></i></div>
         <h3 class="text-white font-bold text-sm mb-1">Content Writer</h3>
         <p class="text-slate-500 text-xs">বাংলা কন্টেন্ট তৈরি</p>
       </div>
-      <div onclick="openTool('webgen')" class="glass rounded-2xl p-5 cursor-pointer hover:border-green-500/30 transition-all group text-center">
+      <div onclick="openTool('webgen')" class="glass rounded-2xl p-5 cursor-pointer hover:border-green-500/30 transition-all group text-center relative">
+        <span id="toolBadge-webgen" class="hidden absolute top-2 right-2 bg-slate-800/90 border border-white/10 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded-full items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i> Login</span>
         <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-green-500/20 transition-colors"><i class="fa-solid fa-code text-green-400 text-xl"></i></div>
         <h3 class="text-white font-bold text-sm mb-1">Web Builder</h3>
         <p class="text-slate-500 text-xs">AI দিয়ে সাইট বানান</p>
       </div>
-      <div onclick="openTool('image-gen')" class="glass rounded-2xl p-5 cursor-pointer hover:border-pink-500/30 transition-all group text-center">
+      <div onclick="openTool('image-gen')" class="glass rounded-2xl p-5 cursor-pointer hover:border-pink-500/30 transition-all group text-center relative">
+        <span id="toolBadge-image-gen" class="hidden absolute top-2 right-2 bg-slate-800/90 border border-white/10 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded-full items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i> Login</span>
         <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-pink-500/20 transition-colors"><i class="fa-solid fa-image text-pink-400 text-xl"></i></div>
         <h3 class="text-white font-bold text-sm mb-1">Image Generator</h3>
         <p class="text-slate-500 text-xs">DALL-E দিয়ে ছবি</p>
@@ -302,11 +306,8 @@
   <div class="max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-12">
       <div><p class="text-violet-400 text-xs tracking-[0.3em] font-semibold mb-3 uppercase flex items-center gap-2"><i class="fa-solid fa-rss"></i> Blog</p><h2 class="text-3xl font-bold text-white mb-2">আমাদের Blog</h2><p class="text-slate-400 text-sm">AI, ওয়েব ডেভেলপমেন্ট ও ডিজিটাল টিপস</p></div>
-      <div class="flex gap-2 flex-wrap">
-        <button onclick="filterBlog('all')" id="filter-all" class="blog-filter-btn active-filter text-xs font-bold px-4 py-2 rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-300">সব</button>
-        <button onclick="filterBlog('ওয়েব ডেভেলপমেন্ট')" id="filter-web" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">ওয়েব</button>
-        <button onclick="filterBlog('AI Tools')" id="filter-ai" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">AI Tools</button>
-        <button onclick="filterBlog('Facebook Tips')" id="filter-fb" class="blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all">Facebook</button>
+      <div id="blogFilterWrap" class="flex gap-2 flex-wrap">
+        <button onclick="filterBlog('all',this)" id="filter-all" class="blog-filter-btn active-filter text-xs font-bold px-4 py-2 rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-300">সব</button>
       </div>
     </div>
     <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"><div id="blogLoading" class="md:col-span-3 text-center py-14"><div class="w-10 h-10 border-2 border-violet-500/30 border-t-violet-400 rounded-full mx-auto mb-4" style="animation:spin 0.8s linear infinite;"></div><p class="text-slate-500 text-sm">লোড হচ্ছে...</p></div></div>
@@ -354,7 +355,7 @@
       <div><h4 class="text-white font-semibold mb-5 text-sm">Company</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li><li><a href="#faq" class="hover:text-white transition">FAQ</a></li><li><a href="#blog" class="hover:text-white transition">Blog</a></li><li><a href="#contact" class="hover:text-white transition">Contact Us</a></li><li><a href="#pricing" class="hover:text-white transition">Packages</a></li></ul></div>
       <div><h4 class="text-white font-semibold mb-5 text-sm">Support</h4><ul class="space-y-3 text-sm text-slate-400"><li><a href="https://wa.me/19174199814" target="_blank" class="hover:text-white transition">WhatsApp</a></li><li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Messenger</a></li><li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">Email</a></li></ul></div>
     </div>
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"><span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span><div class="flex gap-6 text-xs text-slate-500"><a href="#" onclick="event.preventDefault();showSuccessModal('শীঘ্রই আসছে','Privacy Policy পেজ তৈরি হচ্ছে।')" class="hover:text-white transition">Privacy</a><a href="#" onclick="event.preventDefault();showSuccessModal('শীঘ্রই আসছে','Terms of Use পেজ তৈরি হচ্ছে।')" class="hover:text-white transition">Terms of use</a></div></div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"><span class="text-slate-500 text-xs">© 2026 MT Studio Inc.</span><div class="flex gap-6 text-xs text-slate-500"><a href="#" onclick="event.preventDefault();showSuccessModal('শীঘ্রই আসছে','Privacy Policy পেজ তৈরি হচ্ছে।','info')" class="hover:text-white transition">Privacy</a><a href="#" onclick="event.preventDefault();showSuccessModal('শীঘ্রই আসছে','Terms of Use পেজ তৈরি হচ্ছে।','info')" class="hover:text-white transition">Terms of use</a></div></div>
   </div>
 </footer>
 
@@ -430,7 +431,7 @@
     <div class="flex-1 p-5 max-w-2xl mx-auto w-full">
       <div class="mb-4"><label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">কন্টেন্টের ধরন</label>
         <div class="grid grid-cols-2 gap-2">
-          <button onclick="selectContentType('caption',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-cyan-500/40 text-left flex items-center gap-2"><i class="fa-brands fa-facebook text-blue-400"></i> Facebook Caption</button>
+          <button onclick="selectContentType('caption',this)" class="content-type-btn border border-cyan-500/50 bg-cyan-500/10 text-cyan-400 rounded-xl p-3 text-sm font-semibold transition-all text-left flex items-center gap-2"><i class="fa-brands fa-facebook text-blue-400"></i> Facebook Caption</button>
           <button onclick="selectContentType('script',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-violet-500/40 text-left flex items-center gap-2"><i class="fa-brands fa-tiktok text-white"></i> Reel Script</button>
           <button onclick="selectContentType('blog',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-green-500/40 text-left flex items-center gap-2"><i class="fa-solid fa-rss text-green-400"></i> Blog Post</button>
           <button onclick="selectContentType('ad',this)" class="content-type-btn border border-white/10 bg-[#0A0F1C] text-slate-400 rounded-xl p-3 text-sm font-semibold transition-all hover:border-pink-500/40 text-left flex items-center gap-2"><i class="fa-solid fa-bullhorn text-pink-400"></i> Ad Copy</button>
@@ -523,14 +524,22 @@
           <input type="password" id="suConfirmPassword" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="Re-enter password">
           <p id="pwMismatchHint" class="hidden text-[11px] text-red-400 mt-1.5">Password দুটো মিলছে না</p>
         </div>
+        <p id="signupError" class="hidden bg-red-500/10 border border-red-500/30 text-red-300 text-sm rounded-xl px-4 py-3 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation shrink-0"></i><span id="signupErrorMsg"></span></p>
         <button type="submit" class="spring-press w-full bg-gradient-to-r from-cyan-600 to-violet-600 text-white font-bold py-4 rounded-xl">Sign up with email</button>
         <button type="button" onclick="window.firebaseGoogleSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-xl hover:bg-white/5 transition text-slate-300 font-medium text-sm"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5"> Continue with Google</button>
         <button type="button" onclick="window.firebaseFacebookSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-xl hover:bg-white/5 transition text-slate-300 font-medium text-sm"><i class="fa-brands fa-facebook text-[#1877F2] text-xl"></i> Continue with Facebook</button>
         <p class="text-center text-slate-400 text-sm pt-2">Already have an account? <button type="button" onclick="switchAuthMode('signin')" class="text-cyan-400 font-semibold hover:underline">Log in</button></p>
       </form>
       <form id="signinForm" class="hidden space-y-4" onsubmit="handleAuthSubmit(event,'signin')">
-        <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Email*</label><input type="email" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm"></div>
-        <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Password*</label><input type="password" id="siPassword" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm"></div>
+        <div><label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Email*</label><input type="email" id="siEmail" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="name@email.com"></div>
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">Password*</label>
+            <button type="button" onclick="handleForgotPassword()" class="text-[11px] text-slate-500 hover:text-cyan-400 transition">Password ভুলে গেছেন?</button>
+          </div>
+          <input type="password" id="siPassword" required class="w-full px-4 py-3 rounded-xl border border-white/10 bg-formbg text-white focus:ring-1 focus:ring-cyan-500 text-sm" placeholder="••••••••">
+        </div>
+        <p id="signinError" class="hidden bg-red-500/10 border border-red-500/30 text-red-300 text-sm rounded-xl px-4 py-3 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation shrink-0"></i><span id="signinErrorMsg"></span></p>
         <button type="submit" class="spring-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl">Log in</button>
         <button type="button" onclick="window.firebaseGoogleSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-xl hover:bg-white/5 transition text-slate-300 font-medium text-sm"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5"> Continue with Google</button>
         <button type="button" onclick="window.firebaseFacebookSignIn()" class="spring-press w-full flex items-center justify-center gap-3 bg-formbg border border-white/10 py-3.5 rounded-xl hover:bg-white/5 transition text-slate-300 font-medium text-sm"><i class="fa-brands fa-facebook text-[#1877F2] text-xl"></i> Continue with Facebook</button>
@@ -568,7 +577,7 @@
     <div id="successIconWrap" class="w-14 h-14 rounded-full bg-green-500/15 text-green-400 flex items-center justify-center text-2xl mb-4 mx-auto"><i id="successIcon" class="fa-solid fa-check"></i></div>
     <h3 id="successTitle" class="text-xl font-bold text-white mb-2">Success!</h3>
     <p id="successMessage" class="text-slate-400 text-sm mb-6">Done.</p>
-    <button onclick="closeSuccessModal()" class="spring-press bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl transition">OK, Got it</button>
+    <button onclick="closeSuccessModal()" class="spring-press bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl transition">ঠিক আছে</button>
   </div>
 </div>
 
@@ -576,8 +585,8 @@
 <div id="radialBg" style="display:none;position:fixed;inset:0;z-index:95;background:rgba(5,11,20,0.88);backdrop-filter:blur(10px);" onclick="closeRadial()"></div>
 <div id="radialWrap" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:96;height:100%;pointer-events:none;">
   <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);width:280px;height:280px;">
-    <div class="ri" id="ri0" style="position:absolute;bottom:68px;left:6px;pointer-events:all;" onclick="openTool('image-to-prompt');closeRadial();"><div class="rb"><span style="font-size:22px;">🖼️</span></div><span class="rl">Image</span></div>
-    <div class="ri" id="ri1" style="position:absolute;bottom:136px;left:0;pointer-events:all;" onclick="openTool('image-gen');closeRadial();"><div class="rb"><span style="font-size:22px;">✨</span></div><span class="rl">Generate</span></div>
+    <div class="ri" id="ri0" style="position:absolute;bottom:68px;left:6px;pointer-events:all;" onclick="openTool('image-to-prompt');closeRadial();"><div class="rb"><span style="font-size:22px;">🖼️</span></div><span class="rl">Analyze</span></div>
+    <div class="ri" id="ri1" style="position:absolute;bottom:136px;left:0;pointer-events:all;" onclick="openTool('image-gen');closeRadial();"><div class="rb"><span style="font-size:22px;">✨</span></div><span class="rl">Create Img</span></div>
     <div class="ri" id="ri2" style="position:absolute;bottom:178px;left:50%;transform:translateX(-50%);pointer-events:all;" onclick="openTool('content');closeRadial();"><div class="rb"><span style="font-size:22px;">📝</span></div><span class="rl">Content</span></div>
     <div class="ri" id="ri3" style="position:absolute;bottom:136px;right:0;pointer-events:all;" onclick="openTool('webgen');closeRadial();"><div class="rb"><span style="font-size:22px;">🌐</span></div><span class="rl">Web</span></div>
     <div class="ri" id="ri4" style="position:absolute;bottom:68px;right:6px;pointer-events:all;" onclick="toggleChat();closeRadial();"><div class="rb"><span style="font-size:22px;">💬</span></div><span class="rl">Mahir</span></div>
@@ -587,7 +596,7 @@
 <!-- Firebase -->
 <script type="module">
   import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, updateProfile, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
   import { getFirestore, collection, getDocs, addDoc, query, orderBy, where, serverTimestamp, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
   const cfg={apiKey:"AIzaSyDUrdFcmUduLMn0HqODf1uaRlDjCUg8ApM",authDomain:"mt-studio-92d1e.firebaseapp.com",projectId:"mt-studio-92d1e",storageBucket:"mt-studio-92d1e.firebasestorage.app",messagingSenderId:"455687864985",appId:"1:455687864985:web:327dedaffdb7b5f8606e08"};
   const app=getApps().length?getApps()[0]:initializeApp(cfg);
@@ -598,7 +607,12 @@
     window.isLoggedIn=!!user;
     document.querySelectorAll('.nav-auth-btn').forEach(btn=>{
       if(user){btn.innerHTML=`<div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full overflow-hidden border border-cyan-500/40"><img src="${user.photoURL||'https://raw.githubusercontent.com/house612e4/MT-Studio/main/public/MT_LOGO.jpeg'}" class="w-full h-full object-cover"></div></div>`;}
-      else{btn.textContent='Login';btn.onclick=()=>toggleModal(true);}
+      else{btn.textContent='Login';btn.onclick=()=>toggleModal(true,'signin');}
+    });
+    // Show/hide lock badges on AI tool cards based on auth state
+    ['image-to-prompt','content','webgen','image-gen'].forEach(name=>{
+      const badge=document.getElementById(`toolBadge-${name}`);
+      if(badge){ badge.classList.toggle('hidden',!!user); badge.classList.toggle('inline-flex',!user); }
     });
     // If user just signed up/logged in and had a pending AI action, run it now
     if(user && window.pendingAction){
@@ -610,13 +624,73 @@
   function closeModal2(){ const m=document.getElementById('quoteModal'); if(m){ m.style.opacity='0'; document.body.style.overflow=''; setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);} }
   window.firebaseGoogleSignIn=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","Google দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Google লগইন সমস্যা।",'error');}};
   window.firebaseFacebookSignIn=async()=>{try{await signInWithPopup(auth,new FacebookAuthProvider());if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","Facebook দিয়ে লগইন হয়েছে।");toggleModal(false);}catch(e){if(e.code!=='auth/popup-closed-by-user')showSuccessModal("Error","Facebook লগইন সমস্যা।",'error');}};
-  window.firebaseSignUp=async(email,pass,first,last)=>{try{const c=await createUserWithEmailAndPassword(auth,email,pass);await updateProfile(c.user,{displayName:`${first} ${last}`});if(!window.pendingAction)showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");toggleModal(false);}catch(e){const m={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৬ অক্ষর।'}[e.code]||'সমস্যা হয়েছে।';showSuccessModal("Error",m,'error');}};
-  window.firebaseSignIn=async(email,pass)=>{try{await signInWithEmailAndPassword(auth,email,pass);if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");toggleModal(false);}catch(e){const m={'auth/user-not-found':'অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।'}[e.code]||'লগইন সমস্যা।';showSuccessModal("Error",m,'error');}};
+  window.firebaseSignUp=async(email,pass,first,last)=>{
+    try{
+      const c=await createUserWithEmailAndPassword(auth,email,pass);
+      await updateProfile(c.user,{displayName:`${first} ${last}`});
+      if(!window.pendingAction)showSuccessModal("স্বাগতম! 🎉","অ্যাকাউন্ট তৈরি হয়েছে!");
+      toggleModal(false);
+    }catch(e){
+      const msg={'auth/email-already-in-use':'এই Email-এ আগেই অ্যাকাউন্ট আছে।','auth/weak-password':'Password কমপক্ষে ৮ অক্ষর ও ১টি সংখ্যা থাকতে হবে।'}[e.code]||'সমস্যা হয়েছে।';
+      const errEl=document.getElementById('signupError');
+      document.getElementById('signupErrorMsg').textContent=msg;
+      errEl.classList.remove('hidden');
+    }
+  };
+  window.firebaseSignIn=async(email,pass)=>{
+    try{
+      await signInWithEmailAndPassword(auth,email,pass);
+      if(!window.pendingAction)showSuccessModal("স্বাগতম! ✅","সফলভাবে লগইন হয়েছে।");
+      toggleModal(false);
+    }catch(e){
+      const msg={'auth/user-not-found':'এই Email-এ কোনো অ্যাকাউন্ট নেই।','auth/wrong-password':'Password ভুল।','auth/invalid-credential':'Email বা Password ভুল।'}[e.code]||'লগইন সমস্যা হয়েছে।';
+      const errEl=document.getElementById('signinError');
+      document.getElementById('signinErrorMsg').textContent=msg;
+      errEl.classList.remove('hidden');
+    }
+  };
+  window.handleForgotPassword=async()=>{
+    const emailInput=document.getElementById('siEmail');
+    const email=emailInput?.value.trim();
+    if(!email){
+      const errEl=document.getElementById('signinError');
+      document.getElementById('signinErrorMsg').textContent='আগে Email লিখুন, তারপর এই বাটনে ক্লিক করুন।';
+      errEl.classList.remove('hidden');
+      emailInput?.focus();
+      return;
+    }
+    try{
+      await sendPasswordResetEmail(auth,email);
+      showSuccessModal("Email পাঠানো হয়েছে ✅","আপনার email-এ password reset link পাঠানো হয়েছে।");
+    }catch(e){
+      showSuccessModal("Error","এই Email-এ কোনো অ্যাকাউন্ট পাওয়া যায়নি।",'error');
+    }
+  };
   window.fbSignOut=async()=>{await signOut(auth);showSuccessModal("লগআউট","আবার দেখা হবে! 👋");};
   let allPosts=[];
   async function fetchPosts(){
-    try{const q=query(collection(db,'blogPosts'),where('status','==','published'),orderBy('createdAt','desc'));const snap=await getDocs(q);allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));renderPosts(allPosts);}
+    try{
+      const q=query(collection(db,'blogPosts'),where('status','==','published'),orderBy('createdAt','desc'));
+      const snap=await getDocs(q);
+      allPosts=snap.docs.map(d=>({id:d.id,...d.data()}));
+      renderPosts(allPosts);
+      buildFilterButtons(allPosts);
+    }
     catch(e){document.getElementById('blogEmpty').classList.remove('hidden');document.getElementById('blogLoading')?.remove();}
+  }
+  function buildFilterButtons(posts){
+    const cats=[...new Set(posts.map(p=>p.category).filter(Boolean))];
+    const wrap=document.getElementById('blogFilterWrap');
+    if(!wrap) return;
+    // Remove all existing filter buttons except "সব"
+    wrap.querySelectorAll('.blog-filter-btn:not(#filter-all)').forEach(b=>b.remove());
+    cats.forEach(cat=>{
+      const btn=document.createElement('button');
+      btn.className='blog-filter-btn text-xs font-bold px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-300 transition-all';
+      btn.textContent=cat;
+      btn.onclick=()=>window.filterBlog(cat,btn);
+      wrap.appendChild(btn);
+    });
   }
   function renderPosts(posts){
     const grid=document.getElementById('blogGrid'),empty=document.getElementById('blogEmpty');
@@ -627,15 +701,16 @@
       const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('bn-BD',{year:'numeric',month:'short',day:'numeric'}):'';
       const card=document.createElement('a');card.href=`post.html?id=${p.id}`;
       card.className='group block bg-[#111827] rounded-3xl overflow-hidden border border-white/10 hover:border-violet-500/40 transition-all shadow-lg';
-      card.innerHTML=`${p.cover?`<div class="h-44 overflow-hidden"><img src="${p.cover}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"></div>`:`<div class="h-44 bg-gradient-to-br from-violet-900/30 to-cyan-900/30 flex items-center justify-center"><i class="fa-solid fa-pen-to-square text-4xl text-violet-400/40"></i></div>`}<div class="p-5"><div class="flex items-center gap-2 mb-2"><span class="text-[10px] bg-violet-500/10 border border-violet-500/20 text-violet-300 px-2.5 py-1 rounded-full font-bold">${p.category||'General'}</span><span class="text-slate-600 text-xs">${date}</span></div><h3 class="text-white font-bold mb-2 leading-snug group-hover:text-violet-300 transition">${p.title}</h3><p class="text-slate-400 text-sm line-clamp-2">${p.excerpt||''}</p></div>`;
+      card.innerHTML=`${p.cover?`<div class="h-44 overflow-hidden"><img src="${p.cover}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"></div>`:`<div class="h-44 bg-gradient-to-br from-violet-900/30 to-cyan-900/30 flex items-center justify-center"><i class="fa-solid fa-pen-to-square text-4xl text-violet-400/40"></i></div>`}<div class="p-5"><div class="flex items-center gap-2 mb-2"><span class="text-[10px] bg-violet-500/10 border border-violet-500/20 text-violet-300 px-2.5 py-1 rounded-full font-bold">${p.category||'General'}</span><span class="text-slate-600 text-xs">${date}</span></div><h3 class="text-white font-bold mb-2 leading-snug group-hover:text-violet-300 transition">${p.title}</h3><p class="text-slate-400 text-sm line-clamp-2">${p.excerpt||''}</p></div>`;
       grid.appendChild(card);
     });
   }
-  window.filterBlog=cat=>{
+  window.filterBlog=(cat,clickedBtn)=>{
     document.querySelectorAll('.blog-filter-btn').forEach(b=>b.classList.remove('active-filter'));
-    renderPosts(cat==='all'?allPosts:allPosts.filter(p=>p.category===cat));
-    const map={all:'filter-all','ওয়েব ডেভেলপমেন্ট':'filter-web','AI Tools':'filter-ai','Facebook Tips':'filter-fb'};
-    if(map[cat])document.getElementById(map[cat])?.classList.add('active-filter');
+    const filtered=cat==='all'?allPosts:allPosts.filter(p=>p.category===cat);
+    renderPosts(filtered);
+    if(clickedBtn){clickedBtn.classList.add('active-filter');}
+    else{document.getElementById('filter-all')?.classList.add('active-filter');}
   };
   fetchPosts();
 
@@ -652,12 +727,15 @@
     if(!reviews || reviews.length===0) return; // keep default testimonials, don't show broken stats
     const grid=document.getElementById('reviewsGrid');
     const colors=['cyan','pink','violet','green','blue','fuchsia'];
-    grid.innerHTML=reviews.map((r,i)=>{
+    const newHtml=reviews.map((r,i)=>{
       const stars='★'.repeat(r.rating)+'☆'.repeat(5-r.rating);
       const initials=(r.name||'User').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
       const color=colors[i%colors.length];
       return `<div class="bg-[#111827] border border-white/10 p-7 rounded-3xl"><div class="flex text-yellow-400 mb-4 text-lg">${stars}</div><p class="text-slate-300 italic text-sm mb-5">"${r.text||'Great experience with MT Studio!'}"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-${color}-600 rounded-full flex items-center justify-center text-white font-bold text-sm">${initials}</div><div><p class="text-white font-medium text-sm">${r.name||'MT Studio User'}</p><p class="text-slate-500 text-xs">Verified Customer</p></div></div></div>`;
     }).join('');
+    grid.style.transition='opacity 0.3s';
+    grid.style.opacity='0';
+    setTimeout(()=>{ grid.innerHTML=newHtml; grid.style.opacity='1'; },300);
     const avg=(reviews.reduce((s,r)=>s+r.rating,0)/reviews.length).toFixed(1);
     const fullStars=Math.round(parseFloat(avg));
     document.getElementById('avgStars').textContent='★'.repeat(fullStars)+'☆'.repeat(5-fullStars);
@@ -685,10 +763,15 @@
   function openSideMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('menuOverlay').classList.remove('hidden');document.body.style.overflow='hidden';}
   function closeSideMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('menuOverlay').classList.add('hidden');document.body.style.overflow='';}
 
-  function toggleModal(show){
+  function toggleModal(show,mode='signup'){
     const m=document.getElementById('quoteModal');
-    if(show){switchAuthMode('signup');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';setTimeout(()=>m.style.opacity='1',10);}
-    else{m.style.opacity='0';document.body.style.overflow='';setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);}
+    if(show){
+      switchAuthMode(mode);
+      // Clear any inline errors when opening fresh
+      document.getElementById('signinError')?.classList.add('hidden');
+      document.getElementById('signupError')?.classList.add('hidden');
+      m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';setTimeout(()=>m.style.opacity='1',10);
+    }else{m.style.opacity='0';document.body.style.overflow='';setTimeout(()=>{m.classList.add('hidden');m.classList.remove('flex');},300);}
   }
   function switchAuthMode(mode){
     document.getElementById('signupForm').classList.toggle('hidden',mode!=='signup');
@@ -702,7 +785,10 @@
     e.preventDefault();
     if(mode==='signup'){
       const f=e.target,first=f.querySelector('[placeholder="First name"]').value,last=f.querySelector('[placeholder="Last name"]').value,email=f.querySelector('[type="email"]').value,pass=document.getElementById('suPassword').value,confirmPass=document.getElementById('suConfirmPassword').value;
-      if(pass.length<6){showSuccessModal("Error","Password কমপক্ষে ৬ অক্ষর।",'error');return;}
+      const signupErrEl=document.getElementById('signupError'),signupErrMsg=document.getElementById('signupErrorMsg');
+      if(pass.length<8){signupErrMsg.textContent='Password কমপক্ষে ৮ অক্ষর হতে হবে।';signupErrEl.classList.remove('hidden');return;}
+      if(!/[0-9]/.test(pass)){signupErrMsg.textContent='Password-এ কমপক্ষে ১টি সংখ্যা থাকতে হবে।';signupErrEl.classList.remove('hidden');return;}
+      signupErrEl.classList.add('hidden');
       if(pass!==confirmPass){document.getElementById('pwMismatchHint').classList.remove('hidden');return;}
       document.getElementById('pwMismatchHint').classList.add('hidden');
       window.firebaseSignUp(email,pass,first,last);
@@ -716,6 +802,9 @@
     if(type==='error'){
       iconWrap.className='w-14 h-14 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center text-2xl mb-4 mx-auto';
       icon.className='fa-solid fa-triangle-exclamation';
+    }else if(type==='info'){
+      iconWrap.className='w-14 h-14 rounded-full bg-slate-500/15 text-slate-400 flex items-center justify-center text-2xl mb-4 mx-auto';
+      icon.className='fa-solid fa-circle-info';
     }else{
       iconWrap.className='w-14 h-14 rounded-full bg-green-500/15 text-green-400 flex items-center justify-center text-2xl mb-4 mx-auto';
       icon.className='fa-solid fa-check';
@@ -789,7 +878,18 @@
     .finally(()=>{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-paper-plane text-sm mr-2"></i> মেসেজ পাঠান';});
   }
 
-  function handlePackageClick(pkg){showSuccessModal("🎉 Free Offer!",`${pkg} Package এখন 100% ফ্রি! Sign up করলে যোগাযোগ করব।`);setTimeout(()=>{closeSuccessModal();toggleModal(true);},1800);}
+  function handlePackageClick(pkg){
+    // Show offer info first, then let user choose to sign up (no forced auto-dismiss)
+    showSuccessModal("🎉 Free Offer!",`${pkg} Package এখন 100% ফ্রি! নিচের বাটন থেকে Sign up করুন।`);
+    const okBtn=document.querySelector('#successModal button');
+    okBtn.textContent='সাইন আপ করুন →';
+    okBtn.onclick=()=>{
+      closeSuccessModal();
+      toggleModal(true,'signup');
+      okBtn.textContent='ঠিক আছে';
+      okBtn.onclick=closeSuccessModal;
+    };
+  }
 
   // ── Radial ────────────────────────────────────────────────
   function toggleRadial(){
@@ -823,7 +923,11 @@
   }
   async function handleChatSubmit(e){
     e.preventDefault();const input=document.getElementById('chatInput'),msg=input.value.trim();if(!msg)return;
-    input.value='';input.disabled=true;addChatMsg(msg,true);chatHist.push({role:'user',content:msg});addTypingDots();
+    input.value='';input.disabled=true;addChatMsg(msg,true);
+    chatHist.push({role:'user',content:msg});
+    // Keep last 20 messages (10 exchanges) to avoid ballooning token costs
+    if(chatHist.length>20) chatHist=chatHist.slice(-20);
+    addTypingDots();
     try{
       const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'system',content:MAHIR_SYS},...chatHist]})});
       const data=await res.json();const reply=data?.choices?.[0]?.message?.content||'একটু সমস্যা হচ্ছে। WhatsApp: +1(917)419-9814';
@@ -837,13 +941,34 @@
     const section=document.getElementById('ai-tools');
     if(section){ section.scrollIntoView({behavior:'smooth',block:'start'}); }
   }
-  function openTool(name){document.getElementById(`tool-${name}`).classList.add('open');document.body.style.overflow='hidden';
+  function openTool(name){
+    document.getElementById(`tool-${name}`).classList.add('open');
+    document.body.style.overflow='hidden';
     // Auto-focus first input/textarea after the tool opens
     setTimeout(()=>{
       const modal=document.getElementById(`tool-${name}`);
       const firstInput=modal.querySelector('textarea, input[type="text"]');
       if(firstInput) firstInput.focus();
     },350);
+    if(name==='image-to-prompt') setupImageDropZone();
+  }
+  function setupImageDropZone(){
+    const zone=document.getElementById('imgDropZone');
+    if(!zone||zone._dropReady) return;
+    zone._dropReady=true;
+    zone.addEventListener('dragover',e=>{
+      e.preventDefault();
+      zone.classList.add('border-violet-500/70','bg-violet-500/5');
+    });
+    zone.addEventListener('dragleave',()=>{
+      zone.classList.remove('border-violet-500/70','bg-violet-500/5');
+    });
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();
+      zone.classList.remove('border-violet-500/70','bg-violet-500/5');
+      const file=e.dataTransfer.files[0];
+      if(file) handleImageUpload({target:{files:[file],value:''}});
+    });
   }
   function closeTool(name){document.getElementById(`tool-${name}`).classList.remove('open');document.body.style.overflow='';}
 
@@ -1129,11 +1254,15 @@
   }
   function fetchReviewsAgain(){ if(window.fetchReviewsHook) window.fetchReviewsHook(); }
 
-  // Auto-prompt review after AI tool use or after signup (once per session)
+  // Auto-prompt review after AI tool use (once per session, only when user isn't actively typing)
   function maybePromptReview(){
     if(sessionStorage.getItem('mtReviewPrompted')) return;
     sessionStorage.setItem('mtReviewPrompted','1');
-    setTimeout(()=>openReviewModal(), 2500);
+    setTimeout(()=>{
+      const active=document.activeElement;
+      if(active&&(active.tagName==='TEXTAREA'||active.tagName==='INPUT')) return;
+      openReviewModal();
+    },5000);
   }
 
   // ── Accessibility: Escape key closes any open modal ──────
@@ -1145,6 +1274,23 @@
     if(document.getElementById('serviceDetailsModal')?.classList.contains('flex')) closeServiceDetails();
     if(document.getElementById('successModal')?.classList.contains('flex')) closeSuccessModal();
   });
+
+  // ── Bottom nav active state on scroll ─────────────────────
+  (function initBottomNavObserver(){
+    const sectionIds=['home','ai-tools','portfolio','contact'];
+    const navLinks=document.querySelectorAll('.bnav a[href]');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        navLinks.forEach(link=>{
+          const active=link.getAttribute('href')==='#'+entry.target.id;
+          link.classList.toggle('text-cyan-400',active);
+          link.classList.toggle('text-slate-500',!active);
+        });
+      });
+    },{threshold:0.4});
+    sectionIds.forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el);});
+  })();
 
 </script>
 </body>

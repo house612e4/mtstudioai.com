@@ -117,24 +117,32 @@
       document.getElementById('loadingState').style.display = 'none';
       document.getElementById('notFound').style.display = 'block';
     } else {
-      const snap = await getDoc(doc(db, 'blogPosts', postId));
-      document.getElementById('loadingState').style.display = 'none';
-      if (!snap.exists() || snap.data().status !== 'published') {
-        document.getElementById('notFound').style.display = 'block';
-      } else {
-        const d = snap.data();
-        document.getElementById('pageTitle').textContent = d.title + ' — MT Studio Blog';
-        document.getElementById('metaDesc').content = d.excerpt;
-        document.getElementById('postTitleEl').textContent = d.title;
-        document.getElementById('postExcerptEl').textContent = d.excerpt;
-        document.getElementById('postBody').innerHTML = d.content;
-        document.getElementById('postCategoryBadge').textContent = d.category || 'General';
-        document.getElementById('postDate').textContent = d.createdAt?.toDate ? d.createdAt.toDate().toLocaleDateString('bn-BD', { year:'numeric', month:'long', day:'numeric' }) : '';
-        if (d.cover) {
-          document.getElementById('postCoverImg').src = d.cover;
-          document.getElementById('coverWrap').style.display = 'block';
+      try {
+        const snap = await getDoc(doc(db, 'blogPosts', postId));
+        document.getElementById('loadingState').style.display = 'none';
+        if (!snap.exists() || snap.data().status !== 'published') {
+          document.getElementById('notFound').style.display = 'block';
+        } else {
+          const d = snap.data();
+          document.getElementById('pageTitle').textContent = d.title + ' — MT Studio Blog';
+          document.getElementById('metaDesc').content = d.excerpt;
+          document.getElementById('postTitleEl').textContent = d.title;
+          document.getElementById('postExcerptEl').textContent = d.excerpt;
+          document.getElementById('postBody').innerHTML = d.content;
+          document.getElementById('postCategoryBadge').textContent = d.category || 'General';
+          document.getElementById('postDate').textContent = d.createdAt?.toDate ? d.createdAt.toDate().toLocaleDateString('bn-BD', { year:'numeric', month:'long', day:'numeric' }) : '';
+          if (d.cover) {
+            document.getElementById('postCoverImg').src = d.cover;
+            document.getElementById('coverWrap').style.display = 'block';
+          }
+          document.getElementById('postContent').style.display = 'block';
         }
-        document.getElementById('postContent').style.display = 'block';
+      } catch(err) {
+        document.getElementById('loadingState').style.display = 'none';
+        const notFound = document.getElementById('notFound');
+        notFound.style.display = 'block';
+        notFound.querySelector('h2').textContent = 'লোড করা যায়নি';
+        notFound.querySelector('p').textContent = 'নেটওয়ার্ক সমস্যা। পেজ রিফ্রেশ করুন।';
       }
     }
   </script>
