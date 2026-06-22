@@ -645,7 +645,8 @@
     if(map[cat])document.getElementById(map[cat])?.classList.add('active-filter');
   };
   // ── Load blog posts on page load ──────────────────────────────────────
-  window.addEventListener('load', () => { fetchPosts(); });
+  window.fetchPosts = fetchPosts;
+  window.addEventListener('load', () => { window.fetchPosts(); });
   // Also call immediately for fast load
   fetchPosts();
 
