@@ -625,12 +625,12 @@
     try{
       const q=query(collection(db,'blogPosts'),orderBy('createdAt','desc'));
       const snap=await getDocs(q);
-      allPosts=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.status==='published');
+      allPosts=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>String(p.status||'published').trim().toLowerCase()==='published');
       renderPosts(allPosts);
     }catch(e){
       try{
         const snap=await getDocs(collection(db,'blogPosts'));
-        allPosts=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.status==='published');
+        allPosts=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>String(p.status||'published').trim().toLowerCase()==='published');
         renderPosts(allPosts);
       }catch(e2){
         document.getElementById('blogEmpty').classList.remove('hidden');
